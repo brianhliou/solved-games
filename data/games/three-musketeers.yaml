@@ -1,0 +1,80 @@
+id: three-musketeers
+name: Three Musketeers
+also_known_as:
+  - "The Three Musketeers"
+family: other
+board: "5x5 square grid, 25 cells. Asymmetric ('unequal forces', Fox-and-Geese style): one player controls 3 musketeers (red/dark), the other controls 22 enemies (blue/light, 'Cardinal Richelieu's men'). Start: musketeers in two opposite corners and the centre; enemies fill the other 22 cells."
+result: second-player-win
+result_detail: "Win for the enemy/blue pieces (Cardinal Richelieu's men) with perfect play. The musketeers move FIRST, so the winning enemy side is the SECOND player."
+strength: strong
+method:
+  - retrograde-analysis
+  - alpha-beta+db
+distance_to_result: ""
+complexity:
+  state_space: null
+  game_tree: null
+year: 2009
+solved_by: "Johannes Laire (2009, strong solution by retrograde analysis, announced on rec.games.abstract); independently weakly solved by Ali Elabridi (2017, capstone project, Al Akhawayn University) using minimax + alpha-beta pruning with Zobrist hashing and symmetry reduction"
+verified: false
+sources:
+  - title: "Johannes Laire — 'Three Musketeers solved' (rec.games.abstract, Google Groups, 2009) [original announcement of the strong solution]"
+    url: "https://groups.google.com/d/topic/rec.games.abstract/glKFUv2rEfY"
+  - title: "Ali Elabridi — Weakly Solving the Three Musketeers Game Using Artificial Intelligence and Game Theory (Capstone Project, Al Akhawayn University, Fall 2017) [independent weak solution; PDF]"
+    url: "https://cdn.aui.ma/sse-capstone-repository/pdf/fall2017/WEAKLY%20SOLVING%20THE%20THREE%20MUSKETEERS%20GAME%20USING%20ARTIFICIAL%20INTELLIGENCE%20AND%20GAME%20THEORY%20Ali%20Elabridi.pdf"
+  - title: "alielabridi — Weakly-Solving-Three-Musketeers-Game (source code, GitHub)"
+    url: "https://github.com/alielabridi/Weakly-Solving-Three-Musketeers-Game"
+  - title: "Three Musketeers (game) — Wikipedia (secondary; states strong solve by Laire 2009, weak solve by Elabridi 2017, win for blue/enemy)"
+    url: "https://en.wikipedia.org/wiki/Three_Musketeers_(game)"
+  - title: "Solved game — Wikipedia, list of solved games (secondary; 'Strongly solved by Johannes Laire in 2009, and weakly solved by Ali Elabridi in 2017. It is a win for the blue pieces')"
+    url: "https://en.wikipedia.org/wiki/Solved_game"
+  - title: "Three Musketeers — BoardGameGeek (secondary; rules and provenance)"
+    url: "https://boardgamegeek.com/boardgame/21861/three-musketeers"
+notes: >
+  Three Musketeers is an asymmetric abstract strategy game of 'unequal forces'
+  (Fox-and-Geese family) designed by Haar Hoolim and popularised in Sid Sackson's
+  1969 book A Gamut of Games. It is a two-player, zero-sum, perfect-information
+  game on a 5x5 board: 3 musketeers vs 22 enemies. The musketeers move first and
+  capture by stepping orthogonally onto an adjacent enemy (removing it); the enemy
+  moves a piece to any orthogonally adjacent EMPTY cell and never captures. The
+  enemy wins by forcing all three musketeers onto a single row or column; the
+  musketeers win if, on their turn, they have no legal move (no adjacent enemy to
+  capture) while not aligned.
+
+  RESULT / STRENGTH. Johannes Laire STRONGLY solved the game in 2009 (announced on
+  the rec.games.abstract newsgroup) via retrograde analysis, building a full
+  database that assigns a value to every reachable position and lets an AI play
+  optimally from any state — hence strength = STRONG. The game-theoretic value of
+  the standard start is a WIN FOR THE ENEMY (blue / Cardinal Richelieu's men).
+  This matches the game's long-documented imbalance: the enemy side is favoured,
+  and Laire noted that merely changing the starting position makes the game
+  roughly even. Ali Elabridi (Al Akhawayn University, Fall 2017 capstone)
+  independently produced a WEAK solution from the initial position using a
+  top-down minimax search with alpha-beta pruning, Zobrist hashing, and
+  board-symmetry reduction, stating his goal was to confirm Laire's result.
+
+  FIRST/SECOND MAPPING (load-bearing). The musketeers move first; the enemy moves
+  second. Because the enemy is the winning side, result = second-player-win.
+
+  DISCREPANCY / CAVEAT (important). Both Wikipedia articles (the dedicated
+  'Three Musketeers (game)' page and the 'Solved game' list) state the result is
+  a win for the BLUE/ENEMY pieces, and this is consistent with the game's known
+  imbalance in favour of the enemy and with Laire's strong solution. HOWEVER, the
+  Elabridi capstone's prose repeatedly and explicitly claims the opposite — that
+  'the first player (Musketeers) always wins' — while simultaneously claiming to
+  confirm Laire. Elabridi's text is internally inconsistent (e.g. it describes an
+  optimisation premised on the guardsmen/enemy never reaching a winning utility),
+  and its winner labelling is judged to be an inversion error in the writeup, not
+  a genuine alternative result. The authoritative result here is enemy/blue win
+  (Laire's strong solve + both Wikipedia entries + the historical imbalance);
+  Elabridi's contradictory labelling should be treated as a known error.
+
+  INDEPENDENT PRIMARIES. Two genuinely independent solving efforts exist: Laire
+  (2009, strong, retrograde) and Elabridi (2017, weak, minimax+ab). These are the
+  primary sources; the three Wikipedia/BGG links are secondary corroboration.
+  The Laire announcement is a newsgroup post (not a peer-reviewed paper) and his
+  solver/database is not preserved in a stable public artifact, so the strong
+  solution rests on his report rather than a re-verifiable tablebase; treat the
+  STRONG classification as reported-but-not-independently-reproduced. No citable
+  state-space or game-tree complexity figure was found in either primary source,
+  so complexity fields are left null.

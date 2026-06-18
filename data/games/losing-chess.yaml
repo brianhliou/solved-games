@@ -1,0 +1,77 @@
+id: losing-chess
+name: Losing chess
+also_known_as:
+  - "Antichess"
+  - "Suicide chess"
+  - "Giveaway chess"
+  - "Killer chess"
+  - "Take-all chess"
+  - "Capture chess"
+family: chess-variant
+board: Standard 8x8 chessboard, orthodox starting position; captures compulsory, non-royal king, no castling, promotion to king allowed
+result: first-player-win
+result_detail: "White (first player) wins; 1.e3 forces a win against every Black defense"
+strength: weak
+method:
+  - proof-number-search
+  - retrograde-analysis
+  - alpha-beta+db
+distance_to_result: "Watkins' proof has a maximal upper-level (best-first) tree depth of 94 ply, with endgame tablebases adding further plies; the hardest defenses originally ran very deep (e.g. 1.e3 e6 ~197 moves). A later refinement (tolius, 2021) shows White wins in under 80 moves with the 50-move rule applied (e.g. 1.e3 c5 mates in #79)."
+complexity:
+  state_space: null
+  game_tree: null
+year: 2016   # original solution completed/announced Oct 2016; ICGA Journal paper published 2017
+solved_by: "Mark Watkins (University of Sydney, School of Mathematics and Statistics)"
+verified: true
+sources:
+  - title: "Losing Chess: 1. e3 Wins for White — Mark Watkins, ICGA Journal 39(2): 123–125 (2017), DOI 10.3233/ICG-170017"
+    url: "https://content.iospress.com/articles/icga-journal/icg170017"
+  - title: "Losing Chess: 1. e3 wins for White (full expanded writeup PDF, Watkins, Univ. of Sydney)"
+    url: "https://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS/LCsolved.pdf"
+  - title: "Losing Chess project page (proof trees, tablebases, source code) — Mark Watkins"
+    url: "https://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS/"
+  - title: "Losing Chess — Chessprogramming wiki (secondary)"
+    url: "https://www.chessprogramming.org/Losing_Chess"
+  - title: "Losing chess — Wikipedia (secondary)"
+    url: "https://en.wikipedia.org/wiki/Losing_chess"
+  - title: "Antichess: 1. e3 Wins for White in #79 — tolius, lichess blog (secondary refinement)"
+    url: "https://lichess.org/@/tolius/blog/antichess-1-e3-wins-for-white-in-79/kmAYeHSC"
+resources:
+  tablebase: "https://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS/"
+  code: "https://github.com/NotAnOctopus/suicide-chess"
+  writeup: "https://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS/LCsolved.pdf"
+notes: >
+  Losing chess (antichess) on the standard 8x8 board with the orthodox starting
+  position: captures are compulsory (the side to move chooses among multiple
+  captures), the king is a non-royal piece (no check/checkmate, promotion to
+  king is allowed), and castling is illegal. A player wins by losing all their
+  pieces or being stalemated (under the stalemate ruleset). Weakly solved by
+  Mark Watkins in October 2016 (announced Oct 10, 2016; peer-reviewed in ICGA
+  Journal 39/2, 2017): the first move 1.e3 is a forced win for White against any
+  Black reply. This is a WEAK solution — a winning strategy is proven from the
+  start position (a proof tree for 1.e3), NOT a full tablebase giving the value
+  of every reachable position, so it is not "strong." Twelve of Black's 20
+  replies had been known lost for ~two decades; Ben Nye solved a 13th in 2003;
+  Watkins (with contributions from Klaas Steenhuis, Catalin Francu/Nilatac,
+  Stan Goldovski, Fabrice Liardet and others) closed the remaining lines, the
+  last being 1.e3 b6 (Liardet Defense). Method: proof-number search (best-first
+  pn-search as an evaluation function feeding an upper-level proof tree)
+  combined with custom Losing Chess endgame tablebases (4-, 5-, and 6-unit,
+  distance-to-conversion metric, built via retrograde analysis). The final proof
+  tree (graph) has ~863,301,867 nodes (~900 million positions) with ~66 million
+  transposition pointers; Watkins estimates roughly 10^16 total positions
+  searched over the project (~100x the checkers effort). Result holds under
+  "joint FICS/International Rules" for stalemate (a win under joint rules is a
+  win under both FICS and International stalemate conventions); does NOT cover
+  the vinciperdi ruleset (stalemate-with-pieces is a draw there). Watkins gives
+  no single citable state-space or game-tree complexity figure for the full game
+  (he notes orthodox-chess estimates of ~10^40 legal positions and ~10^83
+  game-tree complexity as a loose comparison, adjusted up/down by the
+  forced-capture rule and non-royal kings), so both complexity fields are left
+  null. Distance: original proof had a maximal upper-level tree depth of 94 ply
+  (tablebases add more), with some defenses running very deep; a 2021 refinement
+  by "tolius" (lichess) reduced the longest forced win to under 80 moves with
+  the 50-move rule applied (1.e3 c5 mates in #79). Independent confirmation:
+  Klaas Steenhuis and Lajeunesse transferred/verified proofs to FICS rules with
+  an independent searcher, and the later tolius refinement re-derived and
+  improved the result with different tooling.

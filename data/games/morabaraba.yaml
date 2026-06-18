@@ -1,0 +1,63 @@
+id: morabaraba
+name: Morabaraba
+also_known_as:
+  - "Twelve Men's Morris"
+  - "Mlabalaba"
+  - "Umlabalaba"
+  - "Morabaraba (South African Morris)"
+family: abstract
+board: Nine Men's Morris board with the four diagonal lines added (24 points / intersections, all corners of the three nested squares connected by diagonals); 12 men per player
+result: first-player-win
+result_detail: "First-player win — the standard starting position is a win for the player to move first, with a game-theoretic value of win in 49 (moves). Most starting positions in which both players place an equal number of stones (including the standard one) are first-player wins, in contrast to Nine Men's Morris and Lasker Morris, which are draws."
+strength: strong
+method:
+  - retrograde-analysis
+distance_to_result: "Win in 49 (the game-theoretic value of the standard starting position, expressed as moves-to-win in the depth-to-win database)"
+complexity:
+  state_space: 112000000000   # ~112 billion states in the standard Morabaraba solution database (Gevay & Danner, Table I); state space is roughly four times that of Nine Men's Morris. Approximate figure as reported.
+  game_tree: null
+year: 2015
+solved_by: "Gábor E. Gévay (Eötvös Loránd University) & Gábor Danner (University of Szeged); arXiv:1408.0032 (2014), published IEEE Trans. on Computational Intelligence and AI in Games, 2016"
+verified: true
+sources:
+  - title: "Gévay & Danner, \"Calculating Ultra-Strong and Extended Solutions for Nine Men's Morris, Morabaraba, and Lasker Morris,\" IEEE Trans. CIAIG (DOI 10.1109/TCIAIG.2015.2420191); arXiv:1408.0032 (2014)"
+    url: "https://arxiv.org/abs/1408.0032"
+  - title: "Malom / Mills game solutions (Gábor Danner & Gábor E. Gévay) — Morabaraba ultra-strong database, project page"
+    url: "https://www.inf.u-szeged.hu/~danner/mills"
+  - title: "Morabaraba (Wikipedia)"
+    url: "https://en.wikipedia.org/wiki/Morabaraba"
+resources:
+  tablebase:
+    - title: "Ultra-strong solution databases for Nine Men's Morris, Morabaraba, and Lasker Morris (Gévay & Danner) — Morabaraba DB 41 GB compressed / 324 GB uncompressed"
+      url: "https://www.inf.u-szeged.hu/~danner/mills"
+notes: >
+  Strongly solved. Morabaraba is the southern-African variant of Twelve Men's
+  Morris: it is played on the Nine Men's Morris board with the four diagonal
+  lines added (each corner of the three nested squares is connected through to
+  the center cross), and each player places 12 stones ("cows") rather than 9.
+  Standard rules include the "flying" rule — a player reduced to three stones may
+  move a stone to any empty point rather than only along adjacent lines. Gábor E.
+  Gévay (Eötvös Loránd University) and Gábor Danner (University of Szeged) strongly solved the game with a
+  multi-valued retrograde analysis over a partitioned state space, computing a
+  complete depth-to-win database. The game-theoretic value of the standard
+  starting position is WIN IN 49 for the first player — a notable contrast with
+  Nine Men's Morris (Gasser 1996, a draw) and Lasker Morris (Stahlhacke 2003, a
+  draw), both of which the same paper also re-solved. They report that most
+  starting positions where both players place an equal number of stones
+  (including the standard position) are first-player wins; the extra diagonals
+  make the game sharper and the first move decisive. The Morabaraba state space
+  is roughly four times that of Nine Men's Morris (about 112 billion states in
+  the standard solution database per their Table I; ~284 billion across the
+  extended/alternative-stone-count solutions), and the computation took on the
+  order of days on a single machine (~3.2 GHz, ~20 GB RAM). Because the solution
+  is a full depth-to-win tablebase holding a value for every reachable position,
+  it qualifies as a STRONG (not merely weak) solution; the authors additionally
+  computed an ULTRA-strong solution that, by subclassifying drawn/won positions,
+  improves practical results against a fallible opponent. The ultra-strong
+  Morabaraba database is published for download (~41 GB compressed / ~324 GB
+  uncompressed). This is the SAME paper that strongly re-confirms Lasker Morris
+  (see lasker-morris.yaml). Independent primary confirmations of the Morabaraba
+  result: one (the Gévay–Danner work; the Szeged "mills" website is the project's
+  own tablebase distribution page, not an independent re-solution). The exact
+  state-space figure is an approximate value reported in the paper, not an exact
+  enumerated cardinality.

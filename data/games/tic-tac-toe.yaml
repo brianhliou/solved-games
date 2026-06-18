@@ -1,0 +1,62 @@
+id: tic-tac-toe
+name: Tic-tac-toe
+also_known_as:
+  - "Noughts and crosses"
+  - "Xs and Os"
+  - "Tick-tack-toe"
+  - "Terni lapilli"
+  - "(3,3,3)-game"
+family: abstract
+board: 3×3 (m,n,k = 3,3,3)
+result: draw
+result_detail: "Drawn under optimal play by both sides"
+strength: strong
+method:
+  - brute-force-enumeration
+  - mathematical-proof
+  - strategy-stealing/pairing-strategy
+distance_to_result: "at most 9 plies (the board fills after 9 moves)"
+complexity:
+  state_space: 5478          # reachable legal positions; 765 up to symmetry; 3^9=19683 is the (illegal-inclusive) upper bound
+  game_tree: 255168          # total games; 26830 up to rotation/reflection
+year: null
+solved_by: "folklore (no single originator); standard combinatorial-game-theory references — Hales & Jewett, Gardner, Steinhaus"
+verified: true
+sources:
+  - title: "Tic-Tac-Toe — Wolfram MathWorld (the 3×3 draw + exhaustive counts; primary reference for the result)"
+    url: "https://mathworld.wolfram.com/Tic-Tac-Toe.html"
+  - title: "Hales, A. W. & Jewett, R. I. — Regularity and positional games (Trans. AMS, 1963) — foundational positional-game theory & strategy-stealing; NOT the source of the 3×3 draw itself (that is trivial enumeration)"
+    url: "https://www.ams.org/journals/tran/1963-106-02/S0002-9947-1963-0143712-1/"
+  - title: "Tic-tac-toe (Wikipedia)"
+    url: "https://en.wikipedia.org/wiki/Tic-tac-toe"
+  - title: "Game complexity (Wikipedia) — state-space and game-tree figures"
+    url: "https://en.wikipedia.org/wiki/Game_complexity"
+  - title: "m,n,k-game (Wikipedia) — (3,3,3) is a draw; strategy-stealing precludes a 2nd-player win"
+    url: "https://en.wikipedia.org/wiki/M,n,k-game"
+notes: >
+  Tic-tac-toe is the canonical "trivially solved" game and the m,n,k-game with
+  (m,n,k) = (3,3,3). Under optimal play it is a draw: the first player cannot
+  force a win and, by the standard strategy-stealing argument, the second player
+  can never have a winning strategy in any m,n,k-game, so the second player can
+  at best draw — which a simple pairing/blocking defense achieves on the 3×3
+  board. The result counts as STRONG: the game is small enough to enumerate
+  exhaustively, giving an optimal value for every reachable position.
+
+  Complexity figures: there are 5,478 reachable legal positions (765 once
+  rotations and reflections are identified; 3^9 = 19,683 is the
+  illegal-inclusive upper bound, and ~138 terminal positions up to symmetry).
+  Counting move sequences, there are 255,168 distinct games (131,184 won by
+  player 1, 77,904 won by player 2, 46,080 drawn); 26,830 games once symmetry
+  is collapsed. state_space here is reachable legal positions; game_tree is
+  total games (move-order distinguished).
+
+  ATTRIBUTION: there is no primary "solver" paper. The draw has been known as
+  folklore for millennia — the Roman terni lapilli (1st century BC) and ancient
+  three-in-a-row board games predate any formal proof. The modern combinatorial
+  -game-theory framing rests on Hales & Jewett (1963), who introduced positional
+  -game / Hales–Jewett theory generalizing tic-tac-toe; the (3,3,3)-draw itself
+  is a trivial special case and is not "credited" to them. Steinhaus
+  (Mathematical Snapshots) and Gardner are the usual popular references; both
+  are secondary. year/solved_by are intentionally null/folklore rather than
+  guessed. No new modern solving work is required — it is verifiable by hand or
+  by a few lines of exhaustive search.

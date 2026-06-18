@@ -1,0 +1,79 @@
+id: hex-9x9
+name: Hex (9×9, all openings)
+also_known_as:
+  - "Nash"
+  - "John"
+  - "Con-Tac-Tix"
+  - "Polygon"
+family: connection
+board: 9×9 rhombus of hexagonal cells (81 cells); two opposite sides per player, first player connects their pair; no-swap (no pie rule) ruleset
+result: first-player-win
+result_detail: "First player (Black) wins with perfect play. All 81 opening moves on the 9×9 board are now resolved: the most-central openings win for the first player, while losing openings exist near the obtuse corners — so the first player wins simply by opening on a central cell."
+strength: weak
+method:
+  - depth-first-pns
+  - proof-number-search
+  - strategy-stealing/pairing-strategy
+distance_to_result: "The hardest 9×9 opening (a6) required 111 days of computation on a 24-core machine; the published principal variation for a6 is the deepest line in the paper. No single uniform ply count is given — proof depth varies by opening."
+complexity:
+  state_space: null   # no citable 9×9-specific figure; for 11×11 Hex the cited state-space complexity is ~10^57 and game-tree complexity ~10^98 (van den Herik et al. / Browne). See notes.
+  game_tree: null
+year: 2013
+solved_by: "Jakub Pawlewicz & Ryan B. Hayward (building on Henderson, Arneson & Hayward for 8×8 and Yang, Liao & Pawlak / Hayward et al. for 7×7)"
+verified: true
+sources:
+  - title: "Jakub Pawlewicz & Ryan B. Hayward, \"Scalable Parallel DFPN Search\", Computers and Games (CG 2013), LNCS 8427, pp. 138-150, Springer 2014 (DOI 10.1007/978-3-319-09165-5_12) — solves all thirteen previously intractable 9×9 openings and the first 10×10 opening"
+    url: "https://webdocs.cs.ualberta.ca/~hayward/papers/pawlhayw.pdf"
+  - title: "Scalable Parallel DFPN Search — Springer (CG 2013), DOI 10.1007/978-3-319-09165-5_12"
+    url: "https://link.springer.com/chapter/10.1007/978-3-319-09165-5_12"
+  - title: "Philip Henderson, Broderick Arneson & Ryan B. Hayward, \"Solving 8×8 Hex\", IJCAI 2009, pp. 505-510 (precursor: all 8×8 openings solved by the same group/solver lineage)"
+    url: "https://webdocs.cs.ualberta.ca/~hayward/papers/solve8.pdf"
+  - title: "Hex (board game) — Wikipedia (secondary; summarizes solved board sizes 7×7-10×10 and the Nash strategy-stealing / Hex theorem)"
+    url: "https://en.wikipedia.org/wiki/Hex_(board_game)"
+resources:
+  code: "https://github.com/cgao3/benzene-vanilla-cmake"
+  writeup: "https://webdocs.cs.ualberta.ca/~hayward/publications.html"
+notes: >
+  WEAK solution, not strong. Pawlewicz & Hayward weakly solved 9×9 Hex by
+  resolving every opening move: their Scalable Parallel Depth-First Proof Number
+  Search (SPDFPN) solved all thirteen 9×9 openings that earlier solvers had left
+  intractable (the remaining openings were already known), determining the winner
+  for each of the 81 starting cells. This does NOT produce a value for every
+  reachable position (no full tablebase), so it is not a strong solution. SPDFPN
+  is a shared-memory parallel version of the serial DFPN 1+ε method (Pawlewicz &
+  Lew), running atop the Benzene/Solver Hex codebase; it uses proof/disproof
+  numbers only and no domain-specific heuristics for thread scheduling, while the
+  underlying Hex solver uses connection-based virtual connections, inferior-cell
+  pruning and early win/loss detection. The hardest 9×9 opening (a6) took 111
+  days on a 24-core machine; the same run also produced the first-ever solution
+  of a single 10×10 opening (the centremost cell, f5, in 63 days — Black wins).
+
+  Ruleset caveat: this is the no-swap (no pie-rule) game. Under the swap/pie rule
+  the second player can flip a winning first move, which changes the practical
+  game but not the cell-by-cell opening values reported here.
+
+  Lineage of forward-Hex solves: 7×7 — Jing Yang, Simon Liao & Mirek Pawlak
+  (explicit decomposition strategy, 2001-2002) and independently a full computer
+  solve by Hayward, Björnsson, Johanson, Kan, Po & van Rijswijck (2003);
+  8×8 — Henderson, Arneson & Hayward (IJCAI 2009, all openings); 9×9 — this work
+  (2013); 10×10 — only the central opening (2013).
+
+  Ultra-weak result, ALL board sizes: independently of any search, Hex on any
+  n×n board is a first-player win by John Nash's strategy-stealing argument
+  (c. 1949) combined with the Hex theorem (Hein 1942 / Nash / Gale) that Hex can
+  never be a draw — exactly one player connects. This is non-constructive: it
+  proves the first player wins without giving a winning move. The 9×9 result here
+  is the constructive WEAK upgrade for that specific size. Deciding an arbitrary
+  generalized-Hex position is PSPACE-complete (Even & Tarjan, 1976; Reisch
+  showed Hex itself PSPACE-complete, 1981), which is why explicit solving stalls
+  around 9×9-10×10.
+
+  Complexity: no 9×9-specific state-space/game-tree figure is cited in the
+  primary paper. For reference, surveys give 11×11 Hex a state-space complexity
+  of roughly 10^57 and game-tree complexity of roughly 10^98; 9×9 is
+  correspondingly smaller. The state_space/game_tree fields are left null rather
+  than guessing a 9×9 number.
+
+  Bibliographic note: the paper was presented at Computers and Games 2013; its
+  Springer LNCS 8427 proceedings carry a 2014 imprint. The result is universally
+  dated 2013 (matching the conference and the anchor), which is the year used here.

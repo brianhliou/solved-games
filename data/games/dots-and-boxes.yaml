@@ -1,0 +1,100 @@
+id: dots-and-boxes
+name: Dots and Boxes
+also_known_as:
+  - "Dots-and-Boxes"
+  - "Dots and Dashes"
+  - "Boxes"
+  - "Pigs in a Pen"
+  - "Squares"
+  - "La Pipopipette"
+family: combinatorial
+board: "Rectangular grids, sized in boxes. Headline result is the 5x5 board (5x5 = 25 boxes, played on a 6x6 array of dots). Solved instances range from tiny boards up through 4x4 (Wilson), 4x5 (Barker & Korf) and 5x5 (Fraser)."
+result: first-player-win
+result_detail: "On the 5x5 (25-box) board the first player wins 13-12 (margin +1). Outcome is board-dependent: 4x4 and 4x5 are ties; 3x3 is a second-player win by 3."
+strength: weak
+method:
+  - alpha-beta+db
+  - retrograde-analysis
+distance_to_result: "Up to 60 boxes / 60 captures on 5x5; a full 5x5 game fills all 60 edges. Exact optimal-line length not published as one figure."
+complexity:
+  state_space: 30000000000000   # ~3x10^13 positions in Fraser's 5x5 endgame database (approximate, his stated figure)
+  game_tree: null
+year: 2014
+solved_by: "William Fraser (5x5, program 'the Shark'); 4x4 by David Wilson (2010); 4x5 by Joseph K. Barker & Richard E. Korf (2011)"
+verified: false
+sources:
+  - title: "William Fraser, \"Dots at 5x5 solved!\" announcement (rec.games.abstract / Little Golem, Jan 2014) — the Shark, first player wins 13-12"
+    url: "https://groups.google.com/g/rec.games.abstract/c/-z5Y9JRlZJ8"
+  - title: "Barker & Korf, \"Solving Dots-And-Boxes,\" Proc. AAAI-12 (full paper; solves 4x5 as a tie, alpha-beta)"
+    url: "https://cdn.aaai.org/ojs/8144/8144-13-11671-1-2-20201228.pdf"
+  - title: "Barker & Korf, \"Solving 4x5 Dots-And-Boxes,\" Proc. AAAI-11 (short paper; 4x5 is a tie)"
+    url: "https://cdn.aaai.org/ojs/8046/8046-13-11574-1-2-20201228.pdf"
+  - title: "David Wilson, Dots-and-Boxes Analysis Results (per-board margin tables: 3x3 = -3, 4x4 = 0, 5x5 = +1)"
+    url: "https://wilson.engr.wisc.edu/boxes/results.shtml"
+  - title: "5x5 Dots and Boxes solved (BoardGameGeek discussion, secondary)"
+    url: "https://boardgamegeek.com/thread/1105496/5x5-dots-and-boxes-solved"
+  - title: "Dots and boxes — Wikipedia (secondary)"
+    url: "https://en.wikipedia.org/wiki/Dots_and_boxes"
+resources:
+  explorer: "https://wilson.engr.wisc.edu/boxes/results.shtml"
+  writeup: "https://groups.google.com/g/rec.games.abstract/c/-z5Y9JRlZJ8"
+notes: >
+  Dots and Boxes (M. E. Lucas's 1889 "La Pipopipette") is an impartial scoring
+  game: players take turns drawing edges on a grid of dots; completing a box's
+  fourth side captures it and grants another move; most boxes wins. Because the
+  winner is decided by score (not by the normal-play last-move convention),
+  Sprague-Grundy does not apply, which makes solving harder than for ordinary
+  impartial games. The general game is PSPACE-complete (Buchin et al., 2021),
+  so only small boards are solved by exhaustive computation. "result" here is
+  the outcome from the standard empty start of the headline 5x5 board.
+
+  IMPORTANT: board sizes are stated in BOXES, the convention used by the
+  solvers. An NxM "game" has N*M boxes and is played on an (N+1)x(M+1) array of
+  dots. Do not confuse "5x5 boxes" (the headline, 6x6 dots) with the casual
+  "5x5 dots = 4x4 boxes." Several secondary write-ups conflate these and wrongly
+  call the headline game a tie.
+
+  Headline instance: the 5x5 (25-box) board, solved by William Fraser with his
+  program "the Shark" and announced January 2014. The first player wins with a
+  final score of 13-12 (a margin of +1; Wilson's results table likewise lists
+  the 5x5 game value as +1). Fraser proved the win using an enormous endgame
+  database of roughly 30 trillion (~3x10^13) positions built up over years,
+  combined with a small opening book (fewer than ~400,000 positions) feeding a
+  forward proof search; this is the alpha-beta + endgame-database family rather
+  than a pure full-board retrograde sweep. The Shark proved eight symmetric
+  copies of a single winning opening move; Fraser suspected many more (possibly
+  all 60) opening moves also win, but only that one was fully proven.
+
+  This is a WEAK solution: a winner and a concrete winning strategy from the
+  standard start (plus a deep endgame tablebase), but NOT a complete strongly-
+  solved value-for-every-reachable-position table of the full 5x5 game.
+
+  Other solved instances (margins from David Wilson's results page; positive =
+  first player A wins, negative = second player B wins, 0 = tie):
+  - 3x3 (9 boxes): SECOND-player win by 3 (margin -3). Wilson, retrograde
+    analysis. (Berlekamp's book shows B can force a win by 1; with best play B
+    actually wins by 3.)
+  - 3x5 "American" (15 boxes): second-player win by 1 (margin -1). Wilson.
+  - 4x4 (16 boxes): TIE (margin 0), with loony-move analysis showing player B
+    can be forced to make the first loony move and that symmetric play loses for
+    B. Solved by David Wilson (~2010) using retrograde analysis; this was the
+    largest game solved before Barker & Korf. (Cited as "Wilson 2010" by Barker
+    & Korf.)
+  - 4x5 (20 boxes): TIE under optimal play. Solved by Joseph K. Barker &
+    Richard E. Korf (AAAI 2011 short paper; AAAI 2012 full paper) with an
+    alpha-beta solver using chain analysis, transposition tables, and symmetry
+    reductions (4x5 has 49 edges, ~5.6x10^14 unscored states). Their solver ran
+    ~9-10 days; they estimated Wilson's retrograde solver would have needed
+    ~130 days and 8 TB. This was the largest game solved by exhaustive search
+    until Fraser's 5x5.
+
+  Independent primary confirmations of the headline 5x5 result are limited:
+  Fraser's announcement is the originating source, and Wilson's analysis-results
+  page (which hosts/reports Fraser's 5x5 value of +1) corroborates it. The 4x4
+  (Wilson) and 4x5 (Barker & Korf) results are separately and independently
+  established primary results for their respective boards.
+
+  state_space stores Fraser's stated ~3x10^13 endgame-database position count
+  for 5x5 (approximate, his figure, not an exact total/reachable enumeration).
+  game_tree is left null (no single citable figure). distance_to_result is
+  bounded by the 60 boxes / 60 edges of the 5x5 board.

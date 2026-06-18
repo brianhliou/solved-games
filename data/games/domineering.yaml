@@ -1,0 +1,75 @@
+id: domineering
+name: Domineering
+also_known_as:
+  - "Crosscram"
+  - "Stop-Gate"
+  - "Dominoes (Berlekamp-Conway-Guy)"
+family: combinatorial
+board: "Square and rectangular grids; headline result is 11x11. Solved instances range from 1x1 up to 11x11 squares plus many m x n rectangles."
+result: first-player-win
+result_detail: "First player (the player to move) wins on 11x11 (and on 2x2, 3x3, 4x4, 6x6, 7x7, 8x8, 9x9, 10x10); 1x1 and 5x5 are second-player wins."
+strength: weak
+method:
+  - alpha-beta+db
+  - mathematical-proof
+distance_to_result: "Up to 60 plies on 11x11 (a full 11x11 board holds at most 60 dominoes); exact principal-variation length not published as a single figure."
+complexity:
+  state_space: null
+  game_tree: 259689994008
+year: 2016
+solved_by: "Jos W. H. M. Uiterwijk (11x11, program MUDoS); earlier instances by Breuker, Uiterwijk & van den Herik (8x8, 2000), Nathan Bullock (10x10, 2002); rectangular families by Lachmann, Moore & Rapaport"
+verified: true
+sources:
+  - title: "11 x 11 Domineering Is Solved: The First Player Wins (J. W. H. M. Uiterwijk, Computers and Games 2016 / arXiv:1602.05404)"
+    url: "https://arxiv.org/abs/1602.05404"
+  - title: "Solving 8x8 Domineering (D. M. Breuker, J. W. H. M. Uiterwijk, H. J. van den Herik, Theoretical Computer Science 230 (2000) 195-206)"
+    url: "https://research.tilburguniversity.edu/en/publications/solving-8x8-domineering-the-first-computer-olympiad"
+  - title: "Domineering: Solving Large Combinatorial Search Spaces (N. Bullock, MSc thesis, University of Alberta, 2002 — 10x10 solved)"
+    url: "https://webdocs.cs.ualberta.ca/~games/domineering/"
+  - title: "Who Wins Domineering on Rectangular Boards? (M. Lachmann, C. Moore, I. Rapaport, MSRI / More Games of No Chance, 2002)"
+    url: "https://www.researchgate.net/publication/2358389_Who_Wins_Domineering_on_Rectangular_Boards"
+  - title: "Domineering — Wikipedia (secondary; consolidated table of solved sizes)"
+    url: "https://en.wikipedia.org/wiki/Domineering"
+resources:
+  writeup: "https://en.wikipedia.org/wiki/Domineering"
+  code: "https://webdocs.cs.ualberta.ca/~games/domineering/"
+notes: >
+  Domineering (invented by Goran Andersson, popularized via Martin Gardner 1974 and
+  Berlekamp-Conway-Guy's "Winning Ways") is a partizan combinatorial game: Vertical
+  (Left) places 2x1 vertical dominoes, Horizontal (Right) places 1x2 horizontal
+  dominoes on a grid; the player unable to move loses. It is a normal-play game, so
+  "result" here means the outcome under optimal play with a designated first player.
+
+  Headline instance is 11x11, solved by Jos Uiterwijk in 2016 with his program MUDoS:
+  the FIRST player to move wins, and this holds irrespective of whether Vertical or
+  Horizontal moves first. The proof investigated 259,689,994,008 nodes over roughly
+  half a year on a single desktop. MUDoS combines alpha-beta search with large
+  transposition tables, endgame databases, and knowledge-based / combinatorial-game-
+  theory move ordering and bounds; it also (re)solved boards up to 10x10 far faster
+  and settled several previously open rectangular boards.
+
+  This is a WEAK solution (a winner and concrete winning strategy from the standard
+  empty start), not a strong solution: there is no complete tablebase assigning a
+  CGT value to every reachable position of 11x11. (Small boards and many m x n cases
+  do have full CGT-value analyses, but the large square solutions are search proofs.)
+
+  Other solved square boards (outcome = win for player to move unless noted):
+  1x1 second-player win; 2x2, 3x3, 4x4 first-player win; 5x5 SECOND-player win;
+  6x6, 7x7 first-player win; 8x8 first-player win (Breuker, Uiterwijk & van den Herik,
+  2000, alpha-beta + transposition tables, Theoretical Computer Science 230:195-206);
+  9x9 first-player win (same group, shortly after with program improvements);
+  10x10 first-player win (Nathan Bullock, 2002 MSc thesis, Univ. of Alberta).
+
+  Rectangular m x n boards: Lachmann, Moore & Rapaport ("Who Wins Domineering on
+  Rectangular Boards?", More Games of No Chance, 2002) gave a MATHEMATICAL-PROOF
+  (polynomial-time) determination of the winner and a winning strategy for all n when
+  m in {1,2,3,4,5,7,9,11}. E.g. all 2k x n boards for n = 3,5,7,9,11 are wins for
+  Vertical; various m x 2k boards are wins for Horizontal. These rectangular results
+  are independent confirmations using a different (constructive proof) method rather
+  than search.
+
+  game_tree field stores the 11x11 node count (259,689,994,008 nodes investigated),
+  which is a search-tree figure, not a true game-tree-complexity estimate. state_space
+  for 11x11 is omitted (no single citable reachable/total count). distance_to_result
+  is bounded by the max 60 dominoes that fit on 11x11; the exact optimal-line length
+  is not published as one number.

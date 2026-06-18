@@ -1,0 +1,70 @@
+id: connect-four
+name: Connect Four
+also_known_as:
+  - "Four in a Row"
+  - "Four-in-a-Line"
+  - "Plot Four"
+  - "Find Four"
+  - "Captain's Mistress"
+  - "Gravitrips"
+family: abstract
+board: 7x6 (7 columns wide, 6 rows high), gravity drop
+result: first-player-win
+result_detail: "First player (White / X) wins with perfect play, but only by opening in the center column; opening adjacent to center draws, and opening in an outer column loses."
+strength: strong
+method:
+  - brute-force-enumeration
+  - retrograde-analysis
+  - knowledge-based
+  - conspiracy-number-search
+distance_to_result: "First player can force the win on or before the 41st move (out of 42) when opening in the center column."
+complexity:
+  state_space: 4531985219092
+  game_tree: null
+year: 1995
+solved_by: "John Tromp (strong solution, 8-ply WDL database, 1995); independently weakly solved earlier by James D. Allen (Oct 1, 1988) and Victor Allis (Oct 16, 1988)"
+verified: true
+sources:
+  - title: "Victor Allis, A Knowledge-based Approach of Connect-Four — The Game is Solved: White Wins (M.Sc. thesis, Vrije Universiteit Amsterdam, Report IR-163, Oct 1988)"
+    url: "https://tromp.github.io/c4/connect4_thesis.pdf"
+  - title: "James D. Allen, Expert Play in Connect-Four (1990; original solution announced rec.games.programmer, Oct 1, 1988)"
+    url: "https://tromp.github.io/c4.html"
+  - title: "John Tromp, John's Connect Four Playground (brute-force solution + 8-ply database, 1995; full solver)"
+    url: "https://tromp.github.io/c4/c4.html"
+  - title: "Connect Four — Wikipedia"
+    url: "https://en.wikipedia.org/wiki/Connect_Four"
+  - title: "Connect Four — Chessprogramming wiki"
+    url: "https://www.chessprogramming.org/Connect_Four"
+resources:
+  writeup: "https://tromp.github.io/c4/connect4_thesis.pdf"
+  explorer: "https://connect4.gamesolver.org/"
+  code: "https://github.com/PascalPons/connect4"
+notes: >
+  Standard ruleset is the 7-column x 6-row board with the gravity-drop mechanic
+  (a man falls to the lowest empty square in the chosen column); first player to
+  connect four of their men horizontally, vertically, or diagonally wins; a full
+  board with no line is a draw. The game was solved twice independently in
+  October 1988: James D. Allen announced his solution on rec.games.programmer on
+  Oct 1, 1988, and Victor Allis completed his M.Sc. thesis solution on Oct 16,
+  1988. Both used knowledge-based / rule-based methods rather than brute force,
+  which was infeasible on 1988 hardware. Allis's program VICTOR is a Shannon
+  C-type strategy engine built on nine provably-correct strategic rules
+  (Claimeven, Baseinverse, Aftereven, Highinverse, etc.) combined with
+  conspiracy-number search, search tables, and depth-first search; this yields a
+  WEAK solution (it proves the value from the standard start and the principal
+  lines, not a value for every reachable position). The game-theoretic value is a
+  first-player win ONLY when White opens in the center (4th) column; opening in
+  the two columns adjacent to center is a draw and opening in either outer column
+  is a second-player win. Allis also proved more general results: Black can at
+  least draw on every 7x(2n) board when White does not start in the middle
+  column, and on any 6x(2n) board. The game was later STRONGLY solved by brute
+  force: John Tromp built an 8-ply win/draw/loss database (Feb 1995, ~40,000
+  CPU-hours at CWI) and a full solver; modern alpha-beta solvers (e.g. Pascal
+  Pons) and the complete enumeration by Edelkamp & Kissmann (2008) confirm the
+  same result. The headline state-space figure 4,531,985,219,092 is the count of
+  legal reachable positions for 0-42 pieces on the 7x6 board (Tromp / Edelkamp &
+  Kissmann); Allis's thesis gives only a crude upper bound (3^42) and notes that
+  building the database would require storing on the order of 1.6e13 positions at
+  the peak (36-37 men), which is why brute force was deferred. game_tree
+  complexity is commonly cited around 10^21 but no single authoritative exact
+  figure is established, so it is left null.

@@ -1,0 +1,61 @@
+id: othello
+name: Othello
+also_known_as:
+  - "Reversi"
+family: abstract
+board: 8x8 (64 squares; standard cross start with 4 discs placed)
+result: draw
+result_detail: "Perfect play by both players leads to a draw (32-32)."
+strength: weak
+method:
+  - alpha-beta+db
+  - brute-force-enumeration
+distance_to_result: "Game runs up to 60 plies (4 discs at start, 60 empty squares to fill). The weak-solution proof exhaustively resolved the ~1.5 billion positions with 36 empty squares and connected them back to the initial position via 2,587 critical proof positions with 50 empty squares."
+complexity:
+  state_space: 10000000000000000000000000000
+  game_tree: 10000000000000000000000000000000000000000000000000000000000
+year: 2023
+solved_by: "Hiroki Takizawa (Preferred Networks, Inc.)"
+verified: true
+sources:
+  - title: "Hiroki Takizawa, \"Othello is Solved\" (arXiv:2310.19387)"
+    url: "https://arxiv.org/abs/2310.19387"
+  - title: "Reproduction code and data (modified Edax, analysis scripts): eukaryo/reversi-scripts + Zenodo 10.5281/zenodo.10030906 + figshare 10.6084/m9.figshare.24420619"
+    url: "https://github.com/eukaryo/reversi-scripts"
+  - title: "Wikipedia: Computer Othello (Othello 8x8 section, notes the October 2023 preprint solving the game with a draw result)"
+    url: "https://en.wikipedia.org/wiki/Computer_Othello"
+resources:
+  code: https://github.com/eukaryo/reversi-scripts
+  tablebase: https://doi.org/10.6084/m9.figshare.24420619
+  writeup: https://arxiv.org/abs/2310.19387
+notes: >
+  Standard 8x8 Othello (Reversi) under tournament rules, starting from the
+  conventional diagonal four-disc setup. Takizawa announced a WEAK solution
+  in October 2023 (arXiv:2310.19387; v3 dated January 2024): the
+  game-theoretic value of the initial position is a draw, confirming the
+  long-standing expert prediction. This is explicitly a weak solution, not a
+  strong one. The author writes that the result is "just above the criteria
+  for weakly solving" and that "strongly solving Othello is intractable," so
+  there is no full tablebase covering every reachable position.
+
+  Method: a modified version of the open-source Edax engine (alpha-beta search
+  with transposition tables and aspiration windows), driven by a backward
+  proof structure. The proof first exhaustively evaluated the 1,505,367,525
+  positions with 36 empty squares, then propagated values upward through 2,587
+  critical proof positions with 50 empty squares to establish the value of the
+  start. Reported cumulative Edax node count was ~1.526 x 10^18. Computation
+  ran on Preferred Networks' MN-J supercomputer cluster (Intel Xeon and AMD
+  EPYC nodes). Raw data and programs were released on GitHub, Zenodo, and
+  figshare for independent verification.
+
+  Complexity figures are the author's order-of-magnitude estimates: roughly
+  10^28 legal positions (state space) and roughly 10^58 possible game records
+  (game tree) -- both "total," not reachable-only counts. These dwarf
+  previously solved grand-challenge games such as checkers.
+
+  Caveat / attribution: as of mid-2026 the work remains an arXiv preprint
+  (not a formally peer-reviewed journal/conference publication that I could
+  confirm). Confidence in the result is nonetheless high because the full
+  reproduction pipeline (modified Edax + scripts + raw outputs) is publicly
+  archived with DOIs; the released artifacts function as a second independent
+  primary source corroborating the paper's claim.

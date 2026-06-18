@@ -12,7 +12,9 @@ One YAML file per solved game, at `games/<id>.yaml`.
 | `result` | yes | `first-player-win` \| `second-player-win` \| `draw` |
 | `result_detail` | no | human-readable, e.g. "Gote (second player) wins" |
 | `strength` | yes | `ultra-weak` \| `weak` \| `strong` |
-| `method` | yes | list: retrograde-analysis, proof-number-search, alpha-beta+db, knowledge-based, … |
+| `approximate` | no | bool; `true` when the solution is approximate rather than exact — e.g. an imperfect-information game solved to within an exploitability bound (an ε-Nash / "essentially weakly solved" result), not a discrete value |
+| `epsilon` | no | the approximation bound when `approximate: true` (e.g. "0.986 mbb/g exploitability") |
+| `method` | yes | list: retrograde-analysis, proof-number-search, alpha-beta+db, knowledge-based, monte-carlo-cfr, … |
 | `distance_to_result` | no | e.g. "78 plies from the start" |
 | `complexity.state_space` | no | integer; say whether reachable or total in `notes` |
 | `complexity.game_tree` | no | integer or null |
@@ -24,3 +26,10 @@ One YAML file per solved game, at `games/<id>.yaml`.
 | `notes` | no | anything that doesn't fit a field |
 
 Keep `verified: false` until a maintainer confirms result + year + citation.
+
+For **imperfect-information** games the ultra-weak / weak / strong ladder does not
+map cleanly — position values beyond the start are not unique and outcomes are
+real-valued (expected payoff) rather than discrete win/loss/draw. Record the
+closest `strength` (usually `weak`), set `approximate: true` with an `epsilon`
+bound, and use `result` to encode the sign of the game value. See
+`heads-up-limit-holdem.yaml` for the worked example.

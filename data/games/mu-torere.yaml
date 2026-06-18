@@ -1,0 +1,87 @@
+id: mu-torere
+name: Mū tōrere
+also_known_as:
+  - "Mu Torere"
+  - "Mu-torere"
+family: other
+board: "Eight-pointed star: 8 outer points (kewai) arranged in a ring, each joined to its two neighbours and to a central point (pūtahi); 9 cells total. Four pieces per player, placed on the eight outer points (the centre starts empty)."
+result: draw
+result_detail: "Draw under optimal play from the standard start (authentic Rulesets D and E); no experienced player should ever lose. The first move belongs to White."
+strength: strong
+method:
+  - brute-force-enumeration
+  - mathematical-proof
+  - retrograde-analysis
+distance_to_result: ""
+complexity:
+  state_space: 46
+  game_tree: null
+year: 1987
+solved_by: "Marcia Ascher (1987) with Philip Straffin's game-tree expansion; position graphs by Philip D. Straffin (1995, corrected 1996); full game-graph solve of all rulesets by Cameron Browne (2022); independent computational strong solve by GamesCrafters (UC Berkeley)"
+verified: true
+sources:
+  - title: "Marcia Ascher — Mu Torere: An Analysis of a Maori Game (Mathematics Magazine 60(2), 90-100, 1987) [foundational analysis; Straffin's full game-tree expansion shows the correct starting rule is what prevents a forced first-move win]"
+    url: "https://www.tandfonline.com/doi/abs/10.1080/0025570X.1987.11977283"
+  - title: "Philip D. Straffin — Position Graphs for Pong Hau K'i and Mu Torere (Mathematics Magazine 68(5), 382-386, 1995; corrected figure 69(1), 65, 1996) [position-graph solution]"
+    url: "https://www.tandfonline.com/doi/abs/10.1080/0025570X.1995.11996361"
+  - title: "Cameron Browne — Which Rules for Mu Torere? (Computers and Games, CG 2022, Springer LNCS 13865, 2022) [full game-graph expansion of all five rulesets; 46 distinct positions with W/L/D value per node]"
+    url: "https://link.springer.com/chapter/10.1007/978-3-031-34017-8_10"
+  - title: "GamesCrafters (UC Berkeley) — Mu Torere solver (full tablebase: value + remoteness for every position)"
+    url: "https://gamescrafters.berkeley.edu/games.php?game=mutorere"
+  - title: "Mū tōrere — Wikipedia"
+    url: "https://en.wikipedia.org/wiki/M%C5%AB_t%C5%8Drere"
+resources:
+  writeup: "http://ludeme.eu/outputs/mu-torere-2.pdf"
+  explorer: "https://gamescrafters.berkeley.edu/games.php?game=mutorere"
+notes: >
+  Mū tōrere is a traditional Māori game from New Zealand, predating European
+  contact (developed, by most accounts, in response to draughts/checkers). It is
+  a tiny, fully-solved game: collapsing rotations and reflections, the entire
+  game graph contains only 46 distinct positions (each occurring in Black-to-move
+  and White-to-move forms), with six terminal positions. Each position has a
+  proven game-theoretic value (Win / Loss / Draw), so the solve is STRONG (a
+  value for every reachable position), not merely weak. GamesCrafters
+  additionally provides a full tablebase with remoteness for every position.
+  Methods are best described as brute-force enumeration of the small state space
+  plus mathematical/graph-theoretic proof (and, for the GamesCrafters version,
+  retrograde-style backward induction over the graph) rather than any
+  search-heavy technique.
+
+  RULESET CAVEAT (load-bearing). The naive rules let the first player win
+  immediately, so the game is played with a restriction; the literature records
+  five variants (Browne 2022). Headline RESULT = DRAW applies to the two
+  authentic, playable rulesets:
+    - Ruleset D (the most prevalent in the historical literature: the mover
+      cannot win during the first two rounds) — DRAW under optimal play.
+      Distribution over the 46 positions: 6 Win / 25 Draw / 15 Loss
+      (24/74/32 over transitions). Shows a strong first-move advantage in greedy
+      random playouts (White 54.4% vs Black 37.9%, draws 7.7%).
+    - Ruleset E (a piece moved to the centre must be adjacent to an enemy piece;
+      used by Bell and Jelliss) — DRAW under optimal play.
+      Distribution: 5 Win / 31 Draw / 10 Loss (14/94/16 over transitions).
+  The other three rulesets are degenerate and were discarded by Browne:
+    - Ruleset A (no restriction) — FIRST-PLAYER (White) WIN in 1 move.
+    - Ruleset B (White may not win on the first move) — SECOND-PLAYER (Black)
+      WIN, forced in 4 moves.
+    - Ruleset C (a moved piece must be adjacent to an enemy piece) — always a
+      DRAW: the restriction makes every game an infinite perpetual cycle, so no
+      result is possible at all.
+
+  COMPLEXITY: state_space = 46 is the count of distinct positions after symmetry
+  reduction (rotations + reflections), per Browne and Straffin. Jelliss's more
+  compact encoding yields 26 labelled positions (each with a colour-inversion
+  flag); some secondary sources count differently (e.g. ~86 board-states without
+  full symmetry reduction, or Wikipedia's GamesCrafters-derived 1,180 reachable
+  states without symmetry collapse). Game-tree complexity is not meaningfully
+  finite for the playable rulesets because optimal lines can cycle forever
+  (the game ends only by a player being unable to move, or by mutual-consent
+  draw), so it is left null.
+
+  ATTRIBUTION: independent primary confirmations of the draw — Marcia Ascher
+  (1987, with Philip Straffin's game-tree expansion), Straffin's standalone
+  position-graph papers (1995/1996), Cameron Browne's full game-graph solve of
+  all rulesets (2022), and GamesCrafters' independent computational solve. Browne
+  reproduces and extends Ascher/Straffin, but the GamesCrafters solve and
+  Browne's enumeration are separate computational lines, so the result is
+  multiply and independently confirmed. The headline year (1987) is Ascher's
+  foundational analysis; the complete modern enumeration is Browne (2022).

@@ -1,0 +1,52 @@
+id: renju
+name: Renju (連珠)
+also_known_as:
+  - "Connected Pearls"
+  - "Professional Gomoku"
+family: abstract
+board: 15x15 grid (stones on intersections); Black plays first and must open on the center point h8
+result: first-player-win
+result_detail: "Black (the first player) wins with perfect play, despite the forbidden-move restrictions imposed on Black"
+strength: weak
+method:
+  - threat-space-search
+  - alpha-beta+db
+  - knowledge-based
+distance_to_result: "47-ply winning line published (1. h8 ... 47. l10); iterative-deepening threat-sequence search reaching up to 17 plies of forced threats"
+complexity:
+  state_space: 105   # 10^105 — see notes; this is the exponent, the figure cited is ~10^105
+  game_tree: 70      # 10^70 — see notes; exponent of the cited ~10^70 figure
+year: 2001
+solved_by: "János Wágner & István Virág"
+verified: true
+sources:
+  - title: "J. Wágner, I. Virág, \"Solving Renju\", ICGA Journal 24(1), 2001, pp. 30-35 (DOI 10.3233/ICG-2001-24104)"
+    url: "https://journals.sagepub.com/doi/abs/10.3233/ICG-2001-24104"
+  - title: "H.J. van den Herik, J.W.H.M. Uiterwijk, J. van Rijswijck, \"Games solved: Now and in the future\", Artificial Intelligence 134 (2002) 277-311 (Renju discussed in 3.1.3, full winning line in Fig. 8)"
+    url: "https://web.mit.edu/6.034/wwwbob/GamesSolved.pdf"
+  - title: "Renju — Wikipedia"
+    url: "https://en.wikipedia.org/wiki/Renju"
+resources:
+  writeup: "https://icga.org/icga/games/go-moku/"
+notes: >
+  Renju is the professional, asymmetric variant of Go-Moku: the goal is the same
+  (an exact five-in-a-row, horizontal/vertical/diagonal on a 15x15 board) but Black,
+  the first player, is forbidden from making a double-three, double-four, or an
+  overline (six-plus in a row); White faces no such restriction. Despite handicapping
+  Black, the game is a first-player win. Wágner & Virág weakly solved it in 2000
+  (published in the ICGA Journal in 2001), verifying the long-standing conjecture that
+  Renju, like Go-Moku (solved by Allis, 1992/1995), favors the first player. Their
+  proof used transposition tables, threat-sequence (threat-space) search in the
+  tradition of Allis's Go-Moku proof, and expert/knowledge-based rules for no-threat
+  moves, driven by an iterative-deepening search over threat sequences up to 17 plies.
+  Strength is WEAK, not strong: only a winning strategy from the standard opening was
+  established, not a value for every reachable position (no full tablebase). The
+  published winning line is 47 plies long and is described as a (not necessarily the
+  shortest) win. Variant caveat: this result applies to the rule set with the standard
+  fixed center opening; modern tournament opening protocols (RIF/Yamaguchi/Soosõrv-N/
+  Taraguchi swap rules) are NOT covered and remain unsolved. Complexity figures from
+  the van den Herik et al. survey (citing Allis): state-space complexity ~10^105 and
+  game-tree complexity ~10^70 for the 15x15 board (these are the order-of-magnitude
+  exponents; the state_space and game_tree fields above store the exponents 105 and 70,
+  not the literal counts). Year: the paper appeared in 2001; the survey dates the actual
+  solving to 2000.

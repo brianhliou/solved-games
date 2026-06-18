@@ -1,0 +1,67 @@
+id: nine-mens-morris
+name: Nine Men's Morris
+also_known_as:
+  - "Mill"
+  - "Mills"
+  - "Merels"
+  - "Merrills"
+  - "Mühle"
+  - "Mühlespiel"
+family: abstract
+board: 24-point morris board (three concentric squares joined by midpoint connectors), 9 stones per player
+result: draw
+result_detail: "The initial (empty-board) position is a draw with perfect play; White (first player) cannot force a win."
+strength: strong
+method:
+  - retrograde-analysis
+  - alpha-beta+db
+distance_to_result: "Opening is exactly 18 plies deep; an 18-ply alpha-beta search over the opening on top of full mid-/endgame retrograde databases proves the draw."
+complexity:
+  state_space: 7673759269
+  game_tree: null
+year: 1993
+solved_by: "Ralph Gasser (ETH Zurich)"
+verified: true
+sources:
+  - title: "Ralph Gasser, \"Solving Nine Men's Morris\", Games of No Chance, MSRI Publications Vol. 29, 1996 (also Computational Intelligence 12(1):24-41)"
+    url: "https://library.slmath.org/books/Book29/files/gasser.pdf"
+  - title: "Ralph Gasser, \"Harnessing Computational Resources for Efficient Exhaustive Search\" (PhD thesis, ETH Zurich, 1995) / \"Nine Men's Morris is a Draw\" (ETH technical report, 1993)"
+    url: "https://www.research-collection.ethz.ch/handle/20.500.11850/142254"
+  - title: "Gévay & Danner, \"Calculating Ultra-Strong and Extended Solutions for Nine Men's Morris, Morabaraba, and Lasker Morris\", IEEE TCIAIG, 2016 (arXiv:1408.0032) — independent reconfirmation of the draw"
+    url: "https://arxiv.org/abs/1408.0032"
+  - title: "Nine Men's Morris — Chessprogramming Wiki (secondary)"
+    url: "https://www.chessprogramming.org/Nine_Men%E2%80%99s_Morris"
+notes: >
+  Strong solution: Gasser computed full retrograde-analysis tablebases for every
+  reachable mid- and endgame position, then ran an 18-ply alpha-beta search over
+  the opening phase (which is exactly 18 plies, one for each of the 18 stones
+  placed) using those databases to prove the empty board is a draw. This is a
+  full value-for-every-reachable-position solution, not merely an ultra-weak/weak
+  draw proof.
+
+  State-space figures (from the primary paper): a loose upper bound of 3^24 ≈
+  2.8 × 10^11 total positions; after removing illegal/unreachable states and
+  collapsing the ~16-fold board symmetry, the mid- and endgame phase contains
+  exactly 7,673,759,269 states (the value recorded above). The databases stored
+  by retrograde analysis comprise "about 10^10 states." game_tree complexity is
+  not given a citable single figure in the source, hence null.
+
+  Ruleset/variant notes: Gasser's implementation resolves two debated edge cases
+  — when a move closes two mills simultaneously only one opponent stone may be
+  removed, and a stone in a mill may still be removed if all the opponent's
+  stones are in mills. The paper states it is "unlikely that either of these rule
+  variations affect the value of the game." Repetition of a midgame/endgame
+  position is a draw; a player reduced below three stones, or with no legal move,
+  loses. White moves first.
+
+  Attribution/dating: the solution was first announced in Gasser's 1993 ETH
+  Zurich work ("Das Mühlespiel ist unentschieden" / "Nine Men's Morris is a
+  Draw"), developed in the group of Jürg Nievergelt at ETH (Thomas Lincke's 1994
+  diploma thesis also worked on perfect Nine Men's Morris play). The canonical,
+  widely-cited write-up is Gasser's 1996 "Solving Nine Men's Morris." year=1993
+  reflects the original solution; 1996 is the journal/book publication.
+
+  Reconfirmation: Gévay & Danner (2014 arXiv, IEEE TCIAIG 2016) independently
+  recomputed the solution, calling the draw "well-known," and extended it to
+  ultra-strong and extended solutions for Nine Men's Morris, Lasker Morris, and
+  Morabaraba.

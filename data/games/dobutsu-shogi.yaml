@@ -2,23 +2,31 @@ id: dobutsu-shogi
 name: Dōbutsu shōgi
 also_known_as:
   - "Let's Catch the Lion!"
+  - "Doubutsu Shogi"
+  - "どうぶつしょうぎ"
 family: shogi-variant
-board: 3×4
+board: 3×4 (3 files × 4 ranks)
 result: second-player-win
-result_detail: "Gote (second player) wins"
+result_detail: "Gote (the second player, 'white') wins"
 strength: strong
 method:
   - retrograde-analysis
-distance_to_result: "78 plies from the start"
+distance_to_result: "78 plies from the start (the theoretical win takes 78 moves)"
 complexity:
-  state_space: 246803167   # reachable positions (Liou)
+  state_space: 246803167   # reachable positions (Tanaka 2009; independently recomputed by Liou)
   game_tree: null
-year: 2009                 # original solution — VERIFY attribution/year
-solved_by: "Tetsurō Tanaka"  # VERIFY against primary source
-verified: false
+year: 2009
+solved_by: "Tetsurō Tanaka (田中 哲朗), University of Tokyo"
+verified: true
 sources:
+  - title: "Tetsuro Tanaka, 「どうぶつしょうぎ」の完全解析 (An Analysis of a Board Game \"Doubutsu Shogi\"), IPSJ SIG Technical Reports 2009-GI-22(3), pp. 1–8, 2009"
+    url: "https://ipsj.ixsq.nii.ac.jp/records/62415"
+  - title: "Tanaka original paper PDF (author's University of Tokyo page)"
+    url: "https://www.tanaka.ecc.u-tokyo.ac.jp/ktanaka/dobutsushogi/animal-private.pdf"
   - title: "Dōbutsu shōgi (Wikipedia)"
     url: "https://en.wikipedia.org/wiki/D%C5%8Dbutsu_sh%C5%8Dgi"
+  - title: "clausecker/dobutsu — independent C tablebase and engine (perfect play from any position)"
+    url: "https://github.com/clausecker/dobutsu"
 resources:
   tablebase:
     - title: "brianhliou/dobutsu-shogi — from-scratch Rust tablebase (333 MB .ctb via MPH)"
@@ -32,8 +40,24 @@ resources:
     - title: "From-scratch solution writeup"
       url: "https://brianhliou.com/posts/dobutsu-shogi/"
 notes: >
-  The repo's flagship worked example: full retrograde → tablebase → probe →
-  explorer pipeline, independently rebuilt and verified against the clausecker
-  reference (50,000 positions, zero mismatches). state_space is reachable
-  positions as computed by Liou; the original solution attribution (solved_by,
-  year) is unverified and is one of the items the research run resolves.
+  Dōbutsu shōgi (3×4 board, "Let's Catch the Lion!") was invented in 2008 by
+  professional shogi player Madoka Kitao. It was STRONGLY solved by Tetsurō
+  Tanaka and published June 2009 as a non-refereed IPSJ SIG Game Informatics
+  technical report (2009-GI-22, No. 3). Using retrograde analysis, Tanaka
+  computed the theoretical value (win/loss/draw) of every position reachable
+  from the start. The initial position is a second-player win (後手必勝, gote /
+  "white" wins) and the win requires 78 plies. The computation ran on a
+  2.6 GHz Opteron with 16 GB RAM; enumerating reachable positions took ~19 min.
+  state_space = 246,803,167 is the count of REACHABLE positions and is the
+  exact figure reported in Tanaka's paper ("局面数が 246,803,167 と求まった"); it
+  was independently recomputed from scratch by Liou. The often-cited
+  1,567,925,964 is the upper bound on TOTAL piece configurations ignoring
+  reachability (after folding left-right symmetry). Note: capturing the
+  opponent's chick on move 1 hastens the first player's loss to 76 plies; every
+  other first move delays the loss to the full 78. The clausecker/dobutsu repo
+  is an independent C tablebase reproducing perfect play and corroborates the
+  result, but its README does not itself state the game-theoretic value, so it
+  counts as secondary corroboration. The repo's flagship worked example
+  independently rebuilt the full retrograde → tablebase → probe → explorer
+  pipeline and verified it against the clausecker reference (50,000 positions,
+  zero mismatches).

@@ -1,0 +1,94 @@
+id: qubic
+name: Qubic
+also_known_as:
+  - "4×4×4 Tic-Tac-Toe"
+  - "3-D Tic-Tac-Toe"
+  - "Three-dimensional Tic-Tac-Toe"
+  - "Parker Brothers Qubic"
+family: abstract
+board: 4×4×4 cube (64 cells, 76 winning lines)
+result: first-player-win
+result_detail: "First player wins"
+strength: weak
+method:
+  - knowledge-based
+  - brute-force-enumeration
+  - threat-space-search
+  - proof-number-search
+distance_to_result: "first player can force a win well before the board fills; Patashnik's strategy needed move choices for 2929 'strategic' positions, the rest finished by forcing-move sequences"
+complexity:
+  state_space: 1000000000000000000000000000000   # 10^30 (Allis 1994, via van den Herik et al. 2002)
+  game_tree: 10000000000000000000000000000000000   # 10^34
+year: 1980
+solved_by: "Oren Patashnik"
+verified: true
+sources:
+  - title: "Patashnik — \"Qubic: 4×4×4 Tic-Tac-Toe\", Mathematics Magazine 53(4), pp. 202–216 (Sep. 1980)"
+    url: "https://www.jstor.org/stable/2689613"
+  - title: "Patashnik — \"Qubic: 4×4×4 Tic-Tac-Toe\" (full PDF copy, Mathematics Magazine 1980)"
+    url: "https://ranger.uta.edu/~weems/NOTES6319/PAPERSONE/patashnik.pdf"
+  - title: "Allis & Schoo — \"Qubic solved again\", in Heuristic Programming in AI 3: The Third Computer Olympiad, Ellis Horwood, pp. 192–204 (1992)"
+    url: "https://research.tilburguniversity.edu/en/publications/qubic-solved-again"
+  - title: "Allis — \"Searching for Solutions in Games and Artificial Intelligence\", PhD thesis, Univ. of Limburg (1994)"
+    url: "https://cris.maastrichtuniversity.nl/en/publications/searching-for-solutions-in-games-and-artificial-intelligence/"
+  - title: "van den Herik, Uiterwijk & van Rijswijck — \"Games solved: Now and in the future\", Artificial Intelligence 134, pp. 277–311 (2002) (secondary; complexity table + strength classification)"
+    url: "https://web.mit.edu/6.034/wwwbob/GamesSolved.pdf"
+  - title: "3D tic-tac-toe (Wikipedia) (secondary)"
+    url: "https://en.wikipedia.org/wiki/3D_tic-tac-toe"
+resources:
+  writeup:
+    - title: "Patashnik 1980 paper (PDF)"
+      url: "https://ranger.uta.edu/~weems/NOTES6319/PAPERSONE/patashnik.pdf"
+notes: >
+  Qubic is 3-D tic-tac-toe on a 4×4×4 cube (marketed by Parker Brothers as
+  Qubic). A player wins by completing any straight line of four of their own
+  marks; there are 76 winning lines (48 parallel to a cube edge, 24 face
+  diagonals, 4 body diagonals). The first player has a forced win.
+
+  PRIMARY SOURCE: Oren Patashnik (Bell Laboratories), "Qubic: 4×4×4
+  Tic-Tac-Toe", Mathematics Magazine 53(4), Sep. 1980, pp. 202–216 (JSTOR
+  stable URL 2689613). This is the original published proof that the first
+  player can always win. It was one of the earliest computer-assisted proofs:
+  Patashnik combined depth-first game-tree search with his own human expert
+  knowledge for move ordering and forcing-sequence ("forced win") detection,
+  consuming about 1500 hours of computer time. The solution is encoded as move
+  choices for 2929 difficult "strategic" positions; every other reachable
+  position is shown to be winnable by a sequence made entirely of forcing
+  moves. (An earlier 1976 unpublished claim by Eugene Mahalko that the game is
+  a first-player win predates Patashnik but did not provide a verifiable
+  published strategy, so Patashnik 1980 stands as the primary solving source.)
+
+  INDEPENDENT CONFIRMATION: In the early 1990s L. V. Allis and P. N. A. Schoo
+  wrote the program QBIG and re-solved Qubic ("Qubic solved again", 1992;
+  written up most fully in Allis's 1994 PhD thesis). They were initially
+  unaware of Patashnik's result and continued in order to test two new methods,
+  threat-space search and proof-number search, confirming the first-player win
+  by a completely different route. This is a genuine second independent primary
+  confirmation of the result.
+
+  STRENGTH = WEAK, not strong. Both Patashnik and Allis/Schoo produced a
+  winning strategy from the standard (empty-board) start — they did not compute
+  a game-theoretic value for every reachable position (no full tablebase). The
+  authoritative survey (van den Herik, Uiterwijk & van Rijswijck 2002)
+  explicitly states Patashnik "weakly solved the game" and that Allis & Schoo
+  "weakly solved Qubic again." Some secondary sources loosely describe Allis's
+  proof-number-search re-solution as a "strong" solve; that is imprecise by the
+  strict definition and should NOT be upgraded to strong here.
+
+  COMPLEXITY (van den Herik et al. 2002, Table; figures attributed to Allis
+  1994): state-space complexity ~10^30, game-tree complexity ~10^34. These are
+  order-of-magnitude estimates, not exact reachable-vs-total counts; the
+  state_space value above is 10^30 and game_tree is 10^34 written out as
+  integers. The same survey places Qubic in solution category 1 (first-player
+  win) and notes it was solvable by both brute-force and knowledge-based
+  methods because both its state-space and game-tree complexities are
+  relatively low.
+
+  METHOD: Patashnik = depth-first search + expert move-ordering knowledge +
+  forcing-sequence detection (knowledge-based / brute-force hybrid).
+  Allis & Schoo = threat-space search backed by proof-number search.
+
+  ATTRIBUTION/YEAR: headline year 1980 and solver Oren Patashnik (the original
+  primary source) — consistent with the research anchor. The Allis/Schoo
+  re-solution is dated 1992 (conference) / 1994 (thesis); some references cite
+  "1994" for Qubic, but that is the confirmation, not the original solution.

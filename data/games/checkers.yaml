@@ -1,0 +1,59 @@
+id: checkers
+name: Checkers (English draughts)
+also_known_as:
+  - "English draughts"
+  - "American checkers"
+  - "Straight checkers"
+family: abstract
+board: 8x8 board, pieces on dark squares only (32 playable squares)
+result: draw
+result_detail: "Draw with perfect play by both sides (Black to play and draw from the standard opening)"
+strength: weak
+method:
+  - retrograde-analysis
+  - proof-number-search
+  - alpha-beta+db
+distance_to_result: "Longest line analyzed in the proof was 154 ply; a typical game lasts roughly 70 ply"
+complexity:
+  state_space: 500995484682338672639
+  game_tree: null
+year: 2007
+solved_by: "Jonathan Schaeffer, Neil Burch, Yngvi Björnsson, Akihiro Kishimoto, Martin Müller, Robert Lake, Paul Lu, Steve Sutphen (University of Alberta; Chinook project)"
+verified: true
+sources:
+  - title: "Checkers Is Solved — J. Schaeffer et al., Science 317, 1518–1522 (2007)"
+    url: "https://www.science.org/doi/10.1126/science.1144079"
+  - title: "Checkers Is Solved (full text PDF, Science 2007)"
+    url: "https://webdocs.cs.ualberta.ca/~jonathan/publications/ai_publications/checksolved.pdf"
+  - title: "Solving Checkers — J. Schaeffer et al., IJCAI 2005 (earlier milestone: White Doctor opening proven a draw)"
+    url: "https://webdocs.cs.ualberta.ca/~mmueller/ps/ijcai05checkers.pdf"
+  - title: "Chinook endgame databases (University of Alberta)"
+    url: "http://webdocs.cs.ualberta.ca/~chinook/databases/"
+  - title: "Checkers, Solved! — IEEE Spectrum (secondary, July 2007)"
+    url: "https://spectrum.ieee.org/checkers-solved"
+resources:
+  explorer: "http://webdocs.cs.ualberta.ca/~chinook/databases/"
+  writeup: "https://webdocs.cs.ualberta.ca/~jonathan/publications/ai_publications/checksolved.pdf"
+notes: >
+  English draughts on the standard 8x8 board (32 dark playable squares, 12 pieces
+  per side, forced captures). Weakly solved in 2007 by the Chinook team at the
+  University of Alberta after ~18 years of work (started 1989): perfect play by
+  both sides is a draw. This is a WEAK solution, not strong — a strategy is proven
+  from the standard opening, but a game-theoretic value is NOT stored for every
+  reachable position. The proof combined two pieces: (1) backward retrograde
+  analysis producing endgame databases of 3.9 x 10^13 positions for all positions
+  with <=10 pieces (this subset is strongly solved); and (2) a forward best-first
+  search using Proof Number search at the top, with Chinook's alpha-beta search
+  (nominal depth 17-23 ply) calling into the endgame databases as solvers.
+  The total reachable state space of checkers is about 5 x 10^20 (500,995,484,
+  682,338,672,639) positions; this is the standard "reachable" figure, not the
+  larger count of all board placements. The solvers needed to evaluate only on
+  the order of 10^14 positions to complete the proof — a small fraction of the
+  full space. Nineteen tournament openings were proven (all draws); together with
+  symmetry/transposition reductions this covers the standard start. game_tree
+  complexity left null: the paper gives only an order-of-magnitude alpha-beta
+  estimate (~10^31 from optimistic assumptions), not a citable game-tree-size
+  figure, so it is omitted. Independent verification: the Science paper notes the
+  proof was checked for internal consistency and that an independent 10-piece
+  database position requiring a 279-ply forced win was confirmed; the IJCAI 2005
+  paper is an earlier milestone by the same group (not a fully independent team).

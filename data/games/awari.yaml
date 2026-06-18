@@ -1,0 +1,54 @@
+id: awari
+name: Awari (Oware)
+also_known_as:
+  - "Oware"
+  - "Awale"
+  - "Awele"
+  - "Wari"
+  - "Ouri"
+family: mancala
+board: 2×6 pits, 4 seeds per pit (48 seeds total)
+result: draw
+result_detail: "Either side can force a draw with optimal play (final score 24-24)"
+strength: strong
+method:
+  - retrograde-analysis
+distance_to_result: ""
+complexity:
+  state_space: 889063398406   # reachable positions, exactly enumerated by Romein & Bal
+  game_tree: null             # ~10^32 per Herik et al. 2002 "Games solved" table (estimate, not exact)
+year: 2002
+solved_by: "John W. Romein & Henri E. Bal (Vrije Universiteit Amsterdam)"
+verified: true
+sources:
+  - title: "Romein & Bal, \"Solving the Game of Awari using Parallel Retrograde Analysis,\" IEEE Computer 38(10):26-33, 2003 (DOI 10.1109/MC.2003.1236468)"
+    url: "https://doi.org/10.1109/MC.2003.1236468"
+  - title: "Solving the Game of Awari using Parallel Retrograde Analysis (Vrije Universiteit research portal)"
+    url: "https://research.vu.nl/en/publications/solving-the-game-of-awari-using-parallel-retrograde-analysis"
+  - title: "Awari (Chessprogramming wiki)"
+    url: "https://www.chessprogramming.org/Awari"
+  - title: "Oware (Wikipedia)"
+    url: "https://en.wikipedia.org/wiki/Oware"
+resources:
+  writeup:
+    - title: "Solving Awari using Large-Scale Parallel Retrograde Analysis (Romein & Bal slides)"
+      url: "https://slideplayer.com/slide/4830255/"
+notes: >
+  Strongly solved: Romein & Bal computed the best move and exact eventual
+  outcome for all 889,063,398,406 reachable positions, i.e. a complete
+  tablebase, not just the start-position value. The standard start (two rows
+  of six pits, four seeds each, 48 seeds, capture-on-2-or-3 sowing rules) is a
+  draw — both sides can force the 24-24 split. The computation ran ~51 hours on
+  a 144-processor (72 dual-PIII) cluster with a Myrinet interconnect; the
+  largest endgame database held 204 billion entries (178 GB) and the full
+  on-disk database was ~778 GiB, the largest game database computed at the time.
+  state_space here is the EXACT reachable-position count from the solver
+  (≈8.89×10^11 ≈ 10^12), which is also the canonical state-space figure
+  (log10 ≈ 12) in the Herik/Uiterwijk/Van Rijswijck 2002 "Games solved" table;
+  that same table estimates game-tree complexity at ≈10^32 (log10 32, branching
+  factor ≈3.5, avg game length ≈60 plies) — left null in the structured field
+  because it is an estimate, not an exact count. Foundational retrograde work on
+  Awari was begun by Allis, van der Meulen & van den Herik (1990) and extended
+  by van der Goot (2000) and Lincke (2002); Romein & Bal's 2002 run was the
+  computation that fully solved the game. They also published an "Awari Oracle"
+  Java applet for play against the perfect database.
