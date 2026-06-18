@@ -10,8 +10,12 @@ for the north star and scope.
   retrograde-analysis lineage, probe APIs, and the dōbutsu-shōgi worked example.
 - `VISION.md` — north star, scope, non-goals, staging (v0 → v2).
 - `data/` — the structured records. One YAML file per game in `data/games/`;
-  schema in `data/schema.md`. The README tables and the future site generate
-  from these records, so edit the data, not the rendered tables.
+  schema in `data/schema.md`. The README table and the site generate from these
+  records (`npm run build`), so edit the data, not the rendered tables.
+- `engine/` — a generic retrograde-analysis solver (Rust) that strongly solves
+  games through a `Game` trait. Each game is a plugin; the engine does the solve.
+  Some registry entries (e.g. three men's morris) are solved and verified by it.
+- `docs/` — the generated GitHub Pages site, rendered from `data/games/`.
 - `CONTRIBUTING.md` — what earns an entry and how to add one.
 
 ## Working rules
