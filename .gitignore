@@ -12,3 +12,6 @@ dist/
 # Data build artifacts
 data/.cache/
 *.tmp
+
+# Rust engine build output
+target/
