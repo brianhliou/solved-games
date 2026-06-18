@@ -1,0 +1,16 @@
+{
+  "name": "awesome-game-solving",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The canonical reference for solved games — structured data first; the README tables generate from it.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-readme.ts && node scripts/build-site.ts",
+    "build:readme": "node scripts/build-readme.ts",
+    "build:site": "node scripts/build-site.ts",
+    "check": "node scripts/build-readme.ts --check"
+  },
+  "devDependencies": {
+    "yaml": "^2.6.0"
+  }
+}

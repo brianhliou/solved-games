@@ -23,6 +23,9 @@ them open.
    (see the README).
 4. One game per file. Variants with different results (board sizes, rule sets)
    get their own records.
+5. The README's "Solved games" table is generated from the data — run
+   `npm run build` to regenerate it. Don't hand-edit the table between the
+   `<!-- GENERATED -->` markers; `npm run check` confirms it's in sync.
 
 ## Verification
 

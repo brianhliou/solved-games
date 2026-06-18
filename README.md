@@ -26,20 +26,41 @@ Three strengths, from weakest to strongest ([Wikipedia](https://en.wikipedia.org
 
 ## Solved games
 
+<!-- BEGIN GENERATED:solved-games — source of truth is data/games/*.yaml; regenerate with `npm run build`. Do not hand-edit this table. -->
 | Game | Result under perfect play | Strength | Year | Source |
 |---|---|---|---|---|
-| Tic-tac-toe | Draw | Strong | — | trivial |
-| Connect Four | First player wins | Weak | 1988 | [Allen](https://tromp.github.io/c4/c4.html), Allis |
-| Qubic (4×4×4 tic-tac-toe) | First player wins | Weak | 1980 | Patashnik |
-| Nine Men's Morris | Draw | Strong | 1993 | [Gasser](https://en.wikipedia.org/wiki/Nine_men%27s_morris#Mathematics) |
-| Gomoku (free-style, 15×15) | First player wins | Weak | 1993 | [Allis](https://en.wikipedia.org/wiki/Gomoku#Standard) |
-| Awari / Oware | Draw | Strong | 2002 | [Romein & Bal](https://en.wikipedia.org/wiki/Oware#Solving) |
-| Checkers (English draughts) | Draw | Weak | 2007 | [Schaeffer / Chinook](https://webdocs.cs.ualberta.ca/~chinook/) |
-| Pentago | First player wins | Strong | 2014 | [Irving](https://perfect-pentago.net/) |
-| Antichess / Losing chess | First player wins (1.e3) | Weak | 2016 | [Watkins](https://en.wikipedia.org/wiki/Losing_chess#Computer_analysis) |
-| Othello / Reversi (8×8) | Draw | Weak | 2023 | [Takizawa, arXiv:2310.19387](https://arxiv.org/abs/2310.19387) |
-| Dōbutsu shōgi | Second player (gote) wins | Strong | 2009 | [Tanaka](https://en.wikipedia.org/wiki/D%C5%8Dbutsu_sh%C5%8Dgi) · [worked example below](#worked-example-dōbutsu-shōgi) |
-| Hex (all 9×9 openings) | First player wins | Weak | 2013 | [Pawlewicz & Hayward](https://webdocs.cs.ualberta.ca/~hayward/hex/) |
+| Tic-tac-toe | Draw | Strong | — | [folklore](https://mathworld.wolfram.com/Tic-Tac-Toe.html) |
+| Nim | First player wins | Strong | 1901 | [Bouton 1901](https://www.jstor.org/stable/1967631) |
+| Wythoff's game | First player wins | Strong | 1907 | [Wythoff 1907](https://www.scirp.org/reference/referencespapers?referenceid=59121) |
+| Hexapawn | Second player wins | Strong | 1962 | [Gardner 1962](https://people.csail.mit.edu/brooks/idocs/GardnerHexapawn.pdf) |
+| Sim | Second player wins | Strong | 1974 | [Mead et al. 1974](https://www.tandfonline.com/doi/abs/10.1080/0025570X.1974.11976415) |
+| Qubic | First player wins | Weak | 1980 | [Patashnik 1980](https://www.jstor.org/stable/2689613) |
+| Mū tōrere | Draw | Strong | 1987 | [Ascher 1987](https://www.tandfonline.com/doi/abs/10.1080/0025570X.1987.11977283) |
+| Gomoku (free-style) | First player wins | Weak | 1993 | [Allis et al. 1993](https://aaai.org/papers/0001-go-moku-solved-by-new-search-techniques/) |
+| Nine Men's Morris | Draw | Strong | 1993 | [Gasser 1993](https://library.slmath.org/books/Book29/files/gasser.pdf) |
+| Connect Four | First player wins | Strong | 1995 | [Tromp 1995](https://tromp.github.io/c4/connect4_thesis.pdf) |
+| Pentominoes (two-player) | First player wins | Weak | 1996 | [Orman 1996](https://library.slmath.org/books/Book29/files/orman.pdf) |
+| Kalah | First player wins | Weak | 2000 | [Irving et al. 2000](https://naml.us/paper/kalah/) |
+| Renju (連珠) | First player wins | Weak | 2001 | [Wágner et al. 2001](https://journals.sagepub.com/doi/abs/10.3233/ICG-2001-24104) |
+| Awari (Oware) | Draw | Strong | 2002 | [Romein et al. 2002](https://doi.org/10.1109/MC.2003.1236468) |
+| Go (5×5) | First player wins | Weak | 2002 | [van der Werf 2002](https://journals.sagepub.com/doi/10.3233/ICG-2003-26205) |
+| Hex (7×7) | First player wins | Weak | 2003 | [Yang et al. 2003](https://webdocs.cs.ualberta.ca/~hayward/papers/solving7x7hex.pdf) |
+| Lasker Morris | Draw | Strong | 2003 | [Stahlhacke 2003](https://althofer.de/stahlhacke-lasker-morris-2003.pdf) |
+| Checkers (English draughts) | Draw | Weak | 2007 | [Schaeffer et al. 2007](https://www.science.org/doi/10.1126/science.1144079) |
+| Fanorona | Draw | Weak | 2007 | [Schadd et al. 2007](https://dke.maastrichtuniversity.nl/m.winands/documents/Fanorona.pdf) |
+| Tigers and Goats | Draw | Weak | 2007 | [Jin et al. 2007](https://library.slmath.org/books/Book56/files/22jin.pdf) |
+| [Dōbutsu shōgi](#worked-example-dōbutsu-shōgi) | Second player wins | Strong | 2009 | [Tanaka 2009](https://ipsj.ixsq.nii.ac.jp/records/62415) · [worked example below](#worked-example-dōbutsu-shōgi) |
+| Gardner minichess | Draw | Weak | 2013 | [Mhalla et al. 2013](https://arxiv.org/abs/1307.7118) |
+| Hex (9×9, all openings) | First player wins | Weak | 2013 | [Pawlewicz et al. 2013](https://webdocs.cs.ualberta.ca/~hayward/papers/pawlhayw.pdf) |
+| Pentago | First player wins | Strong | 2014 | [Irving 2014](https://arxiv.org/abs/1404.0743) |
+| Amazons (small boards) | First player wins | Weak | 2015 | [Song et al. 2015](https://webdocs.cs.ualberta.ca/~mmueller/ps/2014/2014-TCIAIG-amazons_solver-preprint.pdf) |
+| Heads-up Limit Texas Hold'em (HULHE) | First player wins (ε-Nash) | Weak, approx. | 2015 | [Bowling et al. 2015](https://www.science.org/doi/10.1126/science.1259433) |
+| Morabaraba | First player wins | Strong | 2015 | [Gévay 2015](https://arxiv.org/abs/1408.0032) |
+| Domineering | First player wins | Weak | 2016 | [Uiterwijk 2016](https://arxiv.org/abs/1602.05404) |
+| Losing chess | First player wins | Weak | 2016 | [Watkins 2016](https://content.iospress.com/articles/icga-journal/icg170017) |
+| Othello | Draw | Weak | 2023 | [Takizawa 2023](https://arxiv.org/abs/2310.19387) |
+| Quarto! | Draw | Strong | 2023 | [Goossens 2023](https://doi.org/10.5281/zenodo.20425801) |
+<!-- END GENERATED:solved-games -->
 
 Hex is also *ultra-weakly* solved for every board size: the first player wins by strategy stealing ([Nash, 1952](https://en.wikipedia.org/wiki/Hex_(board_game))), with no explicit strategy. On 10×10 only a single opening has been solved so far.
 
