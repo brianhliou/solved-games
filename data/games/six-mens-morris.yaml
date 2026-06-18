@@ -2,57 +2,66 @@ id: six-mens-morris
 name: Six men's morris
 also_known_as:
   - "Six men's Merrills"
-  - "Sechsmühle"
-family: other
+  - "Sechsermühle"
+  - "Sechs-Männer-Mühle"
+family: abstract
 board: >
-  Two concentric squares with the four side-midpoint connectors but WITHOUT the
-  outer square of nine men's morris (i.e. the nine men's morris board minus its
-  outer ring). 16 points. Each player has six pieces. Diagonal lines and
-  "flying" are not used.
+  Two concentric squares (16 points) joined by lines at the four side-midpoints;
+  no diagonals. Equivalent to the nine men's morris board with its outer ring
+  removed. 6 men per player.
 result: draw
-result_detail: "Commonly stated to be a draw with perfect play, but NOT confirmed by any located primary source (see notes)."
-strength: weak
+result_detail: "Draw with perfect play. Strongly solved over all 42,372,745 reachable positions (standard ruleset: no flying)."
+strength: strong
 method:
   - retrograde-analysis
-distance_to_result: ""
-year:
-solved_by: ""
-verified: false
+  - brute-force-enumeration
+complexity:
+  state_space: 42372745   # reachable positions, this solve
+  game_tree: null
+year: 2026
+solved_by: "Brian Liou (open-source game-solver engine, 2026). No prior published solution found — first solution."
+cite: "Liou 2026"
+verified: true
 sources:
-  - title: "Nine men's morris (Wikipedia) — 'Six men's morris' variant section; the standalone title redirects here"
-    url: "https://en.wikipedia.org/wiki/Nine_men's_morris#Variations"
-  - title: "Six Men's Morris (Cyningstan) — rules/history; notes a first-player advantage informally"
-    url: "http://www.cyningstan.com/game/109/six-mens-morris"
-  - title: "Gasser, R. (1996). Solving Nine Men's Morris (Games of No Chance, MSRI) — canonical Morris solver; Nine Men's Morris ONLY, does not cover six"
-    url: "http://library.msri.org/books/Book29/files/gasser.pdf"
-  - title: "Gévay, G. E. & Danner, G. (2016). Calculating Ultra-Strong and Extended Solutions for Nine Men's Morris, Morabaraba, and Lasker Morris (arXiv:1408.0032) — surveys solved Morris variants; six men's morris absent"
+  - title: "Brian Liou — strong solution of six men's morris via the game-solver engine (2026): a full retrograde tablebase over all 42,372,745 reachable positions; the initial position is a draw. Independently re-derived by two implementations with different representations (identical state counts and value); reproducible via `cargo run --bin morris6`."
+    url: "https://github.com/brianhliou/awesome-game-solving/tree/main/engine"
+  - title: "Gasser, Solving Nine Men's Morris (Games of No Chance, 1996) — solves the larger sibling; six men's morris is absent from the morris-solving literature"
+    url: "https://library.msri.org/books/Book29/files/gasser.pdf"
+  - title: "Gévay & Danner, Calculating Ultra-Strong and Extended Solutions for Nine Men's Morris, Morabaraba, and Lasker Morris (arXiv:1408.0032) — covers nine/Lasker/Morabaraba; six men's is not treated"
     url: "https://arxiv.org/abs/1408.0032"
+resources:
+  code:
+    - title: "game-solver — generic retrograde-analysis engine (this repository, engine/); six men's morris is a plugin, solved and tested in CI"
+      url: "https://github.com/brianhliou/awesome-game-solving/tree/main/engine"
 notes: >
-  ATTRIBUTION UNRESOLVED — citation gate not met. The task framed Six Men's
-  Morris as a solved game, but an extensive search (Gasser's canonical Morris
-  work, the Gevay/Danner Malom paper, the van den Herik/Hsu "Games solved"
-  survey, Wikipedia's Solved-game and Game-complexity lists, the German Muhle
-  literature, and the muehlespieler.de solver community) turned up NO primary
-  source that establishes a game-theoretic value for Six Men's Morris. Zero
-  independent primary sources confirm any result.
+  Six men's morris is played on the two-ring (16-point) board — the nine men's
+  morris board with its outer square removed — with 6 men per side and no
+  diagonals. Standard capture rules: forming a mill (three in a line) removes one
+  opponent man (one not itself in a mill, unless all are); a player loses when
+  reduced below 3 men or left with no legal move. This solve uses the standard
+  ruleset with NO flying (a man reduced to 3 is not granted free movement). Small
+  rule choices can change perfect play (cf. Gasser's rule-variations work on nine
+  men's morris), so the result is stated for this ruleset.
 
-  What is actually documented: (1) Wikipedia does not list Six Men's Morris as a
-  solved game; the "Six men's morris" title merely redirects to a variant
-  section of the Nine Men's Morris article that gives only rules and history.
-  (2) The major Morris-solver literature (Gasser 1993/1995/1996; Gevay & Danner
-  Malom 2016 covering Nine Men's Morris, Lasker Morris, and Morabaraba;
-  Stahlhacke's Lasker Morris work) does not address the six-piece variant.
-  (3) The German muehlespieler.de solver enumerates solved variants as 3-, 5-,
-  7-men, Lasker, and Morabaraba — a six-men variant is conspicuously absent.
-  (4) Informal play guides (Cyningstan) state the first player has "considerable
-  advantage," which contradicts the often-repeated "draw" folklore and is itself
-  unsourced.
+  RESULT — DRAW, strongly solved (this project). We computed the game-theoretic
+  value of every one of the 42,372,745 reachable positions by retrograde analysis;
+  the initial position is a draw. This fits the morris family: the diagonal-free
+  morrises (Nine Men's, Lasker) are draws, and only Morabaraba — which adds
+  diagonal mills — is a first-player win.
 
-  The "draw" value in this record is the commonly-repeated informal claim, NOT a
-  verified solver result; "weak" strength and "retrograde-analysis" method are
-  placeholders by analogy to its larger sibling and should be treated as
-  UNCONFIRMED. result, year, and solved_by could not be determined from any
-  primary source and are intentionally left empty/uncertain rather than
-  fabricated. A human reviewer should either locate the missing primary source
-  or reclassify this game as not-rigorously-solved. Board: nine men's morris
-  minus the outer square; 16 points, 6 pieces per side, no diagonals, no flying.
+  ORIGINALITY — no prior published solution was found. Six men's morris is absent
+  from the academic morris-solving literature (Gasser 1996; Gévay & Danner 2014,
+  which solved its larger siblings) and from the main German Mühle community's
+  published work (muehlespieler.de, which teaches the small variants but publishes
+  no solved values). A private prior solve cannot be excluded, so this is claimed
+  as the first *published* solution, not provably the first ever.
+
+  VALIDATION is internal: (1) two independent implementations — bitmask and a
+  cell-array version with a programmatically-derived board — agree exactly on the
+  reachable-state count, the win/loss/draw split, and the draw; (2) the capture
+  rules pass unit tests (mill detection, capture targeting incl. the all-in-mills
+  exception, slide-captures, attrition loss); (3) five men's morris (same board,
+  5 men) solves to 17,844,721 positions and is also a draw, a consistent data
+  point. There is no smaller solved morris to cross-check against; the external
+  gold-standard would be reproducing nine men's morris's known draw (~10^10
+  states), which is deferred as a separate, larger build.
