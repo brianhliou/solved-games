@@ -59,6 +59,7 @@ Three strengths, from weakest to strongest ([Wikipedia](https://en.wikipedia.org
 |---|---|---|---|---|---|
 | Hex (7×7) | First player wins | Weak | Strategy-stealing | 2003 | [Yang et al. 2003](https://webdocs.cs.ualberta.ca/~hayward/papers/solving7x7hex.pdf) |
 | Hex (9×9, all openings) | First player wins | Weak | Depth-first PNS | 2013 | [Pawlewicz et al. 2013](https://webdocs.cs.ualberta.ca/~hayward/papers/pawlhayw.pdf) |
+| Y (side 6) | First player wins | Strong | Retrograde analysis | 2026 | [Liou 2026](https://github.com/brianhliou/solved-games/tree/main/engine) |
 
 ### Mancala
 
