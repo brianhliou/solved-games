@@ -1,4 +1,4 @@
-# Awesome Game Solving [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Solved Games
 
 > Strongly and weakly solved games, endgame tablebases, retrograde analysis, and the tools to probe them.
 
@@ -6,7 +6,7 @@ Most "awesome" game lists collect engines that play well. This one collects game
 
 The techniques travel further than the games suggest. A checkers proof, a 7-piece chess tablebase, and a complete solution to a tiny shogi variant all run on one idea: enumerate the positions, work backward from the terminal ones, and propagate the result. This list collects the solved games, the tablebase formats that store them, the retrograde-analysis literature behind them, and the public APIs and explorers you can query today. [Dōbutsu shōgi](#worked-example-dōbutsu-shōgi) is the worked example, solved end to end.
 
-**▶ [Play the perfect-play explorer](https://brianhliou.github.io/awesome-game-solving/explorer/)** — we strongly solved [six men's morris](data/games/six-mens-morris.yaml) (a draw over all 42,372,745 positions, a first published solution) with the [`game-solver`](engine/) engine in this repo, and built an interactive tablebase explorer for the family.
+**▶ [Play the perfect-play explorer](https://brianhliou.github.io/solved-games/explorer/)** — we strongly solved [six men's morris](data/games/six-mens-morris.yaml) (a draw over all 42,372,745 positions, a first published solution) with the [`game-solver`](engine/) engine in this repo, and built an interactive tablebase explorer for the family.
 
 ## Contents
 
@@ -66,7 +66,7 @@ Three strengths, from weakest to strongest ([Wikipedia](https://en.wikipedia.org
 | Losing chess | First player wins | Weak | 2016 | [Watkins 2016](https://content.iospress.com/articles/icga-journal/icg170017) |
 | Othello | Draw | Weak | 2023 | [Takizawa 2023](https://arxiv.org/abs/2310.19387) |
 | Quarto! | Draw | Strong | 2023 | [Goossens 2023](https://doi.org/10.5281/zenodo.20425801) |
-| Six men's morris | Draw | Strong | 2026 | [Liou 2026](https://github.com/brianhliou/awesome-game-solving/tree/main/engine) |
+| Six men's morris | Draw | Strong | 2026 | [Liou 2026](https://github.com/brianhliou/solved-games/tree/main/engine) |
 <!-- END GENERATED:solved-games -->
 
 Hex is also *ultra-weakly* solved for every board size: the first player wins by strategy stealing ([Nash, 1952](https://en.wikipedia.org/wiki/Hex_(board_game))), with no explicit strategy. On 10×10 only a single opening has been solved so far.

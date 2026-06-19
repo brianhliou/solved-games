@@ -1,4 +1,4 @@
-# awesome-game-solving
+# solved-games
 
 A curated, citation-gated reference for solved games: every known game-theoretic
 result, the method that produced it, and the code to verify it. See `VISION.md`

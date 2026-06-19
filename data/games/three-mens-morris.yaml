@@ -34,7 +34,7 @@ sources:
 resources:
   code:
     - title: "game-solver (this repository, engine/) — an open retrograde solver that reproduces the result and the full opening classification"
-      url: "https://github.com/brianhliou/awesome-game-solving/tree/main/engine"
+      url: "https://github.com/brianhliou/solved-games/tree/main/engine"
 notes: >
   Three men's morris is the "movement" extension of three-in-a-row (it is to
   tic-tac-toe what nine men's morris is to a placement-only mill game). Each player

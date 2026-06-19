@@ -31,7 +31,7 @@ const RESULT_PHRASE: Record<Game['result'], string> = {
   'second-player-win': 'Second player wins',
   draw: 'Draw',
 }
-const REPO = 'https://github.com/brianhliou/awesome-game-solving'
+const REPO = 'https://github.com/brianhliou/solved-games'
 
 const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
@@ -91,7 +91,7 @@ function page(games: Game[]): string {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Awesome Game Solving — the registry of solved games</title>
+<title>Solved Games — a citation-gated registry</title>
 <meta name="description" content="A structured, citation-gated record of solved games: the result under perfect play, the method, and where to verify it.">
 <style>
   :root { --bg:#0d1117; --fg:#e6edf3; --muted:#8b949e; --line:#21262d; --card:#161b22; --link:#58a6ff;
@@ -135,7 +135,7 @@ function page(games: Game[]): string {
 <body>
 <div class="wrap">
   <header>
-    <h1>Awesome Game Solving</h1>
+    <h1>Solved Games</h1>
     <p class="tagline">The canonical reference for solved games: every known result, the method that produced it, and the code to verify it.</p>
     <p class="meta">${counts.total} solved games · ${counts.strong} strongly solved · ${counts.families} families · citation-gated · <a href="${REPO}" rel="noopener">source &amp; contribute on GitHub →</a></p>
   </header>

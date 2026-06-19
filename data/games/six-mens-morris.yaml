@@ -24,7 +24,7 @@ cite: "Liou 2026"
 verified: true
 sources:
   - title: "Brian Liou — strong solution of six men's morris via the game-solver engine (2026): a full retrograde tablebase over all 42,372,745 reachable positions; the initial position is a draw. Independently re-derived by two implementations with different representations (identical state counts and value); reproducible via `cargo run --bin morris6`."
-    url: "https://github.com/brianhliou/awesome-game-solving/tree/main/engine"
+    url: "https://github.com/brianhliou/solved-games/tree/main/engine"
   - title: "Gasser, Solving Nine Men's Morris (Games of No Chance, 1996) — solves the larger sibling; six men's morris is absent from the morris-solving literature"
     url: "https://library.msri.org/books/Book29/files/gasser.pdf"
   - title: "Gévay & Danner, Calculating Ultra-Strong and Extended Solutions for Nine Men's Morris, Morabaraba, and Lasker Morris (arXiv:1408.0032) — covers nine/Lasker/Morabaraba; six men's is not treated"
@@ -32,7 +32,7 @@ sources:
 resources:
   code:
     - title: "game-solver — generic retrograde-analysis engine (this repository, engine/); six men's morris is a plugin, solved and tested in CI"
-      url: "https://github.com/brianhliou/awesome-game-solving/tree/main/engine"
+      url: "https://github.com/brianhliou/solved-games/tree/main/engine"
 notes: >
   Six men's morris is played on the two-ring (16-point) board — the nine men's
   morris board with its outer square removed — with 6 men per side and no
