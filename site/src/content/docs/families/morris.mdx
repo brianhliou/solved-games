@@ -1,0 +1,55 @@
+---
+title: Morris — the mill family
+description: The morris (mill) games, from trivial three men's up to the ~10^11-position Lasker and Morabaraba. All strongly solved; six men's morris was the gap this project filled.
+---
+
+The morris, or *mill*, family is a line of placement-and-movement games: each
+player places stones, then slides them along the board's lines; completing a
+**mill** — three in a row — lets you capture an opponent's stone, and you lose
+when reduced below three men or left without a legal move. The family scales from
+a trivial 9-point board up to the 24-point boards of nine men's, Lasker, and
+Morabaraba, whose solution databases run to ~10¹¹ positions.
+
+A clean pattern runs through it: the **diagonal-free** morrises — six men's,
+nine men's, Lasker — are all **draws** under perfect play; **adding diagonal
+mills** (Morabaraba, the twelve men's morris) tips the game to a **first-player
+win**. The tiny three men's board, which has diagonals, is also a first-player
+win.
+
+This project's contribution is **six men's morris**: it was absent from the
+morris-solving literature — which had solved its larger siblings but skipped it —
+so this is its [first published strong solution](/games/morris/six-mens-morris/)
+(a draw, over all 42,372,745 reachable positions).
+
+## The family
+
+| Game | Men | Board | Positions | Result | Solved by |
+|------|----:|-------|----------:|--------|-----------|
+| [Three men's morris](/games/morris/three-mens-morris/) | 3 | 9 pts (diagonals) | trivial | First player wins | folklore (Murray, 1952) |
+| [Six men's morris](/games/morris/six-mens-morris/) | 6 | 16 pts | 42,372,745 | Draw | **this project (2026)** |
+| [Nine Men's Morris](/games/morris/nine-mens-morris/) | 9 | 24 pts | 7,673,759,269 | Draw | Gasser (1993) |
+| [Lasker Morris](/games/morris/lasker-morris/) | 10 | 24 pts | 136,476,472,674 | Draw | Stahlhacke (2003) |
+| [Morabaraba](/games/morris/morabaraba/) | 12 | 24 pts + diagonals | ~112,000,000,000 | First player wins | Gévay & Danner (2014) |
+
+All five are **strongly** solved. Positions count the reachable / database size
+under each solve's ruleset; Morabaraba's is the approximate figure reported by
+Gévay & Danner.
+
+## Play the solver
+
+The explorer plays **four, five, or six men's morris** on the 16-point board
+(switch with the toggle) from a precomputed perfect-play tablebase — six men's is
+this project's result. Every move is labelled win, loss, or draw under perfect
+play.
+
+<iframe
+	src="/explorer/index.html"
+	title="Morris perfect-play tablebase explorer"
+	loading="lazy"
+	style={{ width: '100%', height: '860px', border: '1px solid var(--sl-color-gray-5)', borderRadius: '8px' }}
+></iframe>
+
+## More
+
+- [Six men's morris data sheet](/games/morris/six-mens-morris/) — result, method, validation, prior art.
+- [The engine](https://github.com/brianhliou/solved-games/tree/main/engine) — the generic retrograde solver each morris variant is a plugin of.

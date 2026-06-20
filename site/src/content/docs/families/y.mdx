@@ -1,0 +1,54 @@
+---
+title: Y — the connection family
+description: Y is a first-player win at every board size and can never draw. This project strongly solved sides 1–6; play perfect moves against the solver below.
+---
+
+Y is a connection game (Schensted–Titus, 1953) played on a triangular board of
+side *n* — *n* rows, *n*(*n*+1)/2 cells. Each move places one stone; you win by
+connecting **all three sides** of the triangle with a single group. Because a
+filled board always has exactly one winner, **Y can never draw**, and a
+strategy-stealing argument shows the **first player wins at every size**. Hex
+reduces to Y, which is what makes Y worth studying in its own right.
+
+This project strongly solved Y from side 1 through side 6 with its open-source
+[retrograde engine](https://github.com/brianhliou/solved-games/tree/main/engine) —
+computing the game-theoretic value of *every* position, not just the opening. The
+explorer below plays perfect moves for sides 3–5, solving the whole board live in
+your browser.
+
+## The family, by size
+
+| Side | Cells | Positions | Result |
+|-----:|------:|----------:|--------|
+| 1 | 1 | 2 | First player wins |
+| 2 | 3 | 13 | First player wins |
+| 3 | 6 | 257 | First player wins |
+| 4 | 10 | 16,505 | First player wins |
+| 5 | 15 | 3,337,584 | First player wins |
+| 6 | 21 | 2,173,243,128 † | First player wins |
+
+All sides above are **strongly** solved by this project. Y is a first-player win
+at every size, with no draws.
+
+*† Sides 1–5 count reachable positions; side 6 is the dense-index space
+(reachable positions were not separately enumerated). The explorer solves over
+the dense index, so its side-5 count (3,492,117) is slightly higher than the
+reachable count shown here.*
+
+## Play the solver
+
+Every legal move is coloured by its value under perfect play — green wins, red
+loses. Switch board size with the toggle; each size is solved live in your
+browser when you select it.
+
+<iframe
+	src="/explorer/y.html"
+	title="Y perfect-play explorer"
+	loading="lazy"
+	style={{ width: '100%', height: '860px', border: '1px solid var(--sl-color-gray-5)', borderRadius: '8px' }}
+></iframe>
+
+## More
+
+- [Y data sheet](/games/connection/y/) — result, method, citations, and prior art.
+- [The engine](https://github.com/brianhliou/solved-games/tree/main/engine) — the generic retrograde solver Y is a plugin of.
