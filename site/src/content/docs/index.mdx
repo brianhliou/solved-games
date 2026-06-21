@@ -5,6 +5,8 @@ description: The reference for which games are solved — by whom, how strongly,
 
 import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
+export const withBase = (p) => import.meta.env.BASE_URL.replace(/\/$/, '') + p;
+
 The reference for **which games are solved** — by whom, how strongly, and what's
 left. Maintained by someone who actually solves them: the catalog is backed by an
 open-source retrograde engine that has produced first-published strong solutions
@@ -15,24 +17,24 @@ solve in your browser.
 
 <CardGrid>
 	<LinkCard
-		title="Browse the catalog"
-		href="/games/connection/"
-		description="38 games grouped by genre — result, strength, search-space size, who solved it, and citations."
-	/>
-	<LinkCard
 		title="Open frontier"
-		href="/frontier/"
+		href={withBase('/frontier/')}
 		description="The forward half: what isn't solved yet, what it would take, and what's out of reach and why."
 	/>
 	<LinkCard
 		title="Y — the connection family"
-		href="/families/y/"
+		href={withBase('/families/y/')}
 		description="A scaled family with a playable perfect-play explorer that solves live in your browser."
 	/>
 	<LinkCard
 		title="Morris — the mill family"
-		href="/families/morris/"
+		href={withBase('/families/morris/')}
 		description="Three to twelve men's morris, with the tablebase explorer and the first published six men's solve."
+	/>
+	<LinkCard
+		title="The engine"
+		href="https://github.com/brianhliou/solved-games/tree/main/engine"
+		description="The generic open-source retrograde solver behind the catalog and the explorers."
 	/>
 </CardGrid>
 

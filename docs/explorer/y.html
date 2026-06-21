@@ -3,19 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Morris — perfect-play tablebase explorer</title>
+    <title>Y — perfect-play explorer</title>
     <meta
       name="description"
-      content="Play the morris family against a perfect-play tablebase. Every position and move is labelled win, loss, or draw — the first published strong solution of six men's morris."
+      content="Play the connection game Y against a perfect-play solver. Every move is coloured by its value under perfect play — the first published, verified strong solution of Y, through side 6."
     />
-    <script type="module" crossorigin src="./assets/main-D0sK3GpX.js"></script>
+    <script type="module" crossorigin src="./assets/y-BkyahfYw.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/game_solver_wasm_bg-BlVIPI8P.js">
-    <link rel="stylesheet" crossorigin href="./assets/main-B59ZdPzA.css">
+    <link rel="stylesheet" crossorigin href="./assets/y-Bqr9X7fu.css">
   </head>
   <body>
     <header class="site-header">
-      <h1 id="title">Six Men's Morris</h1>
-      <span class="tagline">perfect-play tablebase explorer</span>
+      <h1 id="title">Y</h1>
+      <span class="tagline">perfect-play explorer · connect all three sides</span>
       <span class="sizes" id="sizes"></span>
       <nav class="hlinks">
         <a href="https://github.com/brianhliou/solved-games">repo</a>
@@ -26,12 +26,13 @@
     <div class="main">
       <div class="left">
         <div class="board-wrap">
-          <svg id="board" viewBox="-0.6 -0.6 7.2 7.2" aria-label="morris board"></svg>
+          <svg id="board" viewBox="-3 -1 6 5" aria-label="Y board"></svg>
         </div>
       </div>
 
       <aside class="panel">
-        <div id="verdict" class="verdict draw">Loading tablebase…</div>
+        <div id="verdict" class="verdict draw">Solving…</div>
+        <div id="solvestat" class="solvestat"></div>
         <div class="controls">
           <button id="undo" disabled>← Undo</button>
           <button id="reset">Reset</button>
@@ -43,13 +44,15 @@
         <div id="moves" class="moves"></div>
         <div class="legend">
           <span><i class="win"></i> winning</span>
-          <span><i class="draw"></i> drawing</span>
           <span><i class="loss"></i> losing</span>
         </div>
         <p class="credit">
-          Strongly solved by the open-source
+          Strongly solved (sides 1–6) by the open-source
           <a href="https://github.com/brianhliou/solved-games/tree/main/engine">game-solver</a>
-          engine. Standard rules, no flying.
+          engine — the first documented, verified strong solution of Y, building on
+          prior solver code from
+          <a href="https://github.com/GamesCrafters/GamesmanClassic">GamesCrafters</a>.
+          The board solves in your browser; Y can never draw.
         </p>
       </aside>
     </div>
