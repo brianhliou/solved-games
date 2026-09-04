@@ -60,7 +60,7 @@ export default defineConfig({
 		starlight({
 			title: 'Solved Games',
 			description:
-				'The reference for which games are solved — by whom, how strongly, and what is left. Backed by an open-source solver that ships first-published solutions.',
+				'A structured record of which games are solved — by whom, how strongly, and what is left. Snapshot, not a live reference.',
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/brianhliou/solved-games' },
 			],

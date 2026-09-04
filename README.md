@@ -8,6 +8,8 @@ The techniques travel further than the games suggest. A checkers proof, a 7-piec
 
 **▶ [Play the perfect-play explorer](https://tablebase.brianhliou.com/)** — we strongly solved [six men's morris](data/games/six-mens-morris.yaml) (a draw over all 42,372,745 positions, a first published solution) with the [`game-solver`](https://github.com/brianhliou/game-solver) engine, and built an interactive tablebase explorer for the family.
 
+> **Status: not actively maintained.** The dataset is accurate as of its last commit and the build is reproducible, but nobody is tracking new results and pull requests may sit. It is a citable snapshot, not a live reference. The data is CC0 — fork it freely. See [VISION](VISION.md).
+
 ## Contents
 
 - [What "solved" means](#what-solved-means)

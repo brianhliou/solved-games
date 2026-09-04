@@ -2,7 +2,7 @@
   "name": "solved-games",
   "version": "0.1.0",
   "private": true,
-  "description": "The canonical reference for solved games — structured data first; the README tables generate from it.",
+  "description": "A structured record of solved games — data first; the README tables and site generate from it.",
   "type": "module",
   "scripts": {
     "build": "node scripts/build-readme.ts",

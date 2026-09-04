@@ -1,6 +1,13 @@
 # Contributing
 
-Thanks for helping build the record of solved games.
+**Before you spend time on this: the repo is not actively maintained.** Pull
+requests may sit for a while. Corrections to a wrong result, year, or citation
+are the ones most likely to get merged quickly, because they make the dataset
+wrong-in-public and that is worth fixing. New entries are welcome but not
+solicited, and nobody is tracking the literature for new results.
+
+If you want the data rather than a merged PR, take it: `data/games/*.yaml` is
+CC0 structured data — public domain, fork or vendor it freely.
 
 ## What belongs here
 
@@ -29,9 +36,15 @@ them open.
 
 ## Verification
 
-Each entry carries a `verified` flag. A maintainer flips it to `true` once the
-result, year, and citation have been checked against the primary source. New
-entries arrive `verified: false`; that's expected.
+Each entry carries a `verified` flag, meaning the result, year, and citation
+have been checked against the primary source. New entries arrive
+`verified: false`; that's expected, and it may stay false until someone checks
+it.
 
-Open a pull request. A disagreement about a result is settled by the source,
-not the argument.
+## The engine
+
+The solver that produced this dataset's two original results is in a separate
+repo, [game-solver](https://github.com/brianhliou/game-solver). Issues about
+the engine, the tablebases, or the explorer belong there, not here.
+
+A disagreement about a result is settled by the source, not the argument.

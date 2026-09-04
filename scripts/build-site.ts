@@ -177,7 +177,7 @@ function page(games: Game[]): string {
 <div class="wrap">
   <header>
     <h1>Solved Games</h1>
-    <p class="tagline">The canonical reference for solved games: every known result, the method that produced it, and the code to verify it.</p>
+    <p class="tagline">A structured record of solved games: the result, the method that produced it, and where to verify it.</p>
     <p class="meta">${counts.total} solved games · ${counts.strong} strongly solved · ${counts.genres} genres · citation-gated · <a href="${REPO}" rel="noopener">source &amp; contribute on GitHub →</a></p>
   </header>
 
