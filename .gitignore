@@ -13,9 +13,4 @@ dist/
 data/.cache/
 *.tmp
 
-# Rust engine build output
-target/
-
-# Tablebase artifacts — shipped as release assets, never committed
-artifacts/
-*.wld
+# The engine, its build output and its tablebases live in the game-solver repo

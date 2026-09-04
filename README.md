@@ -6,7 +6,7 @@ Most "awesome" game lists collect engines that play well. This one collects game
 
 The techniques travel further than the games suggest. A checkers proof, a 7-piece chess tablebase, and a complete solution to a tiny shogi variant all run on one idea: enumerate the positions, work backward from the terminal ones, and propagate the result. This list collects the solved games, the tablebase formats that store them, the retrograde-analysis literature behind them, and the public APIs and explorers you can query today. [Dōbutsu shōgi](#worked-example-dōbutsu-shōgi) is the worked example, solved end to end.
 
-**▶ [Play the perfect-play explorer](https://brianhliou.github.io/solved-games/explorer/)** — we strongly solved [six men's morris](data/games/six-mens-morris.yaml) (a draw over all 42,372,745 positions, a first published solution) with the [`game-solver`](engine/) engine in this repo, and built an interactive tablebase explorer for the family.
+**▶ [Play the perfect-play explorer](https://tablebase.brianhliou.com/)** — we strongly solved [six men's morris](data/games/six-mens-morris.yaml) (a draw over all 42,372,745 positions, a first published solution) with the [`game-solver`](https://github.com/brianhliou/game-solver) engine, and built an interactive tablebase explorer for the family.
 
 ## Contents
 
@@ -51,7 +51,7 @@ Three strengths, from weakest to strongest ([Wikipedia](https://en.wikipedia.org
 | Nine Men's Morris | Draw | Strong | Retrograde analysis | 1993 | [Gasser 1993](https://library.slmath.org/books/Book29/files/gasser.pdf) |
 | Lasker Morris | Draw | Strong | Retrograde analysis | 2003 | [Stahlhacke 2003](https://althofer.de/stahlhacke-lasker-morris-2003.pdf) |
 | Morabaraba | First player wins | Strong | Retrograde analysis | 2015 | [Gévay 2015](https://arxiv.org/abs/1408.0032) |
-| Six men's morris | Draw | Strong | Retrograde analysis | 2026 | [Liou 2026](https://github.com/brianhliou/solved-games/tree/main/engine) |
+| Six men's morris | Draw | Strong | Retrograde analysis | 2026 | [Liou 2026](https://github.com/brianhliou/game-solver) |
 
 ### Connection games
 
@@ -59,7 +59,7 @@ Three strengths, from weakest to strongest ([Wikipedia](https://en.wikipedia.org
 |---|---|---|---|---|---|
 | Hex (7×7) | First player wins | Weak | Strategy-stealing | 2003 | [Yang et al. 2003](https://webdocs.cs.ualberta.ca/~hayward/papers/solving7x7hex.pdf) |
 | Hex (9×9, all openings) | First player wins | Weak | Depth-first PNS | 2013 | [Pawlewicz et al. 2013](https://webdocs.cs.ualberta.ca/~hayward/papers/pawlhayw.pdf) |
-| Y (side 6) | First player wins | Strong | Retrograde analysis | 2026 | [Liou 2026](https://github.com/brianhliou/solved-games/tree/main/engine) |
+| Y (side 6) | First player wins | Strong | Retrograde analysis | 2026 | [Liou 2026](https://github.com/brianhliou/game-solver) |
 
 ### Mancala
 

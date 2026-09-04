@@ -1,0 +1,13 @@
+{
+  "game": "5-mens-morris",
+  "board": "two-ring-16pt-no-flying",
+  "men": 5,
+  "encoding": "2bit-le; 0=unreachable 1=win 2=loss 3=draw; addressed by dense index",
+  "num_states": 56713416,
+  "reachable": 17844721,
+  "win": 10070264,
+  "loss": 6049820,
+  "draw": 1724637,
+  "start_value": "Draw",
+  "bytes": 14178354
+}

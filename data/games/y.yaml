@@ -26,15 +26,15 @@ cite: "Liou 2026"
 verified: true
 sources:
   - title: "Brian Liou — strong solution of Y for sides 1-6 via the game-solver engine (2026): a full retrograde solve of every position. The first player wins at every size and no position is a draw. Side-6 has 2,173,243,128 count-legal positions (wins 1,352,692,412 / losses 820,550,716). Validated by three independent solve paths (reachable, dense-index, and slice-by-slice) that agree on every value, plus the no-draw invariant. Reproducible via `cargo run --release --bin y_solve6 6`."
-    url: "https://github.com/brianhliou/solved-games/tree/main/engine"
+    url: "https://github.com/brianhliou/game-solver"
   - title: "GamesCrafters (UC Berkeley), GamesmanClassic `mgameofy.c` (A. Esteban, 2023) — prior art: open-source Y solver code for board dims 4-7, but with no published game values, no paper, and `kTieIsPossible = TRUE` (a draw-handling flaw for a game that cannot draw). Only dim-5 is credibly confirmed computed."
     url: "https://github.com/GamesCrafters/GamesmanClassic/blob/master/src/mgameofy.c"
   - title: "Craige Schensted & Charles Titus, Mudcrack Y and Poly-Y (Neo Press, 1975) — the game of Y; first player wins on any board by a Hex-style strategy-stealing argument (ultra-weak, non-constructive)."
     url: "https://en.wikipedia.org/wiki/Y_(game)"
 resources:
   code:
-    - title: "game-solver — generic retrograde engine (this repository, engine/); Y is a plugin (engine/src/games/y.rs), solved and tested in CI."
-      url: "https://github.com/brianhliou/solved-games/tree/main/engine"
+    - title: "game-solver — generic retrograde engine (the game-solver repository); Y is a plugin (engine/src/games/y.rs), solved and tested in CI."
+      url: "https://github.com/brianhliou/game-solver"
 notes: >
   Y is a connection game on a triangular grid: place stones in turn, win by
   joining all three sides with one connected group. It generalizes Hex (Hex

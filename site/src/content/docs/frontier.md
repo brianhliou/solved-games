@@ -4,7 +4,7 @@ description: Not just what's solved — what this project's engine could solve n
 ---
 
 Most "solved games" resources are backward-looking: a list of what's done. This
-is the forward half — where the open-source [engine](https://github.com/brianhliou/solved-games/tree/main/engine)
+is the forward half — where the open-source [engine](https://github.com/brianhliou/game-solver)
 behind this site could plausibly produce a *new* result, and what stays out of
 reach, and why.
 

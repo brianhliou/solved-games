@@ -184,7 +184,7 @@ function page(games: Game[]): string {
   <section class="featured">
     <span class="ftag">New · original result</span>
     <p>We strongly solved <b>six men's morris</b> — a draw over all 42,372,745 reachable positions — and built an interactive perfect-play explorer for the family.</p>
-    <a class="cta" href="./explorer/">Open the explorer →</a>
+    <a class="cta" href="https://tablebase.brianhliou.com/">Open the explorer →</a>
   </section>
 
   <section class="defs">
