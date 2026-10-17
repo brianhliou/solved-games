@@ -7,7 +7,8 @@
   "scripts": {
     "build": "node scripts/build-readme.ts",
     "build:readme": "node scripts/build-readme.ts",
-    "check": "node scripts/build-readme.ts --check"
+    "check": "node scripts/check-open.ts && node scripts/check-engines.ts && node scripts/build-readme.ts --check",
+    "test": "node --test test/*.test.ts"
   },
   "devDependencies": {
     "yaml": "^2.6.0"

@@ -1,0 +1,51 @@
+id: konane
+name: Kōnane (8×7 and 8×8)
+genre: capture
+status: solved-smaller-board
+solved_up_to: "All boards up to 7×7 weakly solved; all boards up to 6×6 strongly solved"
+next_target: "8×7"
+barrier:
+  - compute
+barrier_detail: >
+  Proof-number search attempts at 8×7 and 8×8 were stopped at a 21-day limit
+  and remain unsolved (Siefke 2025). Those attempts were forward search (PN²,
+  df-pn); a retrograde solve is a different method and has not been tried here.
+cite: "Siefke 2025"
+evidence: thesis
+sources:
+  - title: "Benedikt Siefke, \"Solving Konane Using Proof-Number Search and Extensions\", Bachelor's thesis, TU Berlin, 2025-11-10 (revised 2026-02-23). Abstract: complete database for all boards up to 6×6, all boards up to 7×7 weakly solved; 8×7 and 8×8 stopped after 21 days."
+    url: "https://doc.neuro.tu-berlin.de/bachelor/2026-02-23-BA-BenediktSiefke.pdf"
+    date: "2025-11-10"
+    primary: true
+  - title: "Jos W. H. M. Uiterwijk, narrow-board Kōnane, ICGA Journal 43(3), 2021: leaves the Triple (horizontal corner) and Quadruple (all but vertical middle) cases open"
+    url: "https://journals.sagepub.com/doi/pdf/10.3233/ICG-220198"
+    date: "2021"
+history:
+  - date: "2021"
+    size_or_opening: "narrow boards (3×n, 4×n families)"
+    result: "most narrow-board cases resolved; Triple (horizontal corner) and Quadruple (all but vertical middle) left open"
+    credit: "Jos W. H. M. Uiterwijk"
+    url: "https://journals.sagepub.com/doi/pdf/10.3233/ICG-220198"
+  - date: "2025-11-10"
+    size_or_opening: "all boards up to 6×6"
+    result: "complete endgame database"
+    strength: strong
+    credit: "Benedikt Siefke"
+    url: "https://doc.neuro.tu-berlin.de/bachelor/2026-02-23-BA-BenediktSiefke.pdf"
+  - date: "2025-11-10"
+    size_or_opening: "all boards up to 7×7"
+    result: "solved"
+    strength: weak
+    credit: "Benedikt Siefke"
+    url: "https://doc.neuro.tu-berlin.de/bachelor/2026-02-23-BA-BenediktSiefke.pdf"
+  - date: "2025-11-10"
+    size_or_opening: "8×7 and 8×8"
+    result: "unsolved; runs stopped at the 21-day limit"
+    credit: "Benedikt Siefke"
+    url: "https://doc.neuro.tu-berlin.de/bachelor/2026-02-23-BA-BenediktSiefke.pdf"
+last_checked: "2026-10-17"
+notes: >
+  Status read from the thesis title page and abstract on 2026-10-17. Whether the
+  thesis, or later work, closes Uiterwijk's open narrow-board cases (Triple and
+  Quadruple) was not checked. The per-size winners are in the thesis body and
+  are not copied here yet.

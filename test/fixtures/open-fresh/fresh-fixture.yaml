@@ -1,0 +1,23 @@
+# Control for test/open-check.test.ts: the same entry as the stale fixture,
+# checked 16 days before the tests' fixed today. The check must pass it.
+id: fresh-fixture
+name: Fresh fixture (control)
+genre: connection
+status: partially-solved
+solved_up_to: "Fixture board 1"
+next_target: "Fixture board 2"
+barrier:
+  - compute
+barrier_detail: "Fixture only."
+evidence: refereed
+sources:
+  - title: "Fixture source"
+    url: "https://example.org/fixture"
+    date: "2026"
+history:
+  - date: "2026"
+    size_or_opening: "fixture board 1"
+    result: "fixture result"
+    credit: "Fixture"
+    url: "https://example.org/fixture"
+last_checked: "2026-10-01"

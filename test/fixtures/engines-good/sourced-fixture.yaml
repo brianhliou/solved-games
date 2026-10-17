@@ -1,0 +1,14 @@
+# Control for test/engines-check.test.ts: the same shape as the planted failure
+# with its source present. check-engines must accept it.
+id: sourced-fixture
+name: Sourced Fixture
+kind: solver
+games: [connect-four]
+author: "Test fixture"
+license: "CC0-1.0"
+strength:
+  kind: perfect-play
+  claim: "Plays from the full solution."
+  url: "https://example.org/sourced-fixture/solution"
+url: "https://example.org/sourced-fixture"
+last_checked: "2026-10-17"

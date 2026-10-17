@@ -20,9 +20,17 @@ complexity:
   state_space: 42372745   # reachable positions, this solve
   game_tree: null
 year: 2026
-solved_by: "Brian Liou (open-source game-solver engine, 2026). No prior published solution found — first solution."
+solved_by: "Brian Liou (open-source game-solver engine, 2026)"
 cite: "Liou 2026"
 verified: true
+evidence: self-archived   # the maintainer's own result, not yet replayed by anyone else
+history:
+  - date: "2026-06-18"
+    size_or_opening: "standard rules, no flying"
+    result: "draw over 42,372,745 reachable positions"
+    strength: strong
+    credit: "Brian Liou"
+    url: "https://github.com/brianhliou/game-solver"
 sources:
   - title: "Brian Liou — strong solution of six men's morris via the game-solver engine (2026): a full retrograde tablebase over all 42,372,745 reachable positions; the initial position is a draw. Independently re-derived by two implementations with different representations (identical state counts and value); reproducible via `cargo run --bin morris6`."
     url: "https://github.com/brianhliou/game-solver"
@@ -44,18 +52,18 @@ notes: >
   rule choices can change perfect play (cf. Gasser's rule-variations work on nine
   men's morris), so the result is stated for this ruleset.
 
-  RESULT — DRAW, strongly solved (this project). We computed the game-theoretic
+  RESULT — DRAW, strongly solved. The game-solver engine computed the game-theoretic
   value of every one of the 42,372,745 reachable positions by retrograde analysis;
   the initial position is a draw. This fits the morris family: the diagonal-free
   morrises (Nine Men's, Lasker) are draws, and only Morabaraba — which adds
   diagonal mills — is a first-player win.
 
-  ORIGINALITY — no prior published solution was found. Six men's morris is absent
-  from the academic morris-solving literature (Gasser 1996; Gévay & Danner 2014,
-  which solved its larger siblings) and from the main German Mühle community's
-  published work (muehlespieler.de, which teaches the small variants but publishes
-  no solved values). A private prior solve cannot be excluded, so this is claimed
-  as the first *published* solution, not provably the first ever.
+  PRIOR ART — six men's morris does not appear in the morris-solving
+  literature checked (Gasser 1996; Gévay & Danner 2014, which solved its larger
+  siblings) or in the published work of the main German Mühle community
+  (muehlespieler.de, which teaches the small variants but publishes no solved
+  values). Those sources are not an exhaustive search and a private earlier
+  solve cannot be excluded, so no priority is claimed.
 
   VALIDATION is internal: (1) two independent implementations — bitmask and a
   cell-array version with a programmatically-derived board — agree exactly on the

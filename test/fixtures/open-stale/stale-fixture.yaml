@@ -1,0 +1,25 @@
+# Planted failure for test/open-check.test.ts. This entry is valid in every
+# field except its age: last_checked is 120 days before the tests' fixed
+# today (2026-10-17), past the 90-day limit. The check must reject it; the
+# test fails if the check passes it. Not real data.
+id: stale-fixture
+name: Stale fixture (planted)
+genre: connection
+status: partially-solved
+solved_up_to: "Fixture board 1"
+next_target: "Fixture board 2"
+barrier:
+  - compute
+barrier_detail: "Fixture only."
+evidence: refereed
+sources:
+  - title: "Fixture source"
+    url: "https://example.org/fixture"
+    date: "2026"
+history:
+  - date: "2026"
+    size_or_opening: "fixture board 1"
+    result: "fixture result"
+    credit: "Fixture"
+    url: "https://example.org/fixture"
+last_checked: "2026-06-19"

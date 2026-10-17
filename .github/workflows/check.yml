@@ -1,0 +1,27 @@
+name: check
+
+# Validates the data, fails when any open entry goes more than 90 days without
+# a re-check, confirms the README's generated regions match the data, and runs
+# the tests. The weekly run catches an entry going stale with no push.
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm test

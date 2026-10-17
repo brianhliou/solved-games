@@ -1,0 +1,13 @@
+id: malom
+name: Malom
+kind: solver
+games: [nine-mens-morris, lasker-morris, morabaraba]
+author: "Gábor E. Gévay & Gábor Danner"
+license: "GPL-3.0 (stated in the repository's \"License (gpl-3.0).txt\")"
+strength:
+  kind: perfect-play
+  claim: "Plays nine men's morris, Lasker morris and Morabaraba perfectly from the authors' strong-solution databases, and can compute those databases."
+  url: "https://arxiv.org/abs/1408.0032"
+url: "https://github.com/ggevay/malom"
+last_checked: "2026-10-17"
+notes: "Windows only (Visual Studio solution). The released build is on the authors' page, https://www.inf.u-szeged.hu/~danner/mills/."

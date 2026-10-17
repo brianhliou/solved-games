@@ -21,9 +21,23 @@ complexity:
   state_space: 2173243128   # side-6 count-legal index; side-5 has 3,337,584 reachable positions. See notes.
   game_tree: null
 year: 2026
-solved_by: "Brian Liou (open-source game-solver engine, 2026), sides 1-6. First documented and verified strong solution; see prior-art note."
+solved_by: "Brian Liou (open-source game-solver engine, 2026), sides 1-6; see the prior-art note."
 cite: "Liou 2026"
 verified: true
+evidence: self-archived   # the maintainer's own result, not yet replayed by anyone else
+history:
+  - date: "1975"
+    size_or_opening: "all sizes"
+    result: "first player wins (strategy stealing, names no moves)"
+    strength: ultra-weak
+    credit: "Craige Schensted & Charles Titus"
+    url: "https://en.wikipedia.org/wiki/Y_(game)"
+  - date: "2026-06-19"
+    size_or_opening: "sides 1-6"
+    result: "first player wins at every size; no position is a draw"
+    strength: strong
+    credit: "Brian Liou"
+    url: "https://github.com/brianhliou/game-solver"
 sources:
   - title: "Brian Liou — strong solution of Y for sides 1-6 via the game-solver engine (2026): a full retrograde solve of every position. The first player wins at every size and no position is a draw. Side-6 has 2,173,243,128 count-legal positions (wins 1,352,692,412 / losses 820,550,716). Validated by three independent solve paths (reachable, dense-index, and slice-by-slice) that agree on every value, plus the no-draw invariant. Reproducible via `cargo run --release --bin y_solve6 6`."
     url: "https://github.com/brianhliou/game-solver"
@@ -46,7 +60,7 @@ notes: >
   Hex-style strategy-stealing argument (Schensted & Titus 1975, after Nash). This
   is non-constructive — it names no moves.
 
-  STRONG result, sides 1-6 (this project): we computed the game-theoretic value of
+  STRONG result, sides 1-6 (game-solver engine): it computed the game-theoretic value of
   every position by retrograde analysis. The first player wins from the start at
   every size, and no position is a draw — both asserted as correctness invariants
   (a wrong board model would surface a draw). Sizes and starting value:
@@ -61,13 +75,13 @@ notes: >
   not directly comparable; wins + losses equal the total exactly at every size,
   which is the no-draw invariant.
 
-  ORIGINALITY / prior art: the only prior solver located is GamesCrafters'
+  PRIOR ART: the earlier solver located is GamesCrafters'
   GamesmanClassic `mgameofy.c` (A. Esteban, 2023), which has Y code for dims 4-7
   but publishes no game values, has no accompanying paper, and declares draws
   possible (`kTieIsPossible = TRUE`) for a game that cannot draw; an adversarial
-  check could confirm only its dim-5 as credibly computed. This entry is therefore
-  the first documented, verified, draw-correct strong solution of Y, claimed for
-  the bounded sizes solved (1-6), with full credit to the prior GamesCrafters work.
+  check could confirm only its dim-5 as credibly computed. The search was not
+  exhaustive and no priority is claimed; this entry records the sides solved
+  (1-6), with full credit to the earlier GamesCrafters work.
 
   Side-7 (28 cells) has a count-legal index beyond 2^32 and is the natural next
   target via external-memory (disk-paged) slices.

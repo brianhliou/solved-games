@@ -1,0 +1,17 @@
+id: mohex
+name: MoHex 2.0 and Wolve (Benzene)
+kind: engine
+games: [hex-7x7, hex-9x9, hex-10x10]
+author: "University of Alberta Hex group (Benzene); this CMake repository maintained by cgao3"
+license: "LGPL-3.0"
+strength:
+  kind: competition
+  claim: "Hayward's Hex page: \"Versions of MoHex have won gold respectively at every Computer Games Olympiad since 2009\" (gold listed for 2009, 2010, 2011, 2013 and 2015)."
+  url: "https://webdocs.cs.ualberta.ca/~hayward/hex/"
+url: "https://github.com/cgao3/benzene-vanilla-cmake"
+last_checked: "2026-10-17"
+notes: >
+  This repository is a CMake port of Benzene with development to 2015, including
+  the parallel DFPN solver behind the 9×9 and 10×10 f5 results (Pawlewicz &
+  Hayward 2013). The Olympiad results are for 11×11 and 13×13 play, not the
+  solved board sizes.

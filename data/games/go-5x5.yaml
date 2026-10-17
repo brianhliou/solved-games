@@ -20,6 +20,20 @@ complexity:
 year: 2002
 solved_by: "Erik C. D. van der Werf (program MIGOS), with H. Jaap van den Herik and Jos W. H. M. Uiterwijk"
 verified: true
+evidence: refereed
+history:
+  - date: "2002"
+    size_or_opening: "5×5, Japanese rules, no komi"
+    result: "first player wins by 25 points (the whole board)"
+    strength: weak
+    credit: "Erik C. D. van der Werf, H. Jaap van den Herik & Jos W. H. M. Uiterwijk"
+    url: "https://journals.sagepub.com/doi/10.3233/ICG-2003-26205"
+  - date: "2024"
+    size_or_opening: "5×5, positional superko"
+    result: "first player wins the whole board"
+    strength: weak
+    credit: "Owen Randall, Martin Müller, Ting-Han Wei & Ryan Hayward"
+    url: "https://www.ijcai.org/proceedings/2024/774"
 sources:
   - title: "E. van der Werf, J. van den Herik, J. Uiterwijk — Solving Go on Small Boards, ICGA Journal 26(2):92-107, 2003 (the MIGOS primary paper)"
     url: "https://journals.sagepub.com/doi/10.3233/ICG-2003-26205"

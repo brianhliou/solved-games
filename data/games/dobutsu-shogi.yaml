@@ -58,7 +58,7 @@ notes: >
   other first move delays the loss to the full 78. The clausecker/dobutsu repo
   is an independent C tablebase reproducing perfect play and corroborates the
   result, but its README does not itself state the game-theoretic value, so it
-  counts as secondary corroboration. The repo's flagship worked example
-  independently rebuilt the full retrograde → tablebase → probe → explorer
-  pipeline and verified it against the clausecker reference (50,000 positions,
-  zero mismatches).
+  counts as secondary corroboration. brianhliou/dobutsu-shogi (by this list's
+  maintainer) rebuilt the retrograde → tablebase → probe → explorer pipeline
+  and checked it against the clausecker reference (50,000 positions, zero
+  mismatches).

@@ -1,0 +1,13 @@
+id: pons-connect4
+name: Connect 4 Game Solver
+kind: solver
+games: [connect-four]
+author: "Pascal Pons"
+license: "AGPL-3.0"
+strength:
+  kind: perfect-play
+  claim: "A solver for any Connect Four position; the companion tutorial, \"Solving Connect 4: how to build a perfect AI\", builds it step by step."
+  url: "http://blog.gamesolver.org/"
+url: "https://github.com/PascalPons/connect4"
+last_checked: "2026-10-17"
+notes: "A web front end runs at https://connect4.gamesolver.org/."

@@ -6,12 +6,17 @@ for the north star and scope.
 
 ## Layout
 
-- `README.md` — the rendered list (v0): solved games, tablebase formats,
-  retrograde-analysis lineage, probe APIs, and the dōbutsu-shōgi worked example.
+- `README.md` — a thin index: intro, counts per family, recent progress, links.
+- `games/`, `families/`, `pages/` — generated Markdown (one page per game, per
+  family, plus open problems and engines); `npm run build` writes them and
+  `npm run check` fails when they drift. Never hand-edit.
+- `guides/` — hand-written pages: tablebases, retrograde analysis, probe APIs,
+  the Dōbutsu shōgi walk-through.
 - `VISION.md` — north star, scope, non-goals, staging (v0 → v2).
 - `data/` — the structured records. One YAML file per game in `data/games/`;
-  schema in `data/schema.md`. The README table and the site generate from these
-  records (`npm run build`), so edit the data, not the rendered tables.
+  open problems in `data/open/`, engines in `data/engines/`; schema in
+  `data/schema.md`. The pages and the site generate from these records
+  (`npm run build`), so edit the data, not the rendered pages.
 - `engine/` — a generic retrograde-analysis solver (Rust) that strongly solves
   games through a `Game` trait. Each game is a plugin; the engine does the solve.
   Some registry entries (e.g. three men's morris) are solved and verified by it.

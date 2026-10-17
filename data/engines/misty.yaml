@@ -1,0 +1,14 @@
+id: misty
+name: Misty
+kind: engine
+games: []
+other_games: ["Fog-of-war chess (dark chess)"]
+author: "Brian Liou"
+license: "GPL-3.0"
+strength:
+  kind: none
+  claim: "No rating or match result published. The README says strength is gauged against humans on mistboard.com, and engine-vs-engine results only gate development."
+  url: "https://github.com/brianhliou/misty"
+url: "https://github.com/brianhliou/misty"
+last_checked: "2026-10-17"
+notes: "Maintained by this list's maintainer."

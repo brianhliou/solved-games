@@ -1,0 +1,32 @@
+id: tak-4x4
+name: Tak (4×4)
+genre: connection
+status: solved-smaller-board
+solved_up_to: "3×3: first player (White) forced win"
+next_target: "4×4"
+barrier:
+  - storage
+barrier_detail: >
+  Stacks make positions hard to hash and the 4×4 state space is not known.
+  Measure a sample before estimating the solve.
+cite: "Marrow 2025"
+evidence: preprint
+sources:
+  - title: "Joseph Marrow, \"The 3×3 Solution to the Game of Tak\", arXiv:2509.05844 (2025-09-06): 3×3 is a first-player forced win. The abstract names no larger board; the paper notes that much Tak analysis is unpublished, on forums."
+    url: "https://arxiv.org/abs/2509.05844"
+    date: "2025-09-06"
+    primary: true
+absence_search:
+  - date: "2026-10-17"
+    looked_for: "web searches \"Tak 4x4 solved\" and \"Tak 5x5 solved\""
+    found: "no solver or result for 4×4 or 5×5"
+history:
+  - date: "2025-09-06"
+    size_or_opening: "3×3"
+    result: "first player (White) forced win"
+    credit: "Joseph Marrow"
+    url: "https://arxiv.org/abs/2509.05844"
+last_checked: "2026-10-17"
+notes: >
+  The weakest of the open entries: its open status rests on searches that found
+  nothing, and Tak forums were not read. A correction is the most likely change.

@@ -1,0 +1,13 @@
+id: pentago
+name: pentago (Irving)
+kind: solver
+games: [pentago]
+author: "Geoffrey Irving"
+license: "BSD (stated in the README; variant not named)"
+strength:
+  kind: perfect-play
+  claim: "A strong solution: perfect play can be computed from any position, from a 3.7 TB database for 17 or fewer stones and by search from scratch above that."
+  url: "https://arxiv.org/abs/1404.0743"
+url: "https://github.com/girving/pentago"
+last_checked: "2026-10-17"
+notes: "The solution can be browsed at https://perfect-pentago.net."

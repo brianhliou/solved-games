@@ -1,0 +1,55 @@
+id: hex-10x10
+name: Hex (10×10, remaining openings)
+genre: connection
+status: partially-solved
+related_game: hex-9x9
+solved_up_to: "9×9 all openings (weak); 10×10 one opening, f5"
+next_target: "The current table of solved 10×10 opening cells from Hayward's group"
+barrier:
+  - compute
+barrier_detail: >
+  Forward depth-first proof-number search. The one published 10×10 opening (f5)
+  took 63 days; the hardest 9×9 opening took 111 days on a 24-core machine
+  (Pawlewicz and Hayward 2013). Each further cell is on the order of 100+
+  core-days.
+cite: "Pawlewicz & Hayward 2013"
+evidence: refereed
+unverified: >
+  Which 10×10 cells beyond f5 are solved. A Hayward talk (slides undated,
+  probably BIRS 2022) lists more cells with the goal of all 50, but its PDF could
+  not be read as text on 2026-10-17, so no cell beyond f5 is claimed here.
+sources:
+  - title: "Jakub Pawlewicz & Ryan B. Hayward, \"Scalable Parallel DFPN Search\", Computers and Games 2013 (LNCS 8427, 2014): all 9×9 openings and the first 10×10 opening (f5, 63 days)"
+    url: "https://webdocs.cs.ualberta.ca/~hayward/papers/pawlhayw.pdf"
+    date: "2013"
+    primary: true
+  - title: "Ryan B. Hayward, Hex open problems talk (slides, undated; probably BIRS 2022): further 10×10 cells, goal of all 50"
+    url: "https://webdocs.cs.ualberta.ca/~hayward/talks/hex.open.birs22.pdf"
+history:
+  - date: "2003"
+    size_or_opening: "7×7, all openings"
+    result: "first player wins"
+    strength: weak
+    credit: "Hayward, Björnsson, Johanson, Kan, Po & van Rijswijck"
+    url: "https://webdocs.cs.ualberta.ca/~hayward/papers/solving7x7hex.pdf"
+  - date: "2009"
+    size_or_opening: "8×8, all openings"
+    result: "first player wins"
+    strength: weak
+    credit: "Philip Henderson, Broderick Arneson & Ryan B. Hayward"
+    url: "https://webdocs.cs.ualberta.ca/~hayward/papers/solve8.pdf"
+  - date: "2013"
+    size_or_opening: "9×9, all openings"
+    result: "first player wins"
+    strength: weak
+    credit: "Jakub Pawlewicz & Ryan B. Hayward"
+    url: "https://webdocs.cs.ualberta.ca/~hayward/papers/pawlhayw.pdf"
+  - date: "2013"
+    size_or_opening: "10×10, opening f5"
+    result: "Black (first player) wins with f5; 63 days"
+    credit: "Jakub Pawlewicz & Ryan B. Hayward"
+    url: "https://webdocs.cs.ualberta.ca/~hayward/papers/pawlhayw.pdf"
+last_checked: "2026-10-17"
+notes: >
+  The 7×7 to 9×9 rows and the f5 row come from this repo's hex-9x9 record. Not
+  checked: whether any 10×10 result after 2013 has appeared in a paper.

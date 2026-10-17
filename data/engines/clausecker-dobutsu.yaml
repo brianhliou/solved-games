@@ -1,0 +1,12 @@
+id: clausecker-dobutsu
+name: dobutsu (Clausecker)
+kind: engine
+games: [dobutsu-shogi]
+author: "Robert Clausecker"
+license: "BSD-2-Clause (two-clause BSD text in the README; GitHub reports no SPDX match)"
+strength:
+  kind: perfect-play
+  claim: "\"It uses a comprehensive endgame table base to achieve perfect play from any position.\""
+  url: "https://github.com/clausecker/dobutsu"
+url: "https://github.com/clausecker/dobutsu"
+last_checked: "2026-10-17"

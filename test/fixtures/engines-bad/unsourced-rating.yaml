@@ -1,0 +1,14 @@
+# PLANTED FAILURE (test/engines-check.test.ts). An otherwise valid engine record
+# whose rating claim has no source URL. check-engines must reject it; the test
+# fails if the check passes it. Do not "fix" this file.
+id: unsourced-rating
+name: Unsourced Rating Fixture
+kind: engine
+games: [connect-four]
+author: "Test fixture"
+license: "CC0-1.0"
+strength:
+  kind: rating
+  claim: "Rated 3000 on a public ladder."
+url: "https://example.org/unsourced-rating"
+last_checked: "2026-10-17"

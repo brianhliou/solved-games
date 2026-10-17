@@ -1,0 +1,14 @@
+id: misty-banqi
+name: MistyBanqi
+kind: engine
+games: []
+other_games: ["Banqi (Chinese dark chess)"]
+author: "Brian Liou"
+license: "MIT"
+strength:
+  kind: self-reported
+  claim: "Tuned by paired-deal self-play bakeoffs. The README makes no state-of-the-art claim: it has not played CLAP_CDC, DarkKnight or other top programs, so there is no head-to-head result."
+  url: "https://github.com/brianhliou/misty-banqi#strength"
+url: "https://github.com/brianhliou/misty-banqi"
+last_checked: "2026-10-17"
+notes: "Maintained by this list's maintainer."

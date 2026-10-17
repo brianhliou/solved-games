@@ -1,0 +1,13 @@
+id: edax
+name: Edax
+kind: engine
+games: [othello]
+author: "Richard Delorme"
+license: "GPL-3.0"
+strength:
+  kind: third-party
+  claim: "Takizawa (2023), which used a modified Edax to solve the 36-empty-square positions in the weak solution of Othello, describes Edax as \"among the strongest software under typical match rules\"."
+  url: "https://arxiv.org/abs/2310.19387"
+url: "https://github.com/abulmo/edax-reversi"
+last_checked: "2026-10-17"
+notes: "The modified Edax used for the solution is linked from the paper's data-availability section."

@@ -22,6 +22,31 @@ complexity:
 year: 2013
 solved_by: "Jakub Pawlewicz & Ryan B. Hayward (building on Henderson, Arneson & Hayward for 8×8 and Yang, Liao & Pawlak / Hayward et al. for 7×7)"
 verified: true
+evidence: refereed
+history:
+  - date: "2003"
+    size_or_opening: "7×7, all openings"
+    result: "first player wins"
+    strength: weak
+    credit: "Hayward, Björnsson, Johanson, Kan, Po & van Rijswijck"
+    url: "https://webdocs.cs.ualberta.ca/~hayward/papers/solving7x7hex.pdf"
+  - date: "2009"
+    size_or_opening: "8×8, all openings"
+    result: "first player wins"
+    strength: weak
+    credit: "Philip Henderson, Broderick Arneson & Ryan B. Hayward"
+    url: "https://webdocs.cs.ualberta.ca/~hayward/papers/solve8.pdf"
+  - date: "2013"
+    size_or_opening: "9×9, all openings"
+    result: "first player wins"
+    strength: weak
+    credit: "Jakub Pawlewicz & Ryan B. Hayward"
+    url: "https://webdocs.cs.ualberta.ca/~hayward/papers/pawlhayw.pdf"
+  - date: "2013"
+    size_or_opening: "10×10, opening f5"
+    result: "Black (first player) wins with f5; open entry hex-10x10 tracks the rest"
+    credit: "Jakub Pawlewicz & Ryan B. Hayward"
+    url: "https://webdocs.cs.ualberta.ca/~hayward/papers/pawlhayw.pdf"
 sources:
   - title: "Jakub Pawlewicz & Ryan B. Hayward, \"Scalable Parallel DFPN Search\", Computers and Games (CG 2013), LNCS 8427, pp. 138-150, Springer 2014 (DOI 10.1007/978-3-319-09165-5_12) — solves all thirteen previously intractable 9×9 openings and the first 10×10 opening"
     url: "https://webdocs.cs.ualberta.ca/~hayward/papers/pawlhayw.pdf"

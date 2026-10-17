@@ -1,0 +1,40 @@
+id: y-side-7
+name: Y (side 7)
+genre: connection
+status: solved-smaller-board
+related_game: y
+solved_up_to: "Sides 1-6 strongly solved; first player wins at every size"
+next_target: "Side 7 (28 cells), slice by slice"
+barrier:
+  - memory
+  - storage
+barrier_detail: >
+  Side 6 is 2,173,243,128 count-legal positions, solved in about 13 minutes on
+  one core in about 1 GB of RAM. Side 7's count-legal index exceeds 2^32, so it
+  needs 64-bit indexing and a value table larger than RAM (disk-paged slices).
+  An estimate of about 10^13 positions dates from 2026-06-19 and was not
+  rechecked.
+cite: "Liou 2026"
+evidence: self-archived
+sources:
+  - title: "Brian Liou, strong solution of Y for sides 1-6, game-solver engine (2026); this repo's y record"
+    url: "https://github.com/brianhliou/game-solver"
+    date: "2026-06-19"
+    primary: true
+history:
+  - date: "1975"
+    size_or_opening: "all sizes"
+    result: "first player wins (strategy stealing, names no moves)"
+    strength: ultra-weak
+    credit: "Craige Schensted & Charles Titus"
+    url: "https://en.wikipedia.org/wiki/Y_(game)"
+  - date: "2026-06-19"
+    size_or_opening: "sides 1-6"
+    result: "first player wins at every size; no position is a draw"
+    strength: strong
+    credit: "Brian Liou"
+    url: "https://github.com/brianhliou/game-solver"
+last_checked: "2026-10-17"
+notes: >
+  This is the maintainer's own result, available only from the game-solver
+  repository, so it carries the self-archived mark until someone replays it.

@@ -1,0 +1,57 @@
+# Dated progress log: new results, corrections and re-checks, with credit.
+# The README's "Recent progress" section shows the newest 10 lines
+# (`npm run build`). Every merged change to a result adds a line here; a
+# correction credits the person who sent it.
+#
+# Fields: date (YYYY, YYYY-MM or YYYY-MM-DD), id (a data/games or data/open
+# record), what, credit, url, labels (optional: solved, partial, correction,
+# unverified, self-archived, preprint, thesis).
+
+- date: "2026-06-19"
+  id: y
+  what: "Y strongly solved for sides 1-6; the first player wins at every size and no position is a draw"
+  credit: "Brian Liou"
+  url: "https://github.com/brianhliou/game-solver"
+  labels: [solved, self-archived]
+
+- date: "2026-06-18"
+  id: six-mens-morris
+  what: "Six men's morris strongly solved: a draw over 42,372,745 reachable positions (no flying)"
+  credit: "Brian Liou"
+  url: "https://github.com/brianhliou/game-solver"
+  labels: [solved, self-archived]
+
+- date: "2025-11-10"
+  id: konane
+  what: "Kōnane weakly solved on all boards up to 7×7 and strongly up to 6×6; 8×7 and 8×8 stopped at a 21-day limit"
+  credit: "Benedikt Siefke"
+  url: "https://doc.neuro.tu-berlin.de/bachelor/2026-02-23-BA-BenediktSiefke.pdf"
+  labels: [partial, thesis]
+
+- date: "2025-09-06"
+  id: tak-4x4
+  what: "3×3 Tak is a first-player forced win"
+  credit: "Joseph Marrow"
+  url: "https://arxiv.org/abs/2509.05844"
+  labels: [solved, preprint]
+
+- date: "2024"
+  id: go-6x6
+  what: "5×5 Go solved under positional superko: the first player wins the whole board"
+  credit: "Owen Randall, Martin Müller, Ting-Han Wei & Ryan Hayward"
+  url: "https://www.ijcai.org/proceedings/2024/774"
+  labels: [solved]
+
+- date: "2021"
+  id: konane
+  what: "Narrow-board Kōnane analysed; the Triple and Quadruple cases left open"
+  credit: "Jos W. H. M. Uiterwijk"
+  url: "https://journals.sagepub.com/doi/pdf/10.3233/ICG-220198"
+  labels: [partial]
+
+- date: "2013"
+  id: hex-10x10
+  what: "All 9×9 Hex openings solved, and the first 10×10 opening (f5, 63 days)"
+  credit: "Jakub Pawlewicz & Ryan B. Hayward"
+  url: "https://webdocs.cs.ualberta.ca/~hayward/papers/pawlhayw.pdf"
+  labels: [solved, partial]

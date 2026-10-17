@@ -1,0 +1,46 @@
+id: go-6x6
+name: Go (6×6)
+genre: go
+status: solved-smaller-board
+related_game: go-5x5
+solved_up_to: "5×5 (weak): first player wins the whole board under Japanese rules (2002) and under positional superko (2024); rectangular boards up to 5×6"
+next_target: "6×6 under positional superko"
+barrier:
+  - compute
+  - algorithmic
+barrier_detail: >
+  Square boards above 5×5 are unsolved. Superko cycles make the search history
+  dependent (the graph-history interaction problem), and the state space grows
+  far past the 5×5 solve.
+cite: "Randall et al. 2024"
+evidence: refereed
+sources:
+  - title: "Owen Randall, Martin Müller, Ting-Han Wei & Ryan Hayward, Expected Work Search, IJCAI 2024: empty 5×5 Go solved under positional superko"
+    url: "https://www.ijcai.org/proceedings/2024/774"
+    date: "2024"
+    primary: true
+  - title: "Martin Müller, research page (undated): states 6×6 Go as a goal"
+    url: "https://webdocs.cs.ualberta.ca/~mmueller/research.html"
+absence_search:
+  - date: "2026-10-17"
+    looked_for: "a 2025 or 2026 solution of 6×6 Go"
+    found: "none"
+history:
+  - date: "2002"
+    size_or_opening: "5×5, Japanese rules, no komi"
+    result: "first player wins by 25 points (the whole board)"
+    strength: weak
+    credit: "Erik C. D. van der Werf, H. Jaap van den Herik & Jos W. H. M. Uiterwijk"
+    url: "https://journals.sagepub.com/doi/10.3233/ICG-2003-26205"
+  - date: "2024"
+    size_or_opening: "5×5, positional superko"
+    result: "first player wins the whole board"
+    strength: weak
+    credit: "Owen Randall, Martin Müller, Ting-Han Wei & Ryan Hayward"
+    url: "https://www.ijcai.org/proceedings/2024/774"
+last_checked: "2026-10-17"
+notes: >
+  The 2002 row comes from this repo's go-5x5 record. That record also names van
+  der Werf & Winands, "Solving Go for Rectangular Boards" (ICGA Journal 32(2),
+  2009, boards up to 5×6) without a link; it joins the history once a link to
+  the paper is added.

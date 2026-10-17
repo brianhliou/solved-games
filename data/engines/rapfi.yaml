@@ -1,0 +1,12 @@
+id: rapfi
+name: Rapfi
+kind: engine
+games: [gomoku-freestyle, renju]
+author: "Haobin Duan and contributors (AUTHORS file)"
+license: "GPL-3.0"
+strength:
+  kind: competition
+  claim: "Won the freestyle 15×15, freestyle 20×20 and renju leagues at Gomocup 2025."
+  url: "https://gomocup.org/results/gomocup-result-2025/"
+url: "https://github.com/dhbloo/rapfi"
+last_checked: "2026-10-17"

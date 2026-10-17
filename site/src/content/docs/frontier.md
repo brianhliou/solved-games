@@ -35,7 +35,7 @@ priority:
 
 - **Y** — the standout; no published *constructive* solution at any board size, and a native fit for retrograde. (Active, above.)
 - **Kōnane, narrow boards** — 3×*n* / 4×*n* / 5×*n* are named open problems in the literature, within in-core reach; a retrograde solve is methodologically distinct from the existing combinatorial-game-theory attack.
-- **Twelve men's morris** — the same 24-point board family as the [morris work](/families/morris/), the natural "next morris," pending a board-equivalence check against Morabaraba and the disk-paged slice extension.
+- **Twelve men's morris**: the dataset records it as an alias of Morabaraba, which Gévay and Danner solved (first-player win), so it is no longer on the radar.
 
 ## Out of reach — and why
 
