@@ -6,7 +6,7 @@ Most "awesome" game lists collect engines that play well. This one collects game
 
 The techniques travel further than the games suggest. A checkers proof, a 7-piece chess tablebase, and a complete solution to a tiny shogi variant all run on one idea: enumerate the positions, work backward from the terminal ones, and propagate the result. This list collects the solved games, the tablebase formats that store them, the retrograde-analysis literature behind them, and the public APIs and explorers you can query today. [Dōbutsu shōgi](#worked-example-dōbutsu-shōgi) is the worked example, solved end to end.
 
-**▶ [Play the perfect-play explorer](https://tablebase.brianhliou.com/)** — we strongly solved [six men's morris](data/games/six-mens-morris.yaml) (a draw over all 42,372,745 positions, a first published solution) with the [`game-solver`](https://github.com/brianhliou/game-solver) engine, and built an interactive tablebase explorer for the family.
+**▶ [Play the perfect-play explorer](https://tablebase.brianhliou.com/)** — we strongly solved [six men's morris](data/games/six-mens-morris.yaml) (a draw over all 42,372,745 positions; no earlier published solution found, searched 2026-10-17) with the [`game-solver`](https://github.com/brianhliou/game-solver) engine, and built an interactive tablebase explorer for the family.
 
 > **Status: not actively maintained.** The dataset is accurate as of its last commit and the build is reproducible, but nobody is tracking new results and pull requests may sit. It is a citable snapshot, not a live reference. The data is CC0 — fork it freely. See [VISION](VISION.md).
 
