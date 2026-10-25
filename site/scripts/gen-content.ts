@@ -1,55 +1,29 @@
-// Generate Starlight content from the structured data in ../data/games/*.yaml.
-// The data is the single source of truth — these Markdown pages are regenerated
-// on every build (predev/prebuild) and are gitignored, never hand-edited.
+// Generate the site's Starlight pages from the structured data in ../data/.
+// The pages are the repo's own generated pages (scripts/pages.ts, the same
+// renderer behind games/*.md, families/*.md and pages/*.md on GitHub), with
+// their repo-relative links rewritten to site routes. Regenerated on every
+// build (predev/prebuild), gitignored, never hand-edited.
 //
 //   node scripts/gen-content.ts
 //
-// Output:
-//   src/content/docs/games/<genre>/<id>.md   one page per game, grouped by genre
-//   src/generated/sidebar.json               one sidebar group per genre
+// Output (under src/content/docs/):
+//   games/<genre>/<id>.md     one page per game, and per open problem with no game page
+//   games/index.md            every family with its games (the README index)
+//   genres/<genre>.md         one page per family: solved, open, engines
+//   open-problems.md, engines.md
+//   ../generated/sidebar.json one sidebar group per family
 
-import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync } from "node:fs";
+import { writeFileSync, mkdirSync, rmSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { dirname, join } from "node:path";
-import { parse } from "yaml";
-import { labelMethod } from "../../scripts/pages.ts";
+import { dirname, join, posix } from "node:path";
+import { GENRE_ORDER, loadData, render } from "../../scripts/pages.ts";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
-const GAMES_DIR = join(ROOT, "data", "games");
-const OUT_DIR = join(ROOT, "site", "src", "content", "docs", "games");
+const DOCS = join(ROOT, "site", "src", "content", "docs");
 const SIDEBAR = join(ROOT, "site", "src", "generated", "sidebar.json");
-
-interface Source { title: string; url: string }
-// A resource is a bare URL, a {title, url}, or a list of either (same as scripts/pages.ts).
-type Links = string | Source | (string | Source)[];
-const RESOURCE_KINDS = [
-  ["tablebase", "Tablebases"],
-  ["code", "Code"],
-  ["explorer", "Explorers"],
-  ["writeup", "Write-ups"],
-] as const;
-interface Game {
-  id: string;
-  name: string;
-  also_known_as?: string[];
-  genre: string;
-  series?: string;
-  board?: string;
-  result: string;
-  result_detail?: string;
-  strength: string;
-  approximate?: boolean;
-  method?: string[];
-  complexity?: { state_space?: number | null; game_tree?: number | null };
-  year?: number | null;
-  solved_by?: string;
-  cite?: string;
-  distance_to_result?: string;
-  verified?: boolean;
-  sources?: Source[];
-  resources?: Partial<Record<(typeof RESOURCE_KINDS)[number][0], Links>>;
-  notes?: string;
-}
+const REPO = "https://github.com/brianhliou/solved-games/blob/main";
+const GENERATED_DIRS = ["games", "genres"];
+const GENERATED_FILES = ["open-problems.md", "engines.md"];
 
 const RESULT_LABEL: Record<string, string> = {
   "first-player-win": "First player wins",
@@ -57,21 +31,7 @@ const RESULT_LABEL: Record<string, string> = {
   draw: "Draw",
 };
 
-const GENRE_LABEL: Record<string, string> = {
-  alignment: "Alignment (n-in-a-row)",
-  cgt: "Combinatorial game theory",
-  morris: "Morris (mill games)",
-  capture: "Capture",
-  hunt: "Hunt",
-  connection: "Connection",
-  chess: "Chess-likes",
-  mancala: "Mancala",
-  shogi: "Shogi",
-  "imperfect-info": "Imperfect information",
-  go: "Go",
-};
-
-// Cross-links from a game's data card up to its family hub page (where one exists).
+// Cross-links from a game page up to its family hub (a hand-written page with an explorer).
 const FAMILY_BY_ID: Record<string, { label: string; href: string }> = {
   y: { label: "the Y connection family", href: "/families/y/" },
 };
@@ -79,139 +39,109 @@ const FAMILY_BY_GENRE: Record<string, { label: string; href: string }> = {
   morris: { label: "the morris (mill) family", href: "/families/morris/" },
 };
 
-const num = (n: number | null | undefined) =>
-  typeof n === "number" ? n.toLocaleString("en-US") : "—";
-const title = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+const data = loadData(ROOT);
+const { pages, regions } = render(data, new Date().toISOString().slice(0, 10));
 
-function page(g: Game): string {
+const genreOf = new Map<string, string>();
+for (const g of data.games) genreOf.set(g.id, g.genre);
+for (const e of data.open) if (!e.related_game) genreOf.set(e.id, e.genre);
+const genreTitle = (slug: string) =>
+  (GENRE_ORDER.find((g) => g.slug === slug)?.title ?? "Other").replace(/\*/g, "");
+
+/** Site route for a repo path, or undefined when the path has no page on the site. */
+function routeOf(repoPath: string): string | undefined {
+  if (repoPath === "README.md") return "/";
+  let m = repoPath.match(/^games\/([^/]+)\.md$/);
+  if (m) return genreOf.has(m[1]) ? `/games/${genreOf.get(m[1])}/${m[1]}/` : undefined;
+  m = repoPath.match(/^families\/([^/]+)\.md$/);
+  if (m) return `/genres/${m[1]}/`;
+  m = repoPath.match(/^pages\/([^/]+)\.md$/);
+  if (m) return `/${m[1]}/`;
+  return undefined;
+}
+
+/** Rewrite each relative Markdown link in a page written at `from` (a repo path). */
+function relink(md: string, from: string): string {
+  return md.replace(/\]\(([^)\s]+)\)/g, (whole, target: string) => {
+    if (/^(https?:|mailto:|#|\/)/.test(target)) return whole;
+    const [path, anchor] = target.split("#");
+    const repoPath = posix.normalize(posix.join(posix.dirname(from), path));
+    // The README's family index is the site's /games/ page.
+    if (repoPath === "README.md" && anchor === "families") return "](/games/)";
+    const route = routeOf(repoPath);
+    if (route) return `](${route}${anchor ? `#${anchor}` : ""})`;
+    return `](${REPO}/${repoPath}${anchor ? `#${anchor}` : ""})`;
+  });
+}
+
+/** A repo page as a Starlight page: front matter for the title, no generated-by comment or H1. */
+function sitePage(md: string, from: string, description: string, after?: string): string {
+  const lines = md.split("\n");
+  if (lines[0].startsWith("<!-- GENERATED")) lines.splice(0, 1);
+  while (lines[0] === "") lines.shift();
+  const title = lines.shift()!.replace(/^# /, "").replace(/\*/g, "");
+  while (lines[0] === "") lines.shift();
+  // The breadcrumb line stays first; anything extra goes right under it.
+  if (after) lines.splice(1, 0, "", after);
+  const front = ["---", `title: ${JSON.stringify(title)}`, `description: ${JSON.stringify(description)}`, "---", ""];
+  return front.join("\n") + relink(lines.join("\n"), from);
+}
+
+function gameDescription(id: string): string {
+  const g = data.games.find((x) => x.id === id);
+  if (!g) {
+    const e = data.open.find((x) => x.id === id)!;
+    return `${e.name}: an open problem. Solved so far: ${e.solved_up_to}`;
+  }
   const result = RESULT_LABEL[g.result] ?? g.result;
-  const desc = `${result} — ${g.strength}${g.approximate ? " (approximate)" : ""} solution.`;
-
-  const facts: [string, string][] = [
-    ["Genre", GENRE_LABEL[g.genre] ?? g.genre],
-    ["Result", result],
-    ["Strength", title(g.strength) + (g.approximate ? " (approximate)" : "")],
-    ["State space", num(g.complexity?.state_space)],
-    ["Year", g.year ? String(g.year) : "—"],
-    ["Verified", g.verified ? "yes" : "no"],
-  ];
-
-  const out: string[] = [];
-  out.push("---");
-  out.push(`title: ${JSON.stringify(g.name)}`);
-  out.push(`description: ${JSON.stringify(desc)}`);
-  out.push("---");
-  out.push("");
-
-  if (g.also_known_as?.length) {
-    out.push(`*Also known as: ${g.also_known_as.join(", ")}.*`);
-    out.push("");
-  }
-
-  if (g.result_detail) {
-    out.push(g.result_detail);
-    out.push("");
-  }
-
-  const fam = FAMILY_BY_ID[g.id] ?? FAMILY_BY_GENRE[g.genre];
-  if (fam) {
-    out.push(`Part of ${`[${fam.label}](${fam.href})`} — see the family page for the scaling table and a playable explorer.`);
-    out.push("");
-  }
-
-  out.push("## At a glance");
-  out.push("");
-  out.push("| | |");
-  out.push("|---|---|");
-  for (const [k, v] of facts) out.push(`| ${k} | ${v} |`);
-  out.push("");
-
-  if (g.board) {
-    out.push("## Board");
-    out.push("");
-    out.push(g.board.trim());
-    out.push("");
-  }
-
-  if (g.method?.length) {
-    out.push("## Method");
-    out.push("");
-    for (const m of g.method) out.push(`- ${labelMethod(m)}`);
-    out.push("");
-  }
-
-  if (g.solved_by) {
-    out.push("## Solved by");
-    out.push("");
-    out.push(g.solved_by.trim());
-    out.push("");
-  }
-
-  if (g.distance_to_result) {
-    out.push("## Length of perfect play");
-    out.push("");
-    out.push(g.distance_to_result.trim());
-    out.push("");
-  }
-
-  if (g.notes) {
-    out.push("## Notes");
-    out.push("");
-    out.push(g.notes.trim());
-    out.push("");
-  }
-
-  if (g.sources?.length) {
-    out.push("## Sources");
-    out.push("");
-    for (const s of g.sources) out.push(`- [${s.title}](${s.url})`);
-    out.push("");
-  }
-
-  const resParts: string[] = [];
-  for (const [kind, label] of RESOURCE_KINDS) {
-    const v = g.resources?.[kind];
-    if (!v) continue;
-    const items = Array.isArray(v) ? v : [v];
-    resParts.push(`**${label}**`, "");
-    for (const s of items) resParts.push(typeof s === "string" ? `- <${s}>` : `- [${s.title}](${s.url})`);
-    resParts.push("");
-  }
-  if (resParts.length) out.push("## Resources", "", ...resParts);
-
-  return out.join("\n");
+  return `${g.name}: ${result.toLowerCase()} — ${g.strength}${g.approximate ? ", approximate" : ""} solution${g.year ? ` (${g.year})` : ""}.`;
 }
 
 // --- generate ---
-rmSync(OUT_DIR, { recursive: true, force: true });
-mkdirSync(OUT_DIR, { recursive: true });
-mkdirSync(dirname(SIDEBAR), { recursive: true });
+for (const d of GENERATED_DIRS) rmSync(join(DOCS, d), { recursive: true, force: true });
+for (const f of GENERATED_FILES) rmSync(join(DOCS, f), { force: true });
 
-const files = readdirSync(GAMES_DIR).filter((f) => f.endsWith(".yaml"));
-const byGenre = new Map<string, Game[]>();
-
-for (const f of files) {
-  const g = parse(readFileSync(join(GAMES_DIR, f), "utf8")) as Game;
-  if (!byGenre.has(g.genre)) byGenre.set(g.genre, []);
-  byGenre.get(g.genre)!.push(g);
-}
+const write = (rel: string, body: string) => {
+  mkdirSync(dirname(join(DOCS, rel)), { recursive: true });
+  writeFileSync(join(DOCS, rel), body);
+};
 
 let count = 0;
-for (const [genre, games] of byGenre) {
-  mkdirSync(join(OUT_DIR, genre), { recursive: true });
-  for (const g of games) {
-    writeFileSync(join(OUT_DIR, genre, `${g.id}.md`), page(g));
+for (const [repoPath, md] of pages) {
+  const route = routeOf(repoPath);
+  if (!route) throw new Error(`no site route for generated page ${repoPath}`);
+  const rel = `${route.replace(/^\/|\/$/g, "")}.md`;
+  let description: string;
+  let after: string | undefined;
+  const game = repoPath.match(/^games\/([^/]+)\.md$/)?.[1];
+  if (game) {
+    description = gameDescription(game);
+    const fam = FAMILY_BY_ID[game] ?? FAMILY_BY_GENRE[genreOf.get(game)!];
+    if (fam) after = `Part of [${fam.label}](${fam.href}) — see the family page for the scaling table and a playable explorer.`;
     count++;
+  } else if (repoPath.startsWith("families/")) {
+    description = `${genreTitle(repoPath.slice(9, -3))}: which games are solved, which are open, and the engines that play them.`;
+  } else if (repoPath === "pages/open-problems.md") {
+    description = "Games and board sizes with a published partial result and a named next step.";
+  } else {
+    description = "Programs that play or solve the games listed here, each with the evidence for its strength.";
   }
+  write(rel, sitePage(md, repoPath, description, after));
 }
 
-// Sidebar: one group per genre (most-populated first), each autogenerated.
-const sidebar = [...byGenre.entries()]
-  .sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]))
-  .map(([genre, games]) => ({
-    label: `${GENRE_LABEL[genre] ?? title(genre)} (${games.length})`,
-    items: [{ autogenerate: { directory: `games/${genre}` } }],
-  }));
+const index = regions.get("index")!;
+write(
+  "games/index.md",
+  ["---", 'title: "All games"', 'description: "Every solved game and open problem, by family."', "---", "", relink(index.trim(), "README.md"), ""].join("\n"),
+);
+
+// Sidebar: one group per family in the repo's order, its overview first.
+const sidebar = GENRE_ORDER.filter((g) => [...genreOf.values()].includes(g.slug)).map(({ slug }) => ({
+  label: `${genreTitle(slug)} (${[...genreOf.values()].filter((x) => x === slug).length})`,
+  collapsed: true,
+  items: [{ label: "Overview", link: `/genres/${slug}/` }, { autogenerate: { directory: `games/${slug}` } }],
+}));
+mkdirSync(dirname(SIDEBAR), { recursive: true });
 writeFileSync(SIDEBAR, JSON.stringify(sidebar, null, 2));
 
-console.log(`[gen-content] ${count} games across ${byGenre.size} genres → ${OUT_DIR}`);
+console.log(`[gen-content] ${count} game pages, ${pages.size - count} other pages → ${DOCS}`);

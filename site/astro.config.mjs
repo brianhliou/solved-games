@@ -36,7 +36,9 @@ export default defineConfig({
 					label: 'Overview',
 					items: [
 						{ label: 'Home', link: '/' },
-						{ label: 'Open frontier', link: '/frontier/' },
+						{ label: 'All games', link: '/games/' },
+							{ label: 'Open problems', link: '/open-problems/' },
+							{ label: 'Engines', link: '/engines/' },
 					],
 				},
 				{

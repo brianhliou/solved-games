@@ -2,8 +2,11 @@
 dist/
 # generated types
 .astro/
-# pages generated from data/games/*.yaml by scripts/gen-content.ts
+# pages generated from ../data by scripts/gen-content.ts
 src/content/docs/games/
+src/content/docs/genres/
+src/content/docs/open-problems.md
+src/content/docs/engines.md
 src/generated/
 # explorer build copied in from ../explorer/dist (regenerated at deploy)
 public/explorer/

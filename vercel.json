@@ -2,5 +2,6 @@
   "installCommand": "npm ci && npm --prefix site ci",
   "buildCommand": "npm --prefix site run build",
   "outputDirectory": "site/dist",
-  "framework": null
+  "framework": null,
+  "redirects": [{ "source": "/frontier/", "destination": "/open-problems/", "permanent": true }]
 }
