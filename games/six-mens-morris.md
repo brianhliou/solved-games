@@ -44,7 +44,33 @@ _Superseded rows stay in the table._
 
 ## Notes
 
-Six men's morris is played on the two-ring (16-point) board — the nine men's morris board with its outer square removed — with 6 men per side and no diagonals. Standard capture rules: forming a mill (three in a line) removes one opponent man (one not itself in a mill, unless all are); a player loses when reduced below 3 men or left with no legal move. This solve uses the standard ruleset with NO flying (a man reduced to 3 is not granted free movement). Small rule choices can change perfect play (cf. Gasser's rule-variations work on nine men's morris), so the result is stated for this ruleset.
-RESULT — DRAW, strongly solved. The game-solver engine computed the game-theoretic value of every one of the 42,372,745 reachable positions by retrograde analysis; the initial position is a draw. This fits the morris family: the diagonal-free morrises (Nine Men's, Lasker) are draws, and only Morabaraba — which adds diagonal mills — is a first-player win.
-PRIOR ART — six men's morris does not appear in the morris-solving literature checked (Gasser 1996; Gévay & Danner 2014, which solved its larger siblings) or in the published work of the main German Mühle community (muehlespieler.de, which teaches the small variants but publishes no solved values). Those sources are not an exhaustive search and a private earlier solve cannot be excluded, so no priority is claimed.
-VALIDATION is internal: (1) two independent implementations — bitmask and a cell-array version with a programmatically-derived board — agree exactly on the reachable-state count, the win/loss/draw split, and the draw; (2) the capture rules pass unit tests (mill detection, capture targeting incl. the all-in-mills exception, slide-captures, attrition loss); (3) five men's morris (same board, 5 men) solves to 17,844,721 positions and is also a draw, a consistent data point. There is no smaller solved morris to cross-check against; the external gold-standard would be reproducing nine men's morris's known draw (~10^10 states), which is deferred as a separate, larger build.
+Six men's morris is played on the two-ring, 16-point board, which is the nine
+men's morris board without its outer square, with 6 men a side and no
+diagonals. Forming a mill (three in a line) removes one opposing man, one not
+itself in a mill unless all are. A player loses when reduced below 3 men or
+left with no legal move. This solve uses the standard rules with no flying: a
+player reduced to 3 men gets no free movement. Small rule choices can change
+perfect play (Gasser's work on rule variations in nine men's morris shows
+this), so the result holds for this rule set.
+
+The game-solver engine computed the value of all 42,372,745 reachable
+positions by retrograde analysis, and the initial position is a draw. That
+matches the rest of the family: the morrises without diagonals (Nine Men's,
+Lasker) are draws, and Morabaraba, which adds diagonal mills, is a
+first-player win.
+
+Six men's morris does not appear in the morris-solving literature checked
+(Gasser 1996; Gévay and Danner 2014, who solved its larger siblings) or in the
+work of the main German Mühle community, muehlespieler.de, which teaches the
+small variants but publishes no solved values. That is not an exhaustive
+search, and a private earlier solve cannot be ruled out, so no priority is
+claimed.
+
+The checks so far are internal. Two independent implementations, one using
+bitmasks and one using a cell array with a board derived programmatically,
+agree exactly on the reachable-position count, the win/loss/draw split and the
+draw. The capture rules pass unit tests covering mill detection, capture
+targeting (including the all-in-mills exception), slide captures and loss by
+attrition. Five men's morris, on the same board with 5 men, solves to
+17,844,721 positions and is also a draw. There is no smaller solved morris to
+check against.

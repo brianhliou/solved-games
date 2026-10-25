@@ -18,6 +18,8 @@ method:
   - retrograde-analysis
   - alpha-beta+db
 distance_to_result: "Watkins' proof has a maximal upper-level (best-first) tree depth of 94 ply, with endgame tablebases adding further plies; the hardest defenses originally ran very deep (e.g. 1.e3 e6 ~197 moves). A later refinement (tolius, 2021) shows White wins in under 80 moves with the 50-move rule applied (e.g. 1.e3 c5 mates in #79)."
+# Watkins gives no single citable state-space or game-tree complexity figure for the full game, so
+# both complexity fields are left null.
 complexity:
   state_space: null
   game_tree: null
@@ -41,38 +43,40 @@ resources:
   tablebase: "https://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS/"
   code: "https://github.com/NotAnOctopus/suicide-chess"
   writeup: "https://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS/LCsolved.pdf"
-notes: >
-  Losing chess (antichess) on the standard 8x8 board with the orthodox starting
-  position: captures are compulsory (the side to move chooses among multiple
-  captures), the king is a non-royal piece (no check/checkmate, promotion to
-  king is allowed), and castling is illegal. A player wins by losing all their
-  pieces or being stalemated (under the stalemate ruleset). Weakly solved by
-  Mark Watkins in October 2016 (announced Oct 10, 2016; peer-reviewed in ICGA
-  Journal 39/2, 2017): the first move 1.e3 is a forced win for White against any
-  Black reply. This is a WEAK solution — a winning strategy is proven from the
-  start position (a proof tree for 1.e3), NOT a full tablebase giving the value
-  of every reachable position, so it is not "strong." Twelve of Black's 20
-  replies had been known lost for ~two decades; Ben Nye solved a 13th in 2003;
-  Watkins (with contributions from Klaas Steenhuis, Catalin Francu/Nilatac,
-  Stan Goldovski, Fabrice Liardet and others) closed the remaining lines, the
-  last being 1.e3 b6 (Liardet Defense). Method: proof-number search (best-first
-  pn-search as an evaluation function feeding an upper-level proof tree)
-  combined with custom Losing Chess endgame tablebases (4-, 5-, and 6-unit,
-  distance-to-conversion metric, built via retrograde analysis). The final proof
-  tree (graph) has ~863,301,867 nodes (~900 million positions) with ~66 million
-  transposition pointers; Watkins estimates roughly 10^16 total positions
-  searched over the project (~100x the checkers effort). Result holds under
-  "joint FICS/International Rules" for stalemate (a win under joint rules is a
-  win under both FICS and International stalemate conventions); does NOT cover
-  the vinciperdi ruleset (stalemate-with-pieces is a draw there). Watkins gives
-  no single citable state-space or game-tree complexity figure for the full game
-  (he notes orthodox-chess estimates of ~10^40 legal positions and ~10^83
-  game-tree complexity as a loose comparison, adjusted up/down by the
-  forced-capture rule and non-royal kings), so both complexity fields are left
-  null. Distance: original proof had a maximal upper-level tree depth of 94 ply
-  (tablebases add more), with some defenses running very deep; a 2021 refinement
-  by "tolius" (lichess) reduced the longest forced win to under 80 moves with
-  the 50-move rule applied (1.e3 c5 mates in #79). Independent confirmation:
-  Klaas Steenhuis and Lajeunesse transferred/verified proofs to FICS rules with
-  an independent searcher, and the later tolius refinement re-derived and
-  improved the result with different tooling.
+notes: |
+  Losing chess (antichess) uses the standard 8x8 board and starting position.
+  Captures are compulsory, with the side to move choosing among several, the
+  king is an ordinary piece (no check or checkmate, and pawns may promote to
+  king), and there is no castling. A player wins by losing all their pieces or
+  by being stalemated, under the stalemate rules.
+
+  Mark Watkins solved it weakly in October 2016 (announced Oct 10, 2016;
+  peer-reviewed in ICGA Journal 39/2, 2017): 1.e3 wins for White against any
+  reply. The proof is a proof tree for 1.e3, with no tablebase giving the value
+  of every reachable position. Twelve of Black's 20 replies had been known to
+  lose for about two decades, and Ben Nye solved a 13th in 2003. Watkins, with
+  contributions from Klaas Steenhuis, Catalin Francu (Nilatac), Stan Goldovski,
+  Fabrice Liardet and others, closed the remaining lines; the last was 1.e3 b6,
+  the Liardet Defense.
+
+  The method combines proof-number search (best-first pn-search as an evaluation
+  function feeding an upper-level proof tree) with custom losing-chess endgame
+  tablebases (4-, 5- and 6-unit, distance-to-conversion, built by retrograde
+  analysis). The final proof graph has about 863,301,867 nodes (about 900
+  million positions) and about 66 million transposition pointers. Watkins
+  estimates roughly 10^16 positions searched over the project, about 100x the
+  checkers effort. He gives no complexity figure for the game itself, citing
+  orthodox chess's ~10^40 legal positions and ~10^83 game-tree complexity as a
+  loose comparison, adjusted up or down for forced captures and non-royal kings.
+
+  The result holds under the "joint FICS/International Rules" for stalemate,
+  where a win under the joint rules is a win under both the FICS and
+  International conventions. It does not cover the vinciperdi rules, where a
+  stalemate with pieces left is a draw. The proof's upper-level tree reaches 94
+  ply, with the tablebases adding more. In 2021 "tolius" (lichess) cut the
+  longest forced win to under 80 moves with the 50-move rule applied (1.e3 c5
+  mates in #79).
+
+  Klaas Steenhuis and Lajeunesse carried the proofs over to FICS rules and
+  verified them with an independent searcher, and the tolius refinement
+  re-derived and improved the result with different tooling.

@@ -44,6 +44,27 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Asymmetric ("unequal armies") chess variant of Indian origin. Black commands the full orthodox chess army (the "sepoys"); White has a single royal piece, the maharajah, which moves as a queen OR a knight on each turn (equivalent to the fairy "amazon"). Each side wins by checkmating the opponent's royal piece. The game traces to a 12th-century antecedent (described in the Mānasollāsa), was revived in the 1871 Indian games encyclopedia Kridakaushalya, and was first described to Western readers by Edward Falkener in 1892.
-This is a WEAK solution, and it is human/strategy-derived, NOT a computer tablebase. The "solution" is a memorizable winning algorithm for the Sepoys proven from the start position, not a value assigned to every reachable position; calling it "strong" would be wrong. Wikipedia's "Solved game" article lists it under games with a weak solution and characterizes that solution as "an easily memorable series of moves that guarantees victory to the 'sepoys' player." Method is best classified as knowledge-based / mathematical (strategic) proof rather than retrograde analysis or proof-number search — no exhaustive solver, tablebase, or search-tree artifact establishes this result. The crux of the proof: the maharajah is royal, so it can never capture a defended Black piece (doing so would expose it to recapture, which is illegal for a royal man). The Sepoys therefore keep every piece mutually protected while steadily removing the maharajah's flight squares, then deliver mate; a widely circulated forced line reaches mate by Black's move 24, and analyses note a win in at most ~25 moves largely regardless of White's play.
-Attribution caveat: there is no single peer-reviewed "solving" paper and no named computer solver. The forced Sepoys win is folklore of the variant, documented in Falkener (1892), Bodlaender's Chess Variant Pages writeup, and Pritchard's Encyclopedia of Chess Variants; some web sources additionally credit a "William E. Rudge" with an early winning-strategy outline, but this attribution could not be confirmed in a primary source and should be treated as unverified. Ruleset note: a common rendering makes Black's pawns "weak" pawns that cannot promote (so the Sepoys cannot trivially make a second queen); the forced-win result is reported for the 8x8 board. Complexity figures (state-space, game-tree) are not meaningfully published for this variant and are left null.
+Maharajah and the Sepoys is an unequal-armies chess variant of Indian origin.
+Black has the full orthodox army, the sepoys; White has a single royal piece,
+the maharajah, which moves as a queen or a knight on each turn (the fairy
+"amazon"). Each side wins by checkmating the other's royal piece. The game
+traces to a 12th-century antecedent described in the Mānasollāsa, was revived
+in the 1871 Indian games encyclopedia Kridakaushalya, and was first described
+to Western readers by Edward Falkener in 1892.
+
+The solution is weak and comes from human strategy, with no computer search or
+tablebase: a winning method for the sepoys, easy to memorize, proved from the
+start position. It works because the maharajah is royal and so can never
+capture a defended Black piece, since the recapture would be illegal for a
+royal man. The sepoys keep every piece protected while they take away the
+maharajah's flight squares, then mate. A widely circulated forced line mates
+by Black's move 24, and analyses put the win at no more than about 25 moves,
+largely regardless of White's play.
+
+There is no single peer-reviewed solving paper and no named computer solver.
+The forced win is folklore of the variant, documented in Falkener (1892), Hans
+Bodlaender's Chess Variant Pages and D. B. Pritchard's Encyclopedia of Chess
+Variants. Some web sources also credit a "William E. Rudge" with an early
+outline of the winning strategy, but no primary source confirms it. A common
+rendering makes Black's pawns "weak" pawns that cannot promote, so the sepoys
+cannot simply make a second queen; the result is reported for the 8x8 board.

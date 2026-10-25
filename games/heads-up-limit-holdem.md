@@ -48,19 +48,53 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Heads-up (two-player) limit Texas hold'em: fixed bet sizes and a fixed maximum number of raises per betting round, with the dealer/button alternating. It is the smallest variant of poker played competitively by humans. Solved in January 2015 by the University of Alberta Computer Poker Research Group; the resulting program is called Cepheus (cepheus.cs.ualberta.ca).
-IMPERFECT-INFORMATION CAVEAT ON "strength". This is an "essentially weakly solved" result, an epsilon-Nash equilibrium, NOT an exact solution. The perfect-information strong/weak/ultra-weak ladder does not map cleanly: Allis's "strongly solved" is not even well defined for imperfect-information games because the game-theoretic value of positions beyond the initial one is not unique, and values are real-valued (expected mbb/g) rather than discrete win/loss/draw. The schema enum offers only ultra-weak | weak | strong; we record strength: weak because a near-optimal strategy for the initial position was computed for both players, but it is approximate, not exact, and not a full tablebase. Exact game value is unknown; it is bounded, not pinned down.
-The "essentially solved" threshold: a strategy with exploitability < 1 mbb/g cannot be distinguished from an exact Nash equilibrium with 95% confidence even by a human playing 200 hands/hour, 12 hours/day, for 70 years against the maximally exploitive opponent. Cepheus's current CFR+ strategy reaches 0.986 mbb/g, just under that bar.
-RESULT SIGN. Because this is a zero-sum imperfect-information game with a real-valued in-expectation value (not a discrete outcome), "first-player-win" encodes the sign of the value: the dealer/button is the first player and has positive expectation, bounded to +87.7 to +89.7 mbb/g. The paper "formally proves the common wisdom that the dealer holds a substantial advantage."
-COMPLEXITY FIGURES (per the Science paper, easy to conflate): - 3.16 x 10^17 = number of distinct game states the game can reach (state_space stored
-  here; YAML holds the rounded 3.16e17). Larger than Connect Four, smaller than checkers.
-- 3.19 x 10^14 = decision points / information sets in the full game (states a player
-  cannot distinguish are merged; the paper also reports 3.19e14 information sets).
-- 1.38 x 10^13 = information sets after removing strategically identical suit
-  isomorphisms (the figure most often quoted as the "solved game size"), ~1000x larger
-  than any previously solved imperfect-information game. game_tree left null: no single
-  citable game-tree-size figure distinct from these is given.
+Heads-up limit Texas hold'em is two-player poker with fixed bet sizes, a fixed
+maximum number of raises per betting round, and the dealer button alternating.
+It is the smallest variant of poker played competitively by humans. The
+University of Alberta Computer Poker Research Group solved it in January 2015,
+and the resulting program is called Cepheus.
 
-ALGORITHM. CFR+ (a variant of Counterfactual Regret Minimization using regret-matching+, with non-negative regrets and exhaustive rather than sampled iterations) due to Oskari Tammelin. Recorded under method monte-carlo-cfr (the CFR / CFR+ family). Note CFR+ as used here does exhaustive iterations over the whole game tree rather than Monte-Carlo sampling; the "monte-carlo-cfr" method tag is the schema's bucket for the CFR family.
-COMPUTE. Run on a cluster of 200 nodes (24 x 2.1-GHz AMD cores each = 4800 cores), 1579 CFR+ iterations averaging 61 minutes each, ~68.5 days wall-clock, 900 core-years, 10.9 TB disk (strategy + regrets stored compressed on disk, ~13:1 on regrets and ~28:1 on strategy, reducing a 262 TB requirement to <11 TB regrets + 6 TB strategy).
-INDEPENDENT CONFIRMATION. Two independent peer-reviewed primary publications report the result with matching figures: (1) the Science 2015 paper, and (2) the IJCAI 2015 paper "Solving Heads-up Limit Texas Hold'em" (Tammelin/Burch/Johanson/Bowling), which gives the CFR+ soundness proof and engineering details and independently states 4800 CPUs, 68 days, 900 core-years, and 0.986 mbb/g exploitability. Both are from the same research group. Exploitability was computed with an accelerated best-response technique verified on small games and against independent exploitability calculations. The public Cepheus website (cepheus.cs.ualberta.ca) was unreachable (connection refused) at verification time; it is retained as a resource link but was not directly confirmed.
+The result is "essentially weakly solved," an epsilon-Nash equilibrium short
+of an exact solution. The strong/weak/ultra-weak ladder of perfect-information
+games does not map cleanly onto poker. Allis's "strongly solved" is not even
+well defined for imperfect-information games, because the value of positions
+beyond the initial one is not unique, and values are real-valued (expected
+mbb/g, milli-big-blinds per game) instead of a discrete win, loss or draw.
+Cepheus is a near-optimal strategy for both players from the start,
+approximate and with no full tablebase, and the exact game value is bounded
+but not pinned down.
+
+A strategy with exploitability below 1 mbb/g cannot be told apart from an
+exact Nash equilibrium with 95% confidence even by a human playing 200
+hands/hour, 12 hours/day, for 70 years against the maximally exploitive
+opponent. Cepheus's CFR+ strategy reaches 0.986 mbb/g, just under that bar.
+
+In this zero-sum game the first player's "win" means the sign of the expected
+value. The dealer, who acts first, has positive expectation, bounded at +87.7
+to +89.7 mbb/g. In the paper's words, this "formally proves the common wisdom
+that the dealer holds a substantial advantage."
+
+The Science paper gives three sizes that are easy to conflate. The game can
+reach 3.16 x 10^17 distinct states, more than Connect Four and fewer than
+checkers. It has 3.19 x 10^14 decision points (information sets), where states
+a player cannot distinguish are merged. Removing strategically identical suit
+isomorphisms leaves 1.38 x 10^13 information sets, the figure most often
+quoted as the size of the solved game, ~1000x larger than any previously
+solved imperfect-information game.
+
+The algorithm is CFR+, Oskari Tammelin's variant of Counterfactual Regret
+Minimization, which uses regret-matching+ with non-negative regrets and runs
+exhaustive iterations over the whole game tree instead of Monte-Carlo
+sampling. It ran on a cluster of 200 nodes (24 x 2.1-GHz AMD cores each, 4800
+cores): 1579 CFR+ iterations averaging 61 minutes each, ~68.5 days wall-clock
+and 900 core-years. Strategy and regrets were stored compressed on disk, ~13:1
+on regrets and ~28:1 on strategy, which cut a 262 TB requirement to <11 TB of
+regrets and 6 TB of strategy, 10.9 TB in all.
+
+Two peer-reviewed papers from the same research group report the result with
+matching figures: the Science 2015 paper and the IJCAI 2015 paper "Solving
+Heads-up Limit Texas Hold'em" (Tammelin, Burch, Johanson, Bowling). The second
+gives the CFR+ soundness proof and engineering details and states 4800 CPUs,
+68 days, 900 core-years and 0.986 mbb/g exploitability. Exploitability was
+computed with an accelerated best-response technique, verified on small games
+and against independent exploitability calculations.

@@ -46,4 +46,29 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Strongly solved. Morabaraba is the southern-African variant of Twelve Men's Morris: it is played on the Nine Men's Morris board with the four diagonal lines added (each corner of the three nested squares is connected through to the center cross), and each player places 12 stones ("cows") rather than 9. Standard rules include the "flying" rule — a player reduced to three stones may move a stone to any empty point rather than only along adjacent lines. Gábor E. Gévay (Eötvös Loránd University) and Gábor Danner (University of Szeged) strongly solved the game with a multi-valued retrograde analysis over a partitioned state space, computing a complete depth-to-win database. The game-theoretic value of the standard starting position is WIN IN 49 for the first player — a notable contrast with Nine Men's Morris (Gasser 1996, a draw) and Lasker Morris (Stahlhacke 2003, a draw), both of which the same paper also re-solved. They report that most starting positions where both players place an equal number of stones (including the standard position) are first-player wins; the extra diagonals make the game sharper and the first move decisive. The Morabaraba state space is roughly four times that of Nine Men's Morris (about 112 billion states in the standard solution database per their Table I; ~284 billion across the extended/alternative-stone-count solutions), and the computation took on the order of days on a single machine (~3.2 GHz, ~20 GB RAM). Because the solution is a full depth-to-win tablebase holding a value for every reachable position, it qualifies as a STRONG (not merely weak) solution; the authors additionally computed an ULTRA-strong solution that, by subclassifying drawn/won positions, improves practical results against a fallible opponent. The ultra-strong Morabaraba database is published for download (~41 GB compressed / ~324 GB uncompressed). This is the SAME paper that strongly re-confirms Lasker Morris (see lasker-morris.yaml). Independent primary confirmations of the Morabaraba result: one (the Gévay–Danner work; the Szeged "mills" website is the project's own tablebase distribution page, not an independent re-solution). The exact state-space figure is an approximate value reported in the paper, not an exact enumerated cardinality.
+Morabaraba is the southern-African form of Twelve Men's Morris. It is played
+on the Nine Men's Morris board with the four diagonal lines added, which
+connect each corner of the three nested squares through to the centre cross,
+and each player places 12 stones ("cows") where Nine Men's Morris has 9.
+Standard rules include flying: a player reduced to three stones may move a
+stone to any empty point, not only along the lines.
+
+Gábor E. Gévay and Gábor Danner solved the game strongly with a multi-valued
+retrograde analysis over a partitioned state space, producing a complete
+depth-to-win database with a value for every reachable position. The standard
+start is a win in 49 for the first player, in contrast to Nine Men's Morris
+(Gasser 1996) and Lasker Morris (Stahlhacke 2003), both draws, which the same
+paper also re-solves. They report that most starting positions in which both
+players place an equal number of stones, the standard one included, are
+first-player wins: the extra diagonals make the game sharper and the first
+move decisive.
+
+The state space is roughly four times that of Nine Men's Morris: about 112
+billion states in the standard solution database (their Table I), and about
+284 billion across the solutions for other stone counts. The computation took
+on the order of days on a single machine (about 3.2 GHz, 20 GB RAM).
+
+The authors also computed an ultra-strong solution, which subclassifies drawn
+and won positions to do better in practice against a fallible opponent. That
+database is available for download (about 41 GB compressed, 324 GB
+uncompressed).

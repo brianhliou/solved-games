@@ -56,4 +56,34 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Standard ruleset is the 7-column x 6-row board with the gravity-drop mechanic (a man falls to the lowest empty square in the chosen column); first player to connect four of their men horizontally, vertically, or diagonally wins; a full board with no line is a draw. The game was solved twice independently in October 1988: James D. Allen announced his solution on rec.games.programmer on Oct 1, 1988, and Victor Allis completed his M.Sc. thesis solution on Oct 16, 1988. Both used knowledge-based / rule-based methods rather than brute force, which was infeasible on 1988 hardware. Allis's program VICTOR is a Shannon C-type strategy engine built on nine provably-correct strategic rules (Claimeven, Baseinverse, Aftereven, Highinverse, etc.) combined with conspiracy-number search, search tables, and depth-first search; this yields a WEAK solution (it proves the value from the standard start and the principal lines, not a value for every reachable position). The game-theoretic value is a first-player win ONLY when White opens in the center (4th) column; opening in the two columns adjacent to center is a draw and opening in either outer column is a second-player win. Allis also proved more general results: Black can at least draw on every 7x(2n) board when White does not start in the middle column, and on any 6x(2n) board. The game was later STRONGLY solved by brute force: John Tromp built an 8-ply win/draw/loss database (Feb 1995, ~40,000 CPU-hours at CWI) and a full solver; modern alpha-beta solvers (e.g. Pascal Pons) and the complete enumeration by Edelkamp & Kissmann (2008) confirm the same result. The headline state-space figure 4,531,985,219,092 is the count of legal reachable positions for 0-42 pieces on the 7x6 board (Tromp / Edelkamp & Kissmann); Allis's thesis gives only a crude upper bound (3^42) and notes that building the database would require storing on the order of 1.6e13 positions at the peak (36-37 men), which is why brute force was deferred. game_tree complexity is commonly cited around 10^21 but no single authoritative exact figure is established, so it is left null.
+Connect Four is played on a board 7 columns wide and 6 rows high. A man
+dropped into a column falls to the lowest empty square, the first player to
+connect four men horizontally, vertically or diagonally wins, and a full board
+with no line is a draw. The first player wins only by opening in the centre
+(4th) column. Opening in either of the two columns next to the centre draws,
+and opening in either outer column loses.
+
+The game was solved twice, independently, in October 1988. James D. Allen
+announced his solution on rec.games.programmer on Oct 1, 1988, and Victor
+Allis completed his M.Sc. thesis solution on Oct 16, 1988. Both used
+knowledge-based, rule-based methods, since brute force was infeasible on 1988
+hardware.
+
+Allis's program VICTOR is a Shannon C-type strategy engine built on nine
+strategic rules proved correct (Claimeven, Baseinverse, Aftereven, Highinverse
+and others), combined with conspiracy-number search, search tables and
+depth-first search. It proves the value of the standard start and its main
+lines, which makes it a weak solution. Allis also proved that Black can at
+least draw on every 7x(2n) board when White does not start in the middle
+column, and on any 6x(2n) board.
+
+John Tromp later solved the game strongly by brute force, with an 8-ply
+win/draw/loss database (Feb 1995, about 40,000 CPU-hours at CWI) and a full
+solver. Modern alpha-beta solvers such as Pascal Pons's, and the complete
+enumeration by Edelkamp and Kissmann (2008), confirm the result.
+
+The board has 4,531,985,219,092 legal reachable positions with 0-42 pieces.
+Allis's thesis gives only a crude upper bound (3^42) and notes that a database
+would have had to store on the order of 1.6 x 10^13 positions at the peak
+(36-37 men), which is why brute force was put off. The game-tree size is
+commonly cited at around 10^21, with no authoritative exact figure.

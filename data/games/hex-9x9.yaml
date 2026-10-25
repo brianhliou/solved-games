@@ -16,9 +16,14 @@ method:
   - proof-number-search
   - strategy-stealing/pairing-strategy
 distance_to_result: "The hardest 9×9 opening (a6) required 111 days of computation on a 24-core machine; the published principal variation for a6 is the deepest line in the paper. No single uniform ply count is given — proof depth varies by opening."
+# No 9×9-specific state-space/game-tree figure is cited in the primary paper; fields are left null
+# rather than guessing a 9×9 number.
 complexity:
   state_space: null   # no citable 9×9-specific figure; for 11×11 Hex the cited state-space complexity is ~10^57 and game-tree complexity ~10^98 (van den Herik et al. / Browne). See notes.
   game_tree: null
+# Bibliographic note: the paper was presented at Computers and Games 2013; its Springer LNCS 8427
+# proceedings carry a 2014 imprint. The result is universally dated 2013 (matching the conference
+# and the anchor), which is the year used here.
 year: 2013
 solved_by: "Jakub Pawlewicz & Ryan B. Hayward (building on Henderson, Arneson & Hayward for 8×8 and Yang, Liao & Pawlak / Hayward et al. for 7×7)"
 verified: true
@@ -59,47 +64,43 @@ sources:
 resources:
   code: "https://github.com/cgao3/benzene-vanilla-cmake"
   writeup: "https://webdocs.cs.ualberta.ca/~hayward/publications.html"
-notes: >
-  WEAK solution, not strong. Pawlewicz & Hayward weakly solved 9×9 Hex by
-  resolving every opening move: their Scalable Parallel Depth-First Proof Number
-  Search (SPDFPN) solved all thirteen 9×9 openings that earlier solvers had left
-  intractable (the remaining openings were already known), determining the winner
-  for each of the 81 starting cells. This does NOT produce a value for every
-  reachable position (no full tablebase), so it is not a strong solution. SPDFPN
-  is a shared-memory parallel version of the serial DFPN 1+ε method (Pawlewicz &
-  Lew), running atop the Benzene/Solver Hex codebase; it uses proof/disproof
-  numbers only and no domain-specific heuristics for thread scheduling, while the
-  underlying Hex solver uses connection-based virtual connections, inferior-cell
-  pruning and early win/loss detection. The hardest 9×9 opening (a6) took 111
-  days on a 24-core machine; the same run also produced the first-ever solution
-  of a single 10×10 opening (the centremost cell, f5, in 63 days — Black wins).
+notes: |
+  Jakub Pawlewicz and Ryan Hayward weakly solved 9×9 Hex by resolving every
+  opening move. Their Scalable Parallel Depth-First Proof Number Search (SPDFPN)
+  solved all thirteen 9×9 openings that earlier solvers had left intractable
+  (the rest were already known), which settles the winner for each of the 81
+  starting cells. There is no value for every reachable position, so the
+  solution is weak.
 
-  Ruleset caveat: this is the no-swap (no pie-rule) game. Under the swap/pie rule
-  the second player can flip a winning first move, which changes the practical
-  game but not the cell-by-cell opening values reported here.
+  SPDFPN is a shared-memory parallel version of the serial DFPN 1+ε method
+  (Pawlewicz and Lew), running on the Benzene Hex codebase. It schedules threads
+  with proof and disproof numbers alone, without Hex-specific heuristics, while
+  the underlying Hex solver uses virtual connections, inferior-cell pruning and
+  early win/loss detection. The hardest 9×9 opening (a6) took 111 days on a
+  24-core machine. The same run also produced the first solution of a single
+  10×10 opening, the centremost cell f5, in 63 days: Black wins.
 
-  Lineage of forward-Hex solves: 7×7 — Jing Yang, Simon Liao & Mirek Pawlak
-  (explicit decomposition strategy, 2001-2002) and independently a full computer
-  solve by Hayward, Björnsson, Johanson, Kan, Po & van Rijswijck (2003);
-  8×8 — Henderson, Arneson & Hayward (IJCAI 2009, all openings); 9×9 — this work
-  (2013); 10×10 — only the central opening (2013).
+  This is the no-swap (no pie rule) game. Under the swap rule the second player
+  can take over a winning first move, which changes the practical game but
+  leaves the cell-by-cell opening values unchanged.
 
-  Ultra-weak result, ALL board sizes: independently of any search, Hex on any
-  n×n board is a first-player win by John Nash's strategy-stealing argument
-  (c. 1949) combined with the Hex theorem (Hein 1942 / Nash / Gale) that Hex can
-  never be a draw — exactly one player connects. This is non-constructive: it
-  proves the first player wins without giving a winning move. The 9×9 result here
-  is the constructive WEAK upgrade for that specific size. Deciding an arbitrary
-  generalized-Hex position is PSPACE-complete (Even & Tarjan, 1976; Reisch
-  showed Hex itself PSPACE-complete, 1981), which is why explicit solving stalls
-  around 9×9-10×10.
+  Earlier sizes came first. 7×7 was solved by Jing Yang, Simon Liao and Mirek
+  Pawlak (an explicit decomposition strategy, 2001-2002) and independently by a
+  full computer solve from Hayward, Björnsson, Johanson, Kan, Po and van
+  Rijswijck (2003). 8×8 fell to Henderson, Arneson and Hayward (IJCAI 2009, all
+  openings), 9×9 to this work (2013), and of 10×10 only the central opening is
+  solved (2013).
 
-  Complexity: no 9×9-specific state-space/game-tree figure is cited in the
-  primary paper. For reference, surveys give 11×11 Hex a state-space complexity
-  of roughly 10^57 and game-tree complexity of roughly 10^98; 9×9 is
-  correspondingly smaller. The state_space/game_tree fields are left null rather
-  than guessing a 9×9 number.
+  Independently of any search, Hex on every n×n board is a first-player win, an
+  ultra-weak result. John Nash's strategy-stealing argument (c. 1949) combines
+  with the Hex theorem (Hein 1942, Nash, Gale) that Hex can never be a draw:
+  exactly one player connects. The argument proves the first player wins without
+  giving a winning move, and the 9×9 result is the constructive weak solution
+  for that size. Deciding an arbitrary generalized-Hex position is
+  PSPACE-complete (Even and Tarjan, 1976; Reisch showed Hex itself
+  PSPACE-complete, 1981), which is why explicit solving stalls around 9×9 to
+  10×10.
 
-  Bibliographic note: the paper was presented at Computers and Games 2013; its
-  Springer LNCS 8427 proceedings carry a 2014 imprint. The result is universally
-  dated 2013 (matching the conference and the anchor), which is the year used here.
+  The primary paper cites no state-space or game-tree figure for 9×9. Surveys
+  give 11×11 Hex a state-space complexity of roughly 10^57 and a game-tree
+  complexity of roughly 10^98, and 9×9 is correspondingly smaller.

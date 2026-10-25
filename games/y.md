@@ -60,9 +60,37 @@ _Superseded rows stay in the table._
 
 ## Notes
 
-Y is a connection game on a triangular grid: place stones in turn, win by joining all three sides with one connected group. It generalizes Hex (Hex reduces to Y), and like Hex it cannot end in a draw — by the Y theorem a full board always has exactly one player connecting all three sides, and the two players can never connect at once.
-ULTRA-WEAK result, ALL board sizes: the first player wins on any board by the Hex-style strategy-stealing argument (Schensted & Titus 1975, after Nash). This is non-constructive — it names no moves.
-STRONG result, sides 1-6 (game-solver engine): it computed the game-theoretic value of every position by retrograde analysis. The first player wins from the start at every size, and no position is a draw — both asserted as correctness invariants (a wrong board model would surface a draw). Sizes and starting value: side 1 (2 positions), side 2 (13), side 3 (257), side 4 (16,505), side 5 (3,337,584 reachable), side 6 (2,173,243,128 count-legal index) — first player wins at every size.
-METRIC NOTE: sides 1-5 figures count reachable positions (forward discovery); the side-6 figure counts the tight count-legal index (a superset that also includes count-legal-but-unreachable positions), because side-6 was solved by the dense slice solver rather than reachable enumeration. The two metrics are not directly comparable; wins + losses equal the total exactly at every size, which is the no-draw invariant.
-PRIOR ART: the earlier solver located is GamesCrafters' GamesmanClassic `mgameofy.c` (A. Esteban, 2023), which has Y code for dims 4-7 but publishes no game values, has no accompanying paper, and declares draws possible (`kTieIsPossible = TRUE`) for a game that cannot draw; an adversarial check could confirm only its dim-5 as credibly computed. The search was not exhaustive and no priority is claimed; this entry records the sides solved (1-6), with full credit to the earlier GamesCrafters work.
-Side-7 (28 cells) has a count-legal index beyond 2^32 and is the natural next target via external-memory (disk-paged) slices.
+Y is a connection game on a triangular grid. Players place stones in turn, and
+a player wins by joining all three sides with one connected group. Y
+generalizes Hex (Hex reduces to Y), and like Hex it cannot be drawn: by the Y
+theorem a full board always has exactly one player connecting all three sides,
+and both players can never connect at once.
+
+On every board size the first player wins, by the Hex-style strategy-stealing
+argument (Schensted and Titus 1975, after Nash). That ultra-weak result is
+non-constructive and names no moves.
+
+For sides 1-6 the game-solver engine computed the value of every position by
+retrograde analysis. The first player wins from the start at every size and no
+position is a draw; both are checked as correctness invariants, since a wrong
+board model would turn up a draw. The position counts are side 1 (2
+positions), side 2 (13), side 3 (257), side 4 (16,505), side 5 (3,337,584
+reachable) and side 6 (2,173,243,128 count-legal index).
+
+The two measures differ. Sides 1-5 count reachable positions, found by forward
+discovery. Side 6 counts the tight count-legal index, a superset that also
+includes positions that are count-legal but unreachable, because side 6 was
+solved by the dense slice solver; the figures are not directly comparable. At
+every size wins plus losses equal the total exactly, which is the no-draw
+invariant.
+
+The earlier solver found is GamesCrafters' GamesmanClassic `mgameofy.c` (A.
+Esteban, 2023), which has Y code for dims 4-7. It publishes no game values,
+has no accompanying paper, and declares draws possible (`kTieIsPossible =
+TRUE`) for a game that cannot draw; an adversarial check could confirm only
+its dim-5 as credibly computed. The search was not exhaustive and no priority
+is claimed; this entry records the sides solved (1-6), with full credit to the
+earlier GamesCrafters work.
+
+Side 7 (28 cells) has a count-legal index beyond 2^32, and is the natural next
+target using external-memory (disk-paged) slices.

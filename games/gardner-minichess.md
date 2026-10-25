@@ -47,9 +47,34 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Gardner's minichess (Martin Gardner, 1969) is played on a 5x5 board with all the standard chess piece types set on the back rank (from Rook to King) and a full rank of pawns; it is the smallest board that holds every kind of chess piece in the start position. The solved ruleset (per the paper) REMOVES the pawn two-square advance, en passant, and castling — Mhalla & Prost state verbatim "the rules are the ones of classical chess without the two squares move for Pawns, en passant moves and castling." White is the first player.
-Mhalla and Prost weakly solved the game in 2013, proving its game-theoretic value is a DRAW: they provide two "oracles" (proof trees of variations), one for White and one for Black, each forcing a draw against best play; the intersection yields flawless games. This is a weak solution (value from the standard start plus a strategy for both sides) — NOT a strong solution. There is no full tablebase mapping every reachable position to its value, so it does not qualify as "strong" despite the modest state space.
-Method: a human-guided / semi-automated search using a Stockfish engine adapted to the 5x5 board (restricted movement, changed promotion ranks). The authors "pushed" lines whose exact distance-to-mate could be computed and backtracked from perfect-play leaves — described by the authors as a form of meta-negascout. Method tags above are approximate: closest fits are knowledge-based (human-guided proof-tree construction) and alpha-beta search with engine evaluation/endgame decision (alpha-beta+db); the asymmetric proof-tree construction is conceptually adjacent to proof-number search but the paper does not claim PNS. The proof is small enough to be checked by a human and required only consumer-grade laptops — sharply unlike the Checkers proof (Schaeffer et al. 2007), which used hundreds of computers over a decade despite comparable state-space/decision complexity.
-Complexity: ~9 x 10^18 legal positions (reachable/legal positions, the figure the authors cite as comparable to checkers); recorded here as state_space. No game-tree-complexity figure is given (left null). For context the authors note strongly solved smaller variants (Kryukov): ~3 x 10^15 legal positions for the 4x4 chess variant, and 3x3 / 3x4 variants.
-As a by-product, the analysis exposed positions where Stockfish's static evaluation is badly fooled (showing +6 "winning" for positions that are dead drawn), some of which also occur on the 8x8 board.
-Primary source: arXiv:1307.7118 (also published in the ICGA Journal, vol. 36, no. 4, 2013, and on HAL as hal-00944409). These are the same paper by the same authors, so they count as ONE independent primary result, not three.
+Gardner's minichess (Martin Gardner, 1969) is played on a 5x5 board with all
+the standard chess piece types on the back rank (from Rook to King) and a full
+rank of pawns. It is the smallest board that holds every kind of chess piece
+in the start position. White moves first. The solved ruleset drops the pawn
+two-square advance, en passant and castling; in Mhalla and Prost's words, "the
+rules are the ones of classical chess without the two squares move for Pawns,
+en passant moves and castling."
+
+Mehdi Mhalla and Frédéric Prost weakly solved the game in 2013 and found it a
+draw. They give two "oracles," proof trees of variations, one for White and
+one for Black, each forcing a draw against best play; where the two meet are
+the flawless games. No tablebase maps every reachable position to its value,
+so the solution is weak despite the modest state space.
+
+The search was human-guided and semi-automated, using a Stockfish engine
+adapted to the 5x5 board (restricted movement, changed promotion ranks). The
+authors "pushed" lines whose exact distance-to-mate could be computed and
+backtracked from perfect-play leaves, which they describe as a form of
+meta-negascout. The proof is small enough for a human to check and needed only
+consumer-grade laptops. The checkers proof (Schaeffer et al., 2007), with
+comparable state-space and decision complexity, used hundreds of computers
+over a decade.
+
+The game has ~9 x 10^18 legal positions, a figure the authors cite as
+comparable to checkers; no game-tree size is given. For context, they note
+that smaller variants are strongly solved (Kryukov): the 4x4 chess variant,
+with ~3 x 10^15 legal positions, and 3x3 and 3x4 variants.
+
+As a by-product, the analysis exposed positions where Stockfish's static
+evaluation is badly fooled, showing +6 "winning" for positions that are dead
+drawn. Some of these also occur on the 8x8 board.

@@ -13,12 +13,16 @@ strength: strong
 method:
   - retrograde-analysis
 distance_to_result: "Maximal win is 171 full moves (the deepest forced win for White-to-move in the database, per Stahlhacke 2003)"
+# state_space here is Stahlhacke's exact database cardinality (reachable positions under his
+# ruleset, 10 men per player). Per the primary PDF, Stahlhacke's 136,476,472,674-position database
+# is the TEN-men variant; an earlier draft of this record mis-stated it as nine men.
 complexity:
   state_space: 136476472674   # exact size of Stahlhacke's complete DTW database (positions), stored 1 byte each (~136 GB); reachable count under his ruleset
   game_tree: null
 year: 2003
 solved_by: "Peter Stahlhacke (Friedrich-Schiller-Universität Jena); re-confirmed and extended by Gábor E. Gévay & Gábor Danner (2014/2016)"
 verified: true
+# Two independent primary confirmations of the draw result (Stahlhacke; Gévay & Danner).
 sources:
   - title: "Peter Stahlhacke, \"The Game of Lasker Morris,\" Tech. Report, FSU Jena, May 2003"
     url: "https://althofer.de/stahlhacke-lasker-morris-2003.pdf"
@@ -33,31 +37,29 @@ resources:
   tablebase:
     - title: "Ultra-strong solution databases for Nine Men's Morris, Morabaraba, and Lasker Morris (Gévay & Danner)"
       url: "https://www.inf.u-szeged.hu/~danner/mills"
-notes: >
-  Strongly solved. Lasker Morris, invented by chess world champion Emanuel
-  Lasker (described in his 1931 book "Brettspiele der Völker"), is a Nine Men's
-  Morris variant: there are no separate placement and movement phases, so on any
-  move a player may either place a new stone from hand or slide one already on
-  the board, in arbitrary order. Lasker proposed 9 or 10 stones in hand; the two
-  solvers chose differently. Peter Stahlhacke (FSU Jena, May 2003) built a
-  complete DTW (depth-to-win) database of all 136,476,472,674 positions using
-  retrograde analysis — one byte per position holding the number of full moves
-  until White-to-move can force a win (0 = draw or loss), ~136 GB across 3600
-  subspace files. The initial position is a draw under optimal play. The deepest
-  forced win in the database is "Win in 171" (full moves). Stahlhacke also
-  reports 51.47% of all positions are won for White-to-move (vs 46.55% for Nine
-  Men's Morris), which he reads as Lasker Morris being a sharper, less drawish
-  game than its parent. state_space here is Stahlhacke's exact database
-  cardinality (reachable positions under his ruleset, 10 men per player); it is a
-  full tablebase (a value for every reachable position), which is what makes
-  this a STRONG solution rather than merely weak. (Per the primary PDF, Stahlhacke's
-  136,476,472,674-position database is the TEN-men variant; an earlier draft of this
-  record mis-stated it as nine men.) Gévay & Danner (arXiv:1408.0032,
-  2014; published IEEE Trans. on Computational Intelligence and AI in Games,
-  2016) independently re-solved the game with a multi-valued retrograde analysis,
-  again finding the start a draw, and went further: they computed ULTRA-strong
-  solutions (which beat the game-theoretic value against a fallible opponent by
-  subclassifying draw positions) and EXTENDED strong solutions over alternative
-  starting stone counts. They note their Lasker Morris statistics differ from
-  Stahlhacke's because of other rule/implementation differences (both solve the
-  ten-men variant). Two independent primary confirmations of the draw result.
+notes: |
+  Emanuel Lasker, the chess world champion, described this Nine Men's Morris
+  variant in his 1931 book "Brettspiele der Völker." It has no separate
+  placement and movement phases: on any move a player may either place a new
+  stone from hand or slide one already on the board, in any order. Lasker
+  proposed 9 or, better, 10 stones in hand, and both solutions below use 10.
+
+  Peter Stahlhacke (FSU Jena, May 2003) used retrograde analysis to build a
+  complete depth-to-win database of all 136,476,472,674 positions. Each position
+  takes one byte, holding the number of full moves until White-to-move can force
+  a win (0 for a draw or a loss), about 136 GB across 3600 subspace files. A
+  value for every reachable position makes the solution strong, and the initial
+  position is a draw.
+
+  The deepest forced win in the database is "Win in 171" full moves. Stahlhacke
+  also reports that 51.47% of all positions are won for White-to-move, against
+  46.55% in Nine Men's Morris, which he reads as Lasker Morris being a sharper,
+  less drawish game than its parent.
+
+  Gévay and Danner (arXiv:1408.0032, 2014; IEEE Transactions on Computational
+  Intelligence and AI in Games, 2016) re-solved the game independently with a
+  multi-valued retrograde analysis and again found the start a draw. They went
+  further, computing ultra-strong solutions, which subclassify drawn positions
+  so as to do better than the bare game value against a fallible opponent, and
+  extended strong solutions for other starting stone counts. Their statistics
+  differ from Stahlhacke's because of other rule and implementation differences.

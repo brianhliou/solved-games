@@ -42,9 +42,34 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Teeko is an abstract strategy game invented by John Scarne in 1937 (refined 1952 and 1960s). It is played on a 5×5 grid; each player has four markers (Black vs. Red, Black moves first). Players first alternately DROP their four markers onto empty cells (drop phase), then alternately MOVE a marker one step to any adjacent empty cell, including diagonally (movement phase). A player wins by getting their four markers into a line of four (horizontal, vertical, or diagonal) or into a 2×2 square — 44 winning configurations in Standard Teeko.
-RESULT: Standard Teeko is a DRAW under perfect play. Solving Teeko was posed as Item 90 in the 1972 MIT memo HAKMEM (Beeler, Gosper, Schroeppel). Guy L. Steele Jr. (then at Sun Microsystems Laboratories) solved it by computer in October–November 1998 and reported the result in a Usenet posting dated 23 Nov 1998 ("Re: Teeko, HAKMEM"). He solved ALL SIXTEEN of Scarne's variants: Standard Teeko and thirteen others are draws; two variants — including Advanced Teeko (which adds "extended" 9-/16-/25-cell squares for 58 winning positions) — are FIRST-PLAYER (Black) WINS. Note the secondary sources phrase the same fact two ways: Wikipedia/Epstein say "a win for Black," MathWorld says "first-player win"; these agree because Black moves first.
-STRENGTH = STRONG. Steele performed an exhaustive computational enumeration of ALL positions — i.e. retrograde analysis over the complete game graph, yielding a game-theoretic value for every reachable position (a full tablebase), not merely a strategy from the opening. This is what let him report a value and forced-win distances for all sixteen rule variants from a single solve.
-STATE SPACE: Teeko is small enough to solve exhaustively, which is why a full (strong) solution is feasible. With all 8 markers placed in the movement phase the board holds C(25,4)·C(21,4) = 75,710,250 placements; including the drop phase the reachable-position count is on the order of 1.7×10^8 (~172 million). The state_space figure above (~1.7×10^8) is this computed estimate, not a figure quoted by Steele; treat it as order-of-magnitude. Scarne himself spoke loosely of "over a million possible positions."
-PRIMARY SOURCE CAVEAT: Steele's result is an informal 1998 Usenet writeup, not a peer-reviewed paper; there is no formal journal publication of the solver. The BoardGameGeek thread is the most-cited archival pointer to that posting. The result is independently reported by multiple secondary references (Epstein 2012; Wikipedia; MathWorld; Wikipedia "Solved game"), all tracing back to the single Steele solve — so there is effectively ONE independent primary source, with broad secondary corroboration but no second independent re-solve published.
-ATTRIBUTION/YEAR: headline year 1998, solver Guy L. Steele Jr. — consistent across every source. The game's open-problem framing dates to HAKMEM (1972).
+Teeko is an abstract strategy game invented by John Scarne in 1937 and refined
+in 1952 and the 1960s. It is played on a 5×5 grid, and each player has four
+markers (Black against Red, Black moving first). Players first drop their four
+markers in turn onto empty cells, then move a marker one step to any adjacent
+empty cell, diagonals included. A player wins with four markers in a line
+(horizontal, vertical or diagonal) or in a 2×2 square, which gives 44 winning
+configurations in Standard Teeko.
+
+Solving Teeko was posed as Item 90 in the 1972 MIT memo HAKMEM (Beeler,
+Gosper, Schroeppel). Guy L. Steele Jr., then at Sun Microsystems Laboratories,
+solved it by computer in October and November 1998 and reported the result in
+a Usenet posting dated 23 Nov 1998 ("Re: Teeko, HAKMEM"). He solved all
+sixteen of Scarne's variants. Standard Teeko and thirteen others are draws.
+Two are first-player (Black) wins, among them Advanced Teeko, which adds
+"extended" 9-, 16- and 25-cell squares for 58 winning positions.
+
+Steele enumerated every position, a retrograde analysis over the complete game
+graph that gives a value for every reachable position, so the solution is
+strong. That is how one solve yielded values and forced-win distances for all
+sixteen variants.
+
+With all 8 markers on the board in the movement phase there are
+C(25,4)·C(21,4) = 75,710,250 placements, and with the drop phase included the
+reachable-position count is on the order of 1.7×10^8 (~172 million). That
+figure is a computed estimate, not one Steele quoted. Scarne himself spoke
+loosely of "over a million possible positions."
+
+Steele's result is an informal 1998 Usenet writeup, and the solver was never
+formally published in a journal. Several secondary references report it
+(Epstein 2012, Wikipedia, MathWorld), all tracing back to this one solve, and
+no independent re-solve has been published.

@@ -48,9 +48,30 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-This record is the FREE-STYLE variant of Gomoku on 15×15: a line of five OR MORE same-color stones wins (overlines count). In Allis's terminology this is plain "Go-Moku." The first player (Black) has a forced win; against optimal defense the win is reached in 18 moves (35 ply). The solution tree built by the Go-Moku program "Victoria" contained 138,790 positions for free-style; the "exactly-five" standard variant (no overline win) needed 153,284 nodes and is also a first-player win. Both were proven, with no opening restrictions, in the same 1993 work.
-STRENGTH = WEAK, not strong. Allis proved a forced first-player win and produced a winning strategy/solution tree from the standard start (Black plays from a database, switching to threat-space search once White deviates). This is a weak solution — there is no value assigned to every reachable position (no full tablebase), so it does not qualify as strong. Do not upgrade to "strong."
-METHOD: threat-space search (drastically reduces the attacker's branching factor by letting the defender answer all direct threats) backed by proof-number search for completeness in the cases threat-space search alone cannot resolve. The thesis generalized the underlying engine into proof-number search and dependency-based search.
-COMPLEXITY: no clean citable reachable-vs-total state-space count exists for 15×15 Gomoku in the primary literature; the often-quoted ~10^105 game-tree figure is an estimate for Gomoku in general, not a solved-tree count, so the complexity fields are left null. The concrete, citable solution-tree size is 138,790 positions (free-style) noted above.
-ATTRIBUTION/YEAR: the result was first published in 1993 (AAAI Fall Symposium and Univ. of Limburg tech report CS 93-02); the research anchor's "1993" is correct. The 1994 PhD thesis ("Searching for Solutions in Games and Artificial Intelligence") is where it is most fully written up and is the citation most people mean; both years are defensible. Lead author L. Victor Allis; co-authors van den Herik and Huntjens on the papers. Same game/result also later reprinted in Computational Intelligence (Wiley, 1996).
-CAVEAT: this is distinct from Renju (the professional variant with opening restrictions and forbidden moves for Black) and from "standard" exactly-five-only Gomoku; those are separate records. On a 19×19 board the first-player advantage is even larger.
+This entry is free-style Gomoku on 15×15: five or more stones of one colour in
+a line wins, so overlines count. Allis calls this plain "Go-Moku." The first
+player (Black) has a forced win, reached in 18 moves (35 ply) against the best
+defence. The solution tree built by the program "Victoria" has 138,790
+positions. The "exactly-five" variant, where an overline does not win, needed
+153,284 nodes and is also a first-player win. Both were proven, with no
+opening restrictions, in the same 1993 work by L. Victor Allis with H. Jaap
+van den Herik and M. P. H. Huntjens.
+
+The solution is weak: Allis proved a forced win and built a winning strategy
+from the standard start, in which Black plays from a database and switches to
+threat-space search once White deviates. No value is known for every reachable
+position.
+
+Threat-space search cuts the attacker's branching factor sharply by letting
+the defender answer every direct threat at once. Proof-number search covers
+the cases it cannot settle on its own. Allis's 1994 PhD thesis, "Searching for
+Solutions in Games and Artificial Intelligence," generalized the engine into
+proof-number search and dependency-based search, and is where the result is
+most fully written up. The papers were reprinted in Computational Intelligence
+(Wiley, 1996).
+
+The often-quoted ~10^105 game-tree figure is an estimate for Gomoku in general
+and does not count the solved tree, and there is no citable state-space count
+for 15×15. Renju, the professional variant with opening restrictions and
+forbidden moves for Black, is a different game. On a 19×19 board the first
+player's advantage is even larger.

@@ -9,14 +9,22 @@ board: "Eight-pointed star: 8 outer points (kewai) arranged in a ring, each join
 result: draw
 result_detail: "Draw under optimal play from the standard start (authentic Rulesets D and E); no experienced player should ever lose. The first move belongs to White."
 strength: strong
+# Methods are best described as brute-force enumeration of the small state space plus
+# mathematical/graph-theoretic proof (and, for the GamesCrafters version, retrograde-style backward
+# induction over the graph) rather than any search-heavy technique.
 method:
   - brute-force-enumeration
   - mathematical-proof
   - retrograde-analysis
 distance_to_result: ""
+# state_space = 46 is the count of distinct positions after symmetry reduction (rotations +
+# reflections), per Browne and Straffin. Game-tree complexity is not meaningfully finite for the
+# playable rulesets because optimal lines can cycle forever, so it is left null.
 complexity:
   state_space: 46
   game_tree: null
+# The headline year (1987) is Ascher's foundational analysis; the complete modern enumeration is
+# Browne (2022).
 year: 1987
 solved_by: "Marcia Ascher (1987) with Philip Straffin's game-tree expansion; position graphs by Philip D. Straffin (1995, corrected 1996); full game-graph solve of all rulesets by Cameron Browne (2022); independent computational strong solve by GamesCrafters (UC Berkeley)"
 verified: true
@@ -34,55 +42,39 @@ sources:
 resources:
   writeup: "http://ludeme.eu/outputs/mu-torere-2.pdf"
   explorer: "https://gamescrafters.berkeley.edu/games.php?game=mutorere"
-notes: >
-  Mū tōrere is a traditional Māori game from New Zealand, predating European
-  contact (developed, by most accounts, in response to draughts/checkers). It is
-  a tiny, fully-solved game: collapsing rotations and reflections, the entire
-  game graph contains only 46 distinct positions (each occurring in Black-to-move
-  and White-to-move forms), with six terminal positions. Each position has a
-  proven game-theoretic value (Win / Loss / Draw), so the solve is STRONG (a
-  value for every reachable position), not merely weak. GamesCrafters
-  additionally provides a full tablebase with remoteness for every position.
-  Methods are best described as brute-force enumeration of the small state space
-  plus mathematical/graph-theoretic proof (and, for the GamesCrafters version,
-  retrograde-style backward induction over the graph) rather than any
-  search-heavy technique.
+notes: |
+  Mū tōrere is a traditional Māori game from New Zealand that predates European
+  contact (by most accounts it developed in response to draughts). The game is
+  tiny: once rotations and reflections are collapsed, the whole game graph holds
+  only 46 distinct positions, each in a Black-to-move and a White-to-move form,
+  with six terminal positions. Every position has a proven value (win, loss or
+  draw), so the solution is strong, and GamesCrafters also provides a full
+  tablebase with remoteness for every position.
 
-  RULESET CAVEAT (load-bearing). The naive rules let the first player win
-  immediately, so the game is played with a restriction; the literature records
-  five variants (Browne 2022). Headline RESULT = DRAW applies to the two
-  authentic, playable rulesets:
-    - Ruleset D (the most prevalent in the historical literature: the mover
-      cannot win during the first two rounds) — DRAW under optimal play.
-      Distribution over the 46 positions: 6 Win / 25 Draw / 15 Loss
-      (24/74/32 over transitions). Shows a strong first-move advantage in greedy
-      random playouts (White 54.4% vs Black 37.9%, draws 7.7%).
-    - Ruleset E (a piece moved to the centre must be adjacent to an enemy piece;
-      used by Bell and Jelliss) — DRAW under optimal play.
-      Distribution: 5 Win / 31 Draw / 10 Loss (14/94/16 over transitions).
-  The other three rulesets are degenerate and were discarded by Browne:
-    - Ruleset A (no restriction) — FIRST-PLAYER (White) WIN in 1 move.
-    - Ruleset B (White may not win on the first move) — SECOND-PLAYER (Black)
-      WIN, forced in 4 moves.
-    - Ruleset C (a moved piece must be adjacent to an enemy piece) — always a
-      DRAW: the restriction makes every game an infinite perpetual cycle, so no
-      result is possible at all.
+  The naive rules let the first player win at once, so the game is played with a
+  restriction, and the literature records five variants (Browne 2022). The draw
+  holds for the two authentic, playable rulesets. Under Ruleset D, the most
+  common in the historical literature, the mover cannot win during the first two
+  rounds. Its 46 positions split 6 win, 25 draw and 15 loss (24/74/32 over
+  transitions), and greedy random playouts show a strong first-move advantage
+  (White 54.4%, Black 37.9%, draws 7.7%). Under Ruleset E, used by Bell and
+  Jelliss, a piece moved to the centre must be adjacent to an enemy piece; the
+  split is 5 win, 31 draw and 10 loss (14/94/16 over transitions).
 
-  COMPLEXITY: state_space = 46 is the count of distinct positions after symmetry
-  reduction (rotations + reflections), per Browne and Straffin. Jelliss's more
-  compact encoding yields 26 labelled positions (each with a colour-inversion
-  flag); some secondary sources count differently (e.g. ~86 board-states without
-  full symmetry reduction, or Wikipedia's GamesCrafters-derived 1,180 reachable
-  states without symmetry collapse). Game-tree complexity is not meaningfully
-  finite for the playable rulesets because optimal lines can cycle forever
-  (the game ends only by a player being unable to move, or by mutual-consent
-  draw), so it is left null.
+  Browne discarded the other three rulesets as degenerate. With no restriction
+  (Ruleset A), White wins in 1 move. If White may not win on the first move
+  (Ruleset B), Black wins, forced in 4 moves. If every moved piece must be
+  adjacent to an enemy piece (Ruleset C), every game becomes an infinite
+  perpetual cycle and no result is possible.
 
-  ATTRIBUTION: independent primary confirmations of the draw — Marcia Ascher
-  (1987, with Philip Straffin's game-tree expansion), Straffin's standalone
-  position-graph papers (1995/1996), Cameron Browne's full game-graph solve of
-  all rulesets (2022), and GamesCrafters' independent computational solve. Browne
-  reproduces and extends Ascher/Straffin, but the GamesCrafters solve and
-  Browne's enumeration are separate computational lines, so the result is
-  multiply and independently confirmed. The headline year (1987) is Ascher's
-  foundational analysis; the complete modern enumeration is Browne (2022).
+  Other counts appear in the literature. Jelliss's more compact encoding gives
+  26 labelled positions, each with a colour-inversion flag, and some secondary
+  sources count ~86 board states without full symmetry reduction, or 1,180
+  reachable states (Wikipedia, from GamesCrafters) with no symmetry collapse.
+  Optimal lines in the playable rulesets can cycle forever, since the game ends
+  only when a player cannot move or by mutual consent to a draw.
+
+  The draw has several independent confirmations: Marcia Ascher (1987, with
+  Philip Straffin's game-tree expansion), Straffin's own position-graph papers
+  (1995/1996), Cameron Browne's full game-graph solve of all rulesets (2022),
+  and GamesCrafters' separate computational solve.

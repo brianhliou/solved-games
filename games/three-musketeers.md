@@ -39,8 +39,31 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Three Musketeers is an asymmetric abstract strategy game of 'unequal forces' (Fox-and-Geese family) designed by Haar Hoolim and popularised in Sid Sackson's 1969 book A Gamut of Games. It is a two-player, zero-sum, perfect-information game on a 5x5 board: 3 musketeers vs 22 enemies. The musketeers move first and capture by stepping orthogonally onto an adjacent enemy (removing it); the enemy moves a piece to any orthogonally adjacent EMPTY cell and never captures. The enemy wins by forcing all three musketeers onto a single row or column; the musketeers win if, on their turn, they have no legal move (no adjacent enemy to capture) while not aligned.
-RESULT / STRENGTH. Johannes Laire STRONGLY solved the game in 2009 (announced on the rec.games.abstract newsgroup) via retrograde analysis, building a full database that assigns a value to every reachable position and lets an AI play optimally from any state — hence strength = STRONG. The game-theoretic value of the standard start is a WIN FOR THE ENEMY (blue / Cardinal Richelieu's men). This matches the game's long-documented imbalance: the enemy side is favoured, and Laire noted that merely changing the starting position makes the game roughly even. Ali Elabridi (Al Akhawayn University, Fall 2017 capstone) independently produced a WEAK solution from the initial position using a top-down minimax search with alpha-beta pruning, Zobrist hashing, and board-symmetry reduction, stating his goal was to confirm Laire's result.
-FIRST/SECOND MAPPING (load-bearing). The musketeers move first; the enemy moves second. Because the enemy is the winning side, result = second-player-win.
-DISCREPANCY / CAVEAT (important). Both Wikipedia articles (the dedicated 'Three Musketeers (game)' page and the 'Solved game' list) state the result is a win for the BLUE/ENEMY pieces, and this is consistent with the game's known imbalance in favour of the enemy and with Laire's strong solution. HOWEVER, the Elabridi capstone's prose repeatedly and explicitly claims the opposite — that 'the first player (Musketeers) always wins' — while simultaneously claiming to confirm Laire. Elabridi's text is internally inconsistent (e.g. it describes an optimisation premised on the guardsmen/enemy never reaching a winning utility), and its winner labelling is judged to be an inversion error in the writeup, not a genuine alternative result. The authoritative result here is enemy/blue win (Laire's strong solve + both Wikipedia entries + the historical imbalance); Elabridi's contradictory labelling should be treated as a known error.
-INDEPENDENT PRIMARIES. Two genuinely independent solving efforts exist: Laire (2009, strong, retrograde) and Elabridi (2017, weak, minimax+ab). These are the primary sources; the three Wikipedia/BGG links are secondary corroboration. The Laire announcement is a newsgroup post (not a peer-reviewed paper) and his solver/database is not preserved in a stable public artifact, so the strong solution rests on his report rather than a re-verifiable tablebase; treat the STRONG classification as reported-but-not-independently-reproduced. No citable state-space or game-tree complexity figure was found in either primary source, so complexity fields are left null.
+Three Musketeers is an asymmetric game of "unequal forces" in the
+Fox-and-Geese family, designed by Haar Hoolim and popularised in Sid Sackson's
+1969 book A Gamut of Games. It is played on a 5x5 board, 3 musketeers against
+22 enemies. The musketeers move first and capture by stepping orthogonally
+onto an adjacent enemy, removing it. An enemy piece moves to any orthogonally
+adjacent empty cell and never captures. The enemy wins by forcing all three
+musketeers onto a single row or column, and the musketeers win if, on their
+turn, they have no legal move (no adjacent enemy to capture) while not
+aligned.
+
+Johannes Laire solved the game strongly in 2009, announced on the
+rec.games.abstract newsgroup. His retrograde analysis built a database that
+assigns a value to every reachable position and lets a program play optimally
+from any state. The standard start is a win for the enemy (blue, Cardinal
+Richelieu's men), who move second. This fits the game's long-documented
+imbalance in the enemy's favour, and Laire noted that changing only the
+starting position makes the game roughly even.
+
+Ali Elabridi (Al Akhawayn University, Fall 2017 capstone) independently
+produced a weak solution from the start with top-down minimax search,
+alpha-beta pruning, Zobrist hashing and board-symmetry reduction, aiming to
+confirm Laire's result. His writeup's prose labels the musketeers as the
+winners, which contradicts both Laire and its own stated aim and reads as a
+labelling error.
+
+Laire's announcement is a newsgroup post with no peer-reviewed paper, and his
+solver and database survive in no stable public artifact. The strong solution
+therefore rests on his report and has not been independently reproduced.

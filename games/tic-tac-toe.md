@@ -39,6 +39,23 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Tic-tac-toe is the canonical "trivially solved" game and the m,n,k-game with (m,n,k) = (3,3,3). Under optimal play it is a draw: the first player cannot force a win and, by the standard strategy-stealing argument, the second player can never have a winning strategy in any m,n,k-game, so the second player can at best draw — which a simple pairing/blocking defense achieves on the 3×3 board. The result counts as STRONG: the game is small enough to enumerate exhaustively, giving an optimal value for every reachable position.
-Complexity figures: there are 5,478 reachable legal positions (765 once rotations and reflections are identified; 3^9 = 19,683 is the illegal-inclusive upper bound, and ~138 terminal positions up to symmetry). Counting move sequences, there are 255,168 distinct games (131,184 won by player 1, 77,904 won by player 2, 46,080 drawn); 26,830 games once symmetry is collapsed. state_space here is reachable legal positions; game_tree is total games (move-order distinguished).
-ATTRIBUTION: there is no primary "solver" paper. The draw has been known as folklore for millennia — the Roman terni lapilli (1st century BC) and ancient three-in-a-row board games predate any formal proof. The modern combinatorial -game-theory framing rests on Hales & Jewett (1963), who introduced positional -game / Hales–Jewett theory generalizing tic-tac-toe; the (3,3,3)-draw itself is a trivial special case and is not "credited" to them. Steinhaus (Mathematical Snapshots) and Gardner are the usual popular references; both are secondary. year/solved_by are intentionally null/folklore rather than guessed. No new modern solving work is required — it is verifiable by hand or by a few lines of exhaustive search.
+Tic-tac-toe is the m,n,k-game with (m,n,k) = (3,3,3), and the standard example
+of a trivially solved game. With best play it is a draw. The first player
+cannot force a win, and the strategy-stealing argument shows the second player
+never has a winning strategy in any m,n,k-game, so the second player can at
+best draw, which a simple pairing or blocking defence achieves on the 3×3
+board. The game is small enough to enumerate, which gives a value for every
+reachable position: a strong solution, checkable by hand or with a few lines
+of exhaustive search.
+
+There are 5,478 reachable legal positions, or 765 once rotations and
+reflections are identified; 3^9 = 19,683 is the upper bound that includes
+illegal positions, and there are about 138 terminal positions up to symmetry.
+Counting move sequences gives 255,168 distinct games (131,184 won by player 1,
+77,904 by player 2, 46,080 drawn), or 26,830 up to symmetry.
+
+The draw has been folklore for millennia. The Roman terni lapilli (1st century
+BC) and older three-in-a-row games predate any formal proof. The modern theory
+rests on Hales and Jewett (1963), whose positional-game theory generalizes
+tic-tac-toe; the (3,3,3) draw is a trivial special case and is not credited to
+them.

@@ -48,4 +48,26 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-English draughts on the standard 8x8 board (32 dark playable squares, 12 pieces per side, forced captures). Weakly solved in 2007 by the Chinook team at the University of Alberta after ~18 years of work (started 1989): perfect play by both sides is a draw. This is a WEAK solution, not strong — a strategy is proven from the standard opening, but a game-theoretic value is NOT stored for every reachable position. The proof combined two pieces: (1) backward retrograde analysis producing endgame databases of 3.9 x 10^13 positions for all positions with <=10 pieces (this subset is strongly solved); and (2) a forward best-first search using Proof Number search at the top, with Chinook's alpha-beta search (nominal depth 17-23 ply) calling into the endgame databases as solvers. The total reachable state space of checkers is about 5 x 10^20 (500,995,484, 682,338,672,639) positions; this is the standard "reachable" figure, not the larger count of all board placements. The solvers needed to evaluate only on the order of 10^14 positions to complete the proof — a small fraction of the full space. Nineteen tournament openings were proven (all draws); together with symmetry/transposition reductions this covers the standard start. game_tree complexity left null: the paper gives only an order-of-magnitude alpha-beta estimate (~10^31 from optimistic assumptions), not a citable game-tree-size figure, so it is omitted. Independent verification: the Science paper notes the proof was checked for internal consistency and that an independent 10-piece database position requiring a 279-ply forced win was confirmed; the IJCAI 2005 paper is an earlier milestone by the same group (not a fully independent team).
+English draughts is played on the dark squares of an 8x8 board (32 playable
+squares) with 12 pieces a side, and captures are forced. The Chinook team at
+the University of Alberta worked on it from 1989 and finished in 2007, after
+about 18 years: with perfect play by both sides the game is a draw.
+
+The solution is weak. It proves a drawing strategy from the standard opening
+without storing a value for every reachable position. It has two parts.
+Retrograde analysis built endgame databases of 3.9 x 10^13 positions covering
+every position with 10 or fewer pieces, and that subset is strongly solved. A
+forward best-first search, with proof-number search at the top and Chinook's
+alpha-beta search (nominal depth 17-23 ply) below, called into those
+databases.
+
+Checkers has about 5 x 10^20 reachable positions
+(500,995,484,682,338,672,639), but the proof needed to evaluate only on the
+order of 10^14 of them. Nineteen tournament openings were proven, all draws,
+and with symmetry and transpositions they cover the standard start. The paper
+gives only a rough alpha-beta estimate of the game tree, about 10^31 under
+optimistic assumptions.
+
+The Science paper reports that the proof was checked for internal consistency,
+and that an independent 10-piece database position requiring a 279-ply forced
+win was confirmed.

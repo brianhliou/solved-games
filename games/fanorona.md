@@ -35,4 +35,25 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Fanorona is the national board game of Madagascar, derived from Alquerque. The ruleset solved is the most common variant of Fanoron-Tsivy, played on a 5x9 grid of intersections (5 rows, 9 columns) with 22 pieces per side; White (the first player) moves first and the goal is to capture all opposing pieces, with a draw if neither side can. The 5x9 game was WEAKLY solved (not strongly): a combination of PN2 proof-number search and pre-computed endgame databases proved the game-theoretic value of the initial position is a DRAW. Retrograde analysis generated databases solving every position with 7 or fewer pieces. Proving the draw created 130,820,097,938 nodes and took more than a week on an AMD Opteron 2.6 GHz with 32 GB RAM (verified by independent forward / alpha-beta search and database consistency checks). The paper reports state-space complexity ~10^21 and game-tree complexity ~10^46 (some secondary write-ups cite ~10^40); complexity is comparable to checkers. The authors note the result is for the initial position only and that two of the five opening moves (f2-e3A, d3-e3A) were proved to draw, e2-e3A appears to lose for White (win for Black), and the remaining two openings were undetermined — so this is a weak, not strong, solution. All smaller boards were also solved (Table 4): every board with a side of length 3 (3x3, 3x5, 5x3, 3x7, 7x3, 3x9, 9x3) is a White win; 5x5 is a draw; 5x7 is a Black (second-player) win; 7x5 is a White win; 5x9 (full Fanorona) is a draw. The two cited publications (2007 ICGA Journal note and the 2008 journal article) are by the same Maastricht research group and report the same result, so they are one independent primary line, not two. Wikipedia is the secondary corroborator. The 3x3 (Fanoron-Telo) and 5x5 (Fanoron-Dimy) are the named smaller standard versions; Fanoron-Tsivy is the 5x9 headline game.
+Fanorona is the national board game of Madagascar, derived from Alquerque. The
+solved rule set is the most common variant, Fanoron-Tsivy: a 5x9 grid of
+intersections (5 rows, 9 columns) with 22 pieces a side. White moves first,
+the goal is to capture every opposing piece, and the game is drawn if neither
+side can.
+
+The solution is weak. PN2 proof-number search, backed by retrograde endgame
+databases that solve every position with 7 or fewer pieces, proved that the
+initial position is a draw. The proof created 130,820,097,938 nodes and took
+more than a week on an AMD Opteron 2.6 GHz with 32 GB of RAM, and it was
+checked by an independent forward alpha-beta search and by database
+consistency checks. The paper puts the state space at about 10^21 and the game
+tree at about 10^46, comparable to checkers.
+
+The authors note that the result covers the initial position only. Of the five
+opening moves, two (f2-e3A and d3-e3A) were proved draws, e2-e3A appears to
+lose for White, and the remaining two were left undetermined.
+
+The paper (Table 4) also solves every smaller board. Each board with a side of
+length 3 (3x3, 3x5, 5x3, 3x7, 7x3, 3x9, 9x3) is a White win, 5x5 is a draw,
+5x7 is a Black (second-player) win and 7x5 is a White win. The named smaller
+versions are Fanoron-Telo (3x3) and Fanoron-Dimy (5x5).

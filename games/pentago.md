@@ -55,4 +55,20 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Pentago: a 6×6 board split into four 3×3 quadrants; each turn a player places one marble and then rotates one quadrant 90°, aiming for five-in-a-row. Strongly solved by Geoffrey Irving in 2014 — perfect play is efficiently computable for any position, the defining property of a strong solution. The first player wins. Computed by exhaustive parallel in-core retrograde analysis in under 4 hours on 98,304 threads of NERSC's Cray Edison (≈80 TB RAM at peak). At 3.0×10^15 states (3,009,081,623,421,558 positions with symmetries removed), it is described as the largest divergent game solved to date by two orders of magnitude, and the only nontrivial divergent game solved via retrograde analysis. The solution is stored as a 3.7 TB database holding full results for all positions with ≤18 stones; positions with 18+ stones are evaluated on the fly. Ties are possible (e.g. both players complete five-in-a-row on the same move, or the board fills with no winner), but the game-theoretic value from the empty board is a first-player win. The three sources above are distinct artifacts (peer-style paper, project website, open-source code+dataset) of a single research effort by Irving — one independent primary result, multiply corroborated. No conflicting solution exists in the literature. The state_space figure is post-symmetry-reduction reachable positions per the project; distance to the result (ply count of the forced win) is not published as a single figure.
+Pentago is played on a 6×6 board split into four 3×3 quadrants. Each turn a
+player places one marble and then rotates one quadrant 90°, and the goal is
+five in a row. Ties are possible (both players complete five on the same move,
+or the board fills with no winner), but from the empty board the first player
+wins.
+
+The solution is strong: perfect play can be computed efficiently from any
+position. Irving found it in 2014 by exhaustive parallel in-core retrograde
+analysis, in under 4 hours on 98,304 threads of NERSC's Cray Edison, using
+about 80 TB of RAM at peak. The game has 3,009,081,623,421,558 positions once
+symmetries are removed (about 3.0×10^15). The project describes it as the
+largest divergent game solved to date by two orders of magnitude, and the only
+nontrivial divergent game solved by retrograde analysis.
+
+The results are stored as a 3.7 TB database with full values for every
+position of up to 18 stones. Positions with more stones are evaluated on the
+fly.

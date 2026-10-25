@@ -36,9 +36,48 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Tigers and Goats (Bagh-Chal, "Moving Tiger") is an ancient Nepali asymmetric hunt game in the same family as Aadu Puli Aatam / Lambs and Tigers (Wikipedia's solved-games list names it "Lambs and Tigers"). Played on a 5x5 grid of 25 points joined by horizontal, vertical and diagonal lines. Four tigers start on the corners; Goat moves first. The game has two phases: a PLACEMENT phase lasting exactly 39 plies, in which Goat drops his 20 goats one per move while Tiger slides or jumps (a tiger jumps over an adjacent goat in a straight line to the empty point beyond, killing it); followed by a SLIDING phase that can last forever, in which Goat must slide an existing goat each turn. Tiger wins by capturing 5 goats; Tiger loses if no tiger can move; otherwise the outcome is a draw by repetition.
-RESULT = DRAW under optimal play, proved by Lim Yew Jin and Jürg Nievergelt. The proof has two parts. (1) The SLIDING (endgame) phase was solved EXHAUSTIVELY by retrograde analysis: every position in the sliding subspaces S1-S5 (4 tigers, 16-20 goats) was assigned a game-theoretic value, a database of 88,260,972 symmetry-inequivalent positions. (2) The 39-ply PLACEMENT phase (subspace S0, ~33 billion positions / ~3.3 billion board images; game-tree complexity ~10^41 for the 5-goat criterion, by a Knuth/Monte-Carlo sample) was attacked by forward search. The key technique was to halve the effective search depth: confront a strong heuristic player with an exhaustive opponent, and store a "halfway database" of positions at ply 19 (10 goats placed, Tiger to move) built on the fly, so any root search terminates within ~20 plies into the halfway database, which itself resolves into the endgame database within ~20 more plies. Using this, the authors first proved (Computing Tigers and Goats, 2004) that "Goat can at least draw," then (this 2007 paper) that "Tiger can at least draw." Together these give value = draw. Two independent re-searches, separately coded in C, took ~2 months and confirmed both components ("Goat can at least draw" in ~7 hours / 7.7e9 nodes; "Tiger can at least draw" in ~48 hours / 4.05e10 nodes).
-STRENGTH = WEAK (not strong). The sliding phase is a full tablebase, but the placement phase is solved only for the actual line of play from the standard start: the result establishes one drawing strategy for each side from the initial position, not a value for every reachable placement position. Indeed the halfway database deliberately stores only enough win-or-draw positions to trap forward searches (Table 4), not the full S11-S15 space (~1.6 billion positions). So this is a weak solution of the initial position, not a strong solution of the whole game.
-RULESET NOTES. "Five goats captured = Tiger wins" is the standard criterion the paper analyzes (Table 2 shows the value distribution is well balanced around this number). The board is the diagonal-line Bagh-Chal board; the related Indian game Aadu Puli Aatam uses a different board, so "also known as" here groups the hunt-game family loosely. method=alpha-beta+db denotes the database-backed forward (alpha-beta-style) placement search combined with the retrograde endgame and halfway databases.
-COMPLEXITY FIELDS. game_tree = ~10^41 is the placement-phase game-tree-complexity estimate (5-goat winning criterion, post-symmetry, 100,000 Monte-Carlo path samples; the paper's Table 3 gives 1.28e24 / 4.23e36 / 8.92e38 / 3.09e40 / 4.88e41 for the 1-,2-,3-,4-,5-goat criteria respectively). state_space is left null because the paper reports component sizes (88,260,972 solved sliding positions; ~33 billion placement positions; ~3.3 billion placement board images) rather than a single whole-game state-space count.
-ATTRIBUTION. Independent primary line: ONE research effort (Lim Yew Jin & Nievergelt). The 2004 ICGA Journal paper ("Computing Tigers and Goats") and the 2007 Games of No Chance 3 chapter are the same authors' progressive write-ups of the same project (the 2004 paper has the endgame DB and "Goats may catch up"; the 2007 paper completes the draw proof), so they count as one independent primary source, not two. Wikipedia is a secondary corroborator. No independent re-solve by a separate group is known, though the authors' own two re-searches in separately coded C programs provide internal verification. Headline year 2007 is the completing paper (Games of No Chance 3); some catalogs date the volume to 2009.
+Tigers and Goats (Bagh-Chal, "Moving Tiger") is an ancient Nepali asymmetric
+hunt game, in the same family as Aadu Puli Aatam and Lambs and Tigers. It is
+played on a 5x5 grid of 25 points joined by horizontal, vertical and diagonal
+lines. Four tigers start on the corners, and Goat moves first.
+
+The game has two phases. The placement phase lasts exactly 39 plies: Goat
+drops his 20 goats one per move while Tiger slides or jumps, a tiger jumping
+over an adjacent goat in a straight line to the empty point beyond and killing
+it. The sliding phase that follows can last forever, with Goat sliding an
+existing goat each turn. Tiger wins by capturing 5 goats and loses if no tiger
+can move; otherwise the game is drawn by repetition. Five captured goats is
+the standard criterion, and the paper shows the value distribution is well
+balanced around that number.
+
+Lim Yew Jin and Jürg Nievergelt proved the game a draw in two parts. They
+solved the sliding phase exhaustively by retrograde analysis: every position
+in the sliding subspaces S1-S5 (4 tigers, 16-20 goats) has a value, a database
+of 88,260,972 symmetry-inequivalent positions. The 39-ply placement phase
+(subspace S0, ~33 billion positions or ~3.3 billion board images, with a
+game-tree complexity of ~10^41 for the 5-goat criterion by a Knuth Monte-Carlo
+sample) was attacked by forward search.
+
+The key technique halved the effective search depth. A strong heuristic player
+faced an exhaustive opponent, and a "halfway database" of positions at ply 19
+(10 goats placed, Tiger to move) was built on the fly, so any root search ends
+within ~20 plies in the halfway database, which in turn resolves into the
+endgame database within ~20 more plies. With it the authors first proved that
+"Goat can at least draw" (Computing Tigers and Goats, 2004), then, in the 2007
+paper, that "Tiger can at least draw," which together give a draw. Two
+re-searches in separately coded C programs took ~2 months and confirmed both
+parts: "Goat can at least draw" in ~7 hours and 7.7e9 nodes, and "Tiger can at
+least draw" in ~48 hours and 4.05e10 nodes.
+
+The solution is weak. The sliding phase is a full tablebase, but the placement
+phase is solved only for play from the standard start: one drawing strategy
+for each side, with no value for every reachable placement position. The
+halfway database deliberately stores only enough win-or-draw positions to trap
+forward searches, and leaves out most of the S11-S15 space (~1.6 billion
+positions).
+
+The 2004 ICGA Journal paper, which has the endgame database and shows "Goats
+may catch up," and the 2007 Games of No Chance 3 chapter, which completes the
+proof, are the same authors' progressive write-ups of one project. No separate
+group has re-solved the game; the authors' own two re-searches are its
+verification.

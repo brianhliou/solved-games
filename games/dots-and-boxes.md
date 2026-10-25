@@ -52,25 +52,48 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Dots and Boxes (M. E. Lucas's 1889 "La Pipopipette") is an impartial scoring game: players take turns drawing edges on a grid of dots; completing a box's fourth side captures it and grants another move; most boxes wins. Because the winner is decided by score (not by the normal-play last-move convention), Sprague-Grundy does not apply, which makes solving harder than for ordinary impartial games. The general game is PSPACE-complete (Buchin et al., 2021), so only small boards are solved by exhaustive computation. "result" here is the outcome from the standard empty start of the headline 5x5 board.
-IMPORTANT: board sizes are stated in BOXES, the convention used by the solvers. An NxM "game" has N*M boxes and is played on an (N+1)x(M+1) array of dots. Do not confuse "5x5 boxes" (the headline, 6x6 dots) with the casual "5x5 dots = 4x4 boxes." Several secondary write-ups conflate these and wrongly call the headline game a tie.
-Headline instance: the 5x5 (25-box) board, solved by William Fraser with his program "the Shark" and announced January 2014. The first player wins with a final score of 13-12 (a margin of +1; Wilson's results table likewise lists the 5x5 game value as +1). Fraser proved the win using an enormous endgame database of roughly 30 trillion (~3x10^13) positions built up over years, combined with a small opening book (fewer than ~400,000 positions) feeding a forward proof search; this is the alpha-beta + endgame-database family rather than a pure full-board retrograde sweep. The Shark proved eight symmetric copies of a single winning opening move; Fraser suspected many more (possibly all 60) opening moves also win, but only that one was fully proven.
-This is a WEAK solution: a winner and a concrete winning strategy from the standard start (plus a deep endgame tablebase), but NOT a complete strongly- solved value-for-every-reachable-position table of the full 5x5 game.
-Other solved instances (margins from David Wilson's results page; positive = first player A wins, negative = second player B wins, 0 = tie): - 3x3 (9 boxes): SECOND-player win by 3 (margin -3). Wilson, retrograde
-  analysis. (Berlekamp's book shows B can force a win by 1; with best play B
-  actually wins by 3.)
-- 3x5 "American" (15 boxes): second-player win by 1 (margin -1). Wilson. - 4x4 (16 boxes): TIE (margin 0), with loony-move analysis showing player B
-  can be forced to make the first loony move and that symmetric play loses for
-  B. Solved by David Wilson (~2010) using retrograde analysis; this was the
-  largest game solved before Barker & Korf. (Cited as "Wilson 2010" by Barker
-  & Korf.)
-- 4x5 (20 boxes): TIE under optimal play. Solved by Joseph K. Barker &
-  Richard E. Korf (AAAI 2011 short paper; AAAI 2012 full paper) with an
-  alpha-beta solver using chain analysis, transposition tables, and symmetry
-  reductions (4x5 has 49 edges, ~5.6x10^14 unscored states). Their solver ran
-  ~9-10 days; they estimated Wilson's retrograde solver would have needed
-  ~130 days and 8 TB. This was the largest game solved by exhaustive search
-  until Fraser's 5x5.
+Dots and Boxes (M. E. Lucas's 1889 "La Pipopipette") is an impartial scoring
+game. Players take turns drawing edges on a grid of dots, and completing a
+box's fourth side captures it and grants another move; most boxes wins.
+Because score decides the winner, with no normal-play last-move rule,
+Sprague-Grundy theory does not apply, which makes solving harder than for
+ordinary impartial games. The general game is PSPACE-complete (Buchin et al.,
+2021), so only small boards are solved by exhaustive computation.
 
-Independent primary confirmations of the headline 5x5 result are limited: Fraser's announcement is the originating source, and Wilson's analysis-results page (which hosts/reports Fraser's 5x5 value of +1) corroborates it. The 4x4 (Wilson) and 4x5 (Barker & Korf) results are separately and independently established primary results for their respective boards.
-state_space stores Fraser's stated ~3x10^13 endgame-database position count for 5x5 (approximate, his figure, not an exact total/reachable enumeration). game_tree is left null (no single citable figure). distance_to_result is bounded by the 60 boxes / 60 edges of the 5x5 board.
+Board sizes are stated in boxes, the solvers' convention: an NxM game has N*M
+boxes and is played on an (N+1)x(M+1) array of dots. The headline "5x5 boxes"
+game uses 6x6 dots, and differs from the casual "5x5 dots," which is 4x4
+boxes. Several secondary write-ups conflate the two and wrongly call the
+headline game a tie.
+
+William Fraser solved the 5x5 (25-box) board with his program "the Shark,"
+announced in January 2014. The first player wins 13-12, a margin of +1, and
+David Wilson's results table likewise lists the 5x5 game value as +1. Fraser
+built an endgame database of roughly 30 trillion (~3x10^13) positions over
+years and combined it with a small opening book (fewer than ~400,000
+positions) feeding a forward proof search, an alpha-beta and endgame-database
+method. The Shark proved eight symmetric copies of a single winning opening
+move. Fraser suspected many more opening moves also win, possibly all 60, but
+proved only that one.
+
+The solution is weak: a winner and a concrete winning strategy from the
+standard start, backed by a deep endgame tablebase, with no value for every
+reachable position of the full 5x5 game. Fraser's announcement is the
+originating source, corroborated by Wilson's results page.
+
+Smaller boards are solved too (margins from Wilson's results page: positive
+means the first player wins, negative the second, 0 a tie). 3x3 (9 boxes) is a
+second-player win by 3, found by Wilson with retrograde analysis; Berlekamp's
+book shows the second player can force a win by 1, but with best play the
+margin is 3. 3x5 "American" (15 boxes) is a second-player win by 1 (Wilson).
+4x4 (16 boxes) is a tie, with loony-move analysis showing the second player
+can be forced to make the first loony move and that symmetric play loses for
+them. Wilson solved it around 2010 by retrograde analysis, and it was the
+largest game solved before Barker and Korf, who cite it as "Wilson 2010."
+
+4x5 (20 boxes) is a tie, solved by Joseph K. Barker and Richard E. Korf (AAAI
+2011 short paper; AAAI 2012 full paper) with an alpha-beta solver using chain
+analysis, transposition tables and symmetry reductions. The board has 49 edges
+and ~5.6x10^14 unscored states. Their solver ran ~9-10 days, where they
+estimated Wilson's retrograde solver would have needed ~130 days and 8 TB. It
+was the largest game solved by exhaustive search until Fraser's 5x5.

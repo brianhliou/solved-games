@@ -48,9 +48,35 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Domineering (invented by Goran Andersson, popularized via Martin Gardner 1974 and Berlekamp-Conway-Guy's "Winning Ways") is a partizan combinatorial game: Vertical (Left) places 2x1 vertical dominoes, Horizontal (Right) places 1x2 horizontal dominoes on a grid; the player unable to move loses. It is a normal-play game, so "result" here means the outcome under optimal play with a designated first player.
-Headline instance is 11x11, solved by Jos Uiterwijk in 2016 with his program MUDoS: the FIRST player to move wins, and this holds irrespective of whether Vertical or Horizontal moves first. The proof investigated 259,689,994,008 nodes over roughly half a year on a single desktop. MUDoS combines alpha-beta search with large transposition tables, endgame databases, and knowledge-based / combinatorial-game- theory move ordering and bounds; it also (re)solved boards up to 10x10 far faster and settled several previously open rectangular boards.
-This is a WEAK solution (a winner and concrete winning strategy from the standard empty start), not a strong solution: there is no complete tablebase assigning a CGT value to every reachable position of 11x11. (Small boards and many m x n cases do have full CGT-value analyses, but the large square solutions are search proofs.)
-Other solved square boards (outcome = win for player to move unless noted): 1x1 second-player win; 2x2, 3x3, 4x4 first-player win; 5x5 SECOND-player win; 6x6, 7x7 first-player win; 8x8 first-player win (Breuker, Uiterwijk & van den Herik, 2000, alpha-beta + transposition tables, Theoretical Computer Science 230:195-206); 9x9 first-player win (same group, shortly after with program improvements); 10x10 first-player win (Nathan Bullock, 2002 MSc thesis, Univ. of Alberta).
-Rectangular m x n boards: Lachmann, Moore & Rapaport ("Who Wins Domineering on Rectangular Boards?", More Games of No Chance, 2002) gave a MATHEMATICAL-PROOF (polynomial-time) determination of the winner and a winning strategy for all n when m in {1,2,3,4,5,7,9,11}. E.g. all 2k x n boards for n = 3,5,7,9,11 are wins for Vertical; various m x 2k boards are wins for Horizontal. These rectangular results are independent confirmations using a different (constructive proof) method rather than search.
-game_tree field stores the 11x11 node count (259,689,994,008 nodes investigated), which is a search-tree figure, not a true game-tree-complexity estimate. state_space for 11x11 is omitted (no single citable reachable/total count). distance_to_result is bounded by the max 60 dominoes that fit on 11x11; the exact optimal-line length is not published as one number.
+Domineering was invented by Göran Andersson and popularized by Martin Gardner
+(1974) and Berlekamp, Conway and Guy's "Winning Ways." It is a partizan
+combinatorial game: Vertical (Left) places 2x1 dominoes upright and Horizontal
+(Right) places 1x2 dominoes flat on a grid, and the player unable to move
+loses.
+
+Jos Uiterwijk solved 11x11 in 2016 with his program MUDoS: the player who
+moves first wins, whether that is Vertical or Horizontal. The proof searched
+259,689,994,008 nodes over roughly half a year on a single desktop. MUDoS
+combines alpha-beta search with large transposition tables, endgame databases,
+and move ordering and bounds from combinatorial game theory. It also re-solved
+boards up to 10x10 far faster and settled several rectangular boards that had
+been open.
+
+The solution is weak: a winner and a concrete winning strategy from the empty
+board, with no table of combinatorial values for every reachable 11x11
+position. Small boards and many m x n cases do have full value analyses, but
+the large square solutions are search proofs.
+
+The smaller square boards are solved too: 1x1 and 5x5 are second-player wins,
+and 2x2, 3x3, 4x4, 6x6, 7x7, 8x8, 9x9 and 10x10 are first-player wins. 8x8 was
+solved by Breuker, Uiterwijk and van den Herik (2000, alpha-beta with
+transposition tables, Theoretical Computer Science 230:195-206), 9x9 by the
+same group shortly after with an improved program, and 10x10 by Nathan Bullock
+(2002 MSc thesis, University of Alberta).
+
+For rectangles, Lachmann, Moore and Rapaport ("Who Wins Domineering on
+Rectangular Boards?", More Games of No Chance, 2002) gave a mathematical
+proof, computable in polynomial time, of the winner and a winning strategy for
+all n when m is in {1,2,3,4,5,7,9,11}. For example, every 2k x n board with n
+= 3, 5, 7, 9 or 11 is a win for Vertical, and various m x 2k boards are wins
+for Horizontal.

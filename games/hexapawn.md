@@ -35,6 +35,23 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Hexapawn was invented by Martin Gardner and introduced in his March 1962 Scientific American "Mathematical Games" column, where he used its tiny game tree to demonstrate a matchbox-and-bead reinforcement-learning machine (the Hexapawn Educable Robot, HER, an analogue of Donald Michie's MENACE for noughts-and-crosses). The headline result is for the standard 3x3 board with three pawns per side: pawns move and capture exactly like chess pawns (one square straight forward, capture one square diagonally forward; no two-square first move, no promotion, no en passant). A player wins by advancing a pawn to the far rank, by capturing all enemy pawns, or by leaving the opponent with no legal move. With perfect play the second player (Black) has a forced win; equivalently the first player (White) loses in 3 of its own moves, e.g. 1.b2 axb2 2.cxb2 c2 3.a2 c1#.
-Strength is "strong": the 3x3 game tree is extremely small (Gardner's analysis enumerated it fully, and the learning machine needs only 24 matchboxes; there are about 19 distinct positions that can face the second player), so the result is backed by a complete enumeration with a value known for every reachable position, not merely an ultra-weak/weak existence proof. The state_space figure (19) is the count of distinct non-terminal positions facing player two as commonly cited; total reachable positions including symmetric variants are slightly higher, and a full game-tree node count is not given a single canonical figure in the primary source (left null).
-The primary source is Gardner's 1962 column itself, which states the second player's forced win and the construction. Wikipedia is a secondary source that restates the result and the explicit mating line. Note the 4x4 generalization ("octopawn") is a first-player (White) forced win, and larger n x m boards have their own results; those are outside this 3x3 record.
+Martin Gardner invented Hexapawn for his March 1962 "Mathematical Games"
+column in Scientific American. He used its tiny game tree to demonstrate a
+learning machine built from matchboxes and beads, the Hexapawn Educable Robot
+(HER), modelled on Donald Michie's MENACE for noughts and crosses.
+
+The standard game is played on a 3x3 board with three pawns a side. Pawns move
+and capture as in chess (one square straight forward, capturing one square
+diagonally forward), with no two-square first move, no promotion and no en
+passant. A player wins by reaching the far rank, by capturing every enemy
+pawn, or by leaving the opponent with no legal move. With perfect play Black,
+the second player, wins: White loses in 3 of its own moves, for example 1.b2
+axb2 2.cxb2 c2 3.a2 c1#.
+
+The game is small enough that Gardner enumerated it completely, so the value
+of every reachable position is known and the solution is strong. The learning
+machine needs only 24 matchboxes, and about 19 distinct positions can face the
+second player.
+
+The 4x4 version, octopawn, is a forced win for the first player (White), and
+larger n x m boards have their own results, which this record does not cover.

@@ -56,4 +56,24 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Dōbutsu shōgi (3×4 board, "Let's Catch the Lion!") was invented in 2008 by professional shogi player Madoka Kitao. It was STRONGLY solved by Tetsurō Tanaka and published June 2009 as a non-refereed IPSJ SIG Game Informatics technical report (2009-GI-22, No. 3). Using retrograde analysis, Tanaka computed the theoretical value (win/loss/draw) of every position reachable from the start. The initial position is a second-player win (後手必勝, gote / "white" wins) and the win requires 78 plies. The computation ran on a 2.6 GHz Opteron with 16 GB RAM; enumerating reachable positions took ~19 min. state_space = 246,803,167 is the count of REACHABLE positions and is the exact figure reported in Tanaka's paper ("局面数が 246,803,167 と求まった"); it was independently recomputed from scratch by Liou. The often-cited 1,567,925,964 is the upper bound on TOTAL piece configurations ignoring reachability (after folding left-right symmetry). Note: capturing the opponent's chick on move 1 hastens the first player's loss to 76 plies; every other first move delays the loss to the full 78. The clausecker/dobutsu repo is an independent C tablebase reproducing perfect play and corroborates the result, but its README does not itself state the game-theoretic value, so it counts as secondary corroboration. brianhliou/dobutsu-shogi (by this list's maintainer) rebuilt the retrograde → tablebase → probe → explorer pipeline and checked it against the clausecker reference (50,000 positions, zero mismatches).
+Dōbutsu shōgi is a shogi variant on a 3×4 board, invented in 2008 by the
+professional shogi player Madoka Kitao. Tetsurō Tanaka solved it strongly in
+June 2009 and published the result as a non-refereed IPSJ SIG Game Informatics
+technical report (2009-GI-22, No. 3). His retrograde analysis computed the
+value of every position reachable from the start. The second player (gote,
+"white") wins: 後手必勝.
+
+Perfect play takes 78 plies. If the first player captures the opponent's chick
+on move 1, the loss comes sooner, at 76 plies; every other first move holds
+out for the full 78. The computation ran on a 2.6 GHz Opteron with 16 GB of
+RAM, and enumerating the reachable positions took about 19 minutes.
+
+The game has 246,803,167 reachable positions. The often-cited 1,567,925,964 is
+an upper bound on all piece configurations, ignoring reachability, after
+folding left-right symmetry.
+
+The clausecker/dobutsu repository is an independent C tablebase that plays
+perfectly from any position. This list's maintainer rebuilt the whole pipeline
+(retrograde analysis, tablebase, probe, explorer) in brianhliou/dobutsu-shogi
+and checked it against the clausecker reference: 50,000 positions, zero
+mismatches.

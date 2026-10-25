@@ -42,4 +42,26 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Wythoff's game is a two-player impartial combinatorial game (normal play: last player to take a counter wins). From two heaps, a player removes any positive number of counters from one heap, or an equal positive number from both heaps. Wythoff (1907) gave a complete closed-form solution: the cold/losing P-positions (a loss for the player to move) are exactly the pairs (n_k, m_k) = (floor(k*phi), floor(k*phi^2)) = (floor(k*phi), floor(k*phi)+k) for k >= 0, where phi = (1+sqrt5)/2 is the golden ratio. These two coordinate sequences are complementary Beatty sequences (since 1/phi + 1/phi^2 = 1): (0,0),(1,2),(3,5),(4,7),(6,10),(8,13),... Every other position is an N-position (a win for the player to move), so the FIRST player wins from any non-P start; the optimal strategy is to move to a reachable P-position. Because the result is a value/strategy for EVERY reachable position (a full closed-form "tablebase"), not merely the initial position, this is a STRONG solution. The proof is mathematical (induction establishing the P/N partition), not a computer search. State-space and game-tree complexity are unbounded (heaps are arbitrarily large integers), so no finite figure applies. Historical note: the game predates Wythoff under the Chinese name tsyan-shidzi / jiǎn shízǐ ("choosing/picking stones"), per Martin Gardner; Wythoff is credited with the first published mathematical analysis. Many later papers analyze variants (Blocking Wythoff Nim, generalized/diagonal Wythoff Nim, queen-reflection modifications), but the classical game's headline solution is Wythoff 1907.
+Wythoff's game is an impartial game for two players on two heaps of counters.
+A move takes any positive number of counters from one heap, or the same
+positive number from both. Under normal play the player who takes the last
+counter wins.
+
+Wythoff (1907) solved it in closed form. The losing positions for the player
+to move (P-positions) are exactly the pairs `(n_k, m_k) = (floor(k·phi),
+floor(k·phi^2)) = (floor(k·phi), floor(k·phi)+k)` for k >= 0, where phi =
+(1+sqrt5)/2 is the golden ratio: (0,0), (1,2), (3,5), (4,7), (6,10), (8,13),
+and so on. The two coordinate sequences are complementary Beatty sequences,
+since 1/phi + 1/phi^2 = 1. From any other position the player to move wins by
+moving to a P-position.
+
+The formula gives the value of every position, so the solution is strong, and
+the proof is mathematical (an induction that establishes the split into
+winning and losing positions) with no computer search. Because the heaps can
+be any size, the game has no finite state-space or game-tree figure.
+
+Martin Gardner reports that the game is older than Wythoff, played in China as
+tsyan-shidzi or jiǎn shízǐ ("choosing/picking stones"); Wythoff is credited
+with the first published mathematical analysis. Many later papers study
+variants: Blocking Wythoff Nim, generalized or diagonal Wythoff Nim, and
+queen-reflection modifications.

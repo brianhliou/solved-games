@@ -32,26 +32,25 @@ sources:
     url: "http://www.cyningstan.com/game/106/three-mens-morris"
   - title: "Enigmatic Code — Headscratcher #245: a Python solver of the centre line (New Scientist, 2023)"
     url: "https://enigmaticcode.wordpress.com/2023/10/28/headscratcher-245-three-mens-morris/"
+# The project's solver is listed only as a reproducible verifier; the game is too
+# trivial to claim as a solve, so no solving credit is claimed (same standing as tic-tac-toe).
 resources:
   code:
     - title: "game-solver (the game-solver repository) — an open retrograde solver that reproduces the result and the full opening classification"
       url: "https://github.com/brianhliou/game-solver"
-notes: >
-  Three men's morris is the "movement" extension of three-in-a-row (it is to
-  tic-tac-toe what nine men's morris is to a placement-only mill game). Each player
-  places three pieces, then slides them; a player wins by getting all three on a
-  line (or leaving the opponent with no move).
+notes: |
+  Three men's morris adds movement to three-in-a-row: it is to tic-tac-toe what
+  nine men's morris is to a placement-only mill game. Each player places three
+  pieces and then slides them along the lines. A player wins by getting all
+  three on a line, or by leaving the opponent with no move.
 
-  This is a trivial game — well under 10^4 positions, strongly solvable by
-  inspection — so its standing here is the same as tic-tac-toe's: a classically
-  known result, no solving credit claimed. The first player wins, and only by
-  taking the centre: corners draw and edges lose; with the centre opening banned
-  the game is a draw (which is why most informal rule-sets ban it). The
-  first-player centre win has been understood as folklore for centuries (the board
-  appears in the 1283 Libro de los juegos and in far older carvings); Murray (1952)
-  is the classical reference.
+  The first player wins, and only by opening in the centre. With the centre
+  opening banned the game is a draw, which is why most informal rule sets ban
+  it. With well under 10^4 positions the game can be solved by inspection, so,
+  like tic-tac-toe, it has a classically known result and no solver to credit.
 
-  This project's open solver (engine/, the Tapatan ruleset) reproduces the result
-  and contributes the full opening classification (centre wins uniquely; corners
-  draw; edges lose). It is listed only as a reproducible verifier — the game is too
-  trivial to claim as a solve.
+  The win has been folklore for centuries. The board appears in the 1283 Libro
+  de los juegos and in far older carvings, and Murray (1952) is the classical
+  reference. The open solver listed under Resources (Tapatan rules) reproduces
+  the result and the full opening classification: the centre wins, the corners
+  draw and the edges lose.

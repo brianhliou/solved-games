@@ -64,8 +64,41 @@ Searches for newer work:
 
 ## Notes
 
-5x5 Go is the largest square Go board solved from the empty board for a clearly specified ruleset. Erik van der Werf's program MIGOS ("Mini Go Solver") solved it in October 2002 (published in ICGA Journal 2003). Under Japanese rules with no komi and the optimal opening on the center point (C3), the first player Black wins the WHOLE board: a 25-point win. Passes and seki are handled — it is full Go, not a simplified variant. MIGOS solved all of the (by symmetry, 6) distinct opening moves on the empty board and for several rule sets; the empty-board proof reaches depth 23 plies and the center-opening win is proven at 22 plies. The solving search examined about 4.472 x 10^9 nodes in ~4 hours on a 2.0 GHz Pentium 4.
-Method: iterative-deepening alpha-beta / principal-variation search with transposition tables, enhanced transposition cutoffs, symmetry lookups, two killer moves, the history heuristic, a Go-specific heuristic evaluation, and — critically — Benson's algorithm for unconditionally alive stones / static recognition of unconditional territory, which let proven full-board wins be detected several plies early. The super-ko rule introduces a Graph-History-Interaction (GHI) problem that the paper addresses explicitly.
-STRENGTH = weak. This is a weak solution: the game-theoretic value of the start plus a strategy to achieve it, proven by full-game search. It is NOT a strong solution — there is no published tablebase giving the optimal value for every one of the ~4.1 x 10^11 legal 5x5 positions (legal-position count from John Tromp's enumeration; state_space here is the number of LEGAL 5x5 positions, not reachable). The "strong" label would require such a full tablebase.
-Ruleset caveat: the headline result is under van der Werf's Japanese-style rules (situational/positional super-ko variants were also analyzed). In 2024 Randall, Müller, Wei and Hayward (Expected Work Search, arXiv:2405.05594) reported the FIRST solution of the empty 5x5 board under the commonly used POSITIONAL SUPER-KO ruleset and likewise found a first-player full-board win — an independent confirmation of the qualitative result under a different ruleset and a different solver.
-Related small/rectangular boards (van der Werf et al.): 1x1 draw (value 0), 2x2 Black wins by 1 (the 4x4 territory minus, with no winning capture beyond +1 under some rule conventions; Tromp's exact 2x2 transition graph is known), 3x3 Black wins by 9 (whole board), 4x4 Black wins by 2; rectangular boards up to 5x6 were later solved (van der Werf & Winands, "Solving Go for Rectangular Boards", ICGA Journal 32(2), 2009 — e.g. 5x6 solved). 6x6 and larger square boards are NOT solved.
+5x5 Go is the largest square Go board solved from the empty board for a
+clearly specified ruleset. Erik van der Werf's program MIGOS ("Mini Go
+Solver") solved it in October 2002, published in the ICGA Journal in 2003.
+Under Japanese rules with no komi, and with the optimal opening on the centre
+point (C3), Black wins the whole board: a 25-point win. Passes and seki are
+handled, so this is full Go and no simplified variant.
+
+MIGOS solved all 6 distinct opening moves on the empty board (distinct after
+symmetry), for several rule sets. The empty-board proof reaches depth 23 plies
+and the centre-opening win is proven at 22 plies. The search examined about
+4.472 x 10^9 nodes in ~4 hours on a 2.0 GHz Pentium 4.
+
+The search is iterative-deepening alpha-beta (principal-variation search) with
+transposition tables, enhanced transposition cutoffs, symmetry lookups, two
+killer moves, the history heuristic and a Go-specific evaluation. The key
+addition is Benson's algorithm for unconditionally alive stones, with static
+recognition of unconditional territory, which let proven full-board wins be
+detected several plies early. The super-ko rule creates a
+Graph-History-Interaction (GHI) problem, which the paper addresses explicitly.
+
+This is a weak solution: the value of the start plus a strategy to achieve it,
+proven by full-game search. No published tablebase gives the optimal value for
+each of the ~4.1 x 10^11 legal 5x5 positions counted in John Tromp's
+enumeration.
+
+The headline result is under van der Werf's Japanese-style rules, and
+situational and positional super-ko variants were also analyzed. In 2024
+Randall, Müller, Wei and Hayward (Expected Work Search, arXiv:2405.05594)
+reported the first solution of the empty 5x5 board under the commonly used
+positional super-ko ruleset, and likewise found a first-player full-board win:
+an independent confirmation under a different ruleset with a different solver.
+
+Van der Werf and colleagues also solved smaller boards. 1x1 is a draw (value
+0), 2x2 is a Black win by 1 under some rule conventions (John Tromp's exact
+2x2 transition graph is known), 3x3 is a Black win by 9 (the whole board), and
+4x4 a Black win by 2. Rectangular boards up to 5x6 were solved later (van der
+Werf and Winands, "Solving Go for Rectangular Boards," ICGA Journal 32(2),
+2009). 6x6 and larger square boards are not solved.

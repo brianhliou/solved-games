@@ -51,11 +51,49 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-WEAK solution, not strong — the most common error here is to call the explicit Yang strategy "strong." Finding a winning strategy from the start (and from each of the 49 openings) is a constructive WEAK solution; it does NOT store a game-theoretic value for every reachable position, so there is no full tablebase.
-Attribution (important): the hint attributes the CG 2002 paper "Solving 7×7 Hex: Virtual Connections and Game-State Reduction" to "Yang, Liao & Pawlak," but that paper is by Hayward, Björnsson, Johanson, Kan, Po & van Rijswijck (Univ. of Alberta) and is the first FULL COMPUTER solve of all 49 openings. It was presented at Advances in Computer Games 10 (the CG/ACG 2003 line; IFIP proceedings carry a 2004 imprint) and the expanded journal version appeared in Theoretical Computer Science 349 (2005). Yang, Liao & Pawlak are the authors of the SEPARATE, earlier hand solutions: a decomposition-method explicit first-player winning strategy (ADCOG21 2001; "A New Solution for 7×7 Hex Game", 2002) and "New Winning and Losing Positions for 7×7 Hex" (CG 2002). Yang's hand proof used ~41 local game patterns in a ~12-page case analysis; the Alberta team's program independently verified and completed the result for every opening. The headline year is 2003 (first complete computer solve); the Yang hand work is 2001–2002.
-How the computer solve works: a recursive-descent game-tree search (after Van Rijswijck) that proves a winning virtual connection for the winner via fixed/dynamic connection-composition rules (the "win-link"/"win-prelink" H-search lineage of Anshelevich and Berge), pruned by new move-domination and cell fill-in reductions plus mustplay-region narrowing. For each of the 49 openings the search emits an explicit proof-tree for the winning player; all 49 trees plus a tree viewer were published at the hex7trees site. Runtime: ~1 minute for the easiest openings up to ~110 hours for the hardest, ~615 hours total, on a single AMD Athlon 1800+ (gcc 3.1.1, Slackware Linux), 2003.
-Result: first player wins. Central openings (including the centre cell d4) and the obtuse-corner short diagonal are wins; the 14 losing first moves cluster near the two ACUTE corners (Yang et al. derived them by board symmetry). Under the no-swap ruleset reported here.
-Ruleset caveat: this is the no-swap (no pie-rule) game. Under the swap/pie rule the second player can flip a winning first move, changing the practical game but not the cell-by-cell opening values.
-Ultra-weak result, ALL board sizes: independently of any search, Hex on any n×n board is a first-player win by John Nash's strategy-stealing argument (c. 1949) combined with the Hex theorem (Hein 1942 / Nash / Gale) that Hex can never be a draw — exactly one player connects. That argument is non-constructive (it proves first player wins without giving a move); the 7×7 results here are the constructive WEAK upgrade for this size. Deciding an arbitrary generalized-Hex position is PSPACE-complete (Even & Tarjan 1976; Reisch 1981), which is why explicit solving stalls around 9×9–10×10.
-Lineage of forward-Hex solves: 7×7 — Yang/Liao/Pawlak hand (2001–2002) and Hayward et al. full computer solve (2003); 8×8 — Henderson, Arneson & Hayward (IJCAI 2009, all openings); 9×9 — Pawlewicz & Hayward (2013, all openings); 10×10 — only the central opening (2013).
-Complexity: no 7×7-specific state-space/game-tree figure is cited in the primary paper, so both fields are left null rather than guessing. For reference, surveys give 11×11 Hex a state-space complexity of roughly 10^57 and game-tree complexity of roughly 10^98; 7×7 is correspondingly far smaller.
+On 7×7 Hex the first player wins, and every one of the 49 opening moves has a
+known value. Central openings, including the centre cell d4, and the
+obtuse-corner short diagonal win for the first player, while the 14 losing
+first moves cluster near the two acute corners (Yang et al. derived them by
+board symmetry). Each winning strategy is constructive, but no value is stored
+for every reachable position, so the solution is weak.
+
+Two separate efforts produced it. Jing Yang, Simon Liao and Mirek Pawlak gave
+explicit hand solutions: a decomposition-method first-player winning strategy
+(ADCOG21 2001; "A New Solution for 7×7 Hex Game," 2002) and "New Winning and
+Losing Positions for 7×7 Hex" (CG 2002). Yang's hand proof used ~41 local game
+patterns in a ~12-page case analysis. Hayward, Björnsson, Johanson, Kan, Po
+and van Rijswijck (University of Alberta) then made the first full computer
+solve of all 49 openings, presented at Advances in Computer Games 10 in 2003
+(IFIP proceedings with a 2004 imprint) and expanded in Theoretical Computer
+Science 349 (2005). Their program independently verified and completed the
+result for every opening.
+
+The computer solve is a recursive-descent game-tree search (after Van
+Rijswijck) that proves a winning virtual connection for the winner through
+connection-composition rules, in the H-search lineage of Anshelevich and
+Berge. New move-domination and cell fill-in reductions prune it, along with
+mustplay-region narrowing. For each opening the search emits an explicit proof
+tree for the winning player, and all 49 trees were published with a tree
+viewer at the hex7trees site. Runtime ranged from ~1 minute for the easiest
+openings to ~110 hours for the hardest, ~615 hours in total, on a single AMD
+Athlon 1800+ (gcc 3.1.1, Slackware Linux) in 2003.
+
+This is the no-swap (no pie rule) game. Under the swap rule the second player
+can take over a winning first move, which changes the practical game but
+leaves the cell-by-cell opening values unchanged.
+
+Independently of any search, Hex on every n×n board is a first-player win, an
+ultra-weak result. John Nash's strategy-stealing argument (c. 1949) combines
+with the Hex theorem (Hein 1942, Nash, Gale) that Hex can never be a draw:
+exactly one player connects. The argument gives no winning move, and the 7×7
+results are the constructive weak solution for this size. Deciding an
+arbitrary generalized-Hex position is PSPACE-complete (Even and Tarjan 1976;
+Reisch 1981), which is why explicit solving stalls around 9×9–10×10. Larger
+sizes followed: 8×8 (Henderson, Arneson and Hayward, IJCAI 2009, all
+openings), 9×9 (Pawlewicz and Hayward, 2013, all openings) and, of 10×10, only
+the central opening (2013).
+
+The primary paper cites no state-space or game-tree figure for 7×7. Surveys
+give 11×11 Hex a state-space complexity of roughly 10^57 and a game-tree
+complexity of roughly 10^98, and 7×7 is far smaller.

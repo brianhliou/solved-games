@@ -16,6 +16,7 @@ method:
   - depth-first-pns
   - mathematical-proof
 distance_to_result: "First player has 410 legal moves in the 5x6 starting position; proofs are full game-tree searches from the start, not fixed-ply"
+# No citable single state-space figure for the 5x6 game; complexity fields left mostly null deliberately.
 complexity:
   game_tree: null
 year: 2015
@@ -36,37 +37,35 @@ sources:
     url: "https://en.wikipedia.org/wiki/Game_of_the_Amazons"
 resources:
   writeup: "http://webdocs.cs.ualberta.ca/~mmueller/amazons/"
-notes: >
-  Amazons is a combinatorial board game (each turn: move an amazon like a chess
-  queen, then shoot an arrow that blocks a square); the last player able to move
-  wins, so there are no draws. The full 10x10, 4-amazons-per-side game is far from
-  solved. Only small rectangular instances have been solved, all by exhaustive
-  search backed by combinatorial-game-theory bounds — these are WEAK solutions
-  (game-theoretic value of the start, with a winning strategy proven by the search
-  tree), not strong solutions (no full tablebase of all reachable positions).
+notes: |
+  In Amazons each turn a player moves an amazon like a chess queen and then
+  shoots an arrow from it, which blocks a square for the rest of the game. The
+  last player able to move wins, so there are no draws. The full game, 10x10
+  with 4 amazons a side, is far from solved; only small rectangular boards are.
 
-  Headline instance is the 5x6 board (4 amazons per side, standard corner setup),
-  proven a FIRST-PLAYER WIN by Jiaxing Song and Martin Müller — the largest proof
-  presented in detail in the 2015 IEEE TCIAIG paper / Song's 2012 MSc thesis. The
-  first player has 410 legal moves in the 5x6 start.
+  Those solutions come from exhaustive search backed by bounds from
+  combinatorial game theory. Each gives the value of the start with a winning
+  strategy proved by the search tree, which is a weak solution; there is no
+  tablebase of all reachable positions. The headline board is 5x6 (4 amazons a
+  side, standard corner setup), a first-player win proved by Jiaxing Song and
+  Martin Müller, the largest proof presented in detail in their 2015 IEEE TCIAIG
+  paper and Song's 2012 MSc thesis. The first player has 410 legal moves at the
+  5x6 start.
 
-  All solved instances (standard 4-amazons setup, corner starting points):
-    - 4x4: second-player win (easy brute-force; Müller & Tegos / Berlekamp, ~2002)
-    - 5x5: first-player win (Müller, GPW 2001, proven 4 Jan 2001)
-    - 4x5, 5x4, 4x6, 4x7: first-player wins (Song & Müller, 2012/2015)
-    - 5x6: first-player win (Song & Müller, 2012/2015) — headline
-    - 6x4: SECOND-player win (Song & Müller, 2012/2015); took ~1 CPU day to
-      refute all 256 starting moves. Note narrow-tall boards (e.g. 4x5) favor the
-      first player via an early blocking move, while their transposes (e.g. 5x4,
-      6x4) are harder and can flip the result.
-  The authors state no other board sizes / queen counts / starting configurations
-  had published solutions as of 2015.
+  On the standard 4-amazon corner setup, 4x4 is a second-player win (easy by
+  brute force; Müller and Tegos, Berlekamp, around 2002). 5x5 is a first-player
+  win (Müller, GPW 2001, proven 4 Jan 2001). Song and Müller (2012/2015) found
+  4x5, 5x4, 4x6, 4x7 and 5x6 first-player wins and 6x4 a second-player win;
+  refuting all 256 starting moves on 6x4 took about 1 CPU day. Narrow, tall
+  boards such as 4x5 favour the first player through an early blocking move,
+  while their transposes (5x4, 6x4) are harder and can flip the result. The
+  authors state that no other board sizes, queen counts or starting setups had
+  published solutions as of 2015.
 
-  Method: combinatorial-game-theory bounds (thermographs, infinitesimals) to prune
-  and to find wins early; endgame databases for territories and "blocker
-  territories" built by retrograde analysis; a df-pn (depth-first proof-number)
-  full-board solver. Generalized n x n Amazons from an arbitrary position is
-  PSPACE-complete (Furtak, Kiyomi, Uno, Buro, 2005); deciding simple Amazons
-  endgames is NP-equivalent (Buro, 2001) — context for why only tiny boards are
-  solved. No citable single state-space figure for the 5x6 game; complexity fields
-  left mostly null deliberately.
+  The solver uses combinatorial-game-theory bounds (thermographs,
+  infinitesimals) to prune and to find wins early, endgame databases for
+  territories and "blocker territories" built by retrograde analysis, and a
+  df-pn (depth-first proof-number) solver over the full board. Generalized n x n
+  Amazons from an arbitrary position is PSPACE-complete (Furtak, Kiyomi, Uno and
+  Buro, 2005), and deciding simple Amazons endgames is NP-equivalent (Buro,
+  2001), which is why only tiny boards are solved.

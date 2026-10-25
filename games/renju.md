@@ -47,4 +47,24 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Notes
 
-Renju is the professional, asymmetric variant of Go-Moku: the goal is the same (an exact five-in-a-row, horizontal/vertical/diagonal on a 15x15 board) but Black, the first player, is forbidden from making a double-three, double-four, or an overline (six-plus in a row); White faces no such restriction. Despite handicapping Black, the game is a first-player win. Wágner & Virág weakly solved it in 2000 (published in the ICGA Journal in 2001), verifying the long-standing conjecture that Renju, like Go-Moku (solved by Allis, 1992/1995), favors the first player. Their proof used transposition tables, threat-sequence (threat-space) search in the tradition of Allis's Go-Moku proof, and expert/knowledge-based rules for no-threat moves, driven by an iterative-deepening search over threat sequences up to 17 plies. Strength is WEAK, not strong: only a winning strategy from the standard opening was established, not a value for every reachable position (no full tablebase). The published winning line is 47 plies long and is described as a (not necessarily the shortest) win. Variant caveat: this result applies to the rule set with the standard fixed center opening; modern tournament opening protocols (RIF/Yamaguchi/Soosõrv-N/ Taraguchi swap rules) are NOT covered and remain unsolved. Complexity figures from the van den Herik et al. survey (citing Allis): state-space complexity ~10^105 and game-tree complexity ~10^70 for the 15x15 board (these are the order-of-magnitude exponents; the state_space and game_tree fields above store the exponents 105 and 70, not the literal counts). Year: the paper appeared in 2001; the survey dates the actual solving to 2000.
+Renju is the professional, asymmetric form of Go-Moku. The goal is the same,
+exactly five in a row on a 15x15 board, but Black, who moves first, may not
+make a double-three, a double-four or an overline (six or more in a row).
+White has no such restriction. Black still wins.
+
+Wágner and Virág solved it weakly in 2000 (published in the ICGA Journal in
+2001), confirming the long-standing conjecture that Renju, like Go-Moku
+(solved by Allis, 1992/1995), favors the first player. The proof followed
+Allis's Go-Moku method: threat-sequence (threat-space) search with
+transposition tables, expert rules for moves that make no threat, and
+iterative deepening over threat sequences of up to 17 plies.
+
+The solution is weak: it gives a winning strategy from the standard opening
+and no value for every reachable position. The published winning line is 47
+plies long and is not necessarily the shortest win. It covers the rules with
+the standard fixed centre opening; the modern tournament opening protocols
+(RIF, Yamaguchi, Soosõrv-N and Taraguchi swap rules) are not covered and
+remain unsolved.
+
+For the 15x15 board the van den Herik et al. survey, citing Allis, gives a
+state space of about 10^105 and a game tree of about 10^70.
