@@ -1,0 +1,101 @@
+id: chess-8x8
+name: Chess (8×8)
+genre: chess
+status: partially-solved
+solved_up_to: "every position with up to 7 pieces (2018); some 8-piece endings (2021–2026)"
+next_target: "Complete 8-piece win/draw/loss and DTZ50 tables, without castling rights"
+barrier:
+  - compute
+  - storage
+  - memory
+barrier_detail: >
+  Ronald de Man's tb8gen documentation estimates 1,500–2,000 TB for a complete
+  compressed 8-piece WDL/DTZ set, with individual tables taking "many weeks, if
+  not months" to generate, and 64–128 GB of RAM per pawnless table with that
+  generator. These are estimates for this implementation.
+cite: "Bourzutschky & Fiekas 2026"
+evidence: self-archived
+unverified: >
+  The June 2026 KQQQvKQQQ announcement reports agreement with Bourzutschky's
+  counts, but says the new WDL/DTZ verification code had not yet been run on
+  that table. No later verification report was located. The Lichess blog
+  post announcing op1 could not be retrieved directly (403); its coverage
+  claims here rest on the op1 repository's README.
+sources:
+  - title: "Lichess, op1: Marc Bourzutschky's partial 8-piece tablebase (every 8-piece ending with at least one pair of opposing pawns on the same file)"
+    url: "https://github.com/lichess-org/op1"
+    date: "2026"
+    primary: true
+  - title: "Ronald de Man, KQQQvKQQQ result, disk-based 8-piece TB generator thread"
+    url: "https://talkchess.com/viewtopic.php?start=30&t=86313"
+    date: "2026-06-20"
+  - title: "Lichess, Op1 - Partial 8-piece tablebase available"
+    url: "https://lichess.org/@/lichess/blog/op1-partial-8-piece-tablebase-available/1ptPBDpC"
+    date: "2026-02-07"
+  - title: "Lichess, 7-piece Syzygy tablebases are complete"
+    url: "https://lichess.org/@/lichess/blog/7-piece-syzygy-tablebases-are-complete/W3WeMyQA"
+    date: "2018-08-19"
+  - title: "Marc Bourzutschky, 8-men Tablebase: first explorations"
+    url: "https://www.arves.org/arves/index.php/en/endgamestudies/theory/1509-8-men-tablebase-first-explorations"
+    date: "2021"
+  - title: "Ronald de Man, tb8gen documentation and resource estimates"
+    url: "https://github.com/syzygy1/tb8gen/blob/master/README.md"
+  - title: "Niklas Fiekas, python-chess Syzygy probing documentation"
+    url: "https://python-chess.readthedocs.io/en/latest/syzygy.html"
+  - title: "Lomonosov tablebase publisher, About Lomonosov tablebases"
+    url: "https://tb7.chessok.com/about-site"
+absence_search:
+  - date: "2026-10-25"
+    looked_for: >
+      "chess seven man eight man tablebases 2025 2026 Lomonosov Syzygy",
+      "8-piece tablebases 2026 complete", and "chess tablebases complete
+      October 2026"; checked the Lichess release, tb8gen documentation and
+      subsequent TalkChess discussion.
+    found: >
+      Found the February 2026 op1 release and de Man's June 2026 KQQQvKQQQ
+      result. No newer published complete 8-piece set or proof of the
+      standard starting position's value was located.
+history:
+  - date: "2012"
+    size_or_opening: "7-piece Lomonosov endgames"
+    result: "distance-to-mate tables computed at Moscow State University"
+    credit: "Lomonosov project, Computer Science department of Moscow State University"
+    url: "https://tb7.chessok.com/about-site"
+  - date: "2018-08-19"
+    size_or_opening: "all endgames through 7 pieces, without castling rights"
+    result: "Syzygy WDL/DTZ tables completed for every 7-piece ending"
+    strength: strong
+    credit: "Bojun Guo and Ronald de Man"
+    url: "https://lichess.org/@/lichess/blog/7-piece-syzygy-tablebases-are-complete/W3WeMyQA"
+  - date: "2021-04-12"
+    size_or_opening: "selected pawnless 8-piece classes"
+    result: "one-sided distance-to-conversion tables; castling and the 50-move rule excluded"
+    credit: "Marc Bourzutschky"
+    url: "https://www.arves.org/arves/index.php/en/endgamestudies/theory/1509-8-men-tablebase-first-explorations"
+  - date: "2026-02-07"
+    size_or_opening: "8-piece endings with at least one pair of opposing pawns on the same file (op1)"
+    result: "distance-to-conversion tables published and probeable on Lichess"
+    credit: "Marc Bourzutschky and Niklas Fiekas, with Lichess"
+    url: "https://github.com/lichess-org/op1"
+  - date: "2026-06-20"
+    size_or_opening: "8-piece KQQQvKQQQ"
+    result: "WDL/DTZ tables generated; counts reported to agree with Bourzutschky"
+    credit: "Ronald de Man"
+    url: "https://talkchess.com/viewtopic.php?start=30&t=86313"
+last_checked: "2026-10-25"
+notes: |
+  Standard chess is played on an 8×8 board. Endgame tablebases work backward
+  from terminal positions, assigning exact values to the positions they cover.
+  Piece counts include both kings. Complete seven-piece coverage excludes
+  castling rights; Syzygy supports play under the 50-move rule.
+
+  The op1 extension covers eight-piece positions with opposing white and
+  black pawns on the same file, subject to its material exclusions. Neither
+  pawn can promote before a capture, so this subset can be built from known
+  smaller endings. Lichess says the subset accounts for more than half of
+  the eight-piece positions reached in practical play there. Its DTC results
+  ignore the 50-move rule.
+
+  Full eight-piece coverage must account for captures and every possible
+  promotion, including underpromotions. Endgame solutions do not establish
+  the value of the standard starting position.

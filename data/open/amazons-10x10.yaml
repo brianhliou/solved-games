@@ -1,0 +1,78 @@
+id: amazons-10x10
+name: Amazons (10×10)
+genre: cgt
+status: solved-smaller-board
+related_game: amazons-small
+solved_up_to: "5×6 and several smaller rectangles with four amazons per side (published 2015); 5×5 (2001)"
+next_target: "The standard 10×10 start, with the 6×5 and 6×6 starts as intermediate targets"
+barrier:
+  - branching
+  - compute
+barrier_detail: >
+  Song and Müller report 410 legal moves at the 5×6 start. Their proof
+  fixes one opening and refutes all 157 replies. Larger boards leave
+  more interacting regions to search before local endgame bounds can
+  settle the winner.
+cite: "Song & Müller 2015"
+evidence: refereed
+unverified: >
+  Direct retrieval of the author-hosted 2015 journal PDF failed. Its
+  results, opening counts and proof method were checked in search-indexed
+  text of that PDF, but the complete file could not be reread. The 2002
+  paper was read directly.
+sources:
+  - title: "Jiaxing Song and Martin Müller, An Enhanced Solver for the Game of Amazons (IEEE TCIAIG, March 2015)"
+    url: "https://web.archive.org/web/2025/https://webdocs.cs.ualberta.ca/~mmueller/ps/2015/2015-Solve-Amazons.pdf"
+    date: "2015-03"
+    primary: true
+  - title: "Martin Müller and Theodore Tegos, Experiments in Computer Amazons (More Games of No Chance, 2002)"
+    url: "https://library.slmath.org/books/Book42/files/muller.pdf"
+    date: "2002"
+  - title: "Martin Müller, Research Related to the Game of Amazons"
+    url: "https://web.archive.org/web/2024/https://webdocs.cs.ualberta.ca/~mmueller/amazons/index.html"
+  - title: "Martin Müller, Solution Methods: challenges in solving games (ACG 2023 slides)"
+    url: "https://web.archive.org/web/2024/https://webdocs.cs.ualberta.ca/~mmueller/talks/2023-ACG-Solution-Methods.pdf"
+    date: "2023"
+absence_search:
+  - date: "2026-10-25"
+    looked_for: >
+      Amazons solved 6x6; Amazons 6x6 solving Müller; Amazons solved 2025;
+      Amazons solved 2026; Amazons 10×10 solved. Checked indexed text of
+      Müller's research page and later solving-challenge slides.
+    found: >
+      No later solution of the standard 6×5, 6×6 or 10×10 start was found.
+      Müller's research page describes an unfinished 6×5 attempt, and his
+      2023 challenge slides still name 6×5 and 6×6 as targets. Direct access
+      to these author-hosted pages and slides failed.
+history:
+  - date: "2001"
+    size_or_opening: "5×5, four amazons per player"
+    result: "first player wins"
+    strength: weak
+    credit: "Martin Müller; dated to 2001 by Song and Müller"
+    url: "https://web.archive.org/web/2025/https://webdocs.cs.ualberta.ca/~mmueller/ps/2015/2015-Solve-Amazons.pdf"
+  - date: "2002"
+    size_or_opening: "4×4, four amazons per player (published report)"
+    result: "second player wins by exhaustive search"
+    strength: weak
+    credit: "Martin Müller and Theodore Tegos"
+    url: "https://library.slmath.org/books/Book42/files/muller.pdf"
+  - date: "2015-03"
+    size_or_opening: "4×5, 5×4, 4×6, 6×4, 4×7 and 5×6, standard small-board setup"
+    result: "first player wins on each listed board except 6×4, where the second player wins"
+    strength: weak
+    credit: "Jiaxing Song and Martin Müller; journal publication of the proofs"
+    url: "https://web.archive.org/web/2025/https://webdocs.cs.ualberta.ca/~mmueller/ps/2015/2015-Solve-Amazons.pdf"
+last_checked: "2026-10-25"
+notes: >
+  Each player controls four queen-moving amazons. A turn moves one amazon
+  and fires an arrow from its destination, permanently blocking a square.
+  A player unable to move loses. Arrows gradually divide the board into
+  regions that can be studied separately.
+
+  Song and Müller combined depth-first proof-number search with local
+  endgame databases and bounds from combinatorial game theory. Their
+  5×6 proof includes a complete winning strategy checked by a proof-tree
+  checker. These results concern specified starting positions. Moving to
+  the standard board requires reaching manageable local regions through
+  a much wider opening search. Rectangular dimensions mean width by height.

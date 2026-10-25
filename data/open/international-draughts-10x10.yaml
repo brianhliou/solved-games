@@ -1,0 +1,101 @@
+id: international-draughts-10x10
+name: International draughts (10×10)
+genre: capture
+status: partially-solved
+solved_up_to: "every ending with up to 7 pieces (2007); 8-piece endings split 4–4 or 5–3 (2009); every 8-piece ending and part of 9 and 10 (self-reported, 2026)"
+next_target: "every 10-piece ending with five pieces a side; 18.9% of its non-capture positions are resolved"
+barrier:
+  - compute
+  - storage
+barrier_detail: >
+  Grimminck reports 171 GB for the partial 10-piece database and identifies
+  further prerequisite subdatabases as the next work. Gilbert's 2009
+  4-versus-4 and 5-versus-3 build covered 16.5 trillion positions, used
+  365 GB for WLD data, and took 2.65 CPU years to build plus 2.91 CPU years
+  to verify. These historical costs are not an estimate for completing
+  the current target.
+cite: "Grimminck 2026"
+evidence: self-archived
+unverified: >
+  The newest statistics explicitly say WDL correctness is not independently
+  verified. Grimminck also reports a full 1–8-piece build, but its coverage
+  of imbalanced material distributions was not established from a detailed
+  inventory. Coverage of tournament move-count draw rules is not documented
+  in the cited database descriptions. Gilbert's earlier 9-piece descriptions
+  do not establish complete 9-piece coverage.
+sources:
+  - title: "Michel Grimminck (MichelG), 10 piece endgame databases, World Draughts Forum"
+    url: "https://damforum.nl/viewtopic.php?t=8907"
+    date: "2026-10-19"
+    primary: true
+  - title: "Michel Grimminck, Dragon partial 5050 database statistics"
+    url: "https://www.mdgsoftware.nl/draughts/stats/partial-details-5050.html"
+  - title: "Michel Grimminck, Dragon partial 5040 database statistics"
+    url: "https://www.mdgsoftware.nl/draughts/stats/partial-details-5040.html"
+  - title: "Ed Gilbert, Kingsrow International: Culemborg 2007 and endgame databases"
+    url: "https://edgilbert.org/InternationalDraughts/Culemborg2007.htm"
+    date: "2007-12-05"
+  - title: "Ed Gilbert, 8 Piece International Draughts Database"
+    url: "https://edgilbert.org/InternationalDraughts/8_piece_international_draughts_db.htm"
+    date: "2009-07-06"
+  - title: "Ed Gilbert, egdb_intl: database coverage and distribution history"
+    url: "https://github.com/eygilbert/egdb_intl"
+  - title: "Ed Gilbert, Kingsrow news: September 2026 English-checkers announcement"
+    url: "https://edgilbert.org/Checkers/KingsRow.htm"
+  - title: "Michel Grimminck, MDG Software author page"
+    url: "https://www.mdgsoftware.nl/about.html"
+absence_search:
+  - date: "2026-10-25"
+    looked_for: >
+      "international draughts 8 piece endgame database 9 pieces 2025",
+      "Gilbert 9-piece draughts 2010", and "international draughts endgame
+      database 2025 2026"; checked Kingsrow documentation and the Dragon
+      author's October 2026 thread and statistics.
+    found: >
+      Found Grimminck's 2026-10-19 partial 10-piece announcement and
+      2026-10-21 follow-up. No later completion, complete 9-piece database,
+      or proof of the starting position's value was located. Kingsrow's
+      September 2026 12-piece announcement concerns English checkers.
+history:
+  - date: "2007-12-05"
+    size_or_opening: "every ending with 2 to 7 pieces"
+    result: "Kingsrow databases completed"
+    credit: "Ed Gilbert"
+    url: "https://edgilbert.org/InternationalDraughts/Culemborg2007.htm"
+  - date: "2009-07-06"
+    size_or_opening: "8-piece endings with 4 versus 4 or 5 versus 3 pieces"
+    result: "WLD values for 16.5 trillion positions; conversion distances retained from 10 plies onward"
+    credit: "Ed Gilbert"
+    url: "https://edgilbert.org/InternationalDraughts/8_piece_international_draughts_db.htm"
+  - date: "2010"
+    size_or_opening: "distributed Kingsrow database, including a five-men-versus-four-men subset"
+    result: "version 1 distributed from 2010 to 2014; distribution dates do not establish a full 9-piece solve"
+    credit: "Ed Gilbert"
+    url: "https://github.com/eygilbert/egdb_intl"
+  - date: "2026-10-19"
+    size_or_opening: "every ending with up to 8 pieces; partial 5-versus-4 and 5-versus-5 endings"
+    result: "full 1–8-piece build (about 120 hours); exact WLD for 48.6% (5 v 4) and 18.9% (5 v 5) of non-capture positions; not independently verified"
+    credit: "Michel Grimminck"
+    url: "https://damforum.nl/viewtopic.php?t=8907"
+last_checked: "2026-10-25"
+notes: |
+  International draughts is played on a 10×10 board with twenty pieces per
+  side. Men can capture backward as well as forward, and kings can travel
+  along a diagonal. Its endgame results concern a different ruleset from
+  English checkers.
+
+  Endgame databases assign values by working backward through smaller
+  endings. Kingsrow's documented coverage limits each side to five pieces.
+  Gilbert's eight-piece result covers the four-versus-four and
+  five-versus-three splits, without establishing every eight-piece
+  distribution.
+
+  In October 2026 Michel Grimminck reported building every ending up to
+  eight pieces on a single 24-core machine, then partial nine- and ten-piece
+  tables, which he describes as generated "for fun" and too large (171 GB) to
+  distribute. The partial ten-piece table distinguishes exact wins, draws and
+  losses from bounds and unresolved positions. Its 18.9% coverage counts
+  positions where the player to move has no capture, counting both sides
+  to move. Including capture positions raises exact coverage to 58.1%.
+  Resolving more king-containing dependencies may settle further positions.
+  These results do not provide a proof from the starting position.

@@ -8,5 +8,5 @@
 
 | Game | Result under perfect play | Strength | Method | Year | Source |
 |---|---|---|---|---|---|
-| [Kalah](../games/kalah.md) | First player wins | Weak | Alpha-beta + DB | 2000 | [Irving et al. 2000](https://naml.us/paper/kalah/) |
+| [Kalah](../games/kalah.md) | First player wins | Weak | Alpha-beta + DB | 2000 | [Irving et al. 2000](https://naml.us/paper/irving2000_kalah.pdf) |
 | [Awari (Oware)](../games/awari.md) | Draw | Strong | Retrograde analysis | 2002 | [Romein et al. 2002](https://doi.org/10.1109/MC.2003.1236468) |

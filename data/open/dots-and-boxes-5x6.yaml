@@ -1,0 +1,78 @@
+id: dots-and-boxes-5x6
+name: Dots and Boxes (5×6 boxes)
+genre: cgt
+status: solved-smaller-board
+related_game: dots-and-boxes
+solved_up_to: "5×5 boxes: first player wins 13–12 (2014 announcement)"
+next_target: "The empty 5×6-box board: determine its perfect-play score and a strategy attaining it"
+barrier:
+  - compute
+  - storage
+barrier_detail: >
+  Fraser reported roughly 30 trillion endgame positions for 5×5. Barker and
+  Korf explain that each additional edge doubles the number of unscored board
+  configurations before reductions; larger boards increase both the search
+  and database construction work.
+cite: "Fraser 2014"
+evidence: self-archived
+unverified: >
+  Fraser's original Little Golem announcement could not be retrieved. Its
+  score, database size and opening coverage were checked against Phil
+  Carmody's contemporaneous quotation. Independent verification of the
+  announced proof was not established.
+sources:
+  - title: "Phil Carmody, Dots at 5x5 solved! (quoting William Fraser's announcement)"
+    url: "https://groups.google.com/g/rec.games.abstract/c/-z5Y9JRlZJ8"
+    date: "2014-01-17"
+    primary: true
+  - title: "Joseph K. Barker and Richard E. Korf, Solving 4x5 Dots-And-Boxes (AAAI 2011)"
+    url: "https://cdn.aaai.org/ojs/8046/8046-13-11574-1-2-20201228.pdf"
+    date: "2011"
+  - title: "Joseph K. Barker and Richard E. Korf, Solving Dots-And-Boxes (AAAI 2012)"
+    url: "https://content.jbarker.net/papers/Barker_Korf_Dots_And_Boxes.pdf"
+    date: "2012"
+  - title: "Richard J. Nowakowski, Unsolved Problems in Combinatorial Games, section C1 (2025)"
+    url: "https://library.slmath.org/books/Book71/files/GONC6-04.pdf"
+    date: "2025"
+absence_search:
+  - date: "2026-10-25"
+    looked_for: >
+      Results beyond Fraser's 2014 announcement, using Dots and Boxes solved
+      5x6 6x6 Fraser, Dots-and-Boxes solved 6 Fraser, and Dots and Boxes solved
+      2025 2026; also checked the 2025 Games of No Chance survey.
+    found: >
+      No exact solution of an empty 5×6-box or larger square board was found.
+      The survey still reports Fraser's 5×5 claim. Search results included
+      BoxesZero (2025), a playing agent with additional endgame theory,
+      without a larger empty-board solution.
+history:
+  - date: "2010"
+    size_or_opening: "4×4 boxes"
+    result: "draw; retrograde analysis evaluates every board configuration"
+    strength: strong
+    credit: "David Wilson; dated by Barker and Korf, outcome reported by Nowakowski"
+    url: "https://library.slmath.org/books/Book71/files/GONC6-04.pdf"
+  - date: "2011"
+    size_or_opening: "4×5 boxes"
+    result: "draw from the empty board"
+    strength: weak
+    credit: "Joseph K. Barker and Richard E. Korf"
+    url: "https://cdn.aaai.org/ojs/8046/8046-13-11574-1-2-20201228.pdf"
+  - date: "2014-01"
+    size_or_opening: "5×5 boxes"
+    result: "announced first-player win, 13–12, through one opening and its symmetric copies"
+    strength: weak
+    credit: "William Fraser, program the Shark"
+    url: "https://groups.google.com/g/rec.games.abstract/c/-z5Y9JRlZJ8"
+last_checked: "2026-10-25"
+notes: >
+  Players draw edges between adjacent dots. Completing a box captures it and
+  requires another move; the higher box count wins. Sizes here count boxes,
+  so a 5×5 game uses a 6×6 array of dots.
+
+  Barker and Korf combined alpha-beta search with chain analysis, symmetry
+  reductions and transposition tables. Fraser's later announcement describes
+  an endgame database feeding an opening book with fewer than 400,000
+  positions. It reports eight symmetric winning moves representing one
+  opening. Extending the proof to a larger empty board requires controlling
+  the early search as well as the endgame database.

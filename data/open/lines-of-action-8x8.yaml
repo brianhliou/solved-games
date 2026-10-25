@@ -1,0 +1,52 @@
+id: lines-of-action-8x8
+name: Lines of Action (8×8)
+genre: connection
+status: solved-smaller-board
+related_game: lines-of-action-6x6
+solved_up_to: "6×6 starting position: Black wins with b6-b4 or c6-e4 (2008)"
+next_target: "The standard 8×8 start under Computer Olympiad rules, with 7×7 as an intermediate target"
+barrier:
+  - compute
+  - memory
+barrier_detail: >
+  Winands reports 220,375,986,787 searched nodes for the 6×6 opening b6-b4.
+  His estimates for 8×8 are a state space of order 10^23 and a game tree
+  of order 10^64. Proof-number search also faces memory limits because it
+  retains its search tree.
+cite: "Winands 2008"
+evidence: refereed
+sources:
+  - title: "Mark H. M. Winands, 6×6 LOA Is Solved (ICGA Journal, December 2008)"
+    url: "https://dke.maastrichtuniversity.nl/m.winands/documents/LoaNote.pdf"
+    date: "2008-12"
+    primary: true
+  - title: "Mark Winands, publication list"
+    url: "https://dke.maastrichtuniversity.nl/m.winands/publications.html"
+absence_search:
+  - date: "2026-10-25"
+    looked_for: >
+      Lines of Action solved 7x7 8x8 Winands; Lines of Action 7x7 solved
+      2025 2026; Lines of Action 8x8 solved 2025 2026. Also inspected
+      Winands's publication list.
+    found: >
+      No later starting-position proof for 7×7 or 8×8 was found. Searches
+      continued to return the 2008 6×6 paper. The author's publication list
+      inspected is not a complete bibliography through 2026.
+history:
+  - date: "2008-12"
+    size_or_opening: "6×6 starting position, Computer Olympiad rules"
+    result: "Black wins; b6-b4 and c6-e4 are winning openings"
+    strength: weak
+    credit: "Mark H. M. Winands"
+    url: "https://dke.maastrichtuniversity.nl/m.winands/documents/LoaNote.pdf"
+last_checked: "2026-10-25"
+notes: >
+  Pieces move by the number of pieces of either colour on their line of
+  travel. Each player tries to connect all surviving pieces; diagonal
+  contact counts. The proof's rules draw simultaneous connection and a
+  third repetition, and require a pass when no move is available.
+
+  Winands used two-level proof-number search, PN². Games often end with
+  many pieces still present, limiting the usefulness of small endgame
+  databases. Larger-board proofs must address search growth and the
+  memory needed to retain useful search information.

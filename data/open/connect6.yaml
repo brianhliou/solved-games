@@ -1,0 +1,83 @@
+id: connect6
+name: Connect6 (19×19)
+genre: alignment
+status: partially-solved
+solved_up_to: "some named openings proven wins, including Mickey Mouse (2010–2013)"
+next_target: "the value of the game from Black's first stone at the centre, covering every White reply"
+barrier:
+  - branching
+  - compute
+  - algorithmic
+barrier_detail: >
+  Placing two stones per turn creates many candidate pairs. Relevance-zone
+  proofs reduce the replies that need searching, but the published proofs
+  cover selected openings. Wu and Lin's 2010 account still left tens of
+  common openings unresolved.
+cite: "Wu & Lin 2010"
+evidence: refereed
+unverified: >
+  Paywalled full texts (IEEE, Springer) could not be retrieved, so the exact
+  number of positions and openings each paper proves is not stated here,
+  and neither is the winner of each opening beyond Mickey Mouse. The 2013
+  journal paper was checked through its institutional abstract only. No
+  source names the next target; it is this catalog's framing of what
+  solving the game requires.
+sources:
+  - title: "I-Chen Wu and Ping-Hung Lin, Relevance-Zone-Oriented Proof Search for Connect6, IEEE Transactions on Computational Intelligence and AI in Games 2(3) (2010)"
+    url: "https://doi.org/10.1109/TCIAIG.2010.2060262"
+    date: "2010"
+    primary: true
+  - title: "I-Chen Wu et al., Job-Level Proof Number Search, IEEE Transactions on Computational Intelligence and AI in Games 5(1), 44–56 (2013); institutional abstract"
+    url: "https://scholar.nycu.edu.tw/en/publications/job-level-proof-number-search/"
+    date: "2013"
+  - title: "I-Chen Wu et al., Job-Level Proof-Number Search for Connect6, Computers and Games 2010"
+    url: "https://www.researchgate.net/publication/220962568_Job-Level_Proof-Number_Search_for_Connect6"
+    date: "2010"
+  - title: "Qiang Gao and Xinhe Xu, A solving strategy of connect6 based on K-in-a-row types (2016); abstract only"
+    url: "https://www.researchgate.net/publication/306115634_A_solving_strategy_of_connect6_based_on_K-in-a-row_types"
+    date: "2016"
+  - title: "Shao-Xiong Zheng et al., Connect6 Opening Leveraging AlphaZero Algorithm and Job-Level Computing (2021)"
+    url: "https://www.jstage.jst.go.jp/article/pjsai/JSAI2021/0/JSAI2021_4N4IS1c05/_pdf/-char/ja"
+    date: "2021"
+  - title: "hzyhhzy, board-game AI archive: Connect6 model findings distinguished from proofs"
+    url: "https://hzyhhzy.github.io/boardgames/games.html"
+absence_search:
+  - date: "2026-10-25"
+    looked_for: >
+      New opening proofs or a complete 19×19 solution after 2013.
+      Searches included 'Connect6 solved openings 2024 2025 2026',
+      'Connect6 solved openings 2017 2020 2023', and later
+      relevance-zone and opening-book research.
+    found: >
+      No newer extension of the 19×19 solved-opening set was verified.
+      The 2016 7×7 paper could not be checked beyond its abstract.
+      The 2021 paper evaluates an opening book through playing strength.
+      The 2026 engine archive explicitly describes its current Connect6
+      findings as model predictions rather than solved-game proofs.
+history:
+  - date: "2010"
+    size_or_opening: "19×19, selected openings"
+    result: "relevance-zone proof search proves winning strategies for several openings, including Mickey Mouse"
+    strength: weak
+    credit: "I-Chen Wu and Ping-Hung Lin"
+    url: "https://doi.org/10.1109/TCIAIG.2010.2060262"
+  - date: "2010"
+    size_or_opening: "19×19, a benchmark of opening positions"
+    result: "job-level proof-number search on a desktop grid solves openings automatically"
+    strength: weak
+    credit: "I-Chen Wu, Hung-Hsuan Lin, Ping-Hung Lin, Der-Johng Sun, Yi-Chih Chan and Bo-Ting Chen"
+    url: "https://www.researchgate.net/publication/220962568_Job-Level_Proof-Number_Search_for_Connect6"
+  - date: "2013"
+    size_or_opening: "19×19, selected openings"
+    result: "journal account of job-level proof-number search, including openings hard for earlier solvers"
+    credit: "I-Chen Wu, Hung-Hsuan Lin, Der-Johng Sun, Kuo-Yuan Kao, Ping-Hung Lin, Yi-Chih Chan and Po-Ting Chen"
+    url: "https://scholar.nycu.edu.tw/en/publications/job-level-proof-number-search/"
+last_checked: "2026-10-25"
+notes: >
+  Connect6 is a six-in-a-row game: Black places one stone to start, then
+  each player places two stones per turn. Relevance-zone search identifies
+  where a defender must interfere with a threat; proof-number search
+  combines the resulting cases, with jobs distributed to workers. The
+  opening lists overlap, so their counts cannot be added. Determining the
+  value from the centre-stone start requires handling the remaining White
+  replies.

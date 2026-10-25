@@ -1,0 +1,75 @@
+id: breakthrough-8x8
+name: Breakthrough (8×8)
+genre: capture
+status: solved-smaller-board
+related_game: breakthrough-6x5
+solved_up_to: "6×6 starting position: first-player win (published 2026); 6×5: second-player win (2011)"
+next_target: "The standard 8×8 starting position, with two rows of pawns per player"
+barrier:
+  - compute
+  - storage
+barrier_detail: >
+  Considine's April 2025 revision estimated 1.3×10^11 positions outside the
+  sets settled by 16-ply retrograde analysis on 6×6. This illustrates the
+  scale of endgame coverage below the target size. Growth in that coverage
+  and in the starting-position proof is the scaling obstacle for 8×8.
+cite: "Björnsson et al. 2026"
+evidence: refereed
+sources:
+  - title: "Yngvi Björnsson et al., Solving Breakthrough for the 6×6 Board (ICGA Journal, 2026)"
+    url: "https://journals.sagepub.com/doi/abs/10.1177/13896911261430592"
+    date: "2026-03-25"
+    primary: true
+  - title: "Maastricht University publication record and authors' abstract for the 6×6 solution"
+    url: "https://cris.maastrichtuniversity.nl/en/publications/solving-breakthrough-for-the-6x6-board/"
+    date: "2026"
+  - title: "Saffidine, Jouandeau and Cazenave, Solving Breakthrough with Race Patterns and Job-Level Proof Number Search (ACG 2011; proceedings 2012)"
+    url: "https://www.lamsade.dauphine.fr/~cazenave/papers/solving.pdf"
+    date: "2012"
+  - title: "Springer publication record identifying the earlier report as ACG 2011"
+    url: "https://link.springer.com/chapter/10.1007/978-3-642-31866-5_17"
+    date: "2012"
+  - title: "Jeffrey Considine, Compressed Game Solving (April 2025 revision)"
+    url: "https://arxiv.org/html/2411.07273v3"
+    date: "2025-04-13"
+absence_search:
+  - date: "2026-10-25"
+    looked_for: >
+      Breakthrough solved 8x8 6x5 7x7 solution; Solving Breakthrough for the
+      6×6 Board; Breakthrough solved 7x7 2026; Breakthrough 8x8 solved
+      Björnsson. Checked the 2026 journal abstract and university record.
+    found: >
+      Found the refereed 2026 publication proving a first-player win on 6×6,
+      beyond the catalog's 6×5 record. No subsequent solution of 7×7 or 8×8
+      was found.
+history:
+  - date: "2011"
+    size_or_opening: "6 columns × 5 rows, standard starting position"
+    result: "second player wins"
+    strength: weak
+    credit: "Abdallah Saffidine, Nicolas Jouandeau and Tristan Cazenave"
+    url: "https://www.lamsade.dauphine.fr/~cazenave/papers/solving.pdf"
+  - date: "2025-04"
+    size_or_opening: "5 columns × 6 rows, starting position"
+    result: "first player wins, using compressed sets of positions"
+    strength: weak
+    credit: "Jeffrey Considine; result recorded in the April 2025 revision"
+    url: "https://arxiv.org/html/2411.07273v3"
+  - date: "2026-03"
+    size_or_opening: "6×6 starting position"
+    result: "first player wins"
+    strength: weak
+    credit: "Yngvi Björnsson, Kristinn Vikar Jónsson, Dagur Benjamínson, Steinþór Bjarni Steinarsson, Edouard Saussoy and Mark H. M. Winands"
+    url: "https://journals.sagepub.com/doi/abs/10.1177/13896911261430592"
+last_checked: "2026-10-25"
+notes: >
+  Breakthrough is a pawn race. Pawns advance straight or diagonally, capturing
+  diagonally. Reaching the opponent's back row or capturing all opposing
+  pawns wins. Rectangular dimensions here mean width by height.
+
+  The 6×5 proof used parallel proof-number search and patterns that recognize
+  a forced breakthrough before play ends. The 2026 work combines endgame
+  tablebases, race patterns and parallel proof-number solvers, with a neural
+  network scheduling search jobs. Its result establishes a winning strategy
+  from the 6×6 start. The opposing results on 6×5 and 6×6 give no general
+  winner for larger boards.

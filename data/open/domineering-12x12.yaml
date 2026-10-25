@@ -1,0 +1,78 @@
+id: domineering-12x12
+name: Domineering (12×12)
+genre: cgt
+status: solved-smaller-board
+related_game: domineering
+solved_up_to: "Square-board starts through 11×11 (2016); many larger rectangles are also classified"
+next_target: "The empty 12×12 square under normal play"
+barrier:
+  - compute
+  - algorithmic
+barrier_detail: >
+  Uiterwijk's 11×11 proof searched 259,689,994,008 nodes and took 174 days
+  and 15 hours on his desktop. It depended on game-specific pruning;
+  extending this approach to the next square needs further search
+  reduction or more computation.
+cite: "Uiterwijk 2016"
+evidence: refereed
+sources:
+  - title: "Jos W. H. M. Uiterwijk, 11×11 Domineering Is Solved: The First Player Wins (Computers and Games 2016)"
+    url: "https://link.springer.com/chapter/10.1007/978-3-319-50935-8_12"
+    date: "2016"
+    primary: true
+  - title: "Uiterwijk's full author manuscript of the 11×11 proof"
+    url: "https://arxiv.org/pdf/1602.05404"
+    date: "2016-02-17"
+  - title: "Nathan Bullock, Domineering: Solving Large Combinatorial Search Spaces (ICGA Journal, 2002)"
+    url: "https://doi.org/10.3233/ICG-2002-25202"
+    date: "2002"
+  - title: "Breuker, Uiterwijk and van den Herik, Solving 8×8 Domineering (publication record, 2000)"
+    url: "https://research.tilburguniversity.edu/en/publications/solving-8x8-domineering-the-first-computer-olympiad/"
+    date: "2000"
+  - title: "Richard J. Nowakowski, Unsolved Problems in Combinatorial Games, section B11 (2025)"
+    url: "https://library.slmath.org/books/Book71/files/GONC6-04.pdf"
+    date: "2025"
+absence_search:
+  - date: "2026-10-25"
+    looked_for: >
+      Domineering 12x12 solved; Domineering 12 × 12 solved; Domineering
+      solved 2024 2025 2026. Also checked the Domineering section of
+      Nowakowski's 2025 Unsolved Problems in Combinatorial Games.
+    found: >
+      No solution of the empty 12×12 square or a larger square was found.
+      The survey cites the 2016 11×11 result and rectangular-board work.
+      Search results for 12×12 included playing programs and playable
+      variants, without a starting-position proof.
+history:
+  - date: "2000"
+    size_or_opening: "8×8 empty board"
+    result: "first player wins"
+    strength: weak
+    credit: "Dennis M. Breuker, Jos W. H. M. Uiterwijk and H. Jaap van den Herik"
+    url: "https://arxiv.org/pdf/1602.05404"
+  - date: "2002"
+    size_or_opening: "10×10 empty board"
+    result: "first player wins"
+    strength: weak
+    credit: "Nathan Bullock, program Obsequi"
+    url: "https://doi.org/10.3233/ICG-2002-25202"
+  - date: "2016"
+    size_or_opening: "11×11 empty board"
+    result: "the player moving first wins, with either orientation"
+    strength: weak
+    credit: "Jos W. H. M. Uiterwijk, program MUDoS"
+    url: "https://arxiv.org/pdf/1602.05404"
+last_checked: "2026-10-25"
+notes: >
+  One player places vertical dominoes and the other horizontal dominoes,
+  without overlap. The player unable to place a domino loses.
+
+  MUDoS combines alpha-beta search and transposition tables with rules that
+  bound each player's remaining safe moves. Uiterwijk's 11×11 result gives
+  a winning strategy from the empty board. The paper's term perfectly
+  solving refers to deductions from board properties; it does not establish
+  a tablebase covering every reachable position.
+
+  This target concerns square boards. Rectangular boards have separate
+  classifications, including families extending beyond the solved squares;
+  their outcomes cannot be summarized by a single maximum board area.

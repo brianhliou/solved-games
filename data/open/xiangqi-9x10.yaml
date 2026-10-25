@@ -1,0 +1,69 @@
+id: xiangqi-9x10
+name: Xiangqi (Chinese chess)
+genre: chess
+status: partially-solved
+solved_up_to: "selected endgames: 8,705 material combinations, up to 13 pieces, in a public database"
+next_target: "every ending up to a fixed piece count, as chess has through 7 pieces"
+barrier:
+  - compute
+  - memory
+barrier_detail: >
+  Material classes require the subgames reached by captures. Wu and Beal's
+  2002 results include a selected 10-piece class with 1,004,157,000 indexed
+  entries. Their retrograde algorithm reduces memory use, but larger classes
+  still require more positions to be indexed and evaluated. Repetition is
+  decided by rules on chasing and checking rather than a simple draw, which
+  the cloud database's documentation handles as Asian rules.
+cite: "Chinese Chess Cloud Database"
+evidence: self-archived
+unverified: >
+  The database's inventory pages are undated and name no author; the 8,705
+  count is a row count of those pages on 2026-10-25. Completion dates and
+  independent correctness of the tables are not established, nor whether any
+  piece count is covered completely. No source names the next target; it is
+  this catalog's framing, by analogy with chess.
+sources:
+  - title: "Chinese Chess Cloud Database, DTC endgame-table inventory; undated, checked 2026-10-25"
+    url: "https://www.chessdb.cn/egtb_info.html"
+    primary: true
+  - title: "Chinese Chess Cloud Database, DTM endgame-table inventory; undated"
+    url: "https://www.chessdb.cn/egtb_info_dtm.html"
+  - title: "Chinese Chess Cloud Database documentation: integrated Cyclone tables and Asian rules"
+    url: "https://www.chessdb.cn/cloudbook_info.html"
+  - title: "Ren Wu and Donald F. Beal, A Memory Efficient Retrograde Algorithm and Its Application To Chinese Chess Endgames, More Games of No Chance"
+    url: "https://library.slmath.org/books/Book42/files/wu.pdf"
+    date: "2002"
+  - title: "Xiangqi.com, How to Play Chinese Chess: board dimensions and pieces"
+    url: "https://www.xiangqi.com/how-to-play-xiangqi"
+absence_search:
+  - date: "2026-10-25"
+    looked_for: >
+      "xiangqi endgame tablebases seven eight pieces solved 2025",
+      "Chinese chess tablebases complete 2026", and "象棋 残局库"; read both
+      chessdb.cn inventories.
+    found: >
+      No published complete set of xiangqi endgame tables for any piece
+      count, and no solution of the starting position. Felicity EGTB
+      (restarted 2024) is a work in progress.
+history:
+  - date: "2002"
+    size_or_opening: "selected attacking-force versus defensive-force endgames and their subgames"
+    result: "378 databases, about 35 billion entries, including a 10-piece ending that is a theoretical win"
+    credit: "Ren Wu and Donald F. Beal"
+    url: "https://library.slmath.org/books/Book42/files/wu.pdf"
+  - date: "2026-10-25"
+    size_or_opening: "public database of endgame tables"
+    result: "8,705 material combinations listed, up to 13 pieces (counted on this date; the pages are undated)"
+    credit: "Chinese Chess Cloud Database; its documentation credits Cyclone for the integrated tables"
+    url: "https://www.chessdb.cn/egtb_info.html"
+last_checked: "2026-10-25"
+notes: |
+  Xiangqi, or Chinese chess, is played on the points of a board nine lines
+  wide and ten deep. Published retrograde analyses solve selected endgames by
+  working backward from wins and losses, using the smaller endings reached by
+  captures to evaluate larger ones.
+
+  Wu and Beal's 2002 work built 378 such databases. The Chinese Chess Cloud
+  Database now lists tables for 8,705 combinations of material, from 3 to 13
+  pieces, most of them between 7 and 10. Neither amounts to every ending of
+  a given size, the step chess reached for seven pieces in 2018.

@@ -18,18 +18,18 @@ Three strengths, from weakest to strongest ([Wikipedia](https://en.wikipedia.org
 
 <!-- BEGIN GENERATED:index — source of truth is data/games, data/open and data/engines; regenerate with `npm run build`. Do not hand-edit this table. -->
 
-37 solved, 5 open, 12 engines (7 for games in this list).
+41 solved, 14 open, 12 engines (7 for games in this list).
 
 | Family | Solved | Open | Engines | Games |
 |---|---|---|---|---|
-| [Alignment & *m,n,k* games](families/alignment.md) | 8 | 0 | [3](families/alignment.md#engines) | [Tic-tac-toe](games/tic-tac-toe.md), [Qubic](games/qubic.md), [Gomoku (free-style)](games/gomoku-freestyle.md), [Connect Four](games/connect-four.md), [Teeko](games/teeko.md)\*, [Renju (連珠)](games/renju.md), [Pentago](games/pentago.md), [Quarto!](games/quarto.md) |
-| [Morris / mill family](families/morris.md) | 5 | 0 | [1](families/morris.md#engines) | [Three men's morris](games/three-mens-morris.md), [Nine Men's Morris](games/nine-mens-morris.md), [Lasker Morris](games/lasker-morris.md), [Morabaraba](games/morabaraba.md), [Six men's morris](games/six-mens-morris.md)\* |
-| [Connection games](families/connection.md) | 3 | [3](families/connection.md#open-problems) | [1](families/connection.md#engines) | [Hex (7×7)](games/hex-7x7.md), [Hex (9×9, all openings)](games/hex-9x9.md), [Y (side 6)](games/y.md)\* |
+| [Alignment & *m,n,k* games](families/alignment.md) | 10 | [1](families/alignment.md#open-problems) | [3](families/alignment.md#engines) | [Tic-tac-toe](games/tic-tac-toe.md), [Qubic](games/qubic.md), [Gomoku (free-style)](games/gomoku-freestyle.md), [Connect Four](games/connect-four.md), [Teeko](games/teeko.md)\*, [Renju (連珠)](games/renju.md), [Pentago](games/pentago.md), [Quixo](games/quixo.md), [Quarto!](games/quarto.md), [Gobblet Gobblers](games/gobblet-gobblers.md)\* |
+| [Morris / mill family](families/morris.md) | 5 | 0 | [1](families/morris.md#engines) | [Three men's morris](games/three-mens-morris.md), [Lasker Morris](games/lasker-morris.md), [Morabaraba](games/morabaraba.md), [Nine Men's Morris](games/nine-mens-morris.md), [Six men's morris](games/six-mens-morris.md)\* |
+| [Connection games](families/connection.md) | 4 | [4](families/connection.md#open-problems) | [1](families/connection.md#engines) | [Hex (7×7)](games/hex-7x7.md), [Lines of Action (6×6)](games/lines-of-action-6x6.md), [Hex (9×9, all openings)](games/hex-9x9.md), [Y (side 6)](games/y.md)\* |
 | [Mancala](families/mancala.md) | 2 | 0 | 0 | [Kalah](games/kalah.md), [Awari (Oware)](games/awari.md) |
-| [Capture & board control](families/capture.md) | 4 | [1](families/capture.md#open-problems) | [1](families/capture.md#engines) | [Mū tōrere](games/mu-torere.md), [Checkers (English draughts)](games/checkers.md), [Fanorona](games/fanorona.md), [Othello](games/othello.md) |
-| [Chess & chess variants](families/chess.md) | 3 | 0 | 0 | [Hexapawn](games/hexapawn.md), [Gardner minichess](games/gardner-minichess.md), [Losing chess](games/losing-chess.md) |
-| [Hunt & unequal forces](families/hunt.md) | 2 | 0 | 0 | [Maharajah and the Sepoys](games/maharajah-and-sepoys.md), [Tigers and Goats](games/tigers-and-goats.md) |
-| [Combinatorial game theory](families/cgt.md) | 7 | 0 | 0 | [Nim](games/nim.md), [Wythoff's game](games/wythoff-nim.md), [Sim](games/sim.md), [Pentominoes (two-player)](games/pentominoes.md), [Dots and Boxes](games/dots-and-boxes.md)\*, [Amazons (small boards)](games/amazons-small.md), [Domineering](games/domineering.md) |
+| [Capture & board control](families/capture.md) | 7 | [3](families/capture.md#open-problems) | [1](families/capture.md#engines) | [Othello (6×6)](games/othello-6x6.md)\*, [Pangki](games/pangki.md)\*, [Checkers (English draughts)](games/checkers.md), [Fanorona](games/fanorona.md), [Breakthrough (6×5)](games/breakthrough-6x5.md), [Ostle](games/ostle.md), [Othello](games/othello.md) |
+| [Chess & chess variants](families/chess.md) | 2 | [2](families/chess.md#open-problems) | 0 | [Gardner minichess](games/gardner-minichess.md), [Losing chess](games/losing-chess.md) |
+| [Hunt & unequal forces](families/hunt.md) | 1 | 0 | 0 | [Tigers and Goats](games/tigers-and-goats.md) |
+| [Combinatorial game theory](families/cgt.md) | 7 | [3](families/cgt.md#open-problems) | 0 | [Nim](games/nim.md), [Wythoff's game](games/wythoff-nim.md), [Pentominoes (two-player)](games/pentominoes.md), [Sim](games/sim.md), [Amazons (small boards)](games/amazons-small.md), [Dots and Boxes](games/dots-and-boxes.md)\*, [Domineering](games/domineering.md) |
 | [Shogi variants](families/shogi.md) | 1 | 0 | [1](families/shogi.md#engines) | [Dōbutsu shōgi](games/dobutsu-shogi.md) |
 | [Go](families/go.md) | 1 | [1](families/go.md#open-problems) | 0 | [Go (5×5)](games/go-5x5.md) |
 | [Imperfect information](families/imperfect-info.md) | 1 | 0 | 0 | [Heads-up Limit Texas Hold'em (HULHE)](games/heads-up-limit-holdem.md) |
