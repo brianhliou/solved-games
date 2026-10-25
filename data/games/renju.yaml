@@ -15,12 +15,12 @@ method:
   - knowledge-based
 distance_to_result: "47-ply winning line published (1. h8 ... 47. l10); iterative-deepening threat-sequence search reaching up to 17 plies of forced threats"
 # Complexity figures are from the van den Herik et al. survey (citing Allis). The state_space and
-# game_tree fields store the order-of-magnitude exponents 105 and 70, not the literal counts.
+# game_tree fields store the estimated magnitudes as plain integers.
 complexity:
-  state_space: 105   # 10^105 — see notes; this is the exponent, the figure cited is ~10^105
-  game_tree: 70      # 10^70 — see notes; exponent of the cited ~10^70 figure
-# Year: the paper appeared in 2001; the survey dates the actual solving to 2000.
-year: 2001
+  state_space: 1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000   # ~10^105, total-labelings upper-bound estimate
+  game_tree: 10000000000000000000000000000000000000000000000000000000000000000000000   # ~10^70, estimated game-tree complexity
+# Solution computed in 2000; the paper was published in 2001.
+year: 2000
 solved_by: "János Wágner & István Virág"
 verified: true
 sources:
@@ -28,15 +28,18 @@ sources:
     url: "https://journals.sagepub.com/doi/abs/10.3233/ICG-2001-24104"
   - title: "H.J. van den Herik, J.W.H.M. Uiterwijk, J. van Rijswijck, \"Games solved: Now and in the future\", Artificial Intelligence 134 (2002) 277-311 (Renju discussed in 3.1.3, full winning line in Fig. 8)"
     url: "https://web.mit.edu/6.034/wwwbob/GamesSolved.pdf"
+  - title: "L. V. Allis, Searching for Solutions in Games and Artificial Intelligence (1994), sections 5.2.1, 6.3.3 and 6.3.11 (rules and complexity estimates)"
+    url: "https://cris.maastrichtuniversity.nl/ws/files/588458/guid-36b5cf0a-cf06-4602-afdb-1af04d65c23b-ASSET1.0.pdf"
   - title: "Renju — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Renju"
 resources:
   writeup: "https://icga.org/icga/games/go-moku/"
 notes: |
-  Renju is the professional, asymmetric form of Go-Moku. The goal is the same,
-  exactly five in a row on a 15x15 board, but Black, who moves first, may not
-  make a double-three, a double-four or an overline (six or more in a row).
-  White has no such restriction. Black still wins.
+  Renju is the professional, asymmetric form of Go-Moku, played on a 15x15
+  board. Black wins with exactly five in a row; White wins with five or more.
+  Black, who moves first, may not make a double-three, a double-four or an
+  overline (six or more in a row). White has no such restriction. Black still
+  wins.
 
   Wágner and Virág solved it weakly in 2000 (published in the ICGA Journal in
   2001), confirming the long-standing conjecture that Renju, like Go-Moku
@@ -53,4 +56,6 @@ notes: |
   remain unsolved.
 
   For the 15x15 board the van den Herik et al. survey, citing Allis, gives a
-  state space of about 10^105 and a game tree of about 10^70.
+  state space of about 10^105 and a game tree of about 10^70. The state-space
+  estimate is based on the total-labelings upper bound 3^225, which includes
+  unreachable boards; it is not an enumerated reachable-position count.

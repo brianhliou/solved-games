@@ -15,16 +15,15 @@ method:
   - depth-first-pns
   - proof-number-search
   - strategy-stealing/pairing-strategy
-distance_to_result: "The hardest 9×9 opening (a6) required 111 days of computation on a 24-core machine; the published principal variation for a6 is the deepest line in the paper. No single uniform ply count is given — proof depth varies by opening."
+distance_to_result: "The hardest 9×9 opening (a6) required about 111 days of cumulative computation using 24 threads on 12 physical Xeon cores. The paper gives a principal variation for a6; no single uniform ply count is given."
 # No 9×9-specific state-space/game-tree figure is cited in the primary paper; fields are left null
 # rather than guessing a 9×9 number.
 complexity:
   state_space: null   # no citable 9×9-specific figure; for 11×11 Hex the cited state-space complexity is ~10^57 and game-tree complexity ~10^98 (van den Herik et al. / Browne). See notes.
   game_tree: null
-# Bibliographic note: the paper was presented at Computers and Games 2013; its Springer LNCS 8427
-# proceedings carry a 2014 imprint. The result is universally dated 2013 (matching the conference
-# and the anchor), which is the year used here.
-year: 2013
+# All 9×9 openings were completed in April 2012. The paper was presented at CG 2013;
+# its Springer LNCS 8427 proceedings were published in 2014.
+year: 2012   # solution completed April 2012; CG 2013 paper published in proceedings in 2014
 solved_by: "Jakub Pawlewicz & Ryan B. Hayward (building on Henderson, Arneson & Hayward for 8×8 and Yang, Liao & Pawlak / Hayward et al. for 7×7)"
 verified: true
 evidence: refereed
@@ -41,7 +40,7 @@ history:
     strength: weak
     credit: "Philip Henderson, Broderick Arneson & Ryan B. Hayward"
     url: "https://webdocs.cs.ualberta.ca/~hayward/papers/solve8.pdf"
-  - date: "2013"
+  - date: "2012-04"
     size_or_opening: "9×9, all openings"
     result: "first player wins"
     strength: weak
@@ -57,6 +56,10 @@ sources:
     url: "https://webdocs.cs.ualberta.ca/~hayward/papers/pawlhayw.pdf"
   - title: "Scalable Parallel DFPN Search — Springer (CG 2013), DOI 10.1007/978-3-319-09165-5_12"
     url: "https://link.springer.com/chapter/10.1007/978-3-319-09165-5_12"
+  - title: "University of Alberta Computer Hex Research Group (April 2012 completion of all 9×9 openings)"
+    url: "https://webdocs.cs.ualberta.ca/~hayward/hex/"
+  - title: "Ryan Hayward, Hex course history (centre and b9 solved on 10×10 by 2013)"
+    url: "https://webdocs.cs.ualberta.ca/~hayward/355/jem/hex.html"
   - title: "Philip Henderson, Broderick Arneson & Ryan B. Hayward, \"Solving 8×8 Hex\", IJCAI 2009, pp. 505-510 (precursor: all 8×8 openings solved by the same group/solver lineage)"
     url: "https://webdocs.cs.ualberta.ca/~hayward/papers/solve8.pdf"
   - title: "Hex (board game) — Wikipedia (secondary; summarizes solved board sizes 7×7-10×10 and the Nash strategy-stealing / Hex theorem)"
@@ -66,7 +69,8 @@ resources:
   writeup: "https://webdocs.cs.ualberta.ca/~hayward/publications.html"
 notes: |
   Jakub Pawlewicz and Ryan Hayward weakly solved 9×9 Hex by resolving every
-  opening move. Their Scalable Parallel Depth-First Proof Number Search (SPDFPN)
+  opening move, completed in April 2012. Their Scalable Parallel Depth-First
+  Proof Number Search (SPDFPN)
   solved all thirteen 9×9 openings that earlier solvers had left intractable
   (the rest were already known), which settles the winner for each of the 81
   starting cells. There is no value for every reachable position, so the
@@ -76,8 +80,10 @@ notes: |
   (Pawlewicz and Lew), running on the Benzene Hex codebase. It schedules threads
   with proof and disproof numbers alone, without Hex-specific heuristics, while
   the underlying Hex solver uses virtual connections, inferior-cell pruning and
-  early win/loss detection. The hardest 9×9 opening (a6) took 111 days on a
-  24-core machine. The same run also produced the first solution of a single
+  early win/loss detection. The hardest 9×9 opening (a6) took about 111 days of
+  cumulative computation with 24 threads on a hyperthreaded 12-core Xeon.
+  The separate scaling tests used a physical 24-core machine. The work also
+  produced the first solution of a single
   10×10 opening, the centremost cell f5, in 63 days: Black wins.
 
   This is the no-swap (no pie rule) game. Under the swap rule the second player
@@ -88,8 +94,9 @@ notes: |
   Pawlak (an explicit decomposition strategy, 2001-2002) and independently by a
   full computer solve from Hayward, Björnsson, Johanson, Kan, Po and van
   Rijswijck (2003). 8×8 fell to Henderson, Arneson and Hayward (IJCAI 2009, all
-  openings), 9×9 to this work (2013), and of 10×10 only the central opening is
-  solved (2013).
+  openings), followed by all 9×9 openings in April 2012. The 9×9 work was
+  presented at CG 2013 and published in the 2014 proceedings. At least two
+  winning 10×10 openings, the centre and b9, were solved by 2013.
 
   Independently of any search, Hex on every n×n board is a first-player win, an
   ultra-weak result. John Nash's strategy-stealing argument (c. 1949) combines

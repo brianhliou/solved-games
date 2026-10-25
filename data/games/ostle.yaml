@@ -1,0 +1,46 @@
+id: ostle
+name: Ostle
+family: abstract
+genre: capture
+board: "5×5; five pieces per player and one movable hole"
+result: draw
+result_detail: "The initial position is drawn with perfect play."
+# Retrograde values cover all legal states; breadth-first search checks reachability.
+strength: strong
+method:
+  - retrograde-analysis
+# The drawn initial position has no finite distance to a forced win.
+distance_to_result: null
+complexity:
+  # Non-trivial states processed by retrograde analysis, with symmetries merged.
+  state_space: 11148725918
+  # The paper does not report a game-tree complexity figure.
+  game_tree: null
+# The solver output was deposited on figshare in 2022; the paper followed in 2023.
+year: 2022
+solved_by: "Hiroki Takizawa"
+cite: "Takizawa 2023"
+verified: true
+evidence: refereed
+sources:
+  - title: "Strongly solved Ostle: calculating a strong solution helps compose high-quality puzzles for recent games (PeerJ Computer Science, 12 September 2023)"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10557503/"
+resources:
+  code:
+    - title: "Ostle solver source code"
+      url: "https://github.com/eukaryo/ostle_solver"
+  tablebase:
+    - title: "Retrograde-analysis and reachability outputs"
+      url: "https://doi.org/10.6084/m9.figshare.19668789.v1"
+notes: |
+  Ostle is played on a 5×5 board with five pieces per player and a movable
+  hole. Players move a piece or the hole orthogonally; pieces can push
+  chains of other pieces. Pieces falling into the hole or off the board
+  are removed, and losing two pieces loses the game. Immediate two-ply
+  repetitions are forbidden; the analysis treats other repetitions as draws.
+
+  Takizawa enumerated 2,735,147,685 positions and used retrograde analysis
+  on 11,148,725,918 non-trivial states. These retain the restricted move
+  and merge board and player symmetries. A breadth-first search confirmed
+  their reachability. Bitboards and succinct dictionaries reduced memory
+  use. The initial position is a draw.

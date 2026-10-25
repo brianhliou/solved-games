@@ -21,9 +21,8 @@ distance_to_result: "A typical game lasts ~10 plies; the minimum is 5 placements
 complexity:
   state_space: 1000000000000        # ~10^12 (van den Herik, Uiterwijk & van Rijswijck 2002, est. from avg game length 10, branching factor 75)
   game_tree: 1000000000000000000    # ~10^18 (same survey, same estimate)
-# ATTRIBUTION/YEAR: headline year 1996 = the Games of No Chance publication. Solver = Hilarie K.
-# Orman.
-year: 1996
+# Solution computed in 1994; the Games of No Chance paper was published in 1996.
+year: 1994
 solved_by: "Hilarie K. Orman"
 verified: true
 # Schroeppel's program is an independent verification of the same result rather than a separate
@@ -34,6 +33,8 @@ sources:
     url: "https://library.slmath.org/books/Book29/files/orman.pdf"
   - title: "Orman — \"Pentominoes: A First Player Win\" (Cambridge Core book-chapter record, Games of No Chance)"
     url: "https://www.cambridge.org/core/books/abs/games-of-no-chance/pentominoes-a-first-player-win/6A28F05FD8B9AE9AFE650BE1ED78B3D1"
+  - title: "Golomb, Polyominoes, p. 9 (dates Orman's solution to 1994)"
+    url: "https://www.degruyterbrill.com/document/doi/10.1515/9780691215051-002/pdf?licenseType=free"
   - title: "van den Herik, Uiterwijk & van Rijswijck — \"Games solved: Now and in the future\", Artificial Intelligence 134, pp. 277–311 (2002) (secondary; classifies as weakly solved, gives complexity estimates)"
     url: "https://web.mit.edu/6.034/wwwbob/GamesSolved.pdf"
   - title: "Solved game — Wikipedia (secondary; lists Pentominoes as weakly solved first-player win by Orman)"
@@ -53,8 +54,8 @@ notes: |
   placements and the longest 12 (the whole pack), and a typical game is about 10
   plies.
 
-  Hilarie K. Orman proved the game a first-player win by computer search,
-  published in "Pentominoes: A First Player Win" in Games of No Chance
+  Hilarie K. Orman proved the game a first-player win by computer search in
+  1994, published in "Pentominoes: A First Player Win" in Games of No Chance
   (Cambridge University Press, 1996). Her C program uses a simple depth-first
   backtracking search over boolean win/loss values, with bit-vector board and
   move representations; on the 64-bit DEC Alpha a move test takes a single
@@ -66,7 +67,7 @@ notes: |
   restrictive opening, the long "L" with 1181 replies, turned out to be a
   second-player win: exactly two of the 1181 replies refute it, with the
   straight piece the key. A slightly less restrictive opening with 1197 replies
-  (Figure 3 in the paper) is a first-player win. A third winning opening,
+  (Figure 3 in the paper) is a first-player win. Another winning opening,
   suggested by Golomb, divides the board nearly symmetrically and also survived
   checking.
 
@@ -91,7 +92,7 @@ notes: |
   frames the open problems the same way.
 
   The same survey estimates a game-tree complexity of O(10^18) and a state-space
-  complexity of O(10^12), from an average game length of 10 and an average
-  branching factor of 75 (the branching figure attributed to Orman), and notes
+  complexity of O(10^12) for reachable positions, from an average game length
+  of 10 and an average branching factor of 75 (attributed to Orman), and notes
   the game was solvable by brute force. Orman closes by posing a far harder open
   problem: the 35-hexomino game on a 15×15 board.

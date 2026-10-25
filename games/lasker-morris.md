@@ -17,7 +17,6 @@ Draw with perfect play — the initial position is a draw if both sides play cor
 | Solved by | Peter Stahlhacke (Friedrich-Schiller-Universität Jena); re-confirmed and extended by Gábor E. Gévay & Gábor Danner (2014/2016) |
 | Source | [Stahlhacke 2003](https://althofer.de/stahlhacke-lasker-morris-2003.pdf) |
 | Board | Nine Men's Morris board (24 points / intersections, no diagonals); 10 men per player (both Stahlhacke's headline 136-billion-position database and Gévay & Danner solve the ten-men variant, per Lasker's "nine or better ten") |
-| State space | 136,476,472,674 |
 | Distance to result | Maximal win is 171 full moves (the deepest forced win for White-to-move in the database, per Stahlhacke 2003) |
 
 ## Solution history
@@ -57,16 +56,19 @@ stone from hand or slide one already on the board, in any order. Lasker
 proposed 9 or, better, 10 stones in hand, and both solutions below use 10.
 
 Peter Stahlhacke (FSU Jena, May 2003) used retrograde analysis to build a
-complete depth-to-win database of all 136,476,472,674 positions. Each position
-takes one byte, holding the number of full moves until White-to-move can force
-a win (0 for a draw or a loss), about 136 GB across 3600 subspace files. A
-value for every reachable position makes the solution strong, and the initial
-position is a draw.
+complete depth-to-win database with 136,476,472,674 symmetry-reduced indexed
+entries, including unreachable positions. This is the total indexing space,
+not an exact reachable-state count. Each entry takes one byte, holding the
+number of full moves until White-to-move can force a win (0 for a draw or a
+loss), about 136 GB across 3,600 subspace files. Losses and draws can be
+distinguished by inspecting successors. The solution is strong, and the
+initial position is a draw.
 
 The deepest forced win in the database is "Win in 171" full moves. Stahlhacke
-also reports that 51.47% of all positions are won for White-to-move, against
-46.55% in Nine Men's Morris, which he reads as Lasker Morris being a sharper,
-less drawish game than its parent.
+also reports wins for White-to-move in 51.47% of his Lasker Morris database,
+against 46.55% in his Nine Men's Morris database. These are database
+statistics, rather than percentages of unreduced reachable states. He reads
+them as Lasker Morris being a sharper, less drawish game than its parent.
 
 Gévay and Danner (arXiv:1408.0032, 2014; IEEE Transactions on Computational
 Intelligence and AI in Games, 2016) re-solved the game independently with a

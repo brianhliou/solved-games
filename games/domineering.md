@@ -17,7 +17,6 @@ First player (the player to move) wins on 11x11 (and on 2x2, 3x3, 4x4, 6x6, 7x7,
 | Solved by | Jos W. H. M. Uiterwijk (11x11, program MUDoS); earlier instances by Breuker, Uiterwijk & van den Herik (8x8, 2000), Nathan Bullock (10x10, 2002); rectangular families by Lachmann, Moore & Rapaport |
 | Source | [Uiterwijk 2016](https://arxiv.org/abs/1602.05404) |
 | Board | Square and rectangular grids; headline result is 11x11. Solved instances range from 1x1 up to 11x11 squares plus many m x n rectangles. |
-| Game tree | 259,689,994,008 |
 | Distance to result | Up to 60 plies on 11x11 (a full 11x11 board holds at most 60 dominoes); exact principal-variation length not published as a single figure. |
 
 ## Solution history
@@ -28,19 +27,34 @@ First player (the player to move) wins on 11x11 (and on 2x2, 3x3, 4x4, 6x6, 7x7,
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
+<a id="open-domineering-12x12"></a>
+
+## Open problem: Domineering (12×12)
+
+| | |
+|---|---|
+| Status | Smaller board solved |
+| Solved so far | Square-board starts through 11×11 (2016); many larger rectangles are also classified |
+| Next target | The empty 12×12 square under normal play |
+| Barrier | compute, algorithmic: Uiterwijk's 11×11 proof searched 259,689,994,008 nodes and took 174 days and 15 hours on his desktop. It depended on game-specific pruning; extending this approach to the next square needs further search reduction or more computation. |
+| Latest result | [Uiterwijk 2016](https://link.springer.com/chapter/10.1007/978-3-319-50935-8_12) (2016) |
+| Last checked | 2026-10-25 |
+| Record | [data/open/domineering-12x12.yaml](../data/open/domineering-12x12.yaml) |
+
+Searches for newer work:
+
+- 2026-10-25: looked for Domineering 12x12 solved; Domineering 12 × 12 solved; Domineering solved 2024 2025 2026. Also checked the Domineering section of Nowakowski's 2025 Unsolved Problems in Combinatorial Games.; found No solution of the empty 12×12 square or a larger square was found. The survey cites the 2016 11×11 result and rectangular-board work. Search results for 12×12 included playing programs and playable variants, without a starting-position proof..
+
 ## References
 
 - [11 x 11 Domineering Is Solved: The First Player Wins (J. W. H. M. Uiterwijk, Computers and Games 2016 / arXiv:1602.05404)](https://arxiv.org/abs/1602.05404)
 - [Solving 8x8 Domineering (D. M. Breuker, J. W. H. M. Uiterwijk, H. J. van den Herik, Theoretical Computer Science 230 (2000) 195-206)](https://research.tilburguniversity.edu/en/publications/solving-8x8-domineering-the-first-computer-olympiad)
-- [Domineering: Solving Large Combinatorial Search Spaces (N. Bullock, MSc thesis, University of Alberta, 2002 — 10x10 solved)](https://webdocs.cs.ualberta.ca/~games/domineering/)
-- [Who Wins Domineering on Rectangular Boards? (M. Lachmann, C. Moore, I. Rapaport, MSRI / More Games of No Chance, 2002)](https://www.researchgate.net/publication/2358389_Who_Wins_Domineering_on_Rectangular_Boards)
+- [Domineering: Solving Large Combinatorial Search Spaces (N. Bullock, ICGA Journal 25(2):67–84, 2002)](https://doi.org/10.3233/ICG-2002-25202)
+- [Who Wins Domineering on Rectangular Boards? (M. Lachmann, C. Moore, I. Rapaport, MSRI / More Games of No Chance, 2002)](https://arxiv.org/html/math/0006066)
+- [Perfectly Solving Domineering Boards (J. W. H. M. Uiterwijk, Computer Games, 2014, pp. 97–121)](https://www.researchgate.net/publication/266684912_Perfectly_Solving_Domineering_Boards)
 - [Domineering — Wikipedia (secondary; consolidated table of solved sizes)](https://en.wikipedia.org/wiki/Domineering)
 
 ## Resources
-
-**Code**
-
-- <https://webdocs.cs.ualberta.ca/~games/domineering/>
 
 **Write-ups**
 
@@ -72,11 +86,14 @@ and 2x2, 3x3, 4x4, 6x6, 7x7, 8x8, 9x9 and 10x10 are first-player wins. 8x8 was
 solved by Breuker, Uiterwijk and van den Herik (2000, alpha-beta with
 transposition tables, Theoretical Computer Science 230:195-206), 9x9 by the
 same group shortly after with an improved program, and 10x10 by Nathan Bullock
-(2002 MSc thesis, University of Alberta).
+(2002, ICGA Journal 25(2):67–84).
 
 For rectangles, Lachmann, Moore and Rapaport ("Who Wins Domineering on
-Rectangular Boards?", More Games of No Chance, 2002) gave a mathematical
-proof, computable in polynomial time, of the winner and a winning strategy for
-all n when m is in {1,2,3,4,5,7,9,11}. For example, every 2k x n board with n
-= 3, 5, 7, 9 or 11 is a win for Vertical, and various m x 2k boards are wins
-for Horizontal.
+Rectangular Boards?", More Games of No Chance, 2002) classified the winners
+for all lengths at widths 2, 3, 5 and 7. For widths 4, 9 and 11 they gave
+bounds and proved the existence of polynomial-time playing strategies.
+
+Uiterwijk's "Perfectly Solving Domineering Boards" (2014) gives further
+rectangular families, with Vertical moving first. Every 2k x n board with
+n = 3, 5, 7, 9 or 11 is a win for Vertical. The paper also proves families
+of m x 2k boards won by Horizontal.

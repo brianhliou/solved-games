@@ -4,6 +4,8 @@
 
 [Chess & chess variants](../families/chess.md) · [all families](../README.md#families) · [data](../data/games/hexapawn.yaml)
 
+> **Not yet verified.** This record has not been checked against its primary source, so it is left out of the family tables and counts.
+
 *Also known as: Hexapawn (3x3).*
 
 Black (second player) wins with perfect play
@@ -17,8 +19,7 @@ Black (second player) wins with perfect play
 | Solved by | Martin Gardner |
 | Source | [Gardner 1962](https://people.csail.mit.edu/brooks/idocs/GardnerHexapawn.pdf) |
 | Board | 3x3 (standard); generalizes to n x m rectangular boards (e.g. 4x4 'octopawn') |
-| State space | 19 |
-| Distance to result | White is mated in 3 of its own moves; principal variation 1.b2 axb2 2.cxb2 c2 3.a2 c1# (about 5-6 plies) |
+| Distance to result | Example winning line for Black: 1.b2 axb2 2.cxb2 c2 3.a2 c1# (6 plies, three White moves) |
 
 ## Solution history
 
@@ -31,6 +32,7 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 ## References
 
 - [Martin Gardner, 'Mathematical Games: How to build a game-learning machine and teach it to play and to win', Scientific American, March 1962 (Hexapawn / HER matchbox robot)](https://people.csail.mit.edu/brooks/idocs/GardnerHexapawn.pdf)
+- [Martin Gardner, A Matchbox Game-Learning Machine, reprint, pp. 93–99 (HER patterns and octopawn)](https://gwern.net/doc/reinforcement-learning/model-free/1991-gardner-ch8amatchboxgamelearningmachine.pdf)
 - [Hexapawn — Wikipedia](https://en.wikipedia.org/wiki/Hexapawn)
 
 ## Notes
@@ -48,10 +50,9 @@ pawn, or by leaving the opponent with no legal move. With perfect play Black,
 the second player, wins: White loses in 3 of its own moves, for example 1.b2
 axb2 2.cxb2 c2 3.a2 c1#.
 
-The game is small enough that Gardner enumerated it completely, so the value
-of every reachable position is known and the solution is strong. The learning
-machine needs only 24 matchboxes, and about 19 distinct positions can face the
-second player.
+HER uses 24 matchbox labels; 19 suffice after reflection reduction of Black's
+decision positions. This is a count of the machine's patterns, not a count of
+all reachable game states.
 
 The 4x4 version, octopawn, is a forced win for the first player (White), and
 larger n x m boards have their own results, which this record does not cover.

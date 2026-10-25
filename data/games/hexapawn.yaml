@@ -11,22 +11,24 @@ strength: strong
 method:
   - brute-force-enumeration
   - mathematical-proof
-distance_to_result: "White is mated in 3 of its own moves; principal variation 1.b2 axb2 2.cxb2 c2 3.a2 c1# (about 5-6 plies)"
-# The state_space figure (19) is the count of distinct non-terminal positions facing player two as
-# commonly cited; total reachable positions including symmetric variants are slightly higher, and a
-# full game-tree node count is not given a single canonical figure in the primary source (left null).
+distance_to_result: "Example winning line for Black: 1.b2 axb2 2.cxb2 c2 3.a2 c1# (6 plies, three White moves)"
+# Gardner's 19 reflection-reduced Black decision patterns are not the whole state space.
+# Neither a complete state-space count nor a game-tree count is established by these sources.
 complexity:
-  state_space: 19
+  state_space: null
   game_tree: null
+# Original analysis appeared in 1962; the strong-solution attribution remains unverified.
 year: 1962
 solved_by: "Martin Gardner"
-verified: true
+verified: false
 # The primary source is Gardner's 1962 column itself, which states the second player's forced win
 # and the construction. Wikipedia is a secondary source that restates the result and the explicit
 # mating line.
 sources:
   - title: "Martin Gardner, 'Mathematical Games: How to build a game-learning machine and teach it to play and to win', Scientific American, March 1962 (Hexapawn / HER matchbox robot)"
     url: "https://people.csail.mit.edu/brooks/idocs/GardnerHexapawn.pdf"
+  - title: "Martin Gardner, A Matchbox Game-Learning Machine, reprint, pp. 93–99 (HER patterns and octopawn)"
+    url: "https://gwern.net/doc/reinforcement-learning/model-free/1991-gardner-ch8amatchboxgamelearningmachine.pdf"
   - title: "Hexapawn — Wikipedia"
     url: "https://en.wikipedia.org/wiki/Hexapawn"
 notes: |
@@ -43,10 +45,9 @@ notes: |
   the second player, wins: White loses in 3 of its own moves, for example 1.b2
   axb2 2.cxb2 c2 3.a2 c1#.
 
-  The game is small enough that Gardner enumerated it completely, so the value
-  of every reachable position is known and the solution is strong. The learning
-  machine needs only 24 matchboxes, and about 19 distinct positions can face the
-  second player.
+  HER uses 24 matchbox labels; 19 suffice after reflection reduction of Black's
+  decision positions. This is a count of the machine's patterns, not a count of
+  all reachable game states.
 
   The 4x4 version, octopawn, is a forced win for the first player (White), and
   larger n x m boards have their own results, which this record does not cover.

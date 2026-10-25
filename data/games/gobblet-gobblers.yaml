@@ -1,0 +1,45 @@
+id: gobblet-gobblers
+name: Gobblet Gobblers
+family: abstract
+genre: alignment
+board: "3×3; each player has two pieces in each of three sizes"
+result: first-player-win
+result_detail: "The first player can force a win in 13 plies."
+# The post describes values and optimal moves for every reachable state.
+strength: strong
+method:
+  - retrograde-analysis
+distance_to_result: "13 plies from the empty board with optimal play."
+complexity:
+  # Reachable states with board and player symmetries merged.
+  state_space: 341024631
+  # The post does not report a game-tree complexity figure.
+  game_tree: null
+year: 2024
+# Credit uses the post's author handle; no personal name is established there.
+solved_by: "possiblywrong"
+cite: "possiblywrong 2024"
+verified: true
+evidence: self-archived
+sources:
+  - title: "Strongly solving Gobblet Gobblers using retrograde analysis (11 June 2024)"
+    url: "https://possiblywrong.wordpress.com/2024/06/11/strongly-solving-gobblet-gobblers-using-retrograde-analysis/"
+  - title: "Author's solver implementation: reachable-state enumeration and retrograde analysis"
+    url: "https://github.com/possibly-wrong/gobblet/blob/main/gobblet.cpp"
+resources:
+  code:
+    - title: "Gobblet Gobblers solver"
+      url: "https://github.com/possibly-wrong/gobblet"
+notes: |
+  Gobblet Gobblers is a three-in-a-row game on a 3×3 board. Each player
+  has two pieces in each of three sizes. A turn places a reserve piece
+  or moves an exposed piece already on the board; larger pieces can
+  cover smaller pieces belonging to either player.
+
+  The author's solver enumerates reachable states from the empty board
+  and works wins and losses backward from terminal states, leaving
+  draws where neither side can force a win. The reported 341,024,631
+  states merge board and player symmetries.
+
+  The first player wins in 13 plies with optimal play. Some other
+  winning openings allow the defender to delay defeat until ply 15.

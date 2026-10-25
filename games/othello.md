@@ -17,9 +17,9 @@ Perfect play by both players leads to a draw (32-32).
 | Solved by | Hiroki Takizawa (Preferred Networks, Inc.) |
 | Source | [Takizawa 2023](https://arxiv.org/abs/2310.19387) |
 | Board | 8x8 (64 squares; standard cross start with 4 discs placed) |
-| State space | 10,000,000,000,000,000,000,000,000,000 |
-| Game tree | 10,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000,000 |
-| Distance to result | Game runs up to 60 plies (4 discs at start, 60 empty squares to fill). The weak-solution proof exhaustively resolved the ~1.5 billion positions with 36 empty squares and connected them back to the initial position via 2,587 critical proof positions with 50 empty squares. |
+| State space | 10²⁸ |
+| Game tree | 10⁵⁸ |
+| Distance to result | At most 60 disc placements from the four-disc start; passes add turns. The weak-solution proof resolved 1,505,367,525 selected proof subproblems with 36 empty squares, linked to the start through 2,587 critical proof positions with 50 empty squares. |
 
 ## Solution history
 
@@ -37,6 +37,7 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 - [Hiroki Takizawa, "Othello is Solved" (arXiv:2310.19387)](https://arxiv.org/abs/2310.19387)
 - [Reproduction code and data (modified Edax, analysis scripts): eukaryo/reversi-scripts + Zenodo 10.5281/zenodo.10030906 + figshare 10.6084/m9.figshare.24420619](https://github.com/eukaryo/reversi-scripts)
+- [L. Victor Allis, Searching for Solutions in Games and Artificial Intelligence (1994 thesis), §6.3.6 (complexity estimates; text mirror)](https://paperzz.com/doc/7284686/searching-for-solutions-in-games-and-artificial-intelligence)
 - [Wikipedia: Computer Othello (Othello 8x8 section, notes the October 2023 preprint solving the game with a draw result)](https://en.wikipedia.org/wiki/Computer_Othello)
 
 ## Resources
@@ -64,15 +65,18 @@ The solution is weak, and the paper says so: the result is "just above the
 criteria for weakly solving" and "strongly solving Othello is intractable", so
 there is no tablebase covering every reachable position. The search used a
 modified Edax engine (alpha-beta search with transposition tables and
-aspiration windows) inside a backward proof. It first evaluated all
-1,505,367,525 positions with 36 empty squares, then carried the values back up
-through 2,587 critical positions with 50 empty squares to the start. Edax
-searched about 1.526 x 10^18 nodes in total, on Preferred Networks' MN-J
+aspiration windows) inside a backward proof. It resolved 1,505,367,525
+selected proof subproblems with 36 empty squares, rather than every reachable
+position at that depth. These supported 2,587 critical proof positions with
+50 empty squares and the draw from the start. Edax searched about
+1.526 x 10^18 nodes in total, on Preferred Networks' MN-J
 cluster (Intel Xeon and AMD EPYC nodes).
 
-The author estimates about 10^28 legal positions and about 10^58 possible game
-records. Both are totals that include unreachable positions, and both dwarf
-the figures for checkers and the other grand-challenge games solved before it.
+Allis estimates a state-space upper bound of about 10^28 after partial
+legality tests; it can include unreachable positions. His game-tree estimate
+of about 10^58 assumes an average branching factor of 10 and a game length of
+58 plies. These are estimates of different quantities, not exact reachable
+totals or counts of nodes searched by Takizawa.
 
 As of mid-2026 the work is an arXiv preprint, and no peer-reviewed journal or
 conference version has been confirmed. The modified Edax, the scripts and the

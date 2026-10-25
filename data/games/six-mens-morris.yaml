@@ -23,8 +23,9 @@ year: 2026
 solved_by: "Brian Liou (open-source game-solver engine, 2026)"
 cite: "Liou 2026"
 verified: true
-# The external gold-standard would be reproducing nine men's morris's known draw (~10^10 states),
-# which is deferred as a separate, larger build.
+# Reproducing nine men's morris's known draw would require midgame/endgame databases
+# of approximately 10^10 states, plus a separate opening search (Gasser 1996).
+# That larger build is deferred.
 evidence: self-archived   # the maintainer's own result, not yet replayed by anyone else
 history:
   - date: "2026-06-18"

@@ -17,24 +17,26 @@ method:
   - mathematical-proof
   - retrograde-analysis
 distance_to_result: ""
-# state_space = 46 is the count of distinct positions after symmetry reduction (rotations +
-# reflections), per Browne and Straffin. Game-tree complexity is not meaningfully finite for the
-# playable rulesets because optimal lines can cycle forever, so it is left null.
+# The 46 geometric board configurations omit player to move and opening restrictions;
+# they are not a complete state-space count for Rulesets D and E.
+# Optimal lines can cycle forever, so game_tree is left null.
 complexity:
-  state_space: 46
+  state_space: null
   game_tree: null
-# The headline year (1987) is Ascher's foundational analysis; the complete modern enumeration is
-# Browne (2022).
+# 1987 dates Ascher's foundational analysis; its strong-solution coverage is unverified.
+# Browne presented his enumeration at CG 2022; the chapter was published in 2023.
 year: 1987
-solved_by: "Marcia Ascher (1987) with Philip Straffin's game-tree expansion; position graphs by Philip D. Straffin (1995, corrected 1996); full game-graph solve of all rulesets by Cameron Browne (2022); independent computational strong solve by GamesCrafters (UC Berkeley)"
-verified: true
+solved_by: "Marcia Ascher (1987) with Philip Straffin's game-tree expansion; position graphs by Philip D. Straffin (1995, corrected 1996); full game-graph solve of all rulesets by Cameron Browne (CG 2022; published 2023); independent computational strong solve by GamesCrafters (UC Berkeley)"
+verified: false
 sources:
   - title: "Marcia Ascher — Mu Torere: An Analysis of a Maori Game (Mathematics Magazine 60(2), 90-100, 1987) [foundational analysis; Straffin's full game-tree expansion shows the correct starting rule is what prevents a forced first-move win]"
-    url: "https://www.tandfonline.com/doi/abs/10.1080/0025570X.1987.11977283"
+    url: "https://doi.org/10.1080/0025570X.1987.11977281"
   - title: "Philip D. Straffin — Position Graphs for Pong Hau K'i and Mu Torere (Mathematics Magazine 68(5), 382-386, 1995; corrected figure 69(1), 65, 1996) [position-graph solution]"
     url: "https://www.tandfonline.com/doi/abs/10.1080/0025570X.1995.11996361"
-  - title: "Cameron Browne — Which Rules for Mu Torere? (Computers and Games, CG 2022, Springer LNCS 13865, 2022) [full game-graph expansion of all five rulesets; 46 distinct positions with W/L/D value per node]"
+  - title: "Cameron Browne — Which Rules for Mu Torere? (Computers and Games, CG 2022; published 2023, Springer LNCS 13865) [full game-graph expansion of all five rulesets]"
     url: "https://link.springer.com/chapter/10.1007/978-3-031-34017-8_10"
+  - title: "George Jelliss — Mu Torere (geometric configurations and position-and-turn states)"
+    url: "https://www.mayhematics.com/k/games6.htm"
   - title: "GamesCrafters (UC Berkeley) — Mu Torere solver (full tablebase: value + remoteness for every position)"
     url: "https://gamescrafters.berkeley.edu/games.php?game=mutorere"
   - title: "Mū tōrere — Wikipedia"
@@ -44,18 +46,20 @@ resources:
   explorer: "https://gamescrafters.berkeley.edu/games.php?game=mutorere"
 notes: |
   Mū tōrere is a traditional Māori game from New Zealand that predates European
-  contact (by most accounts it developed in response to draughts). The game is
-  tiny: once rotations and reflections are collapsed, the whole game graph holds
-  only 46 distinct positions, each in a Black-to-move and a White-to-move form,
-  with six terminal positions. Every position has a proven value (win, loss or
-  draw), so the solution is strong, and GamesCrafters also provides a full
-  tablebase with remoteness for every position.
+  contact (by most accounts it developed in response to draughts). Jelliss counts
+  46 geometric board configurations after rotations and reflections are
+  collapsed. Including player to move gives 92 formal states, of which six are
+  unreachable, leaving 86 reachable states under his rules. These counts do not
+  give a complete state space including Ruleset D's opening restrictions.
+
+  Complete position graphs establish the strong solution. GamesCrafters also
+  provides a tablebase with values and remoteness for every reachable position.
 
   The naive rules let the first player win at once, so the game is played with a
-  restriction, and the literature records five variants (Browne 2022). The draw
-  holds for the two authentic, playable rulesets. Under Ruleset D, the most
-  common in the historical literature, the mover cannot win during the first two
-  rounds. Its 46 positions split 6 win, 25 draw and 15 loss (24/74/32 over
+  restriction, and Browne compares five variants (CG 2022; published 2023).
+  The draw holds for the two authentic, playable rulesets. Under Ruleset D,
+  found in the historical literature, the mover cannot win during the first two
+  rounds. Browne's graph has 46 nodes, split 6 win, 25 draw and 15 loss (24/74/32 over
   transitions), and greedy random playouts show a strong first-move advantage
   (White 54.4%, Black 37.9%, draws 7.7%). Under Ruleset E, used by Bell and
   Jelliss, a piece moved to the centre must be adjacent to an enemy piece; the
@@ -68,13 +72,13 @@ notes: |
   perpetual cycle and no result is possible.
 
   Other counts appear in the literature. Jelliss's more compact encoding gives
-  26 labelled positions, each with a colour-inversion flag, and some secondary
-  sources count ~86 board states without full symmetry reduction, or 1,180
-  reachable states (Wikipedia, from GamesCrafters) with no symmetry collapse.
+  26 labelled positions, with colour inversion distinguishing complements.
+  GamesCrafters reports 1,180 reachable states including player to move, with
+  geometric symmetry reduction disabled.
   Optimal lines in the playable rulesets can cycle forever, since the game ends
   only when a player cannot move or by mutual consent to a draw.
 
   The draw has several independent confirmations: Marcia Ascher (1987, with
   Philip Straffin's game-tree expansion), Straffin's own position-graph papers
-  (1995/1996), Cameron Browne's full game-graph solve of all rulesets (2022),
-  and GamesCrafters' separate computational solve.
+  (1995/1996), Cameron Browne's full game-graph solve of all rulesets (CG 2022;
+  published 2023), and GamesCrafters' separate computational solve.

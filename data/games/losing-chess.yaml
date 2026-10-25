@@ -17,7 +17,7 @@ method:
   - proof-number-search
   - retrograde-analysis
   - alpha-beta+db
-distance_to_result: "Watkins' proof has a maximal upper-level (best-first) tree depth of 94 ply, with endgame tablebases adding further plies; the hardest defenses originally ran very deep (e.g. 1.e3 e6 ~197 moves). A later refinement (tolius, 2021) shows White wins in under 80 moves with the 50-move rule applied (e.g. 1.e3 c5 mates in #79)."
+distance_to_result: "Watkins' proof has a maximal upper-level (best-first) tree depth of 94 ply, with endgame tablebases adding further plies; the hardest defenses originally ran very deep (e.g. 1.e3 e6 ~197 moves). A later refinement (tolius, 2025) shows White wins in under 80 moves with the 50-move rule applied (e.g. 1.e3 c5 mates in #79)."
 # Watkins gives no single citable state-space or game-tree complexity figure for the full game, so
 # both complexity fields are left null.
 complexity:
@@ -37,7 +37,7 @@ sources:
     url: "https://www.chessprogramming.org/Losing_Chess"
   - title: "Losing chess — Wikipedia (secondary)"
     url: "https://en.wikipedia.org/wiki/Losing_chess"
-  - title: "Antichess: 1. e3 Wins for White in #79 — tolius, lichess blog (secondary refinement)"
+  - title: "Antichess: 1. e3 Wins for White in #79 — tolius, lichess blog, December 10, 2025 (author's refinement report)"
     url: "https://lichess.org/@/tolius/blog/antichess-1-e3-wins-for-white-in-79/kmAYeHSC"
 resources:
   tablebase: "https://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS/"
@@ -73,7 +73,7 @@ notes: |
   where a win under the joint rules is a win under both the FICS and
   International conventions. It does not cover the vinciperdi rules, where a
   stalemate with pieces left is a draw. The proof's upper-level tree reaches 94
-  ply, with the tablebases adding more. In 2021 "tolius" (lichess) cut the
+  ply, with the tablebases adding more. In 2025 "tolius" (lichess) cut the
   longest forced win to under 80 moves with the 50-move rule applied (1.e3 c5
   mates in #79).
 

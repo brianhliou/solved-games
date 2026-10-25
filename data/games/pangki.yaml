@@ -1,0 +1,55 @@
+id: pangki
+name: Pangki
+family: abstract
+genre: capture
+board: "4×4; six pieces per player"
+result: draw
+result_detail: "Of the two openings distinct under symmetry, one draws and the other loses."
+# The database covers every board encoding and supplies values for either
+# player to move by exchanging the piece colors.
+strength: strong
+method:
+  - retrograde-analysis
+  - brute-force-enumeration
+# The starting position draws. The losing opening is described as an opponent
+# win in 15, without specifying whether that counts moves or plies.
+distance_to_result: null
+complexity:
+  state_space: 43046721
+  # No game-tree count is established; 3^16 counts board encodings.
+  game_tree: null
+# Wikipedia's Cinc camins article explicitly dates the solution to 2001.
+# Doucette's primary page dates programming commencement to 18 November 2001,
+# but does not separately date completion.
+year: 2001
+solved_by: "Jason Allen Doucette"
+cite: "Doucette 2001"
+verified: true
+evidence: self-archived
+sources:
+  - title: "Jason Doucette, Artificial Intelligence: Pangki God (primary solver writeup)"
+    url: "https://jasondoucette.com/ai.html#Pangki"
+  - title: "Jason Allen Doucette, Pangki God distribution: ReadMe.txt and sample solver output (primary)"
+    url: "https://jasondoucette.com/download/pangkigod.zip"
+  - title: "Cinc camins, Variants section (Wikipedia; secondary)"
+    url: "https://en.wikipedia.org/wiki/Cinc_camins#Variants"
+resources:
+  writeup:
+    - title: "Pangki God: rules, database construction and results"
+      url: "https://jasondoucette.com/ai.html#Pangki"
+notes: |
+  Pangki uses a 4×4 board with six pieces per player. Pieces move one square
+  orthogonally into an empty square. Two adjacent friendly pieces capture an
+  adjacent enemy in the same row or column when its remaining square is empty.
+  A player loses when reduced to one piece or left without a legal move.
+
+  Jason Doucette's Pangki God solves the game by retrograde analysis. Its
+  database stores a value for each of the 43,046,721 board encodings, including
+  illegal arrangements. This is the total encoding space, not a count of
+  reachable positions. Exchanging the colors gives the other player's value.
+
+  Perfect play draws. One of the two openings distinct under symmetry permits
+  an immediate capture and an opponent win in 15; the other draws.
+
+  Doucette reports 3,037 seconds on an Athlon XP 2500+. The bundled sample
+  output records 3,067 seconds on that processor.

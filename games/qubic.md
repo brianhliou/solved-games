@@ -17,8 +17,8 @@ First player wins
 | Solved by | Oren Patashnik |
 | Source | [Patashnik 1980](https://www.jstor.org/stable/2689613) |
 | Board | 4×4×4 cube (64 cells, 76 winning lines) |
-| State space | 1,000,000,000,000,000,000,000,000,000,000 |
-| Game tree | 10,000,000,000,000,000,000,000,000,000,000,000 |
+| State space | 10³⁰ |
+| Game tree | 10³⁴ |
 | Distance to result | first player can force a win well before the board fills; Patashnik's strategy needed move choices for 2929 'strategic' positions, the rest finished by forcing-move sequences |
 
 ## Solution history
@@ -53,13 +53,13 @@ diagonals and 4 body diagonals.
 
 Oren Patashnik (Bell Laboratories) published the proof that the first player
 can always win in "Qubic: 4×4×4 Tic-Tac-Toe" (Mathematics Magazine 53(4), Sep.
-1980), one of the earliest computer-assisted proofs. He combined depth-first
-game-tree search with his own expert knowledge for move ordering and
-forced-win detection, using about 1500 hours of computer time. The solution is
-encoded as move choices for 2929 difficult "strategic" positions, and every
-other reachable position is shown to be winnable by a sequence made entirely
-of forcing moves. Eugene Mahalko claimed a first-player win earlier, in 1976,
-but left it unpublished and gave no verifiable strategy.
+1980). He combined depth-first game-tree search with his own expert knowledge
+for move ordering and forced-win detection, using about 1500 hours of
+computer time. The solution is
+encoded as move choices for 2929 difficult "strategic" positions. Other
+positions arising under Patashnik's winning strategy are won by sequences
+made entirely of forcing moves. Eugene Mahalko claimed a first-player win
+earlier, in 1976, but left it unpublished and gave no verifiable strategy.
 
 In the early 1990s L. V. Allis and P. N. A. Schoo wrote the program QBIG and
 re-solved Qubic ("Qubic solved again," 1992; written up most fully in Allis's
@@ -74,6 +74,6 @@ Uiterwijk and van Rijswijck (2002) says Patashnik "weakly solved the game" and
 that Allis and Schoo "weakly solved Qubic again."
 
 The same survey, citing Allis (1994), gives a state-space complexity of ~10^30
-and a game-tree complexity of ~10^34, both order-of-magnitude estimates. It
-notes that Qubic was solvable by both brute-force and knowledge-based methods
-because both figures are relatively low.
+and a game-tree complexity of ~10^34. The state-space figure is the order of
+the total-labelings upper bound 3^64, including unreachable boards. The
+game-tree estimate is 64!/44!, assuming a game length of 20 plies.

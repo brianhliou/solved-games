@@ -19,8 +19,8 @@ method:
   - alpha-beta+db
   - proof-number-search
 distance_to_result: "not reported as a single ply count; oracles are given as human-readable proof trees of variations from the start"
-# ~9 x 10^18 legal positions (reachable/legal positions, the figure the authors cite as comparable
-# to checkers); recorded here as state_space. No game-tree-complexity figure is given (left null).
+# Approximately 9 x 10^18 estimated legal positions, comparable to checkers in the paper.
+# No reachable-from-start enumeration or game-tree-complexity figure is given.
 complexity:
   state_space: 9000000000000000000
   game_tree: null
@@ -38,11 +38,18 @@ sources:
     url: "https://hal.science/hal-00944409"
   - title: "Minichess - Wikipedia (secondary)"
     url: "https://en.wikipedia.org/wiki/Minichess"
+  - title: "Martin Gardner, A Matchbox Game-Learning Machine (collected chapter)"
+    url: "https://gwern.net/doc/reinforcement-learning/model-free/1991-gardner-ch8amatchboxgamelearningmachine.pdf"
+  - title: "Gardner index, March 1962 column and later book chapter"
+    url: "https://peterrowlett.net/gardner-index/1962-Mar.html"
+  - title: "Kirill Kryukov, 4x4 Chess (legal-position domain and tablebase coverage)"
+    url: "https://kirill-kryukov.com/chess/4x4-chess/"
 resources:
   writeup: "http://membres-lig.imag.fr/prost/MiniChessResolution/"
   code: "http://membres-lig.imag.fr/prost/MiniChessResolution/"
 notes: |
-  Gardner's minichess (Martin Gardner, 1969) is played on a 5x5 board with all
+  Martin Gardner presented this minichess variant in 1962; the column was
+  collected in his 1969 book. It is played on a 5x5 board with all
   the standard chess piece types on the back rank (from Rook to King) and a full
   rank of pawns. It is the smallest board that holds every kind of chess piece
   in the start position. White moves first. The solved ruleset drops the pawn
@@ -65,10 +72,11 @@ notes: |
   comparable state-space and decision complexity, used hundreds of computers
   over a decade.
 
-  The game has ~9 x 10^18 legal positions, a figure the authors cite as
-  comparable to checkers; no game-tree size is given. For context, they note
-  that smaller variants are strongly solved (Kryukov): the 4x4 chess variant,
-  with ~3 x 10^15 legal positions, and 3x3 and 3x4 variants.
+  The game has an estimated ~9 x 10^18 legal positions, a figure the authors
+  cite as comparable to checkers; no game-tree size is given. Kryukov strongly
+  solved the 3x3 and 3x4 variants. For 4x4 chess, the 2013 paper cites solved
+  positions with at most nine pieces. Its estimate of ~3 x 10^15 legal
+  positions refers to the full domain, beyond that solved material subset.
 
   As a by-product, the analysis exposed positions where Stockfish's static
   evaluation is badly fooled, showing +6 "winning" for positions that are dead

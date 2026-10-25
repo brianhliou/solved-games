@@ -17,8 +17,7 @@ On the 5x5 (25-box) board the first player wins 13-12 (margin +1). Outcome is bo
 | Solved by | William Fraser (5x5, program 'the Shark'); 4x4 by David Wilson (2010); 4x5 by Joseph K. Barker & Richard E. Korf (2011) |
 | Source | [Fraser 2014](https://groups.google.com/g/rec.games.abstract/c/-z5Y9JRlZJ8)\* |
 | Board | Rectangular grids, sized in boxes. Headline result is the 5x5 board (5x5 = 25 boxes, played on a 6x6 array of dots). Solved instances range from tiny boards up through 4x4 (Wilson), 4x5 (Barker & Korf) and 5x5 (Fraser). |
-| State space | 30,000,000,000,000 |
-| Distance to result | Up to 60 boxes / 60 captures on 5x5; a full 5x5 game fills all 60 edges. Exact optimal-line length not published as one figure. |
+| Distance to result | 60 edge placements; 25 boxes on 5x5. Complete play fills every edge; one placement can capture two boxes. |
 | Evidence | self-archived\* |
 
 \* Self-archived: the result is available only from its authors (a repository, a post, a deposit), not yet refereed, formally verified or reproduced by someone else. The mark comes off when one of those happens. It applies to this repo's own results too.
@@ -30,6 +29,26 @@ On the 5x5 (25-box) board the first player wins 13-12 (margin +1). Outcome is bo
 | 2014 | standard game | first player wins | Weak | William Fraser | [source](https://groups.google.com/g/rec.games.abstract/c/-z5Y9JRlZJ8) |
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
+
+<a id="open-dots-and-boxes-5x6"></a>
+
+## Open problem: Dots and Boxes (5×6 boxes)
+
+| | |
+|---|---|
+| Status | Smaller board solved (unverified) |
+| Solved so far | 5×5 boxes: first player wins 13–12 (2014 announcement) |
+| Next target | The empty 5×6-box board: determine its perfect-play score and a strategy attaining it |
+| Barrier | compute, storage: Fraser reported roughly 30 trillion endgame positions for 5×5. Barker and Korf explain that each additional edge doubles the number of unscored board configurations before reductions; larger boards increase both the search and database construction work. |
+| Latest result | [Fraser 2014](https://groups.google.com/g/rec.games.abstract/c/-z5Y9JRlZJ8) (2014-01-17)\* |
+| Last checked | 2026-10-25 |
+| Record | [data/open/dots-and-boxes-5x6.yaml](../data/open/dots-and-boxes-5x6.yaml) |
+
+**Unverified:** Fraser's original Little Golem announcement could not be retrieved. Its score, database size and opening coverage were checked against Phil Carmody's contemporaneous quotation. Independent verification of the announced proof was not established.
+
+Searches for newer work:
+
+- 2026-10-25: looked for Results beyond Fraser's 2014 announcement, using Dots and Boxes solved 5x6 6x6 Fraser, Dots-and-Boxes solved 6 Fraser, and Dots and Boxes solved 2025 2026; also checked the 2025 Games of No Chance survey.; found No exact solution of an empty 5×6-box or larger square board was found. The survey still reports Fraser's 5×5 claim. Search results included BoxesZero (2025), a playing agent with additional endgame theory, without a larger empty-board solution..
 
 ## References
 

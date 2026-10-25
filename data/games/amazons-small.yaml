@@ -15,11 +15,10 @@ method:
   - retrograde-analysis
   - depth-first-pns
   - mathematical-proof
-distance_to_result: "First player has 410 legal moves in the 5x6 starting position; proofs are full game-tree searches from the start, not fixed-ply"
 # No citable single state-space figure for the 5x6 game; complexity fields left mostly null deliberately.
 complexity:
   game_tree: null
-year: 2015
+year: 2012   # 5x6 proof; journal publication in 2015, MSc thesis in 2013
 solved_by: "Jiaxing Song and Martin Müller (5x6 and other rectangular boards); Martin Müller (5x5, 2001)"
 verified: true
 sources:
@@ -27,8 +26,10 @@ sources:
     url: "https://webdocs.cs.ualberta.ca/~mmueller/ps/2014/2014-TCIAIG-amazons_solver-preprint.pdf"
   - title: "An Enhanced Solver for the Game of Amazons, IEEE Transactions on Computational Intelligence and AI in Games (IEEE Xplore)"
     url: "https://ieeexplore.ieee.org/document/6766782/"
-  - title: "J. Song, An Enhanced Solver for the Game of Amazons (MSc thesis, University of Alberta, 2012)"
-    url: "http://hdl.handle.net/10402/era.29646"
+  - title: "J. Song, An Enhanced Solver for the Game of Amazons (MSc thesis, University of Alberta, 2013)"
+    url: "https://ualberta.scholaris.ca/items/6175488e-cf76-4e98-b51c-799cf1c9e9fc"
+  - title: "M. Müller and T. Tegos, Experiments in Computer Amazons (2002)"
+    url: "https://library.slmath.org/books/Book42/files/muller.pdf"
   - title: "M. Müller, Solving 5x5 Amazons (GPW 2001) — talk slides; paper in GPW 2001, pp. 64-71"
     url: "https://webdocs.cs.ualberta.ca/~mmueller/cgt/talks/2001-5x5GPW-talk.pdf"
   - title: "Research Related to the Game of Amazons (Martin Müller, summary page)"
@@ -48,12 +49,11 @@ notes: |
   strategy proved by the search tree, which is a weak solution; there is no
   tablebase of all reachable positions. The headline board is 5x6 (4 amazons a
   side, standard corner setup), a first-player win proved by Jiaxing Song and
-  Martin Müller, the largest proof presented in detail in their 2015 IEEE TCIAIG
-  paper and Song's 2012 MSc thesis. The first player has 410 legal moves at the
-  5x6 start.
+  Martin Müller in 2012, described in their 2015 IEEE TCIAIG paper and Song's
+  2013 MSc thesis. The first player has 410 legal moves at the 5x6 start.
 
-  On the standard 4-amazon corner setup, 4x4 is a second-player win (easy by
-  brute force; Müller and Tegos, Berlekamp, around 2002). 5x5 is a first-player
+  On the standard 4-amazon corner setup, 4x4 is a second-player win, reported
+  by Müller and Tegos in 2002. 5x5 is a first-player
   win (Müller, GPW 2001, proven 4 Jan 2001). Song and Müller (2012/2015) found
   4x5, 5x4, 4x6, 4x7 and 5x6 first-player wins and 6x4 a second-player win;
   refuting all 256 starting moves on 6x4 took about 1 CPU day. Narrow, tall

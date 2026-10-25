@@ -15,7 +15,7 @@ First player wins from any starting position not on the golden-ratio P-position 
 | Method | Mathematical proof |
 | Year | 1907 |
 | Solved by | Willem Abraham Wythoff |
-| Source | [Wythoff 1907](https://www.scirp.org/reference/referencespapers?referenceid=59121) |
+| Source | [Wythoff 1907](https://archive.org/details/nieuwarchiefvoo02genogoog/page/n220/mode/2up) |
 | Board | Two heaps of counters (unbounded, non-negative integer sizes) |
 | Distance to result | Game ends in finitely many moves; no fixed ply count (depends on heap sizes), but the full P-position structure is known in closed form for all positions |
 
@@ -23,13 +23,13 @@ First player wins from any starting position not on the golden-ratio P-position 
 
 | Date | Size or opening | Result | Strength | Credit | Source |
 |---|---|---|---|---|---|
-| 1907 | standard game | first player wins | Strong | Willem Abraham Wythoff | [source](https://www.scirp.org/reference/referencespapers?referenceid=59121) |
+| 1907 | standard game | first player wins | Strong | Willem Abraham Wythoff | [source](https://archive.org/details/nieuwarchiefvoo02genogoog/page/n220/mode/2up) |
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
 ## References
 
-- [W. A. Wythoff, "A modification of the game of Nim," Nieuw Archief voor Wiskunde, 2nd ser., vol. 7(2)/8, pp. 199-202, 1907/1909](https://www.scirp.org/reference/referencespapers?referenceid=59121)
+- [W. A. Wythoff, A modification of the game of Nim, Nieuw Archief voor Wiskunde, series 2, volume 7 (1907), pp. 199–202](https://archive.org/details/nieuwarchiefvoo02genogoog/page/n220/mode/2up)
 - [Wythoff's Game — Wolfram MathWorld](https://mathworld.wolfram.com/WythoffsGame.html)
 - [Wythoff's game — Wikipedia](https://en.wikipedia.org/wiki/Wythoff's_game)
 - [Winning Wythoff's game — Chalkdust Magazine](https://chalkdustmagazine.com/features/winning-wythoffs-game/)

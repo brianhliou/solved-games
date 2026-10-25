@@ -9,18 +9,20 @@ family: abstract
 genre: morris
 board: Nine Men's Morris board with the four diagonal lines added (24 points / intersections, all corners of the three nested squares connected by diagonals); 12 men per player
 result: first-player-win
-result_detail: "First-player win — the standard starting position is a win for the player to move first, with a game-theoretic value of win in 49 (moves). Most starting positions in which both players place an equal number of stones (including the standard one) are first-player wins, in contrast to Nine Men's Morris and Lasker Morris, which are draws."
+result_detail: "First-player win — the standard starting position is a win for the player to move first, with a game-theoretic value of win in 49 plies. Most starting positions in which both players place an equal number of stones (including the standard one) are first-player wins, in contrast to Nine Men's Morris and Lasker Morris, which are draws."
 strength: strong
 method:
   - retrograde-analysis
-distance_to_result: "Win in 49 (the game-theoretic value of the standard starting position, expressed as moves-to-win in the depth-to-win database)"
-# The state-space figure is an approximate value reported in the paper, not an exact enumerated
-# cardinality.
+distance_to_result: "Win in 49 plies from the standard starting position with optimal depth-to-win play"
+# Table I's 112 billion counts the reduced solver space, not unreduced reachable states.
+# The solver-space counts are described in notes instead of used as complexity figures.
 complexity:
-  state_space: 112000000000   # ~112 billion states in the standard Morabaraba solution database (Gevay & Danner, Table I); state space is roughly four times that of Nine Men's Morris. Approximate figure as reported.
+  state_space: null
   game_tree: null
-year: 2015
+# Strong solution announced in the 2014 preprint; journal publication followed in 2016.
+year: 2014
 solved_by: "Gábor E. Gévay (Eötvös Loránd University) & Gábor Danner (University of Szeged); arXiv:1408.0032 (2014), published IEEE Trans. on Computational Intelligence and AI in Games, 2016"
+cite: "Gévay & Danner 2014"
 verified: true
 # Independent primary confirmations of the Morabaraba result: one (the Gévay–Danner work; the
 # Szeged "mills" website is the project's own tablebase distribution page, not an independent
@@ -47,19 +49,24 @@ notes: |
   Gábor E. Gévay and Gábor Danner solved the game strongly with a multi-valued
   retrograde analysis over a partitioned state space, producing a complete
   depth-to-win database with a value for every reachable position. The standard
-  start is a win in 49 for the first player, in contrast to Nine Men's Morris
+  start is a win in 49 plies for the first player, in contrast to Nine Men's Morris
   (Gasser 1996) and Lasker Morris (Stahlhacke 2003), both draws, which the same
   paper also re-solves. They report that most starting positions in which both
   players place an equal number of stones, the standard one included, are
-  first-player wins: the extra diagonals make the game sharper and the first
-  move decisive.
+  first-player wins.
 
-  The state space is roughly four times that of Nine Men's Morris: about 112
-  billion states in the standard solution database (their Table I), and about
-  284 billion across the solutions for other stone counts. The computation took
-  on the order of days on a single machine (about 3.2 GHz, 20 GB RAM).
+  Table I reports reduced solver spaces of about 112 billion states for
+  standard Morabaraba and 284 billion for its extended solution with other
+  starting stone counts. These totals use board-symmetry reduction and
+  player-to-move normalization, rather than counting unreduced reachable
+  states. The standard count is about four times the corresponding 27 billion
+  for Nine Men's Morris.
 
-  The authors also computed an ultra-strong solution, which subclassifies drawn
-  and won positions to do better in practice against a fallible opponent. That
-  database is available for download (about 41 GB compressed, 324 GB
-  uncompressed).
+  The standard strong solution took about two days on a 2 GHz Intel Core
+  i7-2630QM with 16 GB of memory. The extended solution took about five days on
+  a 3.2 GHz AMD Phenom II X4 955 with 20 GB of memory.
+
+  The authors also computed an ultra-strong solution, which subclassifies only
+  drawn positions to improve play against a fallible opponent. Won and lost
+  positions retain depth-to-win optimization. That database is available for
+  download (about 41 GB compressed, 324 GB uncompressed).

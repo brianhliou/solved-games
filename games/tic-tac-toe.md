@@ -14,8 +14,8 @@ Drawn under optimal play by both sides
 | Strength | Strong |
 | Method | Brute-force enumeration, Mathematical proof, Strategy-stealing |
 | Year | — |
-| Solved by | folklore (no single originator); standard combinatorial-game-theory references — Hales & Jewett, Gardner, Steinhaus |
-| Source | [folklore](https://mathworld.wolfram.com/Tic-Tac-Toe.html) |
+| Solved by | folklore (no single originator) |
+| Source | [folklore](https://web.archive.org/web/20130628112339/http://www.mathrec.org/old/2002jan/solutions.html) |
 | Board | 3×3 (m,n,k = 3,3,3) |
 | State space | 5,478 |
 | Game tree | 255,168 |
@@ -25,12 +25,13 @@ Drawn under optimal play by both sides
 
 | Date | Size or opening | Result | Strength | Credit | Source |
 |---|---|---|---|---|---|
-| — | standard game | draw | Strong | folklore | [source](https://mathworld.wolfram.com/Tic-Tac-Toe.html) |
+| — | standard game | draw | Strong | folklore | [source](https://web.archive.org/web/20130628112339/http://www.mathrec.org/old/2002jan/solutions.html) |
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
 ## References
 
+- [MathRec — Solutions to Tic-Tac-Toe (reachable positions, completed games and the two symmetry conventions)](https://web.archive.org/web/20130628112339/http://www.mathrec.org/old/2002jan/solutions.html)
 - [Tic-Tac-Toe — Wolfram MathWorld (the 3×3 draw + exhaustive counts; primary reference for the result)](https://mathworld.wolfram.com/Tic-Tac-Toe.html)
 - [Hales, A. W. & Jewett, R. I. — Regularity and positional games (Trans. AMS, 1963) — foundational positional-game theory & strategy-stealing; NOT the source of the 3×3 draw itself (that is trivial enumeration)](https://www.ams.org/journals/tran/1963-106-02/S0002-9947-1963-0143712-1/)
 - [Tic-tac-toe (Wikipedia)](https://en.wikipedia.org/wiki/Tic-tac-toe)
@@ -50,12 +51,13 @@ of exhaustive search.
 
 There are 5,478 reachable legal positions, or 765 once rotations and
 reflections are identified; 3^9 = 19,683 is the upper bound that includes
-illegal positions, and there are about 138 terminal positions up to symmetry.
+illegal positions, and there are 138 terminal positions up to symmetry.
 Counting move sequences gives 255,168 distinct games (131,184 won by player 1,
-77,904 by player 2, 46,080 drawn), or 26,830 up to symmetry.
+77,904 by player 2, 46,080 drawn), or 31,896 under whole-game rotations and
+reflections. Merging equivalent choices at successive positions gives
+26,830 paths, a different equivalence from applying one symmetry to an
+entire move sequence.
 
-The draw has been folklore for millennia. The Roman terni lapilli (1st century
-BC) and older three-in-a-row games predate any formal proof. The modern theory
-rests on Hales and Jewett (1963), whose positional-game theory generalizes
-tic-tac-toe; the (3,3,3) draw is a trivial special case and is not credited to
-them.
+The draw is classically known; its original solution date is unknown. The
+Roman terni lapilli (1st century BC) is a movement-game ancestor; its age
+does not establish when the modern draw was known.

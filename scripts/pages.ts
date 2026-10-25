@@ -140,7 +140,19 @@ export const ASTERISK_NOTE =
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
 export const cell = (s: string) => String(s).replace(/\s+/g, ' ').trim().replace(/\|/g, '\\|')
-const num = (n: number | null | undefined) => (typeof n === 'number' ? n.toLocaleString('en-US') : '—')
+// YAML integers past 2^53 arrive as floats, so their low digits are noise
+// (checkers' 500,995,484,682,338,672,639 printed as ...338,700,000 until
+// 2026-10-25). Those print as a power of ten; the exact count lives in notes.
+const SUPER = '⁰¹²³⁴⁵⁶⁷⁸⁹'
+export const num = (n: number | null | undefined) => {
+  if (typeof n !== 'number') return '—'
+  if (n <= Number.MAX_SAFE_INTEGER) return n.toLocaleString('en-US')
+  let e = Math.floor(Math.log10(n))
+  let m = Number((n / 10 ** e).toPrecision(3))
+  if (m >= 10) { m /= 10; e += 1 }
+  const pow = '10' + [...String(e)].map((d) => SUPER[+d]).join('')
+  return m === 1 ? pow : `≈ ${m} × ${pow}`
+}
 const mark = (evidence?: string) => (evidence === 'self-archived' ? '\\*' : '')
 
 const GENERATED = (from: string) =>

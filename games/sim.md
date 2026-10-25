@@ -13,9 +13,9 @@ Second player wins with perfect play (misère/avoidance: completing a monochroma
 | Result | Second player wins |
 | Strength | Strong |
 | Method | Brute-force enumeration, Mathematical proof |
-| Year | 1974 |
+| Year | 1999 |
 | Solved by | Ernest Mead, Alexander Rosa & Charlotte Huang (explicit second-player strategy); independently and strongly/ultra-strongly solved by Wolfgang Slany (1999) |
-| Source | [Mead et al. 1974](https://www.tandfonline.com/doi/abs/10.1080/0025570X.1974.11976415) |
+| Source | [Mead et al. 1999](https://arxiv.org/abs/cs/9911004) |
 | Board | Complete graph K6 (6 vertices, 15 edges); each player colors edges in their own color |
 | State space | 14,348,907 |
 | Distance to result | at most 15 plies (the 15 edges of K6); a monochromatic triangle is forced by move 15 at the latest since R(3,3)=6 |
@@ -24,14 +24,14 @@ Second player wins with perfect play (misère/avoidance: completing a monochroma
 
 | Date | Size or opening | Result | Strength | Credit | Source |
 |---|---|---|---|---|---|
-| 1974 | standard game | second player wins | Strong | Ernest Mead, Alexander Rosa & Charlotte Huang | [source](https://www.tandfonline.com/doi/abs/10.1080/0025570X.1974.11976415) |
+| 1999 | standard game | second player wins | Strong | Ernest Mead, Alexander Rosa & Charlotte Huang | [source](https://arxiv.org/abs/cs/9911004) |
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
 ## References
 
-- [Mead, Rosa & Huang, 'The Game of Sim: A Winning Strategy for the Second Player', Mathematics Magazine 47(5):243-247 (1974)](https://www.tandfonline.com/doi/abs/10.1080/0025570X.1974.11976415)
 - [Wolfgang Slany, 'Graph Ramsey Games' (1999), arXiv:cs/9911004 - strongly/ultra-strongly solves Sim (Sections 7.1-7.2)](https://arxiv.org/abs/cs/9911004)
+- [Mead, Rosa & Huang, 'The Game of Sim: A Winning Strategy for the Second Player', Mathematics Magazine 47(5):243-247 (1974)](https://www.tandfonline.com/doi/abs/10.1080/0025570X.1974.11976415)
 - [Weronika Wrzos-Kaminska, 'A simpler winning strategy for Sim' (2020), arXiv:2001.04024](https://arxiv.org/abs/2001.04024)
 - [Sim (game) - Wikipedia](https://en.wikipedia.org/wiki/Sim_(game))
 

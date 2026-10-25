@@ -17,7 +17,7 @@ Draw under optimal play from the standard starting position (White moves first)
 | Solved by | Maarten P. D. Schadd, Mark H. M. Winands, Jos W. H. M. Uiterwijk, H. Jaap van den Herik, Maurice H. J. Bergsma (MICC-IKAT Games and AI Group, Universiteit Maastricht) |
 | Source | [Schadd et al. 2007](https://dke.maastrichtuniversity.nl/m.winands/documents/Fanorona.pdf) |
 | Board | 5x9 (Fanoron-Tsivy), 45 intersections of lines; 22 pieces per side at start |
-| State space | 1,000,000,000,000,000,000,000 |
+| State space | 10²¹ |
 
 ## Solution history
 
@@ -46,8 +46,9 @@ databases that solve every position with 7 or fewer pieces, proved that the
 initial position is a draw. The proof created 130,820,097,938 nodes and took
 more than a week on an AMD Opteron 2.6 GHz with 32 GB of RAM, and it was
 checked by an independent forward alpha-beta search and by database
-consistency checks. The paper puts the state space at about 10^21 and the game
-tree at about 10^46, comparable to checkers.
+consistency checks. The paper estimates about 10^21 total positions from a
+combinatorial placement formula; this is not an enumeration of reachable
+states. It estimates the game tree at about 10^46, comparable to checkers.
 
 The authors note that the result covers the initial position only. Of the five
 opening moves, two (f2-e3A and d3-e3A) were proved draws, e2-e3A appears to

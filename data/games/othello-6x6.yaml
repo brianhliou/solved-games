@@ -1,0 +1,54 @@
+id: othello-6x6
+name: Othello (6×6)
+family: abstract
+genre: capture
+board: "6×6; standard diagonal four-disc start"
+result: second-player-win
+result_detail: "White wins 20–16 from the standard start under perfect play; the alternative Reversi start gives White a 19–17 win."
+# Inferred from exhaustive alpha-beta search from the start, producing the value and move choices.
+# The sources establish a weak solution, without establishing values for every reachable position.
+strength: weak
+method:
+  - alpha-beta-search
+# The published perfect-play sequence does not establish a general forced-win distance.
+distance_to_result: null
+complexity:
+  # Feinstein's approximately 40 billion searched positions are search effort, not a state-space count.
+  state_space: null
+  # Alpha-beta search visits only part of the game tree; no complete tree count is supplied.
+  game_tree: null
+year: 1993
+solved_by: "Joel Feinstein"
+cite: "Feinstein 1993"
+verified: true
+# Classifies the original newsletter report and author-hosted account.
+# The later confirmation by Takeshita and colleagues is cited separately.
+evidence: self-archived
+sources:
+  - title: "Joel Feinstein, Perfect play in 6×6 Othello from two alternative starting positions"
+    url: "https://www.maths.nottingham.ac.uk/plp/pmzjff/Othello/6x6sol.html"
+  - title: "Joel Feinstein, Amenor wins World 6×6 championships! (British Othello Federation newsletter, July 1993; author-hosted republication)"
+    url: "https://www.maths.nottingham.ac.uk/plp/pmzjff/Othello/Amenor.html"
+  - title: "Yuki Takeshita, Makoto Sakamoto, Takao Ito and Satoshi Ikeda, Perfect Play in Miniature Othello (2016 proceedings chapter; abstract confirms Feinstein's sequence)"
+    url: "https://link.springer.com/chapter/10.1007/978-3-319-23207-2_28"
+  - title: "World Othello Federation, Official rules for the game Othello"
+    url: "https://www.worldothello.org/about/about-othello/othello-rules/official-rules/english"
+notes: |
+  This is Othello on a 6×6 board, starting with four central discs arranged
+  diagonally. Black moves first. Players place discs to bracket and flip
+  opposing discs, aiming to finish with more discs of their own colour.
+  These are the usual [Othello rules](https://www.worldothello.org/about/about-othello/othello-rules/official-rules/english)
+  applied to the smaller board.
+
+  Joel Feinstein solved the game in 1993 with his program Modot. It used
+  exhaustive alpha-beta search, ordering moves through short midgame searches.
+  His account reports about 40 billion searched positions and two weeks of
+  processor time for the standard start. White wins 20–16. The alternative
+  Reversi starting arrangement gives White a 19–17 win; Feinstein publishes
+  [perfect-play sequences for both starts](https://www.maths.nottingham.ac.uk/plp/pmzjff/Othello/6x6sol.html).
+
+  Feinstein reported the analysis in the July 1993 British Othello Federation
+  newsletter. His scoring convention credits empty squares to the winner.
+  Takeshita, Sakamoto, Ito and Ikeda later confirmed that his standard-start
+  sequence is a perfect play, as stated in their
+  [2016 chapter abstract](https://link.springer.com/chapter/10.1007/978-3-319-23207-2_28).

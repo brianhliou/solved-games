@@ -15,24 +15,29 @@ method:
   - threat-space-search
   - proof-number-search
   - depth-first-pns
-distance_to_result: "35 plies (18 moves) from the empty board against optimal defense"
+distance_to_result: null
 complexity:
-  state_space: null   # no widely-cited reachable/total figure; ~10^105 game-tree estimate is for general Gomoku
-  game_tree: null
-# ATTRIBUTION/YEAR: the result was first published in 1993 (AAAI Fall Symposium and Univ. of Limburg
-# tech report CS 93-02); the research anchor's "1993" is correct. The 1994 PhD thesis is where it is
-# most fully written up and is the citation most people mean; both years are defensible.
+  state_space: null   # historical estimate ~10^105; not an exact reachable count (see notes)
+  game_tree: null     # historical estimate ~10^70 assumes 30-ply games
+# Presented in August 1992 and announced in September 1992; symposium/report publication in 1993.
+# The 1994 PhD thesis gives the fuller account; 35 plies is stored solution-tree depth.
 # Renju and "standard" exactly-five-only Gomoku are separate records.
-year: 1993
+year: 1992   # solution announcement; symposium/report publication in 1993
 solved_by: "L. Victor Allis, H. Jaap van den Herik, M. P. H. Huntjens"
 verified: true
 sources:
   - title: "Allis, van den Herik & Huntjens — \"Go-Moku Solved by New Search Techniques\", AAAI Fall Symposium FS-93-02 (1993)"
     url: "https://aaai.org/papers/0001-go-moku-solved-by-new-search-techniques/"
+  - title: "Victor Allis, Go-Moku solved (September 1, 1992 announcement; presented August 1992)"
+    url: "https://groups.google.com/g/rec.games.board/c/3q3tn0GX4UI"
+  - title: "Allis, van den Herik and Huntjens, Go-Moku Solved by New Search Techniques (full 1993 paper)"
+    url: "https://cdn.aaai.org/Symposia/Fall/1993/FS-93-02/FS93-02-001.pdf"
   - title: "Allis, van den Herik & Huntjens — \"Go-Moku and Threat-Space Search\", Univ. of Limburg Tech. Report CS 93-02 (1993)"
     url: "https://research.tilburguniversity.edu/en/publications/go-moku-and-threat-space-search"
   - title: "Allis — \"Searching for Solutions in Games and Artificial Intelligence\", PhD thesis, Univ. of Limburg (1994)"
     url: "https://cris.maastrichtuniversity.nl/en/publications/searching-for-solutions-in-games-and-artificial-intelligence/"
+  - title: "Allis, Searching for Solutions in Games and Artificial Intelligence (full thesis)"
+    url: "https://cris.maastrichtuniversity.nl/ws/files/588458/guid-36b5cf0a-cf06-4602-afdb-1af04d65c23b-ASSET1.0.pdf"
   - title: "Allis, van den Herik & Huntjens — \"Go-Moku Solved by New Search Techniques\", Computational Intelligence 12(1), Wiley (1996)"
     url: "https://onlinelibrary.wiley.com/doi/10.1111/j.1467-8640.1996.tb00250.x"
   - title: "Darse Billings / David Eppstein — \"Go-Moku Solved (Summary and References)\" (secondary)"
@@ -46,12 +51,14 @@ resources:
 notes: |
   This entry is free-style Gomoku on 15×15: five or more stones of one colour in
   a line wins, so overlines count. Allis calls this plain "Go-Moku." The first
-  player (Black) has a forced win, reached in 18 moves (35 ply) against the best
-  defence. The solution tree built by the program "Victoria" has 138,790
-  positions. The "exactly-five" variant, where an overline does not win, needed
+  player (Black) has a forced win. The solution tree built by the program
+  "Victoria" has 138,790 positions and a stored depth of 35 plies. Threat-search
+  continuations extend beyond its leaves; this does not establish an optimal
+  game length. The "exactly-five" variant, where an overline does not win, needed
   153,284 nodes and is also a first-player win. Both were proven, with no
-  opening restrictions, in the same 1993 work by L. Victor Allis with H. Jaap
-  van den Herik and M. P. H. Huntjens.
+  opening restrictions, by L. Victor Allis with H. Jaap van den Herik and
+  M. P. H. Huntjens. The result was presented in August 1992 and announced by
+  Allis that September; the symposium paper and technical report appeared in 1993.
 
   The solution is weak: Allis proved a forced win and built a winning strategy
   from the standard start, in which Black plays from a database and switches to
@@ -66,8 +73,10 @@ notes: |
   most fully written up. The papers were reprinted in Computational Intelligence
   (Wiley, 1996).
 
-  The often-quoted ~10^105 game-tree figure is an estimate for Gomoku in general
-  and does not count the solved tree, and there is no citable state-space count
-  for 15×15. Renju, the professional variant with opening restrictions and
+  Allis's historical state-space estimate is ~10^105 for 15×15, and the
+  game-tree estimate is ~10^70 assuming 30-ply games. Neither is an exact
+  reachable-state or full-tree enumeration. The printed state-space arithmetic
+  is inaccurate: 3^225 is approximately 2.11×10^107. Renju, the professional
+  variant with opening restrictions and
   forbidden moves for Black, is a different game. On a 19×19 board the first
   player's advantage is even larger.

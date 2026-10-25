@@ -17,7 +17,7 @@ White (first player) wins; 1.e3 forces a win against every Black defense
 | Solved by | Mark Watkins (University of Sydney, School of Mathematics and Statistics) |
 | Source | [Watkins 2016](https://content.iospress.com/articles/icga-journal/icg170017) |
 | Board | Standard 8x8 chessboard, orthodox starting position; captures compulsory, non-royal king, no castling, promotion to king allowed |
-| Distance to result | Watkins' proof has a maximal upper-level (best-first) tree depth of 94 ply, with endgame tablebases adding further plies; the hardest defenses originally ran very deep (e.g. 1.e3 e6 ~197 moves). A later refinement (tolius, 2021) shows White wins in under 80 moves with the 50-move rule applied (e.g. 1.e3 c5 mates in #79). |
+| Distance to result | Watkins' proof has a maximal upper-level (best-first) tree depth of 94 ply, with endgame tablebases adding further plies; the hardest defenses originally ran very deep (e.g. 1.e3 e6 ~197 moves). A later refinement (tolius, 2025) shows White wins in under 80 moves with the 50-move rule applied (e.g. 1.e3 c5 mates in #79). |
 
 ## Solution history
 
@@ -34,7 +34,7 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 - [Losing Chess project page (proof trees, tablebases, source code) — Mark Watkins](https://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS/)
 - [Losing Chess — Chessprogramming wiki (secondary)](https://www.chessprogramming.org/Losing_Chess)
 - [Losing chess — Wikipedia (secondary)](https://en.wikipedia.org/wiki/Losing_chess)
-- [Antichess: 1. e3 Wins for White in #79 — tolius, lichess blog (secondary refinement)](https://lichess.org/@/tolius/blog/antichess-1-e3-wins-for-white-in-79/kmAYeHSC)
+- [Antichess: 1. e3 Wins for White in #79 — tolius, lichess blog, December 10, 2025 (author's refinement report)](https://lichess.org/@/tolius/blog/antichess-1-e3-wins-for-white-in-79/kmAYeHSC)
 
 ## Resources
 
@@ -81,7 +81,7 @@ The result holds under the "joint FICS/International Rules" for stalemate,
 where a win under the joint rules is a win under both the FICS and
 International conventions. It does not cover the vinciperdi rules, where a
 stalemate with pieces left is a draw. The proof's upper-level tree reaches 94
-ply, with the tablebases adding more. In 2021 "tolius" (lichess) cut the
+ply, with the tablebases adding more. In 2025 "tolius" (lichess) cut the
 longest forced win to under 80 moves with the 50-move rule applied (1.e3 c5
 mates in #79).
 

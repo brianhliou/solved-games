@@ -30,6 +30,7 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 - [Charles L. Bouton, "Nim, A Game with a Complete Mathematical Theory," Annals of Mathematics (2nd series) 3:35-39, 1901-1902 (JSTOR 1967631)](https://www.jstor.org/stable/1967631)
 - [Bouton 1901 original paper (PDF mirror, University of Alberta CGT collection)](https://webdocs.cs.ualberta.ca/~hayward/cgt/asn/bouton1901.pdf)
+- [Bouton, Nim, A Game with a Complete Mathematical Theory (Wikisource transcription; misère strategy in §6)](https://en.wikisource.org/wiki/Nim,_A_Game_with_a_Complete_Mathematical_Theory)
 - [Nim (Wikipedia)](https://en.wikipedia.org/wiki/Nim)
 
 ## Notes
@@ -47,10 +48,12 @@ the number of positions is unbounded and there is no finite complexity figure.
 
 The result above is for normal play, where the last player to move wins; that
 is what Bouton's main theorem covers. His paper also treats misère Nim, where
-the last player to move loses. The strategy is the same until every remaining
-heap has size 1; then the player aims to leave an odd number of size-1 heaps,
-where normal play leaves an even number. The misère 3-5-7 start is also a
-first-player win.
+the last player to move loses. Follow the normal strategy while at least two
+heaps exceed 1. When exactly one heap exceeds 1, reduce it to 0 or 1 to leave
+an odd number of singletons for the opponent. Once only singletons remain,
+their parity determines the result: odd is losing for the player to move in
+misère play, while even is losing in normal play. The misère 3-5-7 start is
+also a first-player win.
 
 The Sprague-Grundy theorem (R. P. Sprague 1935, P. M. Grundy 1939) generalized
 the nim-sum: every impartial game under normal play is equivalent to a single

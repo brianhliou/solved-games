@@ -19,16 +19,16 @@ distance_to_result: "at most 15 plies (the 15 edges of K6); a monochromatic tria
 complexity:
   state_space: 14348907
   game_tree: null
-# The "year" field uses 1974 (first established winning strategy / second-player-win
-# determination); the strong/ultra-strong full solution dates to Slany 1999.
-year: 1974
+# The headline strength is Slany's 1999 strong solution, reported that year.
+# The first established second-player winning strategy was published in 1974.
+year: 1999
 solved_by: "Ernest Mead, Alexander Rosa & Charlotte Huang (explicit second-player strategy); independently and strongly/ultra-strongly solved by Wolfgang Slany (1999)"
 verified: true
 sources:
-  - title: "Mead, Rosa & Huang, 'The Game of Sim: A Winning Strategy for the Second Player', Mathematics Magazine 47(5):243-247 (1974)"
-    url: "https://www.tandfonline.com/doi/abs/10.1080/0025570X.1974.11976415"
   - title: "Wolfgang Slany, 'Graph Ramsey Games' (1999), arXiv:cs/9911004 - strongly/ultra-strongly solves Sim (Sections 7.1-7.2)"
     url: "https://arxiv.org/abs/cs/9911004"
+  - title: "Mead, Rosa & Huang, 'The Game of Sim: A Winning Strategy for the Second Player', Mathematics Magazine 47(5):243-247 (1974)"
+    url: "https://www.tandfonline.com/doi/abs/10.1080/0025570X.1974.11976415"
   - title: "Weronika Wrzos-Kaminska, 'A simpler winning strategy for Sim' (2020), arXiv:2001.04024"
     url: "https://arxiv.org/abs/2001.04024"
   - title: "Sim (game) - Wikipedia"

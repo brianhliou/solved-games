@@ -17,7 +17,7 @@ strength: strong
 method:
   - retrograde-analysis
   - brute-force-enumeration
-distance_to_result: "At most 9 plies total; after the central opening the first player forces the win within 7 further plies."
+distance_to_result: "At most 9 plies total; 8 further after the central opening; 7 after the opponent's first reply."
 complexity:
   state_space: null   # trivially small (well under 10^4 reachable positions)
   game_tree: null

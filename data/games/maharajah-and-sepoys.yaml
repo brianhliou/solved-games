@@ -20,20 +20,24 @@ strength: weak
 # artifact establishes this result.
 method:
   - knowledge-based
-distance_to_result: "A documented forced line mates the maharajah by Black's 24th move; analyses describe winning the game in at most ~25 moves largely independent of White's replies."
+distance_to_result: "A line displayed by Wikipedia mates by Black's 24th move. Gardner reports William E. Rudge's strategy as a win within 25 moves, conditional on its correctness; neither bound establishes a minimal distance."
 # Complexity figures (state-space, game-tree) are not meaningfully published for this variant and
 # are left null.
 complexity:
   state_space: null
   game_tree: null
+# Falkener documented the winning method in 1892; its discovery date is unknown.
 year: 1892
 solved_by: "Edward Falkener (first published Western analysis of the Sepoys' winning method, 1892); the forced-win strategy is further documented by Hans L. Bodlaender (The Chess Variant Pages) and D. B. Pritchard (Encyclopedia of Chess Variants)"
-verified: true
+# The historical dates below remain pending primary verification.
+verified: false
 sources:
   - title: "Edward Falkener, Games Ancient and Oriental, and how to Play Them, Longmans, Green and Co. (1892), 'The Game of the Maharajah and the Sepoys', pp. 217-224 (full text, Internet Archive)"
     url: "https://archive.org/details/gamesancientorie00falkuoft"
   - title: "Hans L. Bodlaender, 'The Maharaja and the Sepoys', The Chess Variant Pages"
     url: "https://www.chessvariants.com/unequal.dir/maharaja.html"
+  - title: "Martin Gardner, New Mathematical Diversions, Board Games, pp. 78–79 (William E. Rudge's conditional strategy)"
+    url: "https://bobson.ludost.net/copycrime/mgardner/gardner03.pdf"
   - title: "D. B. Pritchard, The Encyclopedia of Chess Variants (Games & Puzzles Publications, 1994), p. 183 (secondary)"
     url: "https://en.wikipedia.org/wiki/The_Encyclopedia_of_Chess_Variants"
   - title: "Maharajah and the Sepoys — Wikipedia (secondary)"
@@ -48,24 +52,26 @@ notes: |
   Maharajah and the Sepoys is an unequal-armies chess variant of Indian origin.
   Black has the full orthodox army, the sepoys; White has a single royal piece,
   the maharajah, which moves as a queen or a knight on each turn (the fairy
-  "amazon"). Each side wins by checkmating the other's royal piece. The game
-  traces to a 12th-century antecedent described in the Mānasollāsa, was revived
-  in the 1871 Indian games encyclopedia Kridakaushalya, and was first described
-  to Western readers by Edward Falkener in 1892.
+  "amazon"). Each side wins by checkmating the other's royal piece. Secondary
+  histories, including Wikipedia, trace it to a 12th-century antecedent in the
+  Mānasollāsa and a revival in the 1871 Indian games encyclopedia
+  Kridakaushalya; primary verification of those dates is pending. Edward
+  Falkener documented the sepoys' winning method in 1892.
 
   The solution is weak and comes from human strategy, with no computer search or
   tablebase: a winning method for the sepoys, easy to memorize, proved from the
   start position. It works because the maharajah is royal and so can never
   capture a defended Black piece, since the recapture would be illegal for a
   royal man. The sepoys keep every piece protected while they take away the
-  maharajah's flight squares, then mate. A widely circulated forced line mates
-  by Black's move 24, and analyses put the win at no more than about 25 moves,
-  largely regardless of White's play.
+  maharajah's flight squares, then mate. A line displayed by Wikipedia mates by
+  Black's move 24. Gardner reports William E. Rudge's strategy as winning
+  within 25 moves, conditional on its correctness. These are strategy bounds,
+  not proven minimal distances.
 
   There is no single peer-reviewed solving paper and no named computer solver.
   The forced win is folklore of the variant, documented in Falkener (1892), Hans
   Bodlaender's Chess Variant Pages and D. B. Pritchard's Encyclopedia of Chess
-  Variants. Some web sources also credit a "William E. Rudge" with an early
-  outline of the winning strategy, but no primary source confirms it. A common
-  rendering makes Black's pawns "weak" pawns that cannot promote, so the sepoys
-  cannot simply make a second queen; the result is reported for the 8x8 board.
+  Variants. Gardner explicitly credits William E. Rudge and publishes his
+  strategy. A common rendering makes Black's pawns "weak" pawns that cannot
+  promote, so the sepoys cannot simply make a second queen; the result is
+  reported for the 8x8 board.

@@ -6,7 +6,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { loadData, render } from '../scripts/pages.ts'
+import { loadData, render, num } from '../scripts/pages.ts'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const data = loadData(ROOT)
@@ -48,4 +48,14 @@ test('the README index carries counts and links, not the per-family tables', () 
   const readme = readFileSync(join(ROOT, 'README.md'), 'utf8')
   assert.doesNotMatch(readme, /Play the perfect-play explorer/)
   assert.doesNotMatch(readme, /Worked example/)
+})
+
+test('counts past 2^53 print as powers of ten, never as false exact digits', () => {
+  // Planted: checkers' exact count, which printed as ...338,700,000 before.
+  assert.equal(num(500995484682338672639), '≈ 5.01 × 10²⁰')
+  assert.equal(num(1e105), '10¹⁰⁵')
+  assert.equal(num(2173243128), '2,173,243,128')
+  assert.equal(num(Number.MAX_SAFE_INTEGER), '9,007,199,254,740,991')
+  assert.equal(num(null), '—')
+  for (const [path, md] of out.pages) assert.doesNotMatch(md, /^\| (State space|Game tree) \| [\d,]{22,}/m, `${path}: an exact count past 2^53`)
 })

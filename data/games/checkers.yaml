@@ -14,10 +14,9 @@ method:
   - retrograde-analysis
   - proof-number-search
   - alpha-beta+db
-distance_to_result: "Longest line analyzed in the proof was 154 ply; a typical game lasts roughly 70 ply"
-# state_space is the standard "reachable" figure, not the larger count of all board placements.
-# game_tree complexity left null: the paper gives only an order-of-magnitude alpha-beta estimate
-# (~10^31 from optimistic assumptions), not a citable game-tree-size figure, so it is omitted.
+distance_to_result: ""
+# Total possible piece configurations, including unreachable placements.
+# The 2002 survey estimates game-tree complexity at 10^31; no exact count is given.
 complexity:
   state_space: 500995484682338672639
   game_tree: null
@@ -29,16 +28,15 @@ sources:
   - title: "Checkers Is Solved — J. Schaeffer et al., Science 317, 1518–1522 (2007)"
     url: "https://www.science.org/doi/10.1126/science.1144079"
   - title: "Checkers Is Solved (full text PDF, Science 2007)"
-    url: "https://webdocs.cs.ualberta.ca/~jonathan/publications/ai_publications/checksolved.pdf"
+    url: "https://www.cs.mcgill.ca/~dprecup/courses/AI/Materials/checkers_is_solved.pdf"
   - title: "Solving Checkers — J. Schaeffer et al., IJCAI 2005 (earlier milestone: White Doctor opening proven a draw)"
-    url: "https://webdocs.cs.ualberta.ca/~mmueller/ps/ijcai05checkers.pdf"
-  - title: "Chinook endgame databases (University of Alberta)"
-    url: "http://webdocs.cs.ualberta.ca/~chinook/databases/"
+    url: "https://www.ijcai.org/Proceedings/05/Papers/0515.pdf"
+  - title: "Van den Herik, Uiterwijk & van Rijswijck, Games Solved: Now and in the Future (2002), Table 6"
+    url: "https://web.mit.edu/6.034/wwwbob/GamesSolved.pdf"
   - title: "Checkers, Solved! — IEEE Spectrum (secondary, July 2007)"
     url: "https://spectrum.ieee.org/checkers-solved"
 resources:
-  explorer: "http://webdocs.cs.ualberta.ca/~chinook/databases/"
-  writeup: "https://webdocs.cs.ualberta.ca/~jonathan/publications/ai_publications/checksolved.pdf"
+  writeup: "https://www.cs.mcgill.ca/~dprecup/courses/AI/Materials/checkers_is_solved.pdf"
 notes: |
   English draughts is played on the dark squares of an 8x8 board (32 playable
   squares) with 12 pieces a side, and captures are forced. The Chinook team at
@@ -53,13 +51,18 @@ notes: |
   alpha-beta search (nominal depth 17-23 ply) below, called into those
   databases.
 
-  Checkers has about 5 x 10^20 reachable positions
-  (500,995,484,682,338,672,639), but the proof needed to evaluate only on the
-  order of 10^14 of them. Nineteen tournament openings were proven, all draws,
-  and with symmetry and transpositions they cover the standard start. The paper
-  gives only a rough alpha-beta estimate of the game tree, about 10^31 under
-  optimistic assumptions.
+  Checkers has 500,995,484,682,338,672,639 possible piece configurations
+  (about 5 x 10^20), including unreachable placements. The proof used about
+  10^14 forward-search computations, with about 10^7 positions in the stored
+  proof tree; these are measures of search work and storage. The 2002 "Games
+  Solved" survey estimates game-tree complexity at about 10^31.
 
-  The Science paper reports that the proof was checked for internal consistency,
-  and that an independent 10-piece database position requiring a 279-ply forced
-  win was confirmed.
+  Nineteen opening positions suffice to prove the standard-start draw. Table 2
+  gives seven proven draws, one loss for Black and eleven bounds of draw or
+  loss for Black. The longest manager-level line analyzed was 154 plies;
+  further solver search and database continuations follow it.
+
+  The Science paper reports internal consistency checks on the computations.
+  It separately cites independent research finding a 10-piece database
+  position requiring 279 plies to demonstrate a forced win, a lower bound on
+  the longest database win length.

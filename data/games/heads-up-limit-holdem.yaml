@@ -42,18 +42,16 @@ sources:
   - title: "Heads-up Limit Hold'em Poker Is Solved — M. Bowling, N. Burch, M. Johanson, O. Tammelin, Science 347(6218):145-149 (2015)"
     url: "https://www.science.org/doi/10.1126/science.1259433"
   - title: "Heads-up Limit Hold'em Poker Is Solved (full text PDF, Science 2015)"
-    url: "https://webdocs.cs.ualberta.ca/~bowling/papers/15science.pdf"
+    url: "https://johanson.ca/publications/poker/2015-science-hulhe/2015-science-hulhe.pdf"
   - title: "Solving Heads-up Limit Texas Hold'em — O. Tammelin, N. Burch, M. Johanson, M. Bowling, IJCAI 2015 (CFR+ engineering, soundness proof, confirms 4800 CPUs / 68 days / 0.986 mbb/g)"
     url: "https://poker.cs.ualberta.ca/publications/2015-ijcai-cfrplus.pdf"
-  - title: "Author publications entry (Michael Bowling, University of Alberta) — bibliographic record"
-    url: "https://webdocs.cs.ualberta.ca/~bowling/publications/b2hd-15science.html"
   - title: "ADS bibliographic record (2015Sci...347..145B)"
     url: "https://ui.adsabs.harvard.edu/abs/2015Sci...347..145B/abstract"
 # The public Cepheus website (cepheus.cs.ualberta.ca) was unreachable (connection refused) at
 # verification time; it is retained as a resource link but was not directly confirmed.
 resources:
   explorer: "http://cepheus.cs.ualberta.ca/"
-  writeup: "https://webdocs.cs.ualberta.ca/~bowling/papers/15science.pdf"
+  writeup: "https://johanson.ca/publications/poker/2015-science-hulhe/2015-science-hulhe.pdf"
 notes: |
   Heads-up limit Texas hold'em is two-player poker with fixed bet sizes, a fixed
   maximum number of raises per betting round, and the dealer button alternating.
@@ -94,9 +92,11 @@ notes: |
   exhaustive iterations over the whole game tree instead of Monte-Carlo
   sampling. It ran on a cluster of 200 nodes (24 x 2.1-GHz AMD cores each, 4800
   cores): 1579 CFR+ iterations averaging 61 minutes each, ~68.5 days wall-clock
-  and 900 core-years. Strategy and regrets were stored compressed on disk, ~13:1
-  on regrets and ~28:1 on strategy, which cut a 262 TB requirement to <11 TB of
-  regrets and 6 TB of strategy, 10.9 TB in all.
+  and 900 core-years. The IJCAI paper reports 262 TiB uncompressed and 10.9 TiB
+  for the computation after compression. The run used the current strategy and
+  omitted storage of the average strategy. The Science paper reports compression
+  of about 13:1 for regrets and 28:1 for the optional average strategy; its
+  estimate of another 6 TB for that strategy is separate from the run's storage.
 
   Two peer-reviewed papers from the same research group report the result with
   matching figures: the Science 2015 paper and the IJCAI 2015 paper "Solving

@@ -1,0 +1,47 @@
+id: breakthrough-6x5
+name: Breakthrough (6×5)
+family: abstract
+genre: capture
+board: "6 columns × 5 rows; each player starts with two rows of pawns"
+result: second-player-win
+result_detail: "The second player can force a win from the standard starting position."
+# Inferred from the starting-position proof search in section 4.
+# The paper establishes a strategy from the start, without claiming a strong solution.
+strength: weak
+method:
+  - proof-number-search
+  - knowledge-based
+# The paper gives computation times, but no forced-win distance from the start.
+distance_to_result: null
+complexity:
+  # Section 3.2 supplies an upper-bound formula, without an enumerated 6×5 position count.
+  state_space: null
+  # Search-node counts in the experiments do not measure the complete game tree.
+  game_tree: null
+# Cazenave dates the report to ACG 2011; the revised proceedings appeared in 2012.
+year: 2011
+solved_by: "Abdallah Saffidine, Nicolas Jouandeau and Tristan Cazenave"
+cite: "Saffidine et al. 2011"
+verified: true
+evidence: refereed
+sources:
+  - title: "Saffidine, Jouandeau and Cazenave, Solving Breakthrough with Race Patterns and Job-Level Proof Number Search (ACG 2011; LNCS 7168, pp. 196–207, 2012)"
+    url: "https://www.lamsade.dauphine.fr/~cazenave/papers/solving.pdf"
+  - title: "Springer publication record for the 2012 proceedings chapter"
+    url: "https://link.springer.com/chapter/10.1007/978-3-642-31866-5_17"
+  - title: "Tristan Cazenave's publication list, listing the report under November 2011"
+    url: "https://www.lamsade.dauphine.fr/~cazenave/"
+notes: |
+  Breakthrough is a pawn race. Each player starts with two rows of pawns and
+  tries to reach the opposite back row. Pawns move one square straight or
+  diagonally forward. Straight moves require an empty square; diagonal moves
+  can capture an opposing pawn.
+
+  Saffidine, Jouandeau and Cazenave solved the starting position on a board six
+  columns wide and five rows high. Their parallel proof-number search uses
+  another proof-number search for each remote job, with workers returning
+  partial results to guide the main search. Handwritten race patterns let the
+  solver recognize winning positions before reaching the end of play.
+
+  The second player wins. One reported run took 25,638 seconds with 64 clients.
+  The result appears in the [paper's conclusion](https://www.lamsade.dauphine.fr/~cazenave/papers/solving.pdf).

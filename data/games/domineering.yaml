@@ -16,32 +16,30 @@ method:
   - alpha-beta+db
   - mathematical-proof
 distance_to_result: "Up to 60 plies on 11x11 (a full 11x11 board holds at most 60 dominoes); exact principal-variation length not published as a single figure."
-# game_tree field stores the 11x11 node count (259,689,994,008 nodes investigated), which is a
-# search-tree figure, not a true game-tree-complexity estimate. state_space for 11x11 is omitted (no
-# single citable reachable/total count). distance_to_result is bounded by the max 60 dominoes that
-# fit on 11x11; the exact optimal-line length is not published as one number.
+# The 11x11 proof's investigated-node count belongs in notes; no state-space or full
+# game-tree count is supplied. The 60-ply bound follows from floor(121/2) dominoes.
 complexity:
   state_space: null
-  game_tree: 259689994008
+  game_tree: null
 year: 2016
 solved_by: "Jos W. H. M. Uiterwijk (11x11, program MUDoS); earlier instances by Breuker, Uiterwijk & van den Herik (8x8, 2000), Nathan Bullock (10x10, 2002); rectangular families by Lachmann, Moore & Rapaport"
 verified: true
-# The Lachmann-Moore-Rapaport rectangular results are independent confirmations using a different
-# (constructive proof) method rather than search.
+# Rectangular classifications and strategy-existence results have different scopes; see notes.
 sources:
   - title: "11 x 11 Domineering Is Solved: The First Player Wins (J. W. H. M. Uiterwijk, Computers and Games 2016 / arXiv:1602.05404)"
     url: "https://arxiv.org/abs/1602.05404"
   - title: "Solving 8x8 Domineering (D. M. Breuker, J. W. H. M. Uiterwijk, H. J. van den Herik, Theoretical Computer Science 230 (2000) 195-206)"
     url: "https://research.tilburguniversity.edu/en/publications/solving-8x8-domineering-the-first-computer-olympiad"
-  - title: "Domineering: Solving Large Combinatorial Search Spaces (N. Bullock, MSc thesis, University of Alberta, 2002 — 10x10 solved)"
-    url: "https://webdocs.cs.ualberta.ca/~games/domineering/"
+  - title: "Domineering: Solving Large Combinatorial Search Spaces (N. Bullock, ICGA Journal 25(2):67–84, 2002)"
+    url: "https://doi.org/10.3233/ICG-2002-25202"
   - title: "Who Wins Domineering on Rectangular Boards? (M. Lachmann, C. Moore, I. Rapaport, MSRI / More Games of No Chance, 2002)"
-    url: "https://www.researchgate.net/publication/2358389_Who_Wins_Domineering_on_Rectangular_Boards"
+    url: "https://arxiv.org/html/math/0006066"
+  - title: "Perfectly Solving Domineering Boards (J. W. H. M. Uiterwijk, Computer Games, 2014, pp. 97–121)"
+    url: "https://www.researchgate.net/publication/266684912_Perfectly_Solving_Domineering_Boards"
   - title: "Domineering — Wikipedia (secondary; consolidated table of solved sizes)"
     url: "https://en.wikipedia.org/wiki/Domineering"
 resources:
   writeup: "https://en.wikipedia.org/wiki/Domineering"
-  code: "https://webdocs.cs.ualberta.ca/~games/domineering/"
 notes: |
   Domineering was invented by Göran Andersson and popularized by Martin Gardner
   (1974) and Berlekamp, Conway and Guy's "Winning Ways." It is a partizan
@@ -67,11 +65,14 @@ notes: |
   solved by Breuker, Uiterwijk and van den Herik (2000, alpha-beta with
   transposition tables, Theoretical Computer Science 230:195-206), 9x9 by the
   same group shortly after with an improved program, and 10x10 by Nathan Bullock
-  (2002 MSc thesis, University of Alberta).
+  (2002, ICGA Journal 25(2):67–84).
 
   For rectangles, Lachmann, Moore and Rapaport ("Who Wins Domineering on
-  Rectangular Boards?", More Games of No Chance, 2002) gave a mathematical
-  proof, computable in polynomial time, of the winner and a winning strategy for
-  all n when m is in {1,2,3,4,5,7,9,11}. For example, every 2k x n board with n
-  = 3, 5, 7, 9 or 11 is a win for Vertical, and various m x 2k boards are wins
-  for Horizontal.
+  Rectangular Boards?", More Games of No Chance, 2002) classified the winners
+  for all lengths at widths 2, 3, 5 and 7. For widths 4, 9 and 11 they gave
+  bounds and proved the existence of polynomial-time playing strategies.
+
+  Uiterwijk's "Perfectly Solving Domineering Boards" (2014) gives further
+  rectangular families, with Vertical moving first. Every 2k x n board with
+  n = 3, 5, 7, 9 or 11 is a win for Vertical. The paper also proves families
+  of m x 2k boards won by Horizontal.

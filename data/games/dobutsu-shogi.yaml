@@ -16,7 +16,7 @@ distance_to_result: "78 plies from the start (the theoretical win takes 78 moves
 # 246,803,167 is the exact figure reported in Tanaka's paper ("局面数が 246,803,167 と求まった");
 # it was independently recomputed from scratch by Liou.
 complexity:
-  state_space: 246803167   # reachable positions (Tanaka 2009; independently recomputed by Liou)
+  state_space: 246803167   # symmetry-normalized reachable positions under Tanaka's terminal conventions
   game_tree: null
 year: 2009
 solved_by: "Tetsurō Tanaka (田中 哲朗), University of Tokyo"
@@ -29,6 +29,10 @@ sources:
     url: "https://ipsj.ixsq.nii.ac.jp/records/62415"
   - title: "Tanaka original paper PDF (author's University of Tokyo page)"
     url: "https://www.tanaka.ecc.u-tokyo.ac.jp/ktanaka/dobutsushogi/animal-private.pdf"
+  - title: "Tanaka's solver, normalization code and annotated optimal play"
+    url: "https://github.com/tanakat01/dobutsu"
+  - title: "Tanaka's June 2009 presentation (enumeration hardware and timing)"
+    url: "https://www.tanaka.ecc.u-tokyo.ac.jp/ktanaka/dobutsushogi/20090626.pptx.pdf"
   - title: "Dōbutsu shōgi (Wikipedia)"
     url: "https://en.wikipedia.org/wiki/D%C5%8Dbutsu_sh%C5%8Dgi"
   - title: "clausecker/dobutsu — independent C tablebase and engine (perfect play from any position)"
@@ -58,9 +62,10 @@ notes: |
   out for the full 78. The computation ran on a 2.6 GHz Opteron with 16 GB of
   RAM, and enumerating the reachable positions took about 19 minutes.
 
-  The game has 246,803,167 reachable positions. The often-cited 1,567,925,964 is
-  an upper bound on all piece configurations, ignoring reachability, after
-  folding left-right symmetry.
+  Tanaka enumerated 246,803,167 reachable positions with side-to-move
+  normalization and left-right mirror reduction, using his terminal-position
+  conventions. The often-cited 1,567,925,964 is an arrangement upper bound,
+  ignoring reachability, before left-right mirror reduction.
 
   The clausecker/dobutsu repository is an independent C tablebase that plays
   perfectly from any position. This list's maintainer rebuilt the whole pipeline

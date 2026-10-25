@@ -12,30 +12,26 @@ result_detail: "Win for the enemy/blue pieces (Cardinal Richelieu's men) with pe
 strength: strong
 method:
   - retrograde-analysis
-  - alpha-beta+db
 distance_to_result: ""
-# No citable state-space or game-tree complexity figure was found in either primary source, so
+# No citable state-space or game-tree complexity figure was found in the reviewed primary sources, so
 # complexity fields are left null.
 complexity:
   state_space: null
   game_tree: null
 year: 2009
-solved_by: "Johannes Laire (2009, strong solution by retrograde analysis, announced on rec.games.abstract); independently weakly solved by Ali Elabridi (2017, capstone project, Al Akhawayn University) using minimax + alpha-beta pruning with Zobrist hashing and symmetry reduction"
-# Treat the STRONG classification as reported-but-not-independently-reproduced: Laire's
-# solver/database is not preserved in a stable public artifact.
+solved_by: "Johannes Laire (2009, strong solution by retrograde analysis, announced on rec.games.abstract)"
+# Laire's solver and generation instructions survive publicly; the database is
+# not included, and the solution has not been independently reproduced here.
 verified: false
-# DISCREPANCY: the Elabridi capstone's prose repeatedly claims "the first player (Musketeers) always
-# wins" while claiming to confirm Laire. Its text is internally inconsistent (e.g. it describes an
-# optimisation premised on the guardsmen/enemy never reaching a winning utility), and its winner
-# labelling is judged to be an inversion error in the writeup, not a genuine alternative result. The
-# authoritative result here is enemy/blue win (Laire's strong solve + both Wikipedia entries + the
-# historical imbalance).
-# INDEPENDENT PRIMARIES: Laire (2009, strong, retrograde) and Elabridi (2017, weak, minimax+ab); the
-# three Wikipedia/BGG links are secondary corroboration.
+# Elabridi's 2017 Musketeers-win claim conflicts with Laire's enemy-win result.
+# His minimizing search can return early on utility +1 for Musketeers; the
+# conflict cannot be dismissed as a writeup labelling error.
 sources:
+  - title: "Johannes Laire — 3M solver (retrograde analysis, database-generation instructions and standard-start enemy-win example)"
+    url: "https://github.com/jlaire/3M"
   - title: "Johannes Laire — 'Three Musketeers solved' (rec.games.abstract, Google Groups, 2009) [original announcement of the strong solution]"
     url: "https://groups.google.com/d/topic/rec.games.abstract/glKFUv2rEfY"
-  - title: "Ali Elabridi — Weakly Solving the Three Musketeers Game Using Artificial Intelligence and Game Theory (Capstone Project, Al Akhawayn University, Fall 2017) [independent weak solution; PDF]"
+  - title: "Ali Elabridi — Weakly Solving the Three Musketeers Game Using Artificial Intelligence and Game Theory (Capstone Project, Al Akhawayn University, Fall 2017) [conflicting, unvalidated weak-solve claim; PDF]"
     url: "https://cdn.aui.ma/sse-capstone-repository/pdf/fall2017/WEAKLY%20SOLVING%20THE%20THREE%20MUSKETEERS%20GAME%20USING%20ARTIFICIAL%20INTELLIGENCE%20AND%20GAME%20THEORY%20Ali%20Elabridi.pdf"
   - title: "alielabridi — Weakly-Solving-Three-Musketeers-Game (source code, GitHub)"
     url: "https://github.com/alielabridi/Weakly-Solving-Three-Musketeers-Game"
@@ -64,13 +60,15 @@ notes: |
   imbalance in the enemy's favour, and Laire noted that changing only the
   starting position makes the game roughly even.
 
-  Ali Elabridi (Al Akhawayn University, Fall 2017 capstone) independently
-  produced a weak solution from the start with top-down minimax search,
-  alpha-beta pruning, Zobrist hashing and board-symmetry reduction, aiming to
-  confirm Laire's result. His writeup's prose labels the musketeers as the
-  winners, which contradicts both Laire and its own stated aim and reads as a
-  labelling error.
+  Ali Elabridi (Al Akhawayn University, Fall 2017 capstone) claimed a weak
+  solution with minimax search and alpha-beta pruning, aiming to confirm
+  Laire's result. His reported Musketeers win conflicts with Laire's enemy win
+  and remains unvalidated. His minimizing search returns immediately on a
+  Musketeers utility of +1, which can skip enemy refutations. The available
+  evidence does not establish that the contradiction is only a labelling error.
 
-  Laire's announcement is a newsgroup post with no peer-reviewed paper, and his
-  solver and database survive in no stable public artifact. The strong solution
-  therefore rests on his report and has not been independently reproduced.
+  Laire's announcement is a newsgroup post with no peer-reviewed paper. His
+  solver survives in the public 3M repository, with instructions to generate
+  the database from source and a standard-start example showing an enemy win.
+  A precomputed database is not included. This catalog has not independently
+  regenerated it.

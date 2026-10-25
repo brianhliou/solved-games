@@ -17,12 +17,12 @@ strength: weak
 method:
   - alpha-beta+db
   - retrograde-analysis
-distance_to_result: "Up to 60 boxes / 60 captures on 5x5; a full 5x5 game fills all 60 edges. Exact optimal-line length not published as one figure."
-# state_space stores Fraser's stated ~3x10^13 endgame-database position count for 5x5
-# (approximate, his figure, not an exact total/reachable enumeration). game_tree is left null (no
-# single citable figure). distance_to_result is bounded by the 60 boxes / 60 edges of the 5x5 board.
+distance_to_result: "60 edge placements; 25 boxes on 5x5. Complete play fills every edge; one placement can capture two boxes."
+# Fraser's ~3x10^13 endgame-database positions are described in notes.
+# Neither a whole-game state-space count nor a game-tree count is established.
+# Complete play on the 5x5 board places 60 edges and captures 25 boxes.
 complexity:
-  state_space: 30000000000000   # ~3x10^13 positions in Fraser's 5x5 endgame database (approximate, his stated figure)
+  state_space: null
   game_tree: null
 year: 2014
 solved_by: "William Fraser (5x5, program 'the Shark'); 4x4 by David Wilson (2010); 4x5 by Joseph K. Barker & Richard E. Korf (2011)"

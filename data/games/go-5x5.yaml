@@ -8,24 +8,24 @@ family: go
 genre: go
 board: "5x5 square Go board (25 intersections)"
 result: first-player-win
-result_detail: "Black (first player) wins by 25 points — the entire board — with the optimal opening on the center point (C3); no komi, Japanese rules"
+result_detail: "Black (first player) wins by 25 points (the entire board) with the optimal opening on the center point (C3); Chinese area scoring, Japanese-style basic ko, no komi"
 strength: weak
 method:
   - alpha-beta+db
   - knowledge-based
-distance_to_result: "Win proven at 22 plies for the center opening (23 plies for the empty board, i.e. all openings); not a fixed-ply line — a full-game alpha-beta proof from the start"
-# state_space here is the number of LEGAL 5x5 positions (John Tromp's enumeration), not reachable.
-# The "strong" label would require a full tablebase over these positions.
+distance_to_result: "Proof-search depth of 22 plies after the center opening, 23 from the empty board; these are proof depths, not complete game lengths or depths for valuing every opening."
+# state_space counts legal board configurations, excluding turn, ko and history metadata.
+# Opening solutions establish a weak solution; arbitrary-position strategies are not supplied.
 complexity:
   state_space: 414295148741
   game_tree: null
-year: 2002
+year: 2002   # announced October 2002; journal publication in June 2003
 solved_by: "Erik C. D. van der Werf (program MIGOS), with H. Jaap van den Herik and Jos W. H. M. Uiterwijk"
 verified: true
 evidence: refereed
 history:
   - date: "2002"
-    size_or_opening: "5×5, Japanese rules, no komi"
+    size_or_opening: "5×5, Chinese area scoring, Japanese-style basic ko, no komi"
     result: "first player wins by 25 points (the whole board)"
     strength: weak
     credit: "Erik C. D. van der Werf, H. Jaap van den Herik & Jos W. H. M. Uiterwijk"
@@ -41,6 +41,10 @@ sources:
     url: "https://journals.sagepub.com/doi/10.3233/ICG-2003-26205"
   - title: "Erik van der Werf — 5x5 Go is solved (author's announcement / writeup page, Oct 2002)"
     url: "https://erikvanderwerf.tengen.nl/5x5/5x5solved.html"
+  - title: "Solving Go on Small Boards (author-hosted full paper, scoring and opening-search details)"
+    url: "https://erikvanderwerf.tengen.nl/pubdown/solving_go_on_small_boards.pdf"
+  - title: "John Tromp and Gunnar Farnebäck, Combinatorics of Go (legal board counts)"
+    url: "https://tromp.github.io/go/gostate.pdf"
   - title: "O. Randall, M. Müller, T.-H. Wei, R. Hayward — Expected Work Search (arXiv:2405.05594, 2024): first solution of empty 5x5 Go under positional superko, independently confirming a first-player full-board win"
     url: "https://arxiv.org/abs/2405.05594"
   - title: "Erik van der Werf — Chessprogramming wiki (MIGOS, method and result, secondary)"
@@ -53,14 +57,17 @@ notes: |
   5x5 Go is the largest square Go board solved from the empty board for a
   clearly specified ruleset. Erik van der Werf's program MIGOS ("Mini Go
   Solver") solved it in October 2002, published in the ICGA Journal in 2003.
-  Under Japanese rules with no komi, and with the optimal opening on the centre
-  point (C3), Black wins the whole board: a 25-point win. Passes and seki are
+  Under Chinese area scoring with Japanese-style basic ko and no komi, the
+  optimal opening on the centre point (C3) lets Black win the whole board by
+  25 points. Surrounded seki territory counts in this scoring. Passes and seki are
   handled, so this is full Go and no simplified variant.
 
   MIGOS solved all 6 distinct opening moves on the empty board (distinct after
   symmetry), for several rule sets. The empty-board proof reaches depth 23 plies
-  and the centre-opening win is proven at 22 plies. The search examined about
-  4.472 x 10^9 nodes in ~4 hours on a 2.0 GHz Pentium 4.
+  and the centre-opening win is proven at 22 plies. These proof depths do not
+  value every opening: the (2,2) opening required a 36-ply search after White's
+  centre reply, and (3,2) required 28 plies. The October centre-opening search
+  examined about 4.472 x 10^9 nodes in ~4 hours on a 2.0 GHz Pentium 4.
 
   The search is iterative-deepening alpha-beta (principal-variation search) with
   transposition tables, enhanced transposition cutoffs, symmetry lookups, two
@@ -72,10 +79,10 @@ notes: |
 
   This is a weak solution: the value of the start plus a strategy to achieve it,
   proven by full-game search. No published tablebase gives the optimal value for
-  each of the ~4.1 x 10^11 legal 5x5 positions counted in John Tromp's
-  enumeration.
+  each of the ~4.1 x 10^11 legal 5x5 board configurations counted in John
+  Tromp's enumeration; that count excludes turn, ko and history metadata.
 
-  The headline result is under van der Werf's Japanese-style rules, and
+  The headline result uses Chinese area scoring with Japanese-style basic ko;
   situational and positional super-ko variants were also analyzed. In 2024
   Randall, Müller, Wei and Hayward (Expected Work Search, arXiv:2405.05594)
   reported the first solution of the empty 5x5 board under the commonly used

@@ -14,24 +14,25 @@ Win for the enemy/blue pieces (Cardinal Richelieu's men) with perfect play. The 
 |---|---|
 | Result | Second player wins |
 | Strength | Strong |
-| Method | Retrograde analysis, Alpha-beta + DB |
+| Method | Retrograde analysis |
 | Year | 2009 |
-| Solved by | Johannes Laire (2009, strong solution by retrograde analysis, announced on rec.games.abstract); independently weakly solved by Ali Elabridi (2017, capstone project, Al Akhawayn University) using minimax + alpha-beta pruning with Zobrist hashing and symmetry reduction |
-| Source | [Laire 2009](https://groups.google.com/d/topic/rec.games.abstract/glKFUv2rEfY) |
+| Solved by | Johannes Laire (2009, strong solution by retrograde analysis, announced on rec.games.abstract) |
+| Source | [Laire 2009](https://github.com/jlaire/3M) |
 | Board | 5x5 square grid, 25 cells. Asymmetric ('unequal forces', Fox-and-Geese style): one player controls 3 musketeers (red/dark), the other controls 22 enemies (blue/light, 'Cardinal Richelieu's men'). Start: musketeers in two opposite corners and the centre; enemies fill the other 22 cells. |
 
 ## Solution history
 
 | Date | Size or opening | Result | Strength | Credit | Source |
 |---|---|---|---|---|---|
-| 2009 | standard game | second player wins | Strong | Johannes Laire | [source](https://groups.google.com/d/topic/rec.games.abstract/glKFUv2rEfY) |
+| 2009 | standard game | second player wins | Strong | Johannes Laire | [source](https://github.com/jlaire/3M) |
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
 ## References
 
+- [Johannes Laire — 3M solver (retrograde analysis, database-generation instructions and standard-start enemy-win example)](https://github.com/jlaire/3M)
 - [Johannes Laire — 'Three Musketeers solved' (rec.games.abstract, Google Groups, 2009) [original announcement of the strong solution]](https://groups.google.com/d/topic/rec.games.abstract/glKFUv2rEfY)
-- [Ali Elabridi — Weakly Solving the Three Musketeers Game Using Artificial Intelligence and Game Theory (Capstone Project, Al Akhawayn University, Fall 2017) [independent weak solution; PDF]](https://cdn.aui.ma/sse-capstone-repository/pdf/fall2017/WEAKLY%20SOLVING%20THE%20THREE%20MUSKETEERS%20GAME%20USING%20ARTIFICIAL%20INTELLIGENCE%20AND%20GAME%20THEORY%20Ali%20Elabridi.pdf)
+- [Ali Elabridi — Weakly Solving the Three Musketeers Game Using Artificial Intelligence and Game Theory (Capstone Project, Al Akhawayn University, Fall 2017) [conflicting, unvalidated weak-solve claim; PDF]](https://cdn.aui.ma/sse-capstone-repository/pdf/fall2017/WEAKLY%20SOLVING%20THE%20THREE%20MUSKETEERS%20GAME%20USING%20ARTIFICIAL%20INTELLIGENCE%20AND%20GAME%20THEORY%20Ali%20Elabridi.pdf)
 - [alielabridi — Weakly-Solving-Three-Musketeers-Game (source code, GitHub)](https://github.com/alielabridi/Weakly-Solving-Three-Musketeers-Game)
 - [Three Musketeers (game) — Wikipedia (secondary; states strong solve by Laire 2009, weak solve by Elabridi 2017, win for blue/enemy)](https://en.wikipedia.org/wiki/Three_Musketeers_(game))
 - [Solved game — Wikipedia, list of solved games (secondary; 'Strongly solved by Johannes Laire in 2009, and weakly solved by Ali Elabridi in 2017. It is a win for the blue pieces')](https://en.wikipedia.org/wiki/Solved_game)
@@ -57,13 +58,15 @@ Richelieu's men), who move second. This fits the game's long-documented
 imbalance in the enemy's favour, and Laire noted that changing only the
 starting position makes the game roughly even.
 
-Ali Elabridi (Al Akhawayn University, Fall 2017 capstone) independently
-produced a weak solution from the start with top-down minimax search,
-alpha-beta pruning, Zobrist hashing and board-symmetry reduction, aiming to
-confirm Laire's result. His writeup's prose labels the musketeers as the
-winners, which contradicts both Laire and its own stated aim and reads as a
-labelling error.
+Ali Elabridi (Al Akhawayn University, Fall 2017 capstone) claimed a weak
+solution with minimax search and alpha-beta pruning, aiming to confirm
+Laire's result. His reported Musketeers win conflicts with Laire's enemy win
+and remains unvalidated. His minimizing search returns immediately on a
+Musketeers utility of +1, which can skip enemy refutations. The available
+evidence does not establish that the contradiction is only a labelling error.
 
-Laire's announcement is a newsgroup post with no peer-reviewed paper, and his
-solver and database survive in no stable public artifact. The strong solution
-therefore rests on his report and has not been independently reproduced.
+Laire's announcement is a newsgroup post with no peer-reviewed paper. His
+solver survives in the public 3M repository, with instructions to generate
+the database from source and a standard-start example showing an enemy win.
+A precomputed database is not included. This catalog has not independently
+regenerated it.

@@ -17,35 +17,38 @@ method:
   - retrograde-analysis
   - alpha-beta+db
 distance_to_result: "Opening is exactly 18 plies deep; an 18-ply alpha-beta search over the opening on top of full mid-/endgame retrograde databases proves the draw."
-# state_space: exactly 7,673,759,269 mid- and endgame states, from the primary paper. game_tree
-# complexity is not given a citable single figure in the source, hence null.
+# state_space counts symmetry-reduced reachable mid/endgame states, excluding the opening.
+# The allocated hash-index count is larger and belongs in notes. No game-tree count is given.
 complexity:
   state_space: 7673759269
   game_tree: null
-# year=1993 reflects the original solution; 1996 is the journal/book publication.
-year: 1993
-solved_by: "Ralph Gasser (ETH Zurich)"
+# The complete strong solution was announced in the 2014 preprint, published in 2016.
+# Gasser's original starting-draw result was announced in 1993 and published in 1996.
+year: 2014
+solved_by: "Ralph Gasser (ETH Zurich; moving-phase solution and starting draw, 1993); Gábor E. Gévay and Gábor Danner (complete strong solution, 2014)"
+cite: "Gévay & Danner 2014"
 verified: true
 sources:
+  - title: "Gévay & Danner, Calculating Ultra-Strong and Extended Solutions for Nine Men's Morris, Morabaraba, and Lasker (2014 preprint; journal publication 2016) — complete strong solution"
+    url: "https://arxiv.org/abs/1408.0032v1"
   - title: "Ralph Gasser, \"Solving Nine Men's Morris\", Games of No Chance, MSRI Publications Vol. 29, 1996 (also Computational Intelligence 12(1):24-41)"
     url: "https://library.slmath.org/books/Book29/files/gasser.pdf"
   - title: "Ralph Gasser, \"Harnessing Computational Resources for Efficient Exhaustive Search\" (PhD thesis, ETH Zurich, 1995) / \"Nine Men's Morris is a Draw\" (ETH technical report, 1993)"
     url: "https://www.research-collection.ethz.ch/handle/20.500.11850/142254"
-  - title: "Gévay & Danner, \"Calculating Ultra-Strong and Extended Solutions for Nine Men's Morris, Morabaraba, and Lasker Morris\", IEEE TCIAIG, 2016 (arXiv:1408.0032) — independent reconfirmation of the draw"
-    url: "https://arxiv.org/abs/1408.0032"
   - title: "Nine Men's Morris — Chessprogramming Wiki (secondary)"
     url: "https://www.chessprogramming.org/Nine_Men%E2%80%99s_Morris"
 notes: |
-  Gasser built retrograde-analysis databases giving the value of every reachable
-  midgame and endgame position. The opening, in which the 18 stones are placed,
-  is exactly 18 plies long, and an 18-ply alpha-beta search over it, probing
-  those databases, proved that the empty board is a draw. Every reachable
-  position has a known value, so the solution is strong.
+  Gasser solved all moving-phase positions with retrograde analysis. The
+  opening, in which the 18 stones are placed, is exactly 18 plies long. A
+  selective 18-ply alpha-beta search, using database bounds, proved that the
+  empty board is a draw without establishing every opening position's value.
+  Gévay and Danner's 2014 computation supplies the complete strong solution.
 
   The paper gives a loose upper bound of 3^24 ≈ 2.8 × 10^11 positions. Removing
   illegal and unreachable states and folding the board's 16-fold symmetry leaves
-  exactly 7,673,759,269 states in the midgame and endgame, and the stored
-  databases hold "about 10^10 states."
+  exactly 7,673,759,269 reachable states in the midgame and endgame, excluding
+  the opening. The database allocates 9,074,932,579 hash indices for those
+  states; the index total includes unused entries.
 
   Two rules are debated, and Gasser fixed them this way: a move that closes two
   mills at once removes only one opposing stone, and a stone in a mill may be
@@ -57,8 +60,8 @@ notes: |
   Gasser first announced the result in 1993 at ETH Zurich ("Das Mühlespiel ist
   unentschieden", or "Nine Men's Morris is a Draw"), working in Jürg
   Nievergelt's group; Thomas Lincke's 1994 diploma thesis there also worked on
-  perfect play. The write-up most often cited is Gasser's 1996 "Solving Nine
-  Men's Morris."
+  perfect play. Gasser's 1996 "Solving Nine Men's Morris" describes the
+  computations.
 
   Gévay and Danner (arXiv 2014, IEEE TCIAIG 2016) recomputed the solution
   independently, calling the draw "well-known," and extended it to ultra-strong

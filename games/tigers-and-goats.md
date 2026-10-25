@@ -15,23 +15,24 @@ Draw under optimal play from the standard start (4 tigers on the corners, Goat t
 | Method | Retrograde analysis, Alpha-beta + DB |
 | Year | 2007 |
 | Solved by | Lim Yew Jin and Jürg Nievergelt (National University of Singapore; ETH Zurich) |
-| Source | [Jin et al. 2007](https://library.slmath.org/books/Book56/files/22jin.pdf) |
+| Source | [Jin et al. 2007](https://web.archive.org/web/20090325093223if_/http://www.yewjin.com/papers/PhDThesisLimYewJin.pdf) |
 | Board | 5x5 grid of 25 points connected by horizontal, vertical and diagonal lines (Bagh-Chal board). Asymmetric: 4 tigers (start on the 4 corner points) face up to 20 goats. Goat moves first. |
-| Game tree | 100,000,000,000,000,000,000,000,000,000,000,000,000,000 |
+| Game tree | 10⁴¹ |
 
 ## Solution history
 
 | Date | Size or opening | Result | Strength | Credit | Source |
 |---|---|---|---|---|---|
-| 2007 | standard game | draw | Weak | Lim Yew Jin and Jürg Nievergelt | [source](https://library.slmath.org/books/Book56/files/22jin.pdf) |
+| 2007 | standard game | draw | Weak | Lim Yew Jin and Jürg Nievergelt | [source](https://web.archive.org/web/20090325093223if_/http://www.yewjin.com/papers/PhDThesisLimYewJin.pdf) |
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
 ## References
 
-- [Lim Yew Jin & Jürg Nievergelt — Tigers and Goats is a Draw (Games of No Chance 3, MSRI Publications Vol. 56, 2007/2009, pp. 163-176) [primary solution paper]](https://library.slmath.org/books/Book56/files/22jin.pdf)
+- [Lim Yew Jin — On Forward Pruning in Game-Tree Search (PhD thesis, National University of Singapore, 2007), Chapters 4–5 and §5.3.3](https://web.archive.org/web/20090325093223if_/http://www.yewjin.com/papers/PhDThesisLimYewJin.pdf)
+- [Lim Yew Jin & Jürg Nievergelt — Tigers and Goats is a Draw (Games of No Chance 3, MSRI Publications Vol. 56, 2009, pp. 163-176) [published solution chapter]](https://library.slmath.org/books/Book56/files/22jin.pdf)
 - [Tigers and Goats is a draw — Cambridge University Press (Games of No Chance 3, chapter page)](https://www.cambridge.org/core/books/abs/games-of-no-chance-3/tigers-and-goats-is-a-draw/7D77BD950DEBA74032F6B3EF69A60E63)
-- [Lim Yew Jin & J. Nievergelt — Computing Tigers and Goats (ICGA Journal, Vol. 27, No. 3, September 2004, pp. 131-141) [earlier paper by same authors: endgame database + partial placement-phase analysis]](https://www.semanticscholar.org/paper/Tigers-and-Goats-is-a-draw-Jin-Nievergelt/a56c599d9db48dbb66ea5e680ec6bea7e574880b)
+- [Lim Yew Jin & J. Nievergelt — Computing Tigers and Goats (ICGA Journal, Vol. 27, No. 3, September 2004, pp. 131-141) [earlier paper by same authors: endgame database + partial placement-phase analysis]](https://static1.1.sqspcdn.com/static/f/520053/5799272/1266424058887/Computing_Tigers_And_Goats.pdf)
 - [Bagh-chal — Wikipedia (lists the game as solved: a draw under optimal play)](https://en.wikipedia.org/wiki/Bagh-chal)
 
 ## Notes
@@ -41,7 +42,7 @@ hunt game, in the same family as Aadu Puli Aatam and Lambs and Tigers. It is
 played on a 5x5 grid of 25 points joined by horizontal, vertical and diagonal
 lines. Four tigers start on the corners, and Goat moves first.
 
-The game has two phases. The placement phase lasts exactly 39 plies: Goat
+The game has two phases. Unless play ends earlier, placement lasts 39 plies: Goat
 drops his 20 goats one per move while Tiger slides or jumps, a tiger jumping
 over an adjacent goat in a straight line to the empty point beyond and killing
 it. The sliding phase that follows can last forever, with Goat sliding an
@@ -62,12 +63,15 @@ The key technique halved the effective search depth. A strong heuristic player
 faced an exhaustive opponent, and a "halfway database" of positions at ply 19
 (10 goats placed, Tiger to move) was built on the fly, so any root search ends
 within ~20 plies in the halfway database, which in turn resolves into the
-endgame database within ~20 more plies. With it the authors first proved that
-"Goat can at least draw" (Computing Tigers and Goats, 2004), then, in the 2007
-paper, that "Tiger can at least draw," which together give a draw. Two
-re-searches in separately coded C programs took ~2 months and confirmed both
-parts: "Goat can at least draw" in ~7 hours and 7.7e9 nodes, and "Tiger can at
-least draw" in ~48 hours and 4.05e10 nodes.
+endgame database within ~20 more plies. One opening case was proved in 2004;
+complete drawing strategies for both sides are documented in Lim's 2007
+thesis. The published chapter followed in 2009.
+
+Two separately coded C re-searches took about two months to check the root
+search and halfway-database components of Tiger's drawing strategy. An
+additional program re-proved both sides' drawing strategies: Goat's in
+about seven hours and 7,735,443,119 searched nodes, and Tiger's in about
+48 hours and 40,521,418,103 searched nodes.
 
 The solution is weak. The sliding phase is a full tablebase, but the placement
 phase is solved only for play from the standard start: one drawing strategy
@@ -76,8 +80,7 @@ halfway database deliberately stores only enough win-or-draw positions to trap
 forward searches, and leaves out most of the S11-S15 space (~1.6 billion
 positions).
 
-The 2004 ICGA Journal paper, which has the endgame database and shows "Goats
-may catch up," and the 2007 Games of No Chance 3 chapter, which completes the
-proof, are the same authors' progressive write-ups of one project. No separate
-group has re-solved the game; the authors' own two re-searches are its
-verification.
+The 2004 ICGA Journal paper reports the endgame database and a partial
+opening proof. The complete solution appears in the 2007 thesis and the
+2009 Games of No Chance 3 chapter. These are successive reports of one
+project; the verification searches described here are the authors' own.

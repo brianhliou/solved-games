@@ -15,10 +15,8 @@ First player wins. Strongly solved for board sides 1-6 — the game-theoretic va
 | Method | Retrograde analysis, Brute-force enumeration |
 | Year | 2026 |
 | Solved by | Brian Liou (open-source game-solver engine, 2026), sides 1-6; see the prior-art note. |
-| Source | [Liou 2026](https://github.com/brianhliou/game-solver)\* |
+| Source | [Liou 2026](https://github.com/brianhliou/game-solver/blob/447f644826998390e3fd9b494e5944a6bdc5e64f/README.md)\* |
 | Board | Triangular board of hexagonal cells; side n has n rows and n(n+1)/2 cells (side 6 = 21 cells). Players alternately place a stone of their colour on an empty cell; a player wins by connecting all three sides of the triangle with one group. Hex reduces to Y. Strongly solved here for sides 1-6. |
-| State space | 2,173,243,128 |
-| Distance to result | Side-6 (2,173,243,128 positions) solved in ~13 minutes in ~1 GB of RAM on a single core, by slice-by-slice retrograde over the ply-layers. |
 | Evidence | self-archived\* |
 
 \* Self-archived: the result is available only from its authors (a repository, a post, a deposit), not yet refereed, formally verified or reproduced by someone else. The mark comes off when one of those happens. It applies to this repo's own results too.
@@ -27,7 +25,7 @@ First player wins. Strongly solved for board sides 1-6 — the game-theoretic va
 
 | Date | Size or opening | Result | Strength | Credit | Source |
 |---|---|---|---|---|---|
-| 1975 | all sizes | first player wins (strategy stealing, names no moves) | Ultra-weak | Craige Schensted & Charles Titus | [source](https://en.wikipedia.org/wiki/Y_(game)) |
+| 1975 | all sizes | first player wins (strategy stealing, names no moves); date records the book's publication, not a verified proof date | Ultra-weak | Craige Schensted & Charles Titus | [source](https://en.wikipedia.org/wiki/Y_(game)) |
 | 2026-06-19 | sides 1-6 | first player wins at every size; no position is a draw | Strong | Brian Liou | [source](https://github.com/brianhliou/game-solver) |
 
 _Superseded rows stay in the table._
@@ -48,9 +46,13 @@ _Superseded rows stay in the table._
 
 ## References
 
-- [Brian Liou — strong solution of Y for sides 1-6 via the game-solver engine (2026): a full retrograde solve of every position. The first player wins at every size and no position is a draw. Side-6 has 2,173,243,128 count-legal positions (wins 1,352,692,412 / losses 820,550,716). Validated by three independent solve paths (reachable, dense-index, and slice-by-slice) that agree on every value, plus the no-draw invariant. Reproducible via `cargo run --release --bin y_solve6 6`.](https://github.com/brianhliou/game-solver)
-- [GamesCrafters (UC Berkeley), GamesmanClassic `mgameofy.c` (A. Esteban, 2023) — prior art: open-source Y solver code for board dims 4-7, but with no published game values, no paper, and `kTieIsPossible = TRUE` (a draw-handling flaw for a game that cannot draw). Only dim-5 is credibly confirmed computed.](https://github.com/GamesCrafters/GamesmanClassic/blob/master/src/mgameofy.c)
-- [Craige Schensted & Charles Titus, Mudcrack Y and Poly-Y (Neo Press, 1975) — the game of Y; first player wins on any board by a Hex-style strategy-stealing argument (ultra-weak, non-constructive).](https://en.wikipedia.org/wiki/Y_(game))
+- [Brian Liou, game-solver results (2026): side-6 first-player win, solved by slice-by-slice retrograde analysis](https://github.com/brianhliou/game-solver/blob/447f644826998390e3fd9b494e5944a6bdc5e64f/README.md)
+- [Committed Y tests: reachable counts for sides 1–5, reachable/dense value agreement on side 4, and sliced/dense aggregate agreement on sides 1–5](https://github.com/brianhliou/game-solver/blob/891f85ef94d3e58f2784d5d16c4cc680f3d3a748/engine/tests/y.rs)
+- [Committed Y implementation: count-legal indexing and sequential slice-by-slice solver](https://github.com/brianhliou/game-solver/blob/891f85ef94d3e58f2784d5d16c4cc680f3d3a748/engine/src/games/y.rs)
+- [Side-6 solver commit (2026-06-19): estimated memory requirement of about 800 MB](https://github.com/brianhliou/game-solver/commit/891f85ef94d3e58f2784d5d16c4cc680f3d3a748)
+- [GamesCrafters (UC Berkeley), GamesmanClassic mgameofy.c (Andrew Esteban, 2023): Y solver code supporting board dimensions 4–7](https://github.com/GamesCrafters/GamesmanClassic/blob/master/src/mgameofy.c)
+- [Craige Schensted & Charles Titus, Mudcrack Y and Poly-Y (Neo Press, published 1975); the publication year does not establish the date of the strategy-stealing proof](https://en.wikipedia.org/wiki/Y_(game))
+- [Mudcrack Y and Poly-Y (distributor; confirms the 1975 publication year)](https://www.gamepuzzles.com/abstract.htm)
 
 ## Resources
 
@@ -66,9 +68,11 @@ generalizes Hex (Hex reduces to Y), and like Hex it cannot be drawn: by the Y
 theorem a full board always has exactly one player connecting all three sides,
 and both players can never connect at once.
 
-On every board size the first player wins, by the Hex-style strategy-stealing
-argument (Schensted and Titus 1975, after Nash). That ultra-weak result is
-non-constructive and names no moves.
+On every board size the first player wins, by a Hex-style strategy-stealing
+argument commonly attributed to Schensted and Titus, after Nash. That
+ultra-weak result is non-constructive and names no moves. Their book
+"Mudcrack Y and Poly-Y" was published in 1975; that dates the book, while
+the proof's date has not been verified.
 
 For sides 1-6 the game-solver engine computed the value of every position by
 retrograde analysis. The first player wins from the start at every size and no
@@ -81,15 +85,22 @@ The two measures differ. Sides 1-5 count reachable positions, found by forward
 discovery. Side 6 counts the tight count-legal index, a superset that also
 includes positions that are count-legal but unreachable, because side 6 was
 solved by the dense slice solver; the figures are not directly comparable. At
-every size wins plus losses equal the total exactly, which is the no-draw
-invariant.
+every size the solver classifies positions as wins or losses. The sliced
+solver has no draw branch and asserts that a nonterminal position has a move.
+
+The committed tests compare reachable and dense values for every reachable
+side-4 position. They compare sliced and dense win/loss totals and the start
+value for sides 1–5. These solve paths share the Y rules implementation;
+the tests do not establish every-position agreement on side 6. The side-6
+solver is sequential, with an estimated memory requirement of about 800 MB
+in its introducing commit.
 
 The earlier solver found is GamesCrafters' GamesmanClassic `mgameofy.c` (A.
 Esteban, 2023), which has Y code for dims 4-7. It publishes no game values,
 has no accompanying paper, and declares draws possible (`kTieIsPossible =
-TRUE`) for a game that cannot draw; an adversarial check could confirm only
-its dim-5 as credibly computed. The search was not exhaustive and no priority
-is claimed; this entry records the sides solved (1-6), with full credit to the
+TRUE`) for a game that cannot draw. Configurable dimensions alone do not
+establish completed solves. The search was not exhaustive and no priority
+is claimed; this entry records the sides solved (1-6), with credit to the
 earlier GamesCrafters work.
 
 Side 7 (28 cells) has a count-legal index beyond 2^32, and is the natural next

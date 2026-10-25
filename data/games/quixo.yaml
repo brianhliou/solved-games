@@ -1,0 +1,48 @@
+id: quixo
+name: Quixo
+family: abstract
+genre: alignment
+board: "5×5"
+result: draw
+result_detail: "Neither player can force a win from the empty board; perfect play continues indefinitely."
+# Sections 1.3, 3.2 and 5.1 establish outcomes for all states.
+strength: strong
+method:
+  - value-iteration
+  - backward-induction
+# Perfect play from the drawn initial position does not terminate.
+distance_to_result: null
+complexity:
+  # Calculated as 3^25, also the sum of Table 2's outcome counts.
+  # Total configurations with the player to move normalized, including unreachable ones.
+  state_space: 847288609443
+  # The paper does not report a game-tree complexity figure.
+  game_tree: null
+year: 2020
+solved_by: "Satoshi Tanaka, François Bonnet, Sébastien Tixeuil and Yasumasa Tamura"
+cite: "Tanaka et al. 2020"
+verified: true
+evidence: preprint
+# PDF saved to temporary storage; the sandbox blocked /opt/homebrew/bin/pdftotext.
+# Full-text evidence was read through arXiv HTML and the web PDF text instead.
+sources:
+  - title: "Quixo Is Solved (arXiv:2007.15895v1, 31 July 2020)"
+    url: "https://arxiv.org/abs/2007.15895v1"
+resources:
+  writeup:
+    - title: "Full paper"
+      url: "https://arxiv.org/pdf/2007.15895v1"
+notes: |
+  Quixo players remove a blank or friendly cube from the boundary of a
+  5×5 grid, mark it and reinsert it by sliding a row or column. Five
+  matching symbols in a row, column or diagonal win; creating lines for
+  both players awards the win to the opponent.
+
+  Tanaka and colleagues combined value iteration with backward induction,
+  using bitboards and compact outcome storage. They computed outcomes
+  for all 3^25 configurations with the player to move normalized. This
+  total includes unreachable configurations and does not merge board
+  symmetries.
+
+  The empty board is drawn. With perfect play, neither player can force
+  a win and play continues indefinitely.

@@ -1,0 +1,45 @@
+id: lines-of-action-6x6
+name: Lines of Action (6×6)
+also_known_as:
+  - "6×6 LOA"
+family: connection
+genre: connection
+board: "6×6; eight pieces per player"
+result: first-player-win
+result_detail: "Black, moving first, can force a win; b6-b4 and c6-e4 are winning openings."
+# The paper establishes a winning strategy from the start and explicitly calls the solution weak.
+strength: weak
+method:
+  - proof-number-search
+# The paper reports search effort, without a forced-win distance from the start.
+distance_to_result: null
+complexity:
+  # Section 2.2 estimates O(10^13); this is an order of magnitude, not an exact count.
+  state_space: 10000000000000
+  # Section 2.2 estimates O(10^32), using characteristics measured in self-play.
+  game_tree: 100000000000000000000000000000000
+year: 2008
+solved_by: "Mark H. M. Winands"
+cite: "Winands 2008"
+verified: true
+evidence: refereed
+sources:
+  - title: "Mark H. M. Winands, 6 × 6 LOA is Solved (ICGA Journal 31(4), pp. 234–238, December 2008)"
+    url: "https://dke.maastrichtuniversity.nl/m.winands/documents/LoaNote.pdf"
+  - title: "Maastricht University publication record and abstract"
+    url: "https://cris.maastrichtuniversity.nl/en/publications/6-x-6-loa-is-solved/"
+notes: |
+  Lines of Action is a connection game with captures. Each player starts with
+  eight pieces on a 6×6 board. A piece moves exactly as many squares as there
+  are pieces of either colour along its line of movement. The goal is to join
+  all surviving pieces into one group; diagonal contact counts. The rules used
+  here make simultaneous connection and a third repetition draws.
+
+  Mark H. M. Winands proved Black's win using proof-number search at two levels,
+  called PN². Both b6-b4 and c6-e4 are winning openings. The
+  [paper](https://dke.maastrichtuniversity.nl/m.winands/documents/LoaNote.pdf)
+  appeared in December 2008.
+
+  Winands estimates a state space of order 10^13 and a game tree of order
+  10^32. These are estimates; the paper does not specify whether the state-space
+  estimate includes unreachable positions.

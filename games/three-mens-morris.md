@@ -17,7 +17,7 @@ First player wins with perfect play, and only by opening in the centre: the cent
 | Solved by | Classical result (folklore). The first-player centre win is documented by H. J. R. Murray, A History of Board-Games Other Than Chess (1952), and the game is small enough to verify exhaustively. |
 | Source | [folklore](https://en.wikipedia.org/wiki/Three_men's_morris) |
 | Board | 3×3 grid of 9 points (3 horizontal + 3 vertical + 2 diagonal lines), 3 pieces per side |
-| Distance to result | At most 9 plies total; after the central opening the first player forces the win within 7 further plies. |
+| Distance to result | At most 9 plies total; 8 further after the central opening; 7 after the opponent's first reply. |
 
 ## Solution history
 

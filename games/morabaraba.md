@@ -6,25 +6,24 @@
 
 *Also known as: Twelve Men's Morris, Mlabalaba, Umlabalaba, Morabaraba (South African Morris).*
 
-First-player win — the standard starting position is a win for the player to move first, with a game-theoretic value of win in 49 (moves). Most starting positions in which both players place an equal number of stones (including the standard one) are first-player wins, in contrast to Nine Men's Morris and Lasker Morris, which are draws.
+First-player win — the standard starting position is a win for the player to move first, with a game-theoretic value of win in 49 plies. Most starting positions in which both players place an equal number of stones (including the standard one) are first-player wins, in contrast to Nine Men's Morris and Lasker Morris, which are draws.
 
 | | |
 |---|---|
 | Result | First player wins |
 | Strength | Strong |
 | Method | Retrograde analysis |
-| Year | 2015 |
+| Year | 2014 |
 | Solved by | Gábor E. Gévay (Eötvös Loránd University) & Gábor Danner (University of Szeged); arXiv:1408.0032 (2014), published IEEE Trans. on Computational Intelligence and AI in Games, 2016 |
-| Source | [Gévay 2015](https://arxiv.org/abs/1408.0032) |
+| Source | [Gévay & Danner 2014](https://arxiv.org/abs/1408.0032) |
 | Board | Nine Men's Morris board with the four diagonal lines added (24 points / intersections, all corners of the three nested squares connected by diagonals); 12 men per player |
-| State space | 112,000,000,000 |
-| Distance to result | Win in 49 (the game-theoretic value of the standard starting position, expressed as moves-to-win in the depth-to-win database) |
+| Distance to result | Win in 49 plies from the standard starting position with optimal depth-to-win play |
 
 ## Solution history
 
 | Date | Size or opening | Result | Strength | Credit | Source |
 |---|---|---|---|---|---|
-| 2015 | standard game | first player wins | Strong | Gábor E. Gévay | [source](https://arxiv.org/abs/1408.0032) |
+| 2014 | standard game | first player wins | Strong | Gábor E. Gévay | [source](https://arxiv.org/abs/1408.0032) |
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
@@ -56,19 +55,24 @@ stone to any empty point, not only along the lines.
 Gábor E. Gévay and Gábor Danner solved the game strongly with a multi-valued
 retrograde analysis over a partitioned state space, producing a complete
 depth-to-win database with a value for every reachable position. The standard
-start is a win in 49 for the first player, in contrast to Nine Men's Morris
+start is a win in 49 plies for the first player, in contrast to Nine Men's Morris
 (Gasser 1996) and Lasker Morris (Stahlhacke 2003), both draws, which the same
 paper also re-solves. They report that most starting positions in which both
 players place an equal number of stones, the standard one included, are
-first-player wins: the extra diagonals make the game sharper and the first
-move decisive.
+first-player wins.
 
-The state space is roughly four times that of Nine Men's Morris: about 112
-billion states in the standard solution database (their Table I), and about
-284 billion across the solutions for other stone counts. The computation took
-on the order of days on a single machine (about 3.2 GHz, 20 GB RAM).
+Table I reports reduced solver spaces of about 112 billion states for
+standard Morabaraba and 284 billion for its extended solution with other
+starting stone counts. These totals use board-symmetry reduction and
+player-to-move normalization, rather than counting unreduced reachable
+states. The standard count is about four times the corresponding 27 billion
+for Nine Men's Morris.
 
-The authors also computed an ultra-strong solution, which subclassifies drawn
-and won positions to do better in practice against a fallible opponent. That
-database is available for download (about 41 GB compressed, 324 GB
-uncompressed).
+The standard strong solution took about two days on a 2 GHz Intel Core
+i7-2630QM with 16 GB of memory. The extended solution took about five days on
+a 3.2 GHz AMD Phenom II X4 955 with 20 GB of memory.
+
+The authors also computed an ultra-strong solution, which subclassifies only
+drawn positions to improve play against a fallible opponent. Won and lost
+positions retain depth-to-win optimization. That database is available for
+download (about 41 GB compressed, 324 GB uncompressed).

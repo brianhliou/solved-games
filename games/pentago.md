@@ -63,11 +63,16 @@ wins.
 
 The solution is strong: perfect play can be computed efficiently from any
 position. Irving found it in 2014 by exhaustive parallel in-core retrograde
-analysis, in under 4 hours on 98,304 threads of NERSC's Cray Edison, using
-about 80 TB of RAM at peak. The game has 3,009,081,623,421,558 positions once
-symmetries are removed (about 3.0×10^15). The project describes it as the
-largest divergent game solved to date by two orders of magnitude, and the only
-nontrivial divergent game solved by retrograde analysis.
+analysis on 98,304 threads of NERSC's Cray Edison, using about 80 TB of RAM
+at peak. The bulk computation took 2.7 hours; the main job reached its
+four-hour limit while writing results, and two smaller jobs finished the
+solution down to the empty board.
+
+The total after symmetry reduction is 3,009,081,623,421,558 states (about
+3.0×10^15), including approximately 0.3% unreachable states. In his 2014
+paper, Irving described it as the largest divergent game solved by two orders
+of magnitude and the only nontrivial divergent game solved by retrograde
+analysis.
 
 The results are stored as a 3.7 TB database with full values for every
 position of up to 18 stones. Positions with more stones are evaluated on the

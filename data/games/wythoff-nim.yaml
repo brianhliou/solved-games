@@ -23,8 +23,8 @@ year: 1907
 solved_by: "Willem Abraham Wythoff"
 verified: true
 sources:
-  - title: "W. A. Wythoff, \"A modification of the game of Nim,\" Nieuw Archief voor Wiskunde, 2nd ser., vol. 7(2)/8, pp. 199-202, 1907/1909"
-    url: "https://www.scirp.org/reference/referencespapers?referenceid=59121"
+  - title: "W. A. Wythoff, A modification of the game of Nim, Nieuw Archief voor Wiskunde, series 2, volume 7 (1907), pp. 199–202"
+    url: "https://archive.org/details/nieuwarchiefvoo02genogoog/page/n220/mode/2up"
   - title: "Wythoff's Game — Wolfram MathWorld"
     url: "https://mathworld.wolfram.com/WythoffsGame.html"
   - title: "Wythoff's game — Wikipedia"

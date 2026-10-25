@@ -15,10 +15,10 @@ Standard Teeko is a draw with perfect play (neither Black nor Red can force a wi
 | Method | Retrograde analysis, Brute-force enumeration |
 | Year | 1998 |
 | Solved by | Guy L. Steele Jr. (Sun Microsystems Laboratories) |
-| Source | [Steele 1998](https://boardgamegeek.com/thread/816476/steele-guy-november-23-1998-re-teeko-hakmem)\* |
+| Source | [Steele 1998](https://pcarrier.com/teeko/archives/text/teeko-analysis-gls.foo.html)\* |
 | Board | 5×5 board (25 cells); each player has 4 markers |
-| State space | 172,000,000 |
-| Distance to result | n/a for the standard game (drawn); for the first-player-win variants Steele reported forced wins (e.g. Advanced/58-position Teeko a Black win in roughly 13 moves) |
+| State space | 172,401,726 |
+| Distance to result | n/a for the standard game (drawn); Steele reported a Black win in 13 turns for Advanced/58-position Teeko |
 | Evidence | self-archived\* |
 
 \* Self-archived: the result is available only from its authors (a repository, a post, a deposit), not yet refereed, formally verified or reproduced by someone else. The mark comes off when one of those happens. It applies to this repo's own results too.
@@ -27,13 +27,13 @@ Standard Teeko is a draw with perfect play (neither Black nor Red can force a wi
 
 | Date | Size or opening | Result | Strength | Credit | Source |
 |---|---|---|---|---|---|
-| 1998 | standard game | draw | Strong | Guy L. Steele Jr | [source](https://boardgamegeek.com/thread/816476/steele-guy-november-23-1998-re-teeko-hakmem) |
+| 1998 | standard game | draw | Strong | Guy L. Steele Jr | [source](https://pcarrier.com/teeko/archives/text/teeko-analysis-gls.foo.html) |
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
 ## References
 
-- [Guy L. Steele Jr. — "Re: Teeko, HAKMEM", Usenet posting, 23 Nov 1998 (primary writeup of the full solution; archived/indexed via BoardGameGeek)](https://boardgamegeek.com/thread/816476/steele-guy-november-23-1998-re-teeko-hakmem)
+- [Guy L. Steele Jr. — "Re: Teeko, HAKMEM", Usenet posting, 23 Nov 1998 (primary writeup, preserved in a forwarded message)](https://pcarrier.com/teeko/archives/text/teeko-analysis-gls.foo.html)
 - [Epstein, Richard A. — "The Theory of Gambling and Statistical Logic", 2nd ed., Academic Press, p. 341 (2012) (secondary; states Steele's result and variant outcomes)](https://www.google.com/books/edition/The_Theory_of_Gambling_and_Statistical_L/PuU_AwAAQBAJ)
 - [Teeko (Wikipedia) (secondary)](https://en.wikipedia.org/wiki/Teeko)
 - [Teeko — Wolfram MathWorld (secondary; lists per-variant outcomes and move distances)](https://mathworld.wolfram.com/Teeko.html)
@@ -64,10 +64,14 @@ strong. That is how one solve yielded values and forced-win distances for all
 sixteen variants.
 
 With all 8 markers on the board in the movement phase there are
-C(25,4)·C(21,4) = 75,710,250 placements, and with the drop phase included the
-reachable-position count is on the order of 1.7×10^8 (~172 million). That
-figure is a computed estimate, not one Steele quoted. Scarne himself spoke
-loosely of "over a million possible positions."
+C(25,4)·C(21,4) = 75,710,250 placements. Counting both sides to move gives
+151,420,500 movement-phase board/turn combinations. Adding 20,981,226
+placement-phase arrangements gives a derived combinatorial upper bound of
+172,401,726 states. This total includes unreachable states, including boards
+on which both players have already won; it is not a reachable-state census.
+The bound is calculated from Steele's rules, rather than quoted by him.
+Steele attributes an estimate of 1,081,575 placements to Scarne and explains
+that it omits a factor of 70 for the two colours.
 
 Steele's result is an informal 1998 Usenet writeup, and the solver was never
 formally published in a journal. Several secondary references report it

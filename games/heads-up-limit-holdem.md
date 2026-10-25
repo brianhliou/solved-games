@@ -17,7 +17,7 @@ Essentially weakly solved (NOT exactly solved): an epsilon-Nash equilibrium with
 | Solved by | Michael Bowling, Neil Burch, Michael Johanson, Oskari Tammelin (University of Alberta Computer Poker Research Group; Cepheus project) |
 | Source | [Bowling et al. 2015](https://www.science.org/doi/10.1126/science.1259433) |
 | Board | Two-player limit Texas hold'em; 52-card deck, four betting rounds (preflop/flop/turn/river), fixed bet sizes, capped raises per round, alternating dealer/button |
-| State space | 316,000,000,000,000,000 |
+| State space | ≈ 3.16 × 10¹⁷ |
 | Distance to result | Computed strategy reached exploitability 0.986 mbb/g after 1579 CFR+ iterations (900 core-years). Game value bounded to dealer +87.7 to +89.7 mbb/g. |
 
 ## Solution history
@@ -31,9 +31,8 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 ## References
 
 - [Heads-up Limit Hold'em Poker Is Solved — M. Bowling, N. Burch, M. Johanson, O. Tammelin, Science 347(6218):145-149 (2015)](https://www.science.org/doi/10.1126/science.1259433)
-- [Heads-up Limit Hold'em Poker Is Solved (full text PDF, Science 2015)](https://webdocs.cs.ualberta.ca/~bowling/papers/15science.pdf)
+- [Heads-up Limit Hold'em Poker Is Solved (full text PDF, Science 2015)](https://johanson.ca/publications/poker/2015-science-hulhe/2015-science-hulhe.pdf)
 - [Solving Heads-up Limit Texas Hold'em — O. Tammelin, N. Burch, M. Johanson, M. Bowling, IJCAI 2015 (CFR+ engineering, soundness proof, confirms 4800 CPUs / 68 days / 0.986 mbb/g)](https://poker.cs.ualberta.ca/publications/2015-ijcai-cfrplus.pdf)
-- [Author publications entry (Michael Bowling, University of Alberta) — bibliographic record](https://webdocs.cs.ualberta.ca/~bowling/publications/b2hd-15science.html)
 - [ADS bibliographic record (2015Sci...347..145B)](https://ui.adsabs.harvard.edu/abs/2015Sci...347..145B/abstract)
 
 ## Resources
@@ -44,7 +43,7 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 **Write-ups**
 
-- <https://webdocs.cs.ualberta.ca/~bowling/papers/15science.pdf>
+- <https://johanson.ca/publications/poker/2015-science-hulhe/2015-science-hulhe.pdf>
 
 ## Notes
 
@@ -87,9 +86,11 @@ Minimization, which uses regret-matching+ with non-negative regrets and runs
 exhaustive iterations over the whole game tree instead of Monte-Carlo
 sampling. It ran on a cluster of 200 nodes (24 x 2.1-GHz AMD cores each, 4800
 cores): 1579 CFR+ iterations averaging 61 minutes each, ~68.5 days wall-clock
-and 900 core-years. Strategy and regrets were stored compressed on disk, ~13:1
-on regrets and ~28:1 on strategy, which cut a 262 TB requirement to <11 TB of
-regrets and 6 TB of strategy, 10.9 TB in all.
+and 900 core-years. The IJCAI paper reports 262 TiB uncompressed and 10.9 TiB
+for the computation after compression. The run used the current strategy and
+omitted storage of the average strategy. The Science paper reports compression
+of about 13:1 for regrets and 28:1 for the optional average strategy; its
+estimate of another 6 TB for that strategy is separate from the run's storage.
 
 Two peer-reviewed papers from the same research group report the result with
 matching figures: the Science 2015 paper and the IJCAI 2015 paper "Solving
