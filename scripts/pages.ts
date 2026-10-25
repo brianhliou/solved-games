@@ -113,7 +113,7 @@ const METHOD_LABEL: Record<string, string> = {
   'strategy-stealing/pairing-strategy': 'Strategy-stealing',
   'monte-carlo-cfr': 'Monte-Carlo CFR',
 }
-const labelMethod = (m: string) =>
+export const labelMethod = (m: string) =>
   METHOD_LABEL[m] ?? m.replace(/[-+/]/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
 const primaryMethod = (g: Game) => (g.method?.[0] ? labelMethod(g.method[0]) : '—')
 

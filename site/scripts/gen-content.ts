@@ -12,6 +12,7 @@ import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync } from "nod
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { parse } from "yaml";
+import { labelMethod } from "../../scripts/pages.ts";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const GAMES_DIR = join(ROOT, "data", "games");
@@ -19,6 +20,14 @@ const OUT_DIR = join(ROOT, "site", "src", "content", "docs", "games");
 const SIDEBAR = join(ROOT, "site", "src", "generated", "sidebar.json");
 
 interface Source { title: string; url: string }
+// A resource is a bare URL, a {title, url}, or a list of either (same as scripts/pages.ts).
+type Links = string | Source | (string | Source)[];
+const RESOURCE_KINDS = [
+  ["tablebase", "Tablebases"],
+  ["code", "Code"],
+  ["explorer", "Explorers"],
+  ["writeup", "Write-ups"],
+] as const;
 interface Game {
   id: string;
   name: string;
@@ -38,7 +47,7 @@ interface Game {
   distance_to_result?: string;
   verified?: boolean;
   sources?: Source[];
-  resources?: { code?: Source[] };
+  resources?: Partial<Record<(typeof RESOURCE_KINDS)[number][0], Links>>;
   notes?: string;
 }
 
@@ -81,7 +90,7 @@ function page(g: Game): string {
   const facts: [string, string][] = [
     ["Genre", GENRE_LABEL[g.genre] ?? g.genre],
     ["Result", result],
-    ["Strength", g.strength + (g.approximate ? " (approximate)" : "")],
+    ["Strength", title(g.strength) + (g.approximate ? " (approximate)" : "")],
     ["State space", num(g.complexity?.state_space)],
     ["Year", g.year ? String(g.year) : "—"],
     ["Verified", g.verified ? "yes" : "no"],
@@ -127,7 +136,7 @@ function page(g: Game): string {
   if (g.method?.length) {
     out.push("## Method");
     out.push("");
-    for (const m of g.method) out.push(`- ${m}`);
+    for (const m of g.method) out.push(`- ${labelMethod(m)}`);
     out.push("");
   }
 
@@ -136,10 +145,13 @@ function page(g: Game): string {
     out.push("");
     out.push(g.solved_by.trim());
     out.push("");
-    if (g.distance_to_result) {
-      out.push(g.distance_to_result.trim());
-      out.push("");
-    }
+  }
+
+  if (g.distance_to_result) {
+    out.push("## Length of perfect play");
+    out.push("");
+    out.push(g.distance_to_result.trim());
+    out.push("");
   }
 
   if (g.notes) {
@@ -156,12 +168,16 @@ function page(g: Game): string {
     out.push("");
   }
 
-  if (g.resources?.code?.length) {
-    out.push("## Code");
-    out.push("");
-    for (const s of g.resources.code) out.push(`- [${s.title}](${s.url})`);
-    out.push("");
+  const resParts: string[] = [];
+  for (const [kind, label] of RESOURCE_KINDS) {
+    const v = g.resources?.[kind];
+    if (!v) continue;
+    const items = Array.isArray(v) ? v : [v];
+    resParts.push(`**${label}**`, "");
+    for (const s of items) resParts.push(typeof s === "string" ? `- <${s}>` : `- [${s.title}](${s.url})`);
+    resParts.push("");
   }
+  if (resParts.length) out.push("## Resources", "", ...resParts);
 
   return out.join("\n");
 }
