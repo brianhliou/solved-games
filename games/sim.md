@@ -52,8 +52,8 @@ forced to make one and the game cannot be drawn. It is also called the R(3,3)
 avoidance game, and the "Hales-Jewett game" after the founders of
 positional-game theory, of which Sim is a classic example.
 
-The second player wins. Mead, Rosa and Huang published the first explicit
-winning strategy a person can follow in 1974 (Mathematics Magazine
+The second player wins. Mead, Rosa and Huang published an explicit
+winning strategy in 1974 (Mathematics Magazine
 47(5):243-247), backed by computer search, and noted that a simpler strategy
 that is easier to memorize was still wanted. Wrzos-Kaminska gave one in 2020
 (arXiv:2001.04024).

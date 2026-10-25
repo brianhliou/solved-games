@@ -85,12 +85,11 @@ notes: |
   margin is 3. 3x5 "American" (15 boxes) is a second-player win by 1 (Wilson).
   4x4 (16 boxes) is a tie, with loony-move analysis showing the second player
   can be forced to make the first loony move and that symmetric play loses for
-  them. Wilson solved it around 2010 by retrograde analysis, and it was the
-  largest game solved before Barker and Korf, who cite it as "Wilson 2010."
+  them. Wilson solved it around 2010 by retrograde analysis, and Barker and Korf cite it as "Wilson 2010."
 
   4x5 (20 boxes) is a tie, solved by Joseph K. Barker and Richard E. Korf (AAAI
   2011 short paper; AAAI 2012 full paper) with an alpha-beta solver using chain
   analysis, transposition tables and symmetry reductions. The board has 49 edges
   and ~5.6x10^14 unscored states. Their solver ran ~9-10 days, where they
-  estimated Wilson's retrograde solver would have needed ~130 days and 8 TB. It
-  was the largest game solved by exhaustive search until Fraser's 5x5.
+  estimated Wilson's retrograde solver would have needed ~130 days and 8 TB. Barker
+  and Korf called it the largest game solved to date.

@@ -49,8 +49,7 @@ value of the start. The standard start (two rows of six pits, four seeds each,
 
 The run took about 51 hours on a 144-processor cluster (72 dual-PIII nodes)
 with a Myrinet interconnect. The largest endgame database held 204 billion
-entries (178 GB), and the full database on disk came to about 778 GiB, the
-largest game database computed at the time. They also released an "Awari
+entries (178 GB), and the full database on disk came to about 778 GiB. They also released an "Awari
 Oracle", a Java applet for playing against the perfect database.
 
 The 2002 "Games solved" survey by van den Herik, Uiterwijk and van Rijswijck
