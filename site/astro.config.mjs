@@ -1,10 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import starlight from '@astrojs/starlight';
-
-// One sidebar group per genre, generated from data/games/*.yaml by
-// scripts/gen-content.ts (runs on predev/prebuild).
-import gamesSidebar from './src/generated/sidebar.json' with { type: 'json' };
+import sitemap from '@astrojs/sitemap';
 
 // The single place the deploy target is set: the solvedgames.brianhliou.com
 // subdomain on Vercel, served from the root (was the GitHub Pages project path
@@ -17,39 +13,16 @@ const BASE = '';
 export default defineConfig({
 	site: SITE,
 	base: BASE,
-	integrations: [
-		starlight({
-			title: 'Solved Games',
-			// GA4, the same property as brianhliou.com (filter by hostname). The loader
-			// is brianhliou.com's, with its ?notrack owner opt-out.
-			head: [
-				{ tag: 'script', attrs: { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-XX833SP2K2' } },
-				{ tag: 'script', attrs: { src: '/google-analytics.js', defer: true, 'data-ga-id': 'G-XX833SP2K2' } },
-			],
-			description:
-				'A structured record of which games are solved — by whom, how strongly, and what is left. Maintained, with open problems and the engines that play them.',
-			social: [
-				{ icon: 'github', label: 'GitHub', href: 'https://github.com/brianhliou/solved-games' },
-			],
-			sidebar: [
-				{
-					label: 'Overview',
-					items: [
-						{ label: 'Home', link: '/' },
-						{ label: 'All games', link: '/games/' },
-							{ label: 'Open problems', link: '/open-problems/' },
-							{ label: 'Engines', link: '/engines/' },
-					],
-				},
-				{
-					label: 'Families',
-					items: [
-						{ label: 'Y (connection)', link: '/families/y/' },
-						{ label: 'Morris (mill games)', link: '/families/morris/' },
-					],
-				},
-				...gamesSidebar,
-			],
-		}),
-	],
+	integrations: [sitemap()],
+	// The family index and the per-family pages moved onto the home table on
+	// 2026-10-25 (the Starlight layout was replaced with one plain page, after
+	// Tao's optimization-constants site); each old family page goes to its heading.
+	redirects: {
+		'/games/': '/',
+		...Object.fromEntries(
+			['alignment', 'morris', 'connection', 'mancala', 'capture', 'chess', 'hunt', 'cgt', 'shogi', 'go', 'imperfect-info'].map(
+				(g) => [`/genres/${g}/`, `/#${g}`],
+			),
+		),
+	},
 });

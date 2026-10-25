@@ -1,4 +1,4 @@
-// Generate the site's Starlight pages from the structured data in ../data/.
+// Generate the site's pages from the structured data in ../data/.
 // The pages are the repo's own generated pages (scripts/pages.ts, the same
 // renderer behind games/*.md, families/*.md and pages/*.md on GitHub), with
 // their repo-relative links rewritten to site routes. Regenerated on every
@@ -8,19 +8,21 @@
 //
 // Output (under src/content/docs/):
 //   games/<genre>/<id>.md     one page per game, and per open problem with no game page
-//   games/index.md            every family with its games (the README index)
-//   genres/<genre>.md         one page per family: solved, open, engines
 //   open-problems.md, engines.md
-//   ../generated/sidebar.json one sidebar group per family
+//   ../generated/home.json    the home page's table: every verified game by family, and the open problems
+//
+// The repo's per-family pages (families/<genre>.md) have no site page since
+// 2026-10-25: the home table holds the same rows, so a family link goes to the
+// family's heading there (/#<genre>).
 
 import { writeFileSync, mkdirSync, rmSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join, posix } from "node:path";
-import { GENRE_ORDER, loadData, render } from "../../scripts/pages.ts";
+import { GENRE_ORDER, citeLabel, loadData, openPath, render } from "../../scripts/pages.ts";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const DOCS = join(ROOT, "site", "src", "content", "docs");
-const SIDEBAR = join(ROOT, "site", "src", "generated", "sidebar.json");
+const HOME = join(ROOT, "site", "src", "generated", "home.json");
 const REPO = "https://github.com/brianhliou/solved-games/blob/main";
 const GENERATED_DIRS = ["games", "genres"];
 const GENERATED_FILES = ["open-problems.md", "engines.md"];
@@ -40,7 +42,7 @@ const FAMILY_BY_GENRE: Record<string, { label: string; href: string }> = {
 };
 
 const data = loadData(ROOT);
-const { pages, regions } = render(data, new Date().toISOString().slice(0, 10));
+const { pages } = render(data, new Date().toISOString().slice(0, 10));
 
 const genreOf = new Map<string, string>();
 for (const g of data.games) genreOf.set(g.id, g.genre);
@@ -54,7 +56,7 @@ function routeOf(repoPath: string): string | undefined {
   let m = repoPath.match(/^games\/([^/]+)\.md$/);
   if (m) return genreOf.has(m[1]) ? `/games/${genreOf.get(m[1])}/${m[1]}/` : undefined;
   m = repoPath.match(/^families\/([^/]+)\.md$/);
-  if (m) return `/genres/${m[1]}/`;
+  if (m) return `/#${m[1]}`;
   m = repoPath.match(/^pages\/([^/]+)\.md$/);
   if (m) return `/${m[1]}/`;
   return undefined;
@@ -66,15 +68,15 @@ function relink(md: string, from: string): string {
     if (/^(https?:|mailto:|#|\/)/.test(target)) return whole;
     const [path, anchor] = target.split("#");
     const repoPath = posix.normalize(posix.join(posix.dirname(from), path));
-    // The README's family index is the site's /games/ page.
-    if (repoPath === "README.md" && anchor === "families") return "](/games/)";
+    // The README's family index is the site's home table.
+    if (repoPath === "README.md" && anchor === "families") return "](/)";
     const route = routeOf(repoPath);
     if (route) return `](${route}${anchor ? `#${anchor}` : ""})`;
     return `](${REPO}/${repoPath}${anchor ? `#${anchor}` : ""})`;
   });
 }
 
-/** A repo page as a Starlight page: front matter for the title, no generated-by comment or H1. */
+/** A repo page as a site page: front matter for the title, no generated-by comment or H1. */
 function sitePage(md: string, from: string, description: string, after?: string): string {
   const lines = md.split("\n");
   if (lines[0].startsWith("<!-- GENERATED")) lines.splice(0, 1);
@@ -108,6 +110,7 @@ const write = (rel: string, body: string) => {
 
 let count = 0;
 for (const [repoPath, md] of pages) {
+  if (repoPath.startsWith("families/")) continue;
   const route = routeOf(repoPath);
   if (!route) throw new Error(`no site route for generated page ${repoPath}`);
   const rel = `${route.replace(/^\/|\/$/g, "")}.md`;
@@ -119,8 +122,6 @@ for (const [repoPath, md] of pages) {
     const fam = FAMILY_BY_ID[game] ?? FAMILY_BY_GENRE[genreOf.get(game)!];
     if (fam) after = `Part of [${fam.label}](${fam.href}) — see the family page for the scaling table and a playable explorer.`;
     count++;
-  } else if (repoPath.startsWith("families/")) {
-    description = `${genreTitle(repoPath.slice(9, -3))}: which games are solved, which are open, and the engines that play them.`;
   } else if (repoPath === "pages/open-problems.md") {
     description = "Games and board sizes with a published partial result and a named next step.";
   } else {
@@ -129,19 +130,30 @@ for (const [repoPath, md] of pages) {
   write(rel, sitePage(md, repoPath, description, after));
 }
 
-const index = regions.get("index")!;
-write(
-  "games/index.md",
-  ["---", 'title: "All games"', 'description: "Every solved game and open problem, by family."', "---", "", relink(index.trim(), "README.md"), ""].join("\n"),
-);
-
-// Sidebar: one group per family in the repo's order, its overview first.
-const sidebar = GENRE_ORDER.filter((g) => [...genreOf.values()].includes(g.slug)).map(({ slug }) => ({
-  label: `${genreTitle(slug)} (${[...genreOf.values()].filter((x) => x === slug).length})`,
-  collapsed: true,
-  items: [{ label: "Overview", link: `/genres/${slug}/` }, { autogenerate: { directory: `games/${slug}` } }],
+// The home table: every verified game, grouped by family in the repo's order and
+// sorted by year inside a family (as the README's index is), then the open problems.
+const STRENGTH = { "ultra-weak": "Ultra-weak", weak: "Weak", strong: "Strong" } as const;
+const verified = data.games.filter((g) => g.verified);
+const families = GENRE_ORDER.filter((f) => verified.some((g) => g.genre === f.slug)).map((f) => ({
+  title: genreTitle(f.slug),
+  slug: f.slug,
+  games: verified
+    .filter((g) => g.genre === f.slug)
+    .sort((a, b) => (a.year ?? 0) - (b.year ?? 0) || a.name.localeCompare(b.name))
+    .map((g) => ({
+      name: g.name,
+      href: routeOf(`games/${g.id}.md`)!,
+      result: RESULT_LABEL[g.result] ?? g.result,
+      strength: STRENGTH[g.strength] + (g.approximate ? " (approximate)" : ""),
+      cite: citeLabel(g),
+      selfArchived: g.evidence === "self-archived",
+    })),
 }));
-mkdirSync(dirname(SIDEBAR), { recursive: true });
-writeFileSync(SIDEBAR, JSON.stringify(sidebar, null, 2));
+const open = data.open.map((e) => {
+  const [path, anchor] = openPath(e, 0).split("#");
+  return { name: e.name, href: routeOf(path)! + (anchor ? `#${anchor}` : ""), solvedUpTo: e.solved_up_to };
+});
+mkdirSync(dirname(HOME), { recursive: true });
+writeFileSync(HOME, JSON.stringify({ families, open, games: verified.length }, null, 2));
 
-console.log(`[gen-content] ${count} game pages, ${pages.size - count} other pages → ${DOCS}`);
+console.log(`[gen-content] ${count} game pages, ${GENERATED_FILES.length} other pages → ${DOCS}`);

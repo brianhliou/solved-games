@@ -62,7 +62,8 @@ test('every resource URL in the data appears on its game page, whatever its shap
 })
 
 test('every site link points at a page, and no repo-relative .md link survives', () => {
-  const routes = new Set(pages.keys())
+  // The home page is site/src/pages/index.astro, not Markdown, since 2026-10-25.
+  const routes = new Set([...pages.keys(), '/'])
   // Planted: the check must catch a link to a page that does not exist.
   assert.deepEqual(deadLinks('[x](/games/cgt/no-such-game/)', routes), ['/games/cgt/no-such-game/'])
   for (const [route, md] of pages) {

@@ -22,13 +22,16 @@ win.
 |------|----:|-------|----------:|--------|-----------|
 | [Three men's morris](/games/morris/three-mens-morris/) | 3 | 9 pts (diagonals) | trivial | First player wins | folklore (Murray, 1952) |
 | [Six men's morris](/games/morris/six-mens-morris/) | 6 | 16 pts | 42,372,745 | Draw | Liou (2026) |
-| [Nine Men's Morris](/games/morris/nine-mens-morris/) | 9 | 24 pts | 7,673,759,269 | Draw | Gasser (1993) |
+| [Nine Men's Morris](/games/morris/nine-mens-morris/) | 9 | 24 pts | 7,673,759,269 | Draw | Gasser (1993); Gévay & Danner (2014) |
 | [Lasker Morris](/games/morris/lasker-morris/) | 10 | 24 pts | 136,476,472,674 | Draw | Stahlhacke (2003) |
 | [Morabaraba](/games/morris/morabaraba/) | 12 | 24 pts + diagonals | ~112,000,000,000 | First player wins | Gévay & Danner (2014) |
 
-All five are **strongly** solved. Positions count the reachable / database size
-under each solve's ruleset; Morabaraba's is the approximate figure reported by
-Gévay & Danner.
+All five are **strongly** solved. The counts are not one quantity: six men's is
+the reachable positions of this solve, nine men's the midgame and endgame
+states Gasser's databases hold, and Lasker's and Morabaraba's the solvers'
+indexed database entries, which include unreachable positions. Gasser solved
+nine men's moving phase and proved the starting draw in 1993; Gévay and Danner
+completed the strong solution in 2014.
 
 ## Play the solver
 
@@ -36,12 +39,7 @@ The explorer plays **four, five, or six men's morris** on the 16-point board
 (switch with the toggle) from a precomputed perfect-play tablebase. Every move is labelled win, loss, or draw under perfect
 play.
 
-<iframe
-	src="https://tablebase.brianhliou.com/"
-	title="Morris perfect-play tablebase explorer"
-	loading="lazy"
-	style={{ width: '100%', height: '860px', border: '1px solid var(--sl-color-gray-5)', borderRadius: '8px' }}
-></iframe>
+<iframe src="https://tablebase.brianhliou.com/" title="Morris perfect-play tablebase explorer" loading="lazy"></iframe>
 
 ## More
 

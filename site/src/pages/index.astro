@@ -1,0 +1,88 @@
+---
+import Page from '../layouts/Page.astro';
+// Written by scripts/gen-content.ts from ../data on every build.
+import home from '../generated/home.json';
+---
+
+<Page
+	home
+	title="Solved Games"
+	description="A structured record of which games are solved, by whom, how strongly, and what is left."
+>
+	<p>
+		Which games are solved, by whom, how strongly, and what is left. Each game links to a data sheet
+		with the result, the strength of the solution, the size of the search space, who solved it and
+		when, and the sources.
+	</p>
+	<p>
+		A <em>strong</em> solution gives perfect play from every position, a <em>weak</em> one from the
+		starting position, and an <em>ultra-weak</em> one only the result.
+	</p>
+	<p>
+		* Self-archived: the result is available only from its authors (a repository, a post, a
+		deposit), not yet refereed, formally verified or reproduced by someone else. The mark comes off
+		when one of those happens.
+	</p>
+	<p>
+		Missing a game, a citation, or a wrong result? Each entry is one YAML file:{' '}
+		<a href="https://github.com/brianhliou/solved-games">open an issue or a pull request</a>.
+	</p>
+
+	<h2>Table of games</h2>
+	<table class="games">
+		<thead>
+			<tr><th>Game</th><th>Result</th><th>Strength</th><th>Solved by</th></tr>
+		</thead>
+		<tbody>
+			{
+				home.families.map((f) => (
+					<>
+						<tr class="family">
+							<th colspan="4" id={f.slug}>{f.title}</th>
+						</tr>
+						{f.games.map((g) => (
+							<tr>
+								<td><a href={g.href}>{g.name}</a></td>
+								<td>{g.result}</td>
+								<td>{g.strength}</td>
+								<td>{g.cite}{g.selfArchived && '*'}</td>
+							</tr>
+						))}
+					</>
+				))
+			}
+		</tbody>
+	</table>
+
+	<h2>Open problems</h2>
+	<table>
+		<thead>
+			<tr><th>Game</th><th>Solved so far</th></tr>
+		</thead>
+		<tbody>
+			{
+				home.open.map((e) => (
+					<tr>
+						<td><a href={e.href}>{e.name}</a></td>
+						<td>{e.solvedUpTo}</td>
+					</tr>
+				))
+			}
+		</tbody>
+	</table>
+
+	<p>
+		Also: the <a href="/engines/">engines</a> that play these games, and two family pages with a
+		perfect-play explorer you can play against, <a href="/families/y/">Y</a> and
+		<a href="/families/morris/">morris</a>.
+	</p>
+</Page>
+
+<style>
+	.games tbody tr:nth-child(2n) {
+		background: none;
+	}
+	.games tr.family th {
+		background: var(--stripe);
+	}
+</style>

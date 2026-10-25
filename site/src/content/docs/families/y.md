@@ -45,12 +45,7 @@ Every legal move is coloured by its value under perfect play. Green wins, red
 loses. Switch board size with the toggle; each size is solved live in your
 browser when you select it.
 
-<iframe
-	src="https://tablebase.brianhliou.com/y.html"
-	title="Y perfect-play explorer"
-	loading="lazy"
-	style={{ width: '100%', height: '860px', border: '1px solid var(--sl-color-gray-5)', borderRadius: '8px' }}
-></iframe>
+<iframe src="https://tablebase.brianhliou.com/y.html" title="Y perfect-play explorer" loading="lazy"></iframe>
 
 ## More
 
