@@ -1,61 +1,55 @@
 ---
 title: Solved Games
-description: A structured record of which games are solved — by whom, how strongly, and what is left. Snapshot, not a live reference.
+description: A structured record of which games are solved, by whom, how strongly, and what is left.
 ---
 
 import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 export const withBase = (p) => import.meta.env.BASE_URL.replace(/\/$/, '') + p;
 
-The reference for **which games are solved** — by whom, how strongly, and what's
-left. Maintained by someone who actually solves them: the catalog is backed by an
-open-source retrograde engine that has produced first-published strong solutions
-(six men's morris; Y through side 6), with playable perfect-play explorers that
-solve in your browser.
+Which games are solved, by whom, how strongly, and what is left. Each entry
+gives the result, the strength of the solution, the size of the search space,
+who solved it and when, and the sources.
 
 ## Start here
 
 <CardGrid>
+	<LinkCard
+		title="All games"
+		href={withBase('/games/')}
+		description="Every solved game and open problem, by family."
+	/>
 	<LinkCard
 		title="Open problems"
 		href={withBase('/open-problems/')}
 		description="Games and board sizes with a published partial result and a named next step."
 	/>
 	<LinkCard
-		title="Y — the connection family"
+		title="Y: the connection family"
 		href={withBase('/families/y/')}
 		description="A scaled family with a playable perfect-play explorer that solves live in your browser."
 	/>
 	<LinkCard
-		title="Morris — the mill family"
+		title="Morris: the mill family"
 		href={withBase('/families/morris/')}
-		description="Three to twelve men's morris, with the tablebase explorer and the first published six men's solve."
-	/>
-	<LinkCard
-		title="The engine"
-		href="https://github.com/brianhliou/game-solver"
-		description="The generic open-source retrograde solver behind the catalog and the explorers."
+		description="Three to twelve men's morris, with a perfect-play tablebase explorer."
 	/>
 </CardGrid>
 
-## What makes it different
+## How it works
 
 <CardGrid>
-	<Card title="A real reference, not a list" icon="open-book">
-		Every entry states the result, how strongly it was solved, the search-space
-		size, who solved it and when, and the citations — generated from structured
-		data, so the catalog and these pages never drift.
+	<Card title="One record per game" icon="open-book">
+		Every page is generated from one YAML file holding the result, the solution
+		strength, the search-space size, who solved it and when, and the citations,
+		so the tables and the pages always agree.
 	</Card>
-	<Card title="Backed by an engine" icon="rocket">
-		A generic retrograde-analysis solver that has produced first-published strong
-		solutions, not just a curated list — with explorers you can play.
-	</Card>
-	<Card title="The open frontier" icon="puzzle">
-		Not just what's solved, but what isn't — the next targets, what each would
-		cost in time and space, and the methods proposed. A living research agenda.
+	<Card title="What's still open" icon="puzzle">
+		Board sizes and variants that remain unsolved, each with the best published
+		partial result and the next step.
 	</Card>
 	<Card title="Corrections welcome" icon="pencil">
-		Missing a game, a citation, or a wrong result? Each entry is one YAML file —
+		Missing a game, a citation, or a wrong result? Each entry is one YAML file:
 		open an issue or a pull request.
 	</Card>
 </CardGrid>

@@ -1,26 +1,19 @@
 ---
-title: Y — the connection family
-description: Y is a first-player win at every board size and can never draw. This project strongly solved sides 1–6; play perfect moves against the solver below.
+title: "Y: the connection family"
+description: Y is a first-player win at every board size and can never be drawn. Sides 1–6 are strongly solved; play perfect moves against the solver below.
 ---
 
 Y is a connection game (Schensted–Titus, 1953) played on a triangular board of
-side *n* — *n* rows, *n*(*n*+1)/2 cells. Each move places one stone; you win by
-connecting **all three sides** of the triangle with a single group. Because a
-filled board always has exactly one winner, **Y can never draw**, and a
-strategy-stealing argument shows the **first player wins at every size**. Hex
-reduces to Y, which is what makes Y worth studying in its own right.
+side *n*: *n* rows, *n*(*n*+1)/2 cells. Each move places one stone, and you win
+by connecting all three sides of the triangle with a single group. A filled
+board always has exactly one winner, so Y can never be drawn, and a
+strategy-stealing argument shows the first player wins at every size. Hex
+reduces to Y.
 
-This project strongly solved Y from side 1 through side 6 with its open-source
-[retrograde engine](https://github.com/brianhliou/game-solver) —
-computing the game-theoretic value of *every* position, not just the opening. The
-explorer below plays perfect moves for sides 3–5, solving the whole board live in
-your browser.
-
-:::note[First verified strong solution]
-No published *constructive* solution of Y existed at any board size. This is the
-first documented, draw-correct strong solution — sides 1–6 — with every value
-cross-checked by three independent solve paths. [Prior art and citations →](/games/connection/y/)
-:::
+Sides 1 through 6 were strongly solved in 2026 by Brian Liou's game-solver, a
+retrograde solve that computes the value of every position. Three
+independent solve paths agree on every value. The explorer below plays perfect moves for sides 3–5, solving each board in your browser.
+[Sources and prior art](/games/connection/y/).
 
 ## The family, by size
 
@@ -33,27 +26,22 @@ cross-checked by three independent solve paths. [Prior art and citations →](/g
 | 5 | 15 | 3,337,584 | First player wins |
 | 6 | 21 | 2,173,243,128 † | First player wins |
 
-All sides above are **strongly** solved by this project. Y is a first-player win
-at every size, with no draws.
+All six sizes are strongly solved.
 
 *† Sides 1–5 count reachable positions; side 6 is the dense-index space
 (reachable positions were not separately enumerated). The explorer solves over
 the dense index, so its side-5 count (3,492,117) is slightly higher than the
 reachable count shown here.*
 
-## Frontier — side 7
+## Open: side 7
 
-Side 6 is the largest Y solved here. **Side 7 (28 cells) is the open next
-target**, and the first that outgrows the current solver: its dense index exceeds
-2³² (an estimated ~10¹²–10¹³ positions), so it needs 64-bit indexing and a value
-table far larger than RAM. The plan is a disk-paged (external-memory) slice
-retrograde — the extension the engine is already being built toward — which would
-extend the first verified strong solution of Y one more rung. See the
-[open problem](/games/connection/y/#open-y-side-7).
+Side 7 (28 cells) is unsolved. Its dense index exceeds 2³² (an estimated
+10¹²–10¹³ positions), so a solve needs 64-bit indexing and a value table larger
+than RAM. See the [open problem](/games/connection/y/#open-y-side-7).
 
 ## Play the solver
 
-Every legal move is coloured by its value under perfect play — green wins, red
+Every legal move is coloured by its value under perfect play. Green wins, red
 loses. Switch board size with the toggle; each size is solved live in your
 browser when you select it.
 
@@ -66,5 +54,4 @@ browser when you select it.
 
 ## More
 
-- [Y data sheet](/games/connection/y/) — result, method, citations, and prior art.
-- [The engine](https://github.com/brianhliou/game-solver) — the generic retrograde solver Y is a plugin of.
+- [Y data sheet](/games/connection/y/): result, method, citations, and prior art.
