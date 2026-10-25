@@ -14,3 +14,11 @@ data/.cache/
 *.tmp
 
 # The engine, its build output and its tablebases live in the game-solver repo
+engine/
+wasm/
+explorer/
+target/
+
+# Vercel
+.vercel
+.env*

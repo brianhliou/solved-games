@@ -6,11 +6,11 @@ import starlight from '@astrojs/starlight';
 // scripts/gen-content.ts (runs on predev/prebuild).
 import gamesSidebar from './src/generated/sidebar.json' with { type: 'json' };
 
-// The single place the deploy target is set. '/solved-games' for the GitHub
-// Pages project path; change to '/' (and the site URL) when the subdomain's DNS
-// is live. Everything below derives the right asset + link paths from this.
-const SITE = 'https://brianhliou.github.io';
-const BASE = '/solved-games';
+// The single place the deploy target is set: the solvedgames.brianhliou.com
+// subdomain on Vercel, served from the root (was the GitHub Pages project path
+// '/solved-games' until 2026-10-25). Everything below derives the right asset + link paths from this.
+const SITE = 'https://solvedgames.brianhliou.com';
+const BASE = '';
 
 // Starlight prefixes its own asset/route URLs with the base, but NOT raw links
 // or `src`s written in page content. This rehype pass prefixes internal
@@ -52,15 +52,18 @@ function rehypeBasePrefix() {
 export default defineConfig({
 	site: SITE,
 	base: BASE,
-	// GitHub Pages serves the repo's docs/ directly, so build straight into it.
-	outDir: '../docs',
-	build: { emptyOutDir: true },
 	markdown: { rehypePlugins: [rehypeBasePrefix] },
 	integrations: [
 		starlight({
 			title: 'Solved Games',
+			// GA4, the same property as brianhliou.com (filter by hostname). The loader
+			// is brianhliou.com's, with its ?notrack owner opt-out.
+			head: [
+				{ tag: 'script', attrs: { async: true, src: 'https://www.googletagmanager.com/gtag/js?id=G-XX833SP2K2' } },
+				{ tag: 'script', attrs: { src: '/google-analytics.js', defer: true, 'data-ga-id': 'G-XX833SP2K2' } },
+			],
 			description:
-				'A structured record of which games are solved — by whom, how strongly, and what is left. Snapshot, not a live reference.',
+				'A structured record of which games are solved — by whom, how strongly, and what is left. Maintained, with open problems and the engines that play them.',
 			social: [
 				{ icon: 'github', label: 'GitHub', href: 'https://github.com/brianhliou/solved-games' },
 			],
