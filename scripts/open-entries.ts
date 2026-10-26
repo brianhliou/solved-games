@@ -17,7 +17,7 @@ export const BARRIERS = ['compute', 'storage', 'memory', 'branching', 'algorithm
 export const EVIDENCE = ['refereed', 'preprint', 'thesis', 'self-archived'] as const
 export const STRENGTHS = ['ultra-weak', 'weak', 'strong'] as const
 export const GENRES = [
-  'alignment', 'morris', 'connection', 'mancala', 'capture', 'chess',
+  'alignment', 'morris', 'connection', 'mancala', 'race', 'capture', 'chess',
   'hunt', 'cgt', 'shogi', 'go', 'imperfect-info', 'chance',
 ] as const
 

@@ -7,6 +7,13 @@
 # record), what, credit, url, labels (optional: solved, partial, correction,
 # unverified, self-archived, preprint, thesis).
 
+- date: "2026-07-14"
+  id: tic-tac-chec
+  what: "Tic Tac Chec strongly solved under the original 1998 rules: a draw from the empty board over 2,476,597,610 indexed positions; the outbound-only pawn reading is also a draw"
+  credit: "Brian Liou"
+  url: "https://github.com/brianhliou/tic-tac-chec/releases/tag/tablebase-v1"
+  labels: [solved, self-archived]
+
 - date: "2026-06-19"
   id: y
   what: "Y strongly solved for sides 1-6; the first player wins at every size and no position is a draw"
@@ -20,6 +27,41 @@
   credit: "Brian Liou"
   url: "https://github.com/brianhliou/game-solver"
   labels: [solved, self-archived]
+
+- date: "2026-06-12"
+  id: micro-shogi
+  what: "Micro Shogi reduced game with king, pawn and gold a side solved: a draw over 869,287,068 positions; the full game is open"
+  credit: "Brian Liou"
+  url: "https://brianhliou.com/posts/micro-shogi/"
+  labels: [partial, self-archived]
+
+- date: "2026-06-11"
+  id: chinese-checkers-3p
+  what: "Three-player Chinese checkers strongly solved on the 13-cell and 37-cell stars (1 and 3 marbles each): no forced win; any two players can force the third out"
+  credit: "Brian Liou"
+  url: "https://github.com/brianhliou/chinese-checkers-3p/releases/tag/tablebase-v1"
+  labels: [solved, self-archived]
+
+- date: "2026-06-08"
+  id: shogi4
+  what: "Shogi4 reduced game with two kings and one of each other piece solved over 2,100,849,024 positions; the full game is open"
+  credit: "Brian Liou"
+  url: "https://brianhliou.com/posts/shogi4/"
+  labels: [partial, self-archived]
+
+- date: "2026-03"
+  id: breakthrough-8x8
+  what: "Breakthrough weakly solved on the 6×6 board: the first player wins from the starting position; 8×8 is open"
+  credit: "Yngvi Björnsson, Kristinn Vikar Jónsson, Dagur Benjamínson, Steinþór Bjarni Steinarsson, Edouard Saussoy and Mark H. M. Winands"
+  url: "https://journals.sagepub.com/doi/abs/10.1177/13896911261430592"
+  labels: [partial]
+
+- date: "2026-02-07"
+  id: chess-8x8
+  what: "The first 8-piece endgame tables, for endings with at least one pair of opposing pawns on the same file, published and probeable on Lichess"
+  credit: "Marc Bourzutschky and Niklas Fiekas, with Lichess"
+  url: "https://github.com/lichess-org/op1"
+  labels: [partial]
 
 - date: "2025-11-10"
   id: konane

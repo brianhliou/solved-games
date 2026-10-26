@@ -1,0 +1,20 @@
+# Planted failure for scripts/check-games.ts: a no-forced-win result with no
+# `players` field. A game with no `players` is a two-player game, and a
+# two-player game always has a forced result, so the check must reject this.
+# Its only defect is the missing `players`; test/games-check.test.ts patches it
+# in and expects a clean pass.
+id: three-player-no-players
+name: Fixture race game (3 players)
+family: race
+genre: race
+result: no-forced-win
+result_detail: "No player can force a win alone; any two players can keep the third from winning."
+strength: strong
+method:
+  - retrograde-analysis
+year: 2026
+solved_by: "Fixture Author"
+verified: false
+sources:
+  - title: "Fixture source"
+    url: "https://example.org/fixture"

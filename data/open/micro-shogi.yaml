@@ -1,0 +1,74 @@
+id: micro-shogi
+name: Micro Shogi (4×5)
+genre: shogi
+status: open
+solved_up_to: "Reduced-material sibling games only: king and pawn a side (457,993 positions) and king, pawn and gold a side (869,287,068 positions), both draws from the start; no value for the full game"
+next_target: "Full Micro Shogi (about 5×10^14 reachable positions), after a smaller distributed rehearsal"
+barrier:
+  - compute
+  - storage
+  - memory
+barrier_detail: >
+  Reachable positions from the start are estimated at 3.0×10^14 to 6.2×10^14
+  (point estimate about 5×10^14). A dense-rank solver must index every
+  arrangement, about 3.9×10^15 slots after the left-right fold, so the working
+  value table is about 1 PB, with about 660 to 1,200 core-years of compute and
+  $40,000 to $70,000 on bare metal. Memory was already the wall on the K+P+G
+  rung: the stored-predecessor solver needed about 60.5 GiB on a 64 GB
+  machine, and a dense-rank rerun that generates predecessors on demand cut
+  that to about 6.86 GiB.
+cite: "Liou 2026"
+evidence: self-archived
+sources:
+  - title: "Brian Liou, \"Micro Shogi: A Dense-Rank Rerun Cut Memory 8.8×\" (2026-06-12): the K+P and K+P+G draws and the full-solve sizing"
+    url: "https://brianhliou.com/posts/micro-shogi/"
+    date: "2026-06-12"
+    primary: true
+  - title: "micro-shogi README"
+    url: "https://github.com/brianhliou/micro-shogi/blob/6225f4a1ff0cd69a50f27154a6b597cfdaeeef63/README.md"
+  - title: "micro-shogi rules spec: board, setup, capture-flip promotion, unrestricted drops, king-capture terminal and the repetition default"
+    url: "https://github.com/brianhliou/micro-shogi/blob/6225f4a1ff0cd69a50f27154a6b597cfdaeeef63/research/rules.md"
+  - title: "micro-shogi findings: the state-space estimate, the calibration runs and the arrangement-basis cost"
+    url: "https://github.com/brianhliou/micro-shogi/blob/6225f4a1ff0cd69a50f27154a6b597cfdaeeef63/research/findings.md"
+  - title: "Wikipedia, Micro shogi"
+    url: "https://en.wikipedia.org/wiki/Micro_shogi"
+absence_search:
+  - date: "2026-10-25"
+    looked_for: "web search for a solution, tablebase or perfect-play result for Micro Shogi"
+    found: "none; the nearest result was a 2024 estimate of the reachable positions of Minishogi (5×5), which is also unsolved"
+history:
+  - date: "2026-06-05"
+    size_or_opening: "reduced game: king and pawn a side"
+    result: "draw from the start; 135,804 wins, 2,956 losses, 319,233 draws (457,993 positions), longest mate 29 plies"
+    strength: strong
+    credit: "Brian Liou"
+    url: "https://github.com/brianhliou/micro-shogi/blob/6225f4a1ff0cd69a50f27154a6b597cfdaeeef63/research/findings.md"
+  - date: "2026-06-11"
+    size_or_opening: "reduced game: king, pawn and gold a side"
+    result: "draw from the start; 606,922,331 wins, 142,074,547 losses, 120,290,190 draws (869,287,068 positions), longest mate 155 plies; reproduced by a dense-rank rerun on 2026-06-12"
+    strength: strong
+    credit: "Brian Liou"
+    url: "https://brianhliou.com/posts/micro-shogi/"
+last_checked: "2026-10-25"
+notes: >
+  Rules as solved (the repo's rules spec, from English Wikipedia's Micro
+  shogi and Japanese Wikipedia's 五分摩訶将棋, which agree on every
+  substantive rule). A 4-file by 5-rank board. Each player has King, Gold,
+  Silver, Bishop and Pawn: the home rank reads S G B K with the King in the
+  right corner and the Pawn in front of the King. Pieces move as their shogi
+  namesakes. There is no promotion zone: a non-king piece flips to its reverse
+  whenever it captures, and flips back on its next capture (Gold and Rook,
+  Silver and Lance, Bishop and Tokin, Pawn and Knight); the King never flips.
+  A captured piece goes to the captor's hand and may be dropped on any empty
+  square with either face up; there is no two-pawn rule, no ban on a pawn
+  drop giving mate, and no last-rank restriction, so a dropped piece may have
+  no legal move. The sources give checkmate as the win; the solver uses king
+  capture, which gives the same win and loss values. Neither source states a
+  repetition rule, so positions unresolved after the win/loss fixpoint are
+  draws, with no perpetual-check rule; whether to model orthodox shogi's
+  perpetual-check loss is left open.
+  The solved rungs are reduced games with fewer pieces on the same board and
+  rules, not endgames of the real game, since drops recycle material; they
+  give no value for Micro Shogi from the start. This is the maintainer's own
+  work, available only from the micro-shogi repository and the post, so it
+  carries the self-archived mark.

@@ -1,0 +1,138 @@
+id: chinese-checkers-3p
+name: Chinese checkers (3 players, 37-cell star, 3 marbles each)
+also_known_as:
+  - "Sternhalma (3 players)"
+  - "Three-player Chinese Checkers"
+family: race
+genre: race
+players: 3
+board: >
+  Six-pointed star of hexagonal cells with corner side 2: a 19-cell central
+  hexagon plus six 3-cell corners, 37 cells. Three players start on
+  alternating corners, each with 3 marbles filling their own corner, and race
+  to the opposite corner. Also solved: the 13-cell star with corner side 1
+  (a 7-cell hexagon plus six 1-cell corners), 1 marble each.
+result: no-forced-win
+result_detail: "No forced win. From the start no player can force their own win against the other two; any two players together can force the third to lose; every player can hand the win to either opponent (all six kingmaker relations hold); and no lone player can force a draw. The start is the same on both solved boards, 37 cells with 3 marbles each and 13 cells with 1 marble each. Strongly solved: every position's answer to each of these forcing questions is known."
+strength: strong
+method:
+  - retrograde-analysis
+distance_to_result: null   # no forced result from the start; the solo forcing layer runs 53 retrograde rounds (notes).
+complexity:
+  state_space: 14841300390   # placement-by-turn states the corner lanes allow, a superset of the reachable positions (notes).
+  game_tree: null
+year: 2026
+solved_by: "Brian Liou (chinese-checkers-3p, 2026), boards with 1 and 3 marbles each"
+cite: "Liou 2026"
+verified: true
+evidence: self-archived   # the maintainer's own result, not yet replayed by anyone else
+history:
+  - date: "2026-06-11"
+    size_or_opening: "13 cells, 1 marble each"
+    result: "no forced win (3 players): no solo win from the start, any two force the third out, all six kingmaker relations hold; 1,245 reachable positions, no draws"
+    strength: strong
+    credit: "Brian Liou"
+    url: "https://github.com/brianhliou/chinese-checkers-3p/releases/tag/tablebase-v1"
+  - date: "2026-06-11"
+    size_or_opening: "37 cells, 3 marbles each"
+    result: "no forced win (3 players): same opening control as the 1-marble board, and no lone player can force a draw; 14,841,300,390 placement-by-turn states"
+    strength: strong
+    credit: "Brian Liou"
+    url: "https://github.com/brianhliou/chinese-checkers-3p/releases/tag/tablebase-v1"
+sources:
+  - title: "Brian Liou, chinese-checkers-3p README (2026): the start is pure kingmaker; control-type counts over 14,841,300,390 placement-by-turn states"
+    url: "https://github.com/brianhliou/chinese-checkers-3p/blob/61e2e28550546ec15c7a9ee14325dd686704a4dd/README.md"
+  - title: "chinese-checkers-3p rules ledger: board geometry, lanes, moves, win, draw by repetition, and the locked edge-case decisions"
+    url: "https://github.com/brianhliou/chinese-checkers-3p/blob/61e2e28550546ec15c7a9ee14325dd686704a4dd/research/rules.md"
+  - title: "chinese-checkers-3p solution concept: the battery of two-player forcing questions (solo, enable, pair-out, draw)"
+    url: "https://github.com/brianhliou/chinese-checkers-3p/blob/61e2e28550546ec15c7a9ee14325dd686704a4dd/research/solution-concept.md"
+  - title: "Brian Liou, \"3-Player Chinese Checkers, Solved\" (2026-06-15): both rungs, the opening analysis and the validation"
+    url: "https://brianhliou.com/posts/solving-three-player-chinese-checkers/"
+  - title: "Tablebase artifacts v1 (published 2026-06-11): packed tablebases for the 1-marble and 3-marble boards, with manifests"
+    url: "https://github.com/brianhliou/chinese-checkers-3p/releases/tag/tablebase-v1"
+  - title: "Nathan R. Sturtevant, \"On Strongly Solving Chinese Checkers\", Advances in Computer Games (ACG 2019): the two-player solve, boards up to 6×6 with 6 pieces"
+    url: "https://doi.org/10.1007/978-3-030-65883-0_13"
+resources:
+  tablebase:
+    - title: "tablebase-v1 release: tablebase_n1_packed.bin.zst and tablebase_n2_packed.bin.zst (14.84 GB raw for 3 marbles, about 516 MB compressed)"
+      url: "https://github.com/brianhliou/chinese-checkers-3p/releases/tag/tablebase-v1"
+  code:
+    - title: "chinese-checkers-3p: Rust solver, ranker, move generator, analyzer and Python reference engine"
+      url: "https://github.com/brianhliou/chinese-checkers-3p"
+  explorer:
+    - title: "Three-player Chinese Checkers tablebase explorer: exact queries against the full 3-marble tablebase"
+      url: "https://chinese-checkers.brianhliou.com/"
+  writeup:
+    - title: "3-Player Chinese Checkers, Solved"
+      url: "https://brianhliou.com/posts/solving-three-player-chinese-checkers/"
+notes: |
+  Rules as solved (from the repo's rules ledger, research/rules.md, and the
+  post). Three players sit on alternating corners of the star and each races
+  to the opposite corner. A player's marbles may use only their own start
+  corner, the shared central hexagon and their own goal corner: a marble may
+  not stop in or hop through either of the other two players' corners, so
+  each lane is 25 cells on the 37-cell board. On a turn a player either steps
+  one marble to an adjacent empty cell, or hops it over an adjacent marble
+  (their own or an opponent's) into the empty cell beyond. Hops chain in one
+  turn and the player may stop after any hop. Nothing is captured; hopped
+  marbles stay. Turn order is fixed: A, then B, then C. Passing is not
+  allowed, and a hop chain that ends back on its starting cell counts as a
+  pass and is forbidden (a modeling decision; the standard rules say only
+  that a player must move). A player with no legal move is skipped. The first
+  player to fill their goal corner wins and the other two lose; play stops
+  there, so there is no ranking for second place. Because the corners are
+  private, a goal can never hold another player's marble, so Sturtevant's
+  rule for a goal filled around a stranded opponent never arises. Blocking a
+  goal is legal: Sturtevant's two-player rule against a permanent block is
+  not imposed. Any repetition of a (board, player to move) state is a draw,
+  Sturtevant's two-player rule; in the solver, a state left unresolved after
+  the loopy retrograde converges is a draw for that question.
+
+  With three players a position has no single value, so the solve answers a
+  battery of two-player forcing questions over the same state graph: can a
+  player force their own win against the other two (solo); can a pair force
+  a chosen one of them to win (enable); can a pair force the third out
+  (pair-out); and can one player force a draw by repetition. Twelve questions
+  fold to four under the board's threefold rotation. The tables say what can
+  be forced, not what self-interested players would choose; a policy for how
+  a player who cannot win picks the winner is not part of this result.
+
+  On the 3-marble board the 14,841,300,390 counted states are every
+  placement the lanes allow times the player to move (4,947,100,130 under
+  rotation), a superset of the positions reachable from the start, all of
+  them labelled. Per player the solo layer has 950,015,894 wins,
+  13,890,307,418 losses, 956,384 draws and 20,694 states marked illegal (two
+  goals filled at once). By control type: 11,988,362,862 kingmaker (80.8%),
+  2,814,699,759 solo-win, 35,368,617 terminal and 2,869,152 spoiler-draw. A
+  search forward from the start finds every position through depth 8 still
+  kingmaker; at depth 9, 41 positions are solo-win and 1 is spoiler-draw. On
+  the 1-marble board there are 1,245 reachable positions (171 terminal, 834
+  solo-win, 240 kingmaker) and no draws; per player 335 wins and 910 losses.
+  The solve ran in about 7.4 hours on a rented 32-vCPU, 128 GB machine.
+
+  The checks published with it: the counting model reproduces the positions
+  column of Sturtevant's Table 1; on the 1-marble board two Python
+  retrogrades and the Rust solver agree on every state (the comparison caught
+  the return-to-origin hop bug); rotation is tested to preserve values while
+  reflection does not, because it reverses the turn order; the ranker
+  round-trips and gives the expected canonical count; and the control-type
+  counts sum to the state total. These are the author's own checks; no one
+  else has replayed the tablebase.
+
+  What this does not cover. The standard 121-hole board, with 10 marbles
+  each, is not solved for three players, nor is the next rung up, 73 cells
+  with 6 marbles each (about 1.30×10^21 placement-by-turn states, out of reach
+  of this method as run). Two players is a different result: Sturtevant
+  (2019) strongly solved two-player boards up to 6×6 with 6 pieces, every
+  size a first-player win, with 7×7 as his stated open target; this list has
+  no record of that yet. Four and six players are not computed. Neither are
+  other rule sets: the variant that lets a marble hop through another
+  player's corner, rules that forbid or penalise blocking a goal (spoiling
+  rules, or Sturtevant's no-permanent-block rule), a goal that counts as won
+  around a stranded opponent's marble, long-hop variants, play-on for second
+  place, or a rule that allows passing.
+
+  The post's prior-art search named three-player Nim (analytic), multiplayer
+  Can't Stop (approximate and stochastic) and a feasibility study of
+  three-player Otrio as the nearest work it found. The search was not
+  exhaustive and no priority is claimed.

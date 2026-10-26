@@ -1,0 +1,16 @@
+id: three-player-fixture
+name: Fixture race game (3 players)
+family: race
+genre: race
+result: no-forced-win
+players: 3
+result_detail: "No player can force a win alone; any two players can keep the third from winning."
+strength: strong
+method:
+  - retrograde-analysis
+year: 2026
+solved_by: "Fixture Author"
+verified: false
+sources:
+  - title: "Fixture source"
+    url: "https://example.org/fixture"

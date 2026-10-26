@@ -10,7 +10,8 @@ One YAML file per solved game, at `games/<id>.yaml`.
 | `family` | yes | abstract, chess-variant, shogi-variant, connection, go, mancala, combinatorial, imperfect-info, … |
 | `genre` | yes | grouping for the rendered tables; one of the slugs in **Genres** below. Distinct from `family` (a looser provenance tag) — `genre` is the display axis. |
 | `board` | no | size or shape (e.g. 3×4, 8×8) |
-| `result` | yes | `first-player-win` \| `second-player-win` \| `draw` |
+| `result` | yes | `first-player-win` \| `second-player-win` \| `draw` \| `no-forced-win`. `no-forced-win` is for a game of three or more players where no player can force a win alone against the rest; it needs `players` ≥ 3, and the coalition result (who can force what, together or alone) goes in `result_detail` in plain words |
+| `players` | no | integer ≥ 2; the number of players, default 2. The site shows it when it is more than 2 |
 | `result_detail` | no | human-readable, e.g. "Gote (second player) wins" |
 | `strength` | yes | `ultra-weak` \| `weak` \| `strong` |
 | `approximate` | no | bool; `true` when the solution is approximate rather than exact — e.g. an imperfect-information game solved to within an exploitability bound (an ε-Nash / "essentially weakly solved" result), not a discrete value |
@@ -30,6 +31,12 @@ One YAML file per solved game, at `games/<id>.yaml`.
 | `notes` | no | anything that doesn't fit a field |
 
 Keep `verified: false` until a maintainer confirms result + year + citation.
+
+`npm run check` (`scripts/check-games.ts`) rejects a game record with a
+missing required field, a `result`, `strength` or `genre` outside the lists
+here, a `players` that is not an integer ≥ 2, or a `no-forced-win` result
+without `players` ≥ 3. The planted failure it must catch is
+`test/fixtures/games-bad/`.
 
 ## Open entries
 
@@ -105,6 +112,7 @@ filter on the site). The slugs and their display order (familiar → frontier):
 | `morris` | Morris / mill family |
 | `connection` | Connection games |
 | `mancala` | Mancala |
+| `race` | Race games |
 | `capture` | Capture & board control |
 | `chess` | Chess & chess variants |
 | `hunt` | Hunt & unequal forces |

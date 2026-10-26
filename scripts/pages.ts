@@ -28,7 +28,10 @@ export interface Game {
   family: string
   genre: string
   board?: string
-  result: 'first-player-win' | 'second-player-win' | 'draw'
+  // `no-forced-win`: a game of three or more players in which no player can
+  // force a win alone; the coalition detail goes in `result_detail`.
+  result: 'first-player-win' | 'second-player-win' | 'draw' | 'no-forced-win'
+  players?: number // default 2
   result_detail?: string
   strength: 'ultra-weak' | 'weak' | 'strong'
   approximate?: boolean
@@ -77,6 +80,7 @@ export const GENRE_ORDER: { slug: string; title: string }[] = [
   { slug: 'morris', title: 'Morris / mill family' },
   { slug: 'connection', title: 'Connection games' },
   { slug: 'mancala', title: 'Mancala' },
+  { slug: 'race', title: 'Race games' },
   { slug: 'capture', title: 'Capture & board control' },
   { slug: 'chess', title: 'Chess & chess variants' },
   { slug: 'hunt', title: 'Hunt & unequal forces' },
@@ -100,7 +104,11 @@ const RESULT_PHRASE: Record<Game['result'], string> = {
   'first-player-win': 'First player wins',
   'second-player-win': 'Second player wins',
   draw: 'Draw',
+  'no-forced-win': 'No forced win',
 }
+
+/** " (3 players)" for a game of more than two players, else nothing. */
+const playersNote = (g: Game) => (g.players && g.players > 2 ? ` (${g.players} players)` : '')
 
 const METHOD_LABEL: Record<string, string> = {
   'retrograde-analysis': 'Retrograde analysis',
@@ -252,7 +260,7 @@ class Index {
 const SOLVED_HEADER =
   '| Game | Result under perfect play | Strength | Method | Year | Source |\n|---|---|---|---|---|---|'
 function solvedRow(g: Game, depth: number): string {
-  let result = RESULT_PHRASE[g.result]
+  let result = RESULT_PHRASE[g.result] + playersNote(g)
   if (g.approximate) result += ' (ε-Nash)'
   const strength = cap(g.strength) + (g.approximate ? ', approx.' : '')
   return `| [${cell(g.name)}](${gamePath(g.id, depth)}) | ${result} | ${strength} | ${primaryMethod(g)} | ${g.year ?? '—'} | ${cite(g)} |`
@@ -273,7 +281,7 @@ function historyOf(g: Game): { rows: HistoryRow[]; derived: boolean } {
     rows: [{
       date: g.year ? String(g.year) : '—',
       size_or_opening: size,
-      result: RESULT_PHRASE[g.result].toLowerCase() + (g.approximate ? ' (ε-Nash)' : ''),
+      result: RESULT_PHRASE[g.result].toLowerCase() + playersNote(g) + (g.approximate ? ' (ε-Nash)' : ''),
       strength: g.strength,
       credit: authorsOf(g),
       url: primarySource(g).url,
@@ -334,6 +342,7 @@ function gamePage(g: Game, ix: Index): string {
 
   const facts: [string, string][] = [
     ['Result', RESULT_PHRASE[g.result] + (g.approximate ? ' (ε-Nash)' : '')],
+    ...(g.players && g.players > 2 ? [['Players', String(g.players)] as [string, string]] : []),
     ['Strength', cap(g.strength) + (g.approximate ? `, approximate${g.epsilon ? ` (${g.epsilon})` : ''}` : '')],
     ['Method', (g.method ?? []).map(labelMethod).join(', ') || '—'],
     ['Year', g.year ? String(g.year) : '—'],

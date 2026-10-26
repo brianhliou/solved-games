@@ -4,7 +4,7 @@
 
 A game or board size earns an entry here when a published partial result exists and the next step is named. A game that is merely unsolved stays out. Each problem links its page, which carries the full history and sources.
 
-15 open, 41 solved.
+17 open, 43 solved.
 
 | Problem | Status | Solved so far | Next target | Barrier | Latest result | Last checked |
 |---|---|---|---|---|---|---|
@@ -20,6 +20,8 @@ A game or board size earns an entry here when a published partial result exists 
 | [International draughts (10×10)](../games/international-draughts-10x10.md) | Partially solved (unverified) | every ending with up to 7 pieces (2007); 8-piece endings split 4–4 or 5–3 (2009); every 8-piece ending and part of 9 and 10 (self-reported, 2026) | every 10-piece ending with five pieces a side; 18.9% of its non-capture positions are resolved | compute, storage | [Grimminck 2026](https://damforum.nl/viewtopic.php?t=8907) (2026-10-19)\* | 2026-10-25 |
 | [Kōnane (8×7 and 8×8)](../games/konane.md) | Smaller board solved | All boards up to 7×7 weakly solved; all boards up to 6×6 strongly solved | 8×7 | compute | [Siefke 2025](https://doc.neuro.tu-berlin.de/bachelor/2026-02-23-BA-BenediktSiefke.pdf) (2025-11-10) | 2026-10-17 |
 | [Lines of Action (8×8)](../games/lines-of-action-6x6.md#open-lines-of-action-8x8) | Smaller board solved | 6×6 starting position: Black wins with b6-b4 or c6-e4 (2008) | The standard 8×8 start under Computer Olympiad rules, with 7×7 as an intermediate target | compute, memory | [Winands 2008](https://dke.maastrichtuniversity.nl/m.winands/documents/LoaNote.pdf) (2008-12) | 2026-10-25 |
+| [Micro Shogi (4×5)](../games/micro-shogi.md) | Open | Reduced-material sibling games only: king and pawn a side (457,993 positions) and king, pawn and gold a side (869,287,068 positions), both draws from the start; no value for the full game | Full Micro Shogi (about 5×10^14 reachable positions), after a smaller distributed rehearsal | compute, storage, memory | [Liou 2026](https://brianhliou.com/posts/micro-shogi/) (2026-06-12)\* | 2026-10-25 |
+| [Shogi4 (4×4, Oca Studios)](../games/shogi4.md) | Open | Reduced-material sibling games only: the largest, two kings plus one of each other piece (2,100,849,024 positions), strongly solved; no value for the full game from the start | Full Shogi4 from the start: about 3×10^13 reachable positions over a dense-rank index of 410,297,064,507,360 slots | compute, storage | [Liou 2026](https://brianhliou.com/posts/shogi4/) (2026-06-08)\* | 2026-10-25 |
 | [Tak (4×4)](../games/tak-4x4.md) | Smaller board solved | 3×3: first player (White) forced win | 4×4 | storage | [Marrow 2025](https://arxiv.org/abs/2509.05844) (2025-09-06) | 2026-10-17 |
 | [Xiangqi (Chinese chess)](../games/xiangqi-9x10.md) | Partially solved (unverified) | selected endgames: 8,705 material combinations, up to 13 pieces, in a public database | every ending up to a fixed piece count, as chess has through 7 pieces | compute, memory | [Chinese Chess Cloud Database](https://www.chessdb.cn/egtb_info.html)\* | 2026-10-25 |
 | [Y (side 7)](../games/y.md#open-y-side-7) | Smaller board solved | Sides 1-6 strongly solved; first player wins at every size | Side 7 (28 cells), slice by slice | memory, storage | [Liou 2026](https://github.com/brianhliou/game-solver) (2026-06-19)\* | 2026-10-17 |

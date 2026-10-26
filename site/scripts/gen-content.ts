@@ -32,7 +32,10 @@ const RESULT_LABEL: Record<string, string> = {
   "first-player-win": "First player wins",
   "second-player-win": "Second player wins",
   draw: "Draw",
+  "no-forced-win": "No forced win",
 };
+/** " (3 players)" for a game of more than two players, else nothing. */
+const playersNote = (g: { players?: number }) => (g.players && g.players > 2 ? ` (${g.players} players)` : "");
 
 // Cross-links from a game page up to its family hub (a hand-written page with an explorer).
 const FAMILY_BY_ID: Record<string, { label: string; href: string }> = {
@@ -101,7 +104,7 @@ function gameDescription(id: string): string {
     const e = data.open.find((x) => x.id === id)!;
     return `${e.name}: an open problem. Solved so far: ${e.solved_up_to}`;
   }
-  const result = RESULT_LABEL[g.result] ?? g.result;
+  const result = (RESULT_LABEL[g.result] ?? g.result) + playersNote(g);
   return `${g.name}: ${result.toLowerCase()} — ${g.strength}${g.approximate ? ", approximate" : ""} solution${g.year ? ` (${g.year})` : ""}.`;
 }
 
@@ -152,7 +155,7 @@ const families = GENRE_ORDER.filter((f) => verified.some((g) => g.genre === f.sl
     .map((g) => ({
       name: g.name,
       href: routeOf(`games/${g.id}.md`)!,
-      result: RESULT_LABEL[g.result] ?? g.result,
+      result: (RESULT_LABEL[g.result] ?? g.result) + playersNote(g),
       strength: STRENGTH[g.strength] + (g.approximate ? " (approximate)" : ""),
       cite: citeLabel(g),
       selfArchived: g.evidence === "self-archived",

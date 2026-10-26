@@ -1,0 +1,113 @@
+<!-- GENERATED from data/games/tic-tac-chec.yaml by `npm run build` (scripts/build-readme.ts). Edit the data, not this page. -->
+
+# Tic Tac Chec (4×4, original 1998 rules)
+
+[Alignment & m,n,k games](../families/alignment.md) · [all families](../README.md#families) · [data](../data/games/tic-tac-chec.yaml)
+
+*Also known as: Tic-Tac-Chec, Tic Tac Chec (Dream Green, 1998).*
+
+Draw. Strongly solved under the original 1998 Dream Green rules: the empty board is a draw with perfect play, all 64 first placements keep the draw, and the value and distance to the end of every forced win or loss are known for all 2,476,597,610 indexed positions. The conservative reading in which a returning pawn cannot capture is also a draw.
+
+| | |
+|---|---|
+| Result | Draw |
+| Strength | Strong |
+| Method | Retrograde analysis |
+| Year | 2026 |
+| Solved by | Brian Liou (tic-tac-chec, 2026), original 1998 rules |
+| Source | [Liou 2026](https://github.com/brianhliou/tic-tac-chec/blob/4346eb61ff283c568ea4e0971fb85f5e419838ca/research/runs/production-2026-07-13/summary.md)\* |
+| Board | 4×4 board, empty at the start. Each player owns one pawn, knight, bishop and rook. White moves first. For the first six plies players alternate placing a piece from hand on any empty square; after both have placed three, a turn is one placement or one move. Pieces move and capture as in chess, with no kings and no check; a captured piece goes back to its owner's hand. Four of one player's pieces in a rank, file or long diagonal wins. |
+| State space | 2,476,597,610 |
+| Evidence | self-archived\* |
+
+\* Self-archived: the result is available only from its authors (a repository, a post, a deposit), not yet refereed, formally verified or reproduced by someone else. The mark comes off when one of those happens. It applies to this repo's own results too.
+
+## Solution history
+
+| Date | Size or opening | Result | Strength | Credit | Source |
+|---|---|---|---|---|---|
+| 2026-07-13 | original 1998 rules, returning pawns capture in their direction of travel | draw from the empty board; all 64 first placements draw | Strong | Brian Liou | [source](https://github.com/brianhliou/tic-tac-chec/blob/4346eb61ff283c568ea4e0971fb85f5e419838ca/research/runs/production-2026-07-13/summary.md) |
+| 2026-07-13 | original 1998 rules, returning pawns cannot capture | draw from the empty board; 16,529,908 post-opening positions change value against the canonical reading | Strong | Brian Liou | [source](https://github.com/brianhliou/tic-tac-chec/blob/4346eb61ff283c568ea4e0971fb85f5e419838ca/research/runs/outbound-only-2026-07-13/summary.md) |
+
+_Superseded rows stay in the table._
+
+## References
+
+- [Brian Liou, tic-tac-chec canonical post-opening solve (2026-07-13): 184,895,598 wins, 24,178,920 losses, 2,253,286,227 draws; the empty board is a draw; independent pull audit](https://github.com/brianhliou/tic-tac-chec/blob/4346eb61ff283c568ea4e0971fb85f5e419838ca/research/runs/production-2026-07-13/summary.md)
+- [tic-tac-chec rules ledger: the 1998 Dream Green rules, the formalization the solver uses, and the returning-pawn ambiguity](https://github.com/brianhliou/tic-tac-chec/blob/4346eb61ff283c568ea4e0971fb85f5e419838ca/research/rules.md)
+- [tic-tac-chec outbound-only variant solve (2026-07-13): also a draw](https://github.com/brianhliou/tic-tac-chec/blob/4346eb61ff283c568ea4e0971fb85f5e419838ca/research/runs/outbound-only-2026-07-13/summary.md)
+- [tic-tac-chec findings: the prior-art search (GamesmanClassic mttc.c, cutalion/tic-tac-chec, a 2023 Patras thesis)](https://github.com/brianhliou/tic-tac-chec/blob/4346eb61ff283c568ea4e0971fb85f5e419838ca/research/findings.md)
+- [Brian Liou, "Tic Tac Chec: The Rules, and the Solved Game" (2026-07-14): the result, the drawing line and the variant table](https://brianhliou.com/posts/solving-tic-tac-chec/)
+- [Don Green, Tic Tac Chec, Dream Green printable rules sheet (1998)](https://redcanoe.weebly.com/uploads/7/4/5/0/7450428/ttcwb2.pdf)
+- [GamesCrafters (UC Berkeley), Tic Tac Chec rules page, citing the Dream Green instructions (1998)](https://gamescrafters.berkeley.edu/site-legacy-archive-sp20/games.php?game=tictacchec)
+
+## Resources
+
+**Tablebases**
+
+- [tablebase-v1 release (2026-07-14): post-opening-travel.ttb, the compact canonical post-opening tablebase, with its SHA-256](https://github.com/brianhliou/tic-tac-chec/releases/tag/tablebase-v1)
+
+**Code**
+
+- [tic-tac-chec: Rust dense-rank retrograde solver, audits, probe and strategic report](https://github.com/brianhliou/tic-tac-chec)
+
+**Explorers**
+
+- [Tic Tac Chec tablebase explorer: every legal move labelled win, draw or loss with its distance](https://tic-tac-chec.brianhliou.com/)
+
+**Write-ups**
+
+- [Tic Tac Chec: The Rules, and the Solved Game](https://brianhliou.com/posts/solving-tic-tac-chec/)
+
+## Notes
+
+Rules as solved (the repo's rules ledger, research/rules.md, formalizing the
+1998 Dream Green sheet). Each player owns exactly one pawn, knight, bishop
+and rook. The opening is placements only and ends once both players have
+placed three pieces, after six plies; captures never lock movement again.
+After that a turn is exactly one placement (any piece in hand to any empty
+square, never a capture) or one move. Rook, bishop and knight move and
+capture as in chess; there are no kings and no check. A pawn moves one
+square straight ahead into an empty square, with no two-square first move,
+and captures one square diagonally. A pawn carries a direction: it reverses
+on reaching the far rank and again on returning to its first rank, and a
+pawn redeployed from hand points toward the opponent. A captured piece goes
+back to its owner's hand and can be placed on the owner's next turn. A move
+that completes the mover's four in a row ends the game at once. The printed
+rules give no repetition limit, so positions that cycle forever are scored
+as draws, the standard value for an unbounded loopy game.
+
+The sheet leaves one rule open: whether a pawn on its way back can capture.
+The canonical solve uses the travel-direction reading, in which a pawn
+captures diagonally in whichever direction it is moving. The outbound-only
+reading, in which a returning pawn cannot capture, was also solved: it
+removes 426,173,880 post-opening moves, changes the value of 16,529,908
+dense post-opening positions, and leaves the empty board a draw. No
+designer or publisher ruling on this point has been found. The engine also
+supports a third reading (a returning pawn moves toward home but captures
+toward the opponent), which is not solved.
+
+Counts. After the opening there are 2,462,360,745 dense states, normalized
+by colour swap and 180-degree rotation: 184,895,598 wins, 24,178,920 losses
+and 2,253,286,227 draws (91.5%) for the player to move. The forced-placement
+opening adds 14,236,865 states, all drawn through ply 3. The longest forced
+win after the opening is 41 plies. A separate pull audit regenerated all
+28,730,418,180 successor edges and checked the minimax equation at every
+state without using the solver's predecessors or counters, and an
+independently written engine replayed every opening state. These are the
+author's own checks; no one else has replayed the tablebase.
+
+Not covered: the 2025 Bobby Fischer reissue, which changes pawn movement
+and when captures begin, is a separate rule set that needs its full
+rulebook and has not been solved. Board sizes other than 4×4 are not
+solved here; GamesCrafters' GamesmanClassic mttc.c (at commit ca21c5f)
+plays a 3×3 bishop, knight and rook game with no pawn, not the commercial
+game.
+
+The repo's prior-art search found no earlier published strong or weak
+solution, proof of the start value or public tablebase. The nearest work it
+names is GamesmanClassic mttc.c, Alexander Glushkov's playable Go engine
+with an AlphaZero-style bot (cutalion/tic-tac-chec), and a 2023 University
+of Patras thesis by Ioannis Panethymitakis whose metadata claims no
+exhaustive solution. The search was not exhaustive and no priority is
+claimed.
