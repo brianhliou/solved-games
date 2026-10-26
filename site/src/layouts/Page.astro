@@ -32,7 +32,7 @@ const section = path.startsWith('/open-problems') ? 'open' : path.startsWith('/e
 	</head>
 	<body>
 		<header>
-			<a class="site" href="/">Solved Games</a>
+			<a class="site" href="/"><img src="/favicon.svg" alt="" width="20" height="20" />Solved Games</a>
 			<nav>
 				<a href="/" aria-current={section === 'games' ? 'page' : undefined}>Games</a>
 				<a href="/open-problems/" aria-current={section === 'open' ? 'page' : undefined}>Open problems</a>
@@ -107,6 +107,13 @@ const section = path.startsWith('/open-problems') ? 'open' : path.startsWith('/e
 	header .site {
 		font-weight: 600;
 		color: var(--text);
+	}
+	/* The logo is the favicon. */
+	header .site img {
+		width: 20px;
+		height: 20px;
+		margin-right: 8px;
+		vertical-align: -4px;
 	}
 	nav {
 		display: flex;
