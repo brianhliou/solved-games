@@ -1,0 +1,19 @@
+id: prsboxes
+name: PRsBoxes
+kind: engine
+games: [dots-and-boxes]
+author: "Paul R. Stevens"
+license: "Not stated on the inspected project page"
+strength:
+  kind: match-result
+  claim: "Stevens reports PRsBoxes defeating Dabble 44–16 in a 60-game tournament on a board described as 6×6, using five seconds per move."
+  url: "https://www.dianneandpaul.net/PRsBoxes/"
+url: "https://www.dianneandpaul.net/PRsBoxes/"
+last_checked: "2026-10-25"
+notes: >-
+  Windows executable linked directly from the author's page.
+  The author describes nimstring analysis, search and an opening book.
+  His separate perfect-5×5 statement leaves the dot-versus-box convention
+  unclear and is not treated as evidence of perfect play on 5×5 boxes.
+  He explicitly acknowledges possible undetected hash collisions.
+  An explicit software license and support for 5×6 boxes were not established.

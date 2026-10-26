@@ -36,6 +36,12 @@ Searches for newer work:
 
 _Superseded rows stay in the table._
 
+## Engines
+
+- [BGBlitz](../engines/bgblitz.md) (engine): competition result, [source](https://www.bgblitz.com/olympiad_2016.html)
+- [eXtreme Gammon](../engines/extreme-gammon.md) (engine): rating, [source](https://www.extremegammon.com/studies.aspx)
+- [GNU Backgammon](../engines/gnu-backgammon.md) (engine): competition result, [source](https://www.bgblitz.com/olympiad_2006.html)
+
 ## References
 
 - [Hugh Sconyers, email reproduced with permission by Phil Simborg: extended race databases and further targets](https://www.bgonline.org/forums/webbbs_config.pl?noframes%3Bread=166254) (2014-09-03)

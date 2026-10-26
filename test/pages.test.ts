@@ -6,7 +6,7 @@ import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { loadData, render, num } from '../scripts/pages.ts'
+import { loadData, render, num, licenseShort } from '../scripts/pages.ts'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const data = loadData(ROOT)
@@ -36,9 +36,31 @@ test('every relative link in a generated page resolves to a generated page or a 
 test('the engines page lists every engine with its strength source', () => {
   const page = out.pages.get('pages/engines.md')!
   for (const e of data.engines) {
-    assert.match(page, new RegExp(`<a id="engine-${e.id}"></a>`), e.id)
+    assert.equal(page.split(`<a id="engine-${e.id}"></a>`).length, 2, `${e.id}: one anchor, so old links land`)
     assert.ok(page.includes(`(${e.strength.url})`), `${e.id} strength source`)
+    assert.ok(page.includes(`](../engines/${e.id}.md)`), `${e.id} links its page`)
   }
+})
+
+test('every engine has a page with its claim, source and full license, linked from its games', () => {
+  for (const e of data.engines) {
+    const page = out.pages.get(`engines/${e.id}.md`)
+    assert.ok(page, e.id)
+    assert.ok(page.includes(`(${e.strength.url})`), `${e.id} source`)
+    assert.ok(page.includes(e.license.replace(/\s+/g, ' ').replace(/\|/g, '\\|')), `${e.id} license`)
+    for (const g of e.games) {
+      const host = out.pages.get(`games/${g}.md`) ?? [...data.open].filter((o) => o.id === g).map((o) => out.pages.get(`games/${o.related_game ?? o.id}.md`))[0]
+      assert.ok(host?.includes(`](../engines/${e.id}.md)`), `${g} links ${e.id}`)
+    }
+  }
+})
+
+test('the license column names the license or the kind of terms', () => {
+  assert.equal(licenseShort('GPL-3.0-or-later (source notices and COPYING)'), 'GPL-3.0-or-later')
+  assert.equal(licenseShort('MIT, except separately licensed third-party components identified in LICENSE.'), 'MIT')
+  assert.equal(licenseShort('Not specified in the current repository README or release help'), 'Not stated')
+  assert.equal(licenseShort('Commercial proprietary software; 14-day fully enabled trial'), 'Proprietary')
+  assert.equal(licenseShort('Free to use indefinitely; redistribution and modification terms not stated'), 'Freeware')
 })
 
 test('the README index carries counts and links, not the per-family tables', () => {

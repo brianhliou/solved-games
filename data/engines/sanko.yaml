@@ -1,0 +1,23 @@
+id: sanko
+name: Sanko
+kind: engine
+games: [go-5x5, go-6x6]
+other_games:
+  - "Go on other rectangular boards with at most 49 intersections"
+author: "Sami Kharma (Cargo.toml)"
+license: "Apache-2.0"
+strength:
+  kind: perfect-play
+  claim: "Kharma and Schintke (2026) report that Sanko solves 5×5 Go under positional superko in 16 minutes using six threads."
+  url: "https://arxiv.org/abs/2610.29414"
+url: "https://github.com/cookiephone/sanko"
+last_checked: "2026-10-25"
+notes: >
+  Proof-search software, classified as engine because it searches rather than
+  playing from a supplied solution database. The CLI accepts move histories and
+  reports a winning move when it proves the side to move wins. The repository
+  documents 6×6 searches, but supplies no completed empty-board 6×6 solution.
+  Rules are positional superko, area scoring and no suicide; draws count as
+  White wins for the CLI's threshold queries. Author and license are stated in
+  [Cargo.toml](https://github.com/cookiephone/sanko/blob/master/Cargo.toml).
+  The strength source is a preprint.

@@ -27,6 +27,12 @@ Draw with perfect play by both sides (Black to play and draw from the standard o
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
+## Engines
+
+- [Cake](../engines/cake.md) (engine): competition result, [source](https://www.fierz.ch/cake186.php)
+- [GuiNN Checkers](../engines/guinn-checkers.md) (engine): third-party assessment, [source](https://www.fierz.ch/checkers.htm)
+- [Kingsrow](../engines/kingsrow.md) (engine): competition result, [source](https://www.uwccpi2023.draughtsprograms.eu/conclusion.html)
+
 ## References
 
 - [Checkers Is Solved — J. Schaeffer et al., Science 317, 1518–1522 (2007)](https://www.science.org/doi/10.1126/science.1144079)

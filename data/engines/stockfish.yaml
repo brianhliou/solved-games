@@ -1,0 +1,21 @@
+id: stockfish
+name: Stockfish
+kind: engine
+games: [chess-8x8]
+other_games: ["Chess960"]
+author: "The Stockfish developers; founders Tord Romstad, Marco Costalba, Joona Kiiski and Gary Linscott"
+license: "GPL-3.0"
+strength:
+  kind: competition
+  claim: "Chessdom reports that Stockfish won TCEC Season 29 by defeating Reckless 59–41 in the 100-game Superfinal."
+  url: "https://www.chessdom.com/stockfish-claims-its-19th-tcec-title-defeating-reckless-in-the-superfinal/"
+url: "https://github.com/official-stockfish/Stockfish"
+last_checked: "2026-10-25"
+notes: >-
+  The official-stockfish project provides source and downloadable binaries.
+  The cited competition used development build dev-20260318.
+  Credits come from
+  [AUTHORS](https://github.com/official-stockfish/Stockfish/blob/master/AUTHORS);
+  the [README](https://github.com/official-stockfish/Stockfish#terms-of-use)
+  states GPL version 3.
+  Chess960 support is exposed through the UCI_Chess960 option.

@@ -1,0 +1,24 @@
+id: gnu-backgammon
+name: "GNU Backgammon"
+kind: engine
+games: [backgammon]
+other_games:
+  - "Nackgammon"
+  - "Hypergammon (one checker)"
+  - "Hypergammon (two checkers)"
+  - "Hypergammon (three checkers)"
+author: "Joseph Heled, Jim Segrave, Michael Petch, Oystein Johansen, Joern Thyssen, Philippe Michel, Jonathan Kinsey, Gary Wong, David Montgomery and Christian Anthon"
+license: "GPL-3.0-or-later"
+strength:
+  kind: competition
+  claim: "Berger's 2006 Olympiad report records GNU Backgammon winning the backgammon event against BGBlitz by three matches to one."
+  url: "https://www.bgblitz.com/olympiad_2006.html"
+url: "https://www.gnu.org/software/gnubg/"
+last_checked: "2026-10-25"
+notes: >
+  Author names were read from AUTHORS in the project's 1.08.003 source release;
+  gnubg.c explicitly permits GPL version 3 or later.
+  The source also implements Nackgammon and one-, two- and three-checker
+  Hypergammon. The official site provides source and a Windows installer,
+  and documents command-line and GTK interfaces.
+  The competition result concerns version 0.15 and a two-program event.

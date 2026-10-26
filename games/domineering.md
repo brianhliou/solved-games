@@ -45,6 +45,10 @@ Searches for newer work:
 
 - 2026-10-25: looked for Domineering 12x12 solved; Domineering 12 × 12 solved; Domineering solved 2024 2025 2026. Also checked the Domineering section of Nowakowski's 2025 Unsolved Problems in Combinatorial Games.; found No solution of the empty 12×12 square or a larger square was found. The survey cites the 2016 11×11 result and rectangular-board work. Search results for 12×12 included playing programs and playable variants, without a starting-position proof..
 
+## Engines
+
+- [Obsequi](../engines/obsequi.md) (solver): perfect play, [source](https://doi.org/10.3233/ICG-2002-25202)
+
 ## References
 
 - [11 x 11 Domineering Is Solved: The First Player Wins (J. W. H. M. Uiterwijk, Computers and Games 2016 / arXiv:1602.05404)](https://arxiv.org/abs/1602.05404)

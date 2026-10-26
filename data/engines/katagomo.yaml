@@ -1,0 +1,29 @@
+id: katagomo
+name: KataGomo
+kind: engine
+games: [gomoku-freestyle, renju]
+other_games:
+  - "Standard Gomoku"
+  - "Caro"
+author: "HZY (hzyhhzy), based on KataGo by David J. Wu and contributors"
+license: "MIT for repository content except separately licensed third-party components."
+strength:
+  kind: competition
+  claim: "Gomocup's 2026 report places KataGomo second in freestyle 15×15, freestyle 20×20, standard Gomoku and Renju."
+  url: "https://gomocup.org/results/gomocup-result-2026/"
+url: "https://github.com/hzyhhzy/KataGomo/tree/Gom2024"
+last_checked: "2026-10-25"
+notes: >
+  This record covers the Gomoku/Renju engine, rather than every game-specific
+  branch in the umbrella repository. The
+  [public release](https://github.com/hzyhhzy/KataGomo/releases/tag/Gomoku_20250206)
+  includes Freestyle, Standard, Renju and Caro models; Gomocup also offers its
+  2026 tournament binary through the
+  [download page](https://gomocup.org/download-gomoku-ai/).
+  The developer uses the name HZY on the
+  [project home page](https://hzyhhzy.github.io/); upstream authors and license
+  exceptions are documented in
+  [CONTRIBUTORS](https://github.com/hzyhhzy/KataGomo/blob/Gom2024/CONTRIBUTORS)
+  and [LICENSE](https://github.com/hzyhhzy/KataGomo/blob/Gom2024/LICENSE).
+  Rapfi already covers both catalog ids; together with AlphaGomoku these
+  fill the three-engine cap, so Yixin and Embryo are omitted.

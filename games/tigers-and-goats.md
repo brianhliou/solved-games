@@ -27,6 +27,10 @@ Draw under optimal play from the standard start (4 tigers on the corners, Goat t
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
+## Engines
+
+- [GamesmanUni](../engines/gamesmanuni.md) (solver): perfect play, [source](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2023/Archive/EECS-2023-186.pdf)
+
 ## References
 
 - [Lim Yew Jin — On Forward Pruning in Game-Tree Search (PhD thesis, National University of Singapore, 2007), Chapters 4–5 and §5.3.3](https://web.archive.org/web/20090325093223if_/http://www.yewjin.com/papers/PhDThesisLimYewJin.pdf)

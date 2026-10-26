@@ -26,6 +26,10 @@ The initial position is drawn with perfect play.
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
+## Engines
+
+- [ostle_solver](../engines/ostle-solver.md) (solver): perfect play, [source](https://pmc.ncbi.nlm.nih.gov/articles/PMC10557503/)
+
 ## References
 
 - [Strongly solved Ostle: calculating a strong solution helps compose high-quality puzzles for recent games (PeerJ Computer Science, 12 September 2023)](https://pmc.ncbi.nlm.nih.gov/articles/PMC10557503/)

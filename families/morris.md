@@ -2,7 +2,7 @@
 
 # Morris / mill family
 
-[All families](../README.md#families) · 5 solved · 0 open · 1 engines
+[All families](../README.md#families) · 5 solved · 0 open · 2 engines
 
 ## Solved
 
@@ -18,4 +18,5 @@
 
 ## Engines
 
-- [Malom](../pages/engines.md#engine-malom) (solver): perfect play, [source](https://arxiv.org/abs/1408.0032)
+- [Malom](../engines/malom.md) (solver): perfect play, [source](https://arxiv.org/abs/1408.0032)
+- [Sanmill](../engines/sanmill.md) (solver): perfect play, [source](https://github.com/calcitem/Sanmill/wiki/Perfect-Database)

@@ -2,7 +2,7 @@
 
 # Alignment & *m,n,k* games
 
-[All families](../README.md#families) · 10 solved · 1 open · 3 engines
+[All families](../README.md#families) · 10 solved · 1 open · 10 engines
 
 ## Solved
 
@@ -29,6 +29,13 @@
 
 ## Engines
 
-- [Connect 4 Game Solver](../pages/engines.md#engine-pons-connect4) (solver): perfect play, [source](http://blog.gamesolver.org/)
-- [pentago (Irving)](../pages/engines.md#engine-pentago) (solver): perfect play, [source](https://arxiv.org/abs/1404.0743)
-- [Rapfi](../pages/engines.md#engine-rapfi) (engine): competition result, [source](https://gomocup.org/results/gomocup-result-2025/)
+- [AlphaGomoku (Kozarzewski)](../engines/alphagomoku.md) (engine): competition result, [source](https://gomocup.org/results/gomocup-result-2026/)
+- [Cloudict](../engines/cloudict.md) (engine): competition result, [source](https://www.game-ai-forum.org/icga-tournaments/tournament.php?id=244)
+- [Connect 4 Game Solver](../engines/pons-connect4.md) (solver): perfect play, [source](http://blog.gamesolver.org/)
+- [Galvanise Zero (gzero)](../engines/galvanise-zero.md) (engine): competition result, [source](https://github.com/richemslie/galvanise_zero)
+- [GamesmanUni](../engines/gamesmanuni.md) (solver): perfect play, [source](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2023/Archive/EECS-2023-186.pdf)
+- [gobblet (Possibly Wrong)](../engines/gobblet-solver.md) (solver): perfect play, [source](https://possiblywrong.wordpress.com/2024/06/11/strongly-solving-gobblet-gobblers-using-retrograde-analysis/)
+- [KataConnect6](../engines/kataconnect6.md) (engine): self-reported, [source](https://github.com/hzyhhzy/KataGomo/blob/master/README_old.md)
+- [KataGomo](../engines/katagomo.md) (engine): competition result, [source](https://gomocup.org/results/gomocup-result-2026/)
+- [pentago (Irving)](../engines/pentago.md) (solver): perfect play, [source](https://arxiv.org/abs/1404.0743)
+- [Rapfi](../engines/rapfi.md) (engine): competition result, [source](https://gomocup.org/results/gomocup-result-2025/)

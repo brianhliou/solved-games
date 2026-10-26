@@ -1,0 +1,23 @@
+id: extreme-gammon
+name: "eXtreme Gammon"
+kind: engine
+games: [backgammon]
+other_games: ["Nackgammon", "Hypergammon", "Longgammon"]
+author: "Xavier Dufaure de Citres (GameSite 2000 Ltd.)"
+license: "Commercial proprietary software; 14-day fully enabled trial"
+strength:
+  kind: rating
+  claim: "Michael Depreli's 2012 comparison, reproduced by the project, assigns eXtreme Gammon 2 at XGRoller++ a performance rating of 0.11, the best (lowest) listed."
+  url: "https://www.extremegammon.com/studies.aspx"
+url: "https://www.extremegammon.com/"
+last_checked: "2026-10-25"
+notes: >
+  The [official manual](https://www.extremegammon.com/extremegammon2.pdf)
+  explicitly credits Xavier Dufaure de Citres for programming.
+  The download page offers a Windows binary and states the trial terms.
+  The project's file-format documentation names Nackgammon, Hypergammon
+  and Longgammon variants.
+  The cited comparison uses 500 money games and XG2 rollouts to adjudicate
+  disagreements; PR is an error-based performance measure, not Elo.
+  The original linked BGonline post could not be retrieved, so the claim
+  relies on the project's reproduction of the study.

@@ -34,6 +34,12 @@ Searches for newer work:
 
 _Superseded rows stay in the table._
 
+## Engines
+
+- [Cloudict](../engines/cloudict.md) (engine): competition result, [source](https://www.game-ai-forum.org/icga-tournaments/tournament.php?id=244)
+- [Galvanise Zero (gzero)](../engines/galvanise-zero.md) (engine): competition result, [source](https://github.com/richemslie/galvanise_zero)
+- [KataConnect6](../engines/kataconnect6.md) (engine): self-reported, [source](https://github.com/hzyhhzy/KataGomo/blob/master/README_old.md)
+
 ## References
 
 - [I-Chen Wu and Ping-Hung Lin, Relevance-Zone-Oriented Proof Search for Connect6, IEEE Transactions on Computational Intelligence and AI in Games 2(3) (2010)](https://doi.org/10.1109/TCIAIG.2010.2060262) (2010)

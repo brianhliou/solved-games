@@ -29,6 +29,10 @@ Both players can force a draw with perfect play. Non-trivial forced wins first o
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
+## Engines
+
+- [GamesmanUni](../engines/gamesmanuni.md) (solver): perfect play, [source](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2023/Archive/EECS-2023-186.pdf)
+
 ## References
 
 - [Cameron Cheung, "Techniques for Solving and Visualizing Large Games," UC Berkeley EECS Tech Report EECS-2023-186 (2023 strong solve, reachable count, partial database and live solving)](https://www2.eecs.berkeley.edu/Pubs/TechRpts/2023/Archive/EECS-2023-186.pdf)

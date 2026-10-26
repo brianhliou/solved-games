@@ -27,6 +27,10 @@ South (the first player) wins. Kalah(6,4) is a win by 10 (kalahah difference) un
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
+## Engines
+
+- [kalah (Irving)](../engines/irving-kalah.md) (solver): perfect play, [source](https://naml.us/paper/irving2000_kalah.pdf)
+
 ## References
 
 - [Irving, Donkers & Uiterwijk (2000) — "Solving Kalah", ICGA Journal 23(3):139–147 (PDF on the first author's site)](https://naml.us/paper/irving2000_kalah.pdf)

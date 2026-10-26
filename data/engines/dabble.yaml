@@ -1,0 +1,20 @@
+id: dabble
+name: Dabble
+kind: engine
+games: [dots-and-boxes, dots-and-boxes-5x6]
+author: "J. P. Grossman"
+license: "GPL-2.0 (project's linked gnu.txt)"
+strength:
+  kind: match-result
+  claim: "Stevens reports Dabble scoring 16 wins against PRsBoxes's 44 in a 60-game comparison with five seconds per move."
+  url: "https://www.dianneandpaul.net/PRsBoxes/"
+url: "https://www.mathstat.dal.ca/~jpg/dabble/"
+last_checked: "2026-10-25"
+notes: >-
+  Author's site supplies Windows executables, source and MSVC++ project files.
+  Its readme.txt explicitly sizes boards in dots:
+  dabble.exe supports up to 6×6 dots, while dabble_nohash.exe supports up to
+  20×20 dots.
+  Therefore 5×6 boxes requires the no-hash executable on a 6×7-dot board.
+  The cited comparison is historical and does not establish current
+  leading strength.

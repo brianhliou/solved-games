@@ -2,7 +2,7 @@
 
 # Combinatorial game theory
 
-[All families](../README.md#families) · 7 solved · 3 open · 0 engines
+[All families](../README.md#families) · 7 solved · 3 open · 6 engines
 
 ## Solved
 
@@ -25,3 +25,12 @@
 | [Amazons (10×10)](../games/amazons-small.md#open-amazons-10x10) | Smaller board solved | The standard 10×10 start, with the 6×5 and 6×6 starts as intermediate targets | [Song & Müller 2015](https://web.archive.org/web/2025/https://webdocs.cs.ualberta.ca/~mmueller/ps/2015/2015-Solve-Amazons.pdf) (2015-03) | 2026-10-25 |
 | [Domineering (12×12)](../games/domineering.md#open-domineering-12x12) | Smaller board solved | The empty 12×12 square under normal play | [Uiterwijk 2016](https://link.springer.com/chapter/10.1007/978-3-319-50935-8_12) (2016) | 2026-10-25 |
 | [Dots and Boxes (5×6 boxes)](../games/dots-and-boxes.md#open-dots-and-boxes-5x6) | Smaller board solved | The empty 5×6-box board: determine its perfect-play score and a strategy attaining it | [Fraser 2014](https://groups.google.com/g/rec.games.abstract/c/-z5Y9JRlZJ8) (2014-01-17)\* | 2026-10-25 |
+
+## Engines
+
+- [Dabble](../engines/dabble.md) (engine): match result, [source](https://www.dianneandpaul.net/PRsBoxes/)
+- [Fairy-Stockfish](../engines/fairy-stockfish.md) (engine): competition result, [source](https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Tournament-results)
+- [Galvanise Zero (gzero)](../engines/galvanise-zero.md) (engine): competition result, [source](https://github.com/richemslie/galvanise_zero)
+- [Invader](../engines/invader.md) (engine): competition result, [source](https://www.csun.edu/~lorentz/amazon.htm)
+- [Obsequi](../engines/obsequi.md) (solver): perfect play, [source](https://doi.org/10.3233/ICG-2002-25202)
+- [PRsBoxes](../engines/prsboxes.md) (engine): match result, [source](https://www.dianneandpaul.net/PRsBoxes/)

@@ -1,0 +1,21 @@
+id: cloudict
+name: Cloudict
+kind: engine
+games: [connect6]
+author: "Hao Cui, Liang Li, Ruijian Wang and Siran Lin"
+license: "BSD-style (three-clause terms in LICENSE.txt)"
+strength:
+  kind: competition
+  claim: "The ICGA tournament results list Cloudict.Connect6 as the Connect6 gold medalist at the 16th Computer Olympiad in Tilburg in 2011."
+  url: "https://www.game-ai-forum.org/icga-tournaments/tournament.php?id=244"
+url: "https://github.com/lang010/cloudict"
+last_checked: "2026-10-25"
+notes: >
+  Public C++ source with alpha-beta and VCF search; the README documents building
+  with make and a command-line playing interface. It identifies earlier
+  competition names as Bit and Bitstronger.
+  [README.txt](https://github.com/lang010/cloudict/blob/master/README.txt)
+  credits all four authors;
+  [LICENSE.txt](https://github.com/lang010/cloudict/blob/master/LICENSE.txt)
+  supplies the redistribution terms. The competition evidence is historical
+  and does not establish a current ranking against neural engines.

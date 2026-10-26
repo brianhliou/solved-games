@@ -1,0 +1,20 @@
+id: invader
+name: Invader
+kind: engine
+games: [amazons-10x10]
+author: "Richard Lorentz and CSUN student contributors, including original implementer Henry Avetisyan"
+license: "Not stated on the author's download page"
+strength:
+  kind: competition
+  claim: "The author's download page identifies its downloadable UCT executable as the version that won Amazons gold at the 2008 Computer Olympiad."
+  url: "https://www.csun.edu/~lorentz/amazon.htm"
+url: "https://www.csun.edu/~lorentz/amazon.htm"
+last_checked: "2026-10-25"
+notes: >
+  Author credits were checked against the
+  [ICGA program record](https://www.game-ai-forum.org/icga-tournaments/program.php?id=249).
+  The indexed author page advertises both a minimax download and a UCT
+  executable, but direct retrieval currently redirects to a university
+  maintenance notice announcing restoration on October 26, 2026.
+  Current binary availability and its license could not be confirmed.
+  No configurable small-board support was established.

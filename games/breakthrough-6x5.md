@@ -43,6 +43,11 @@ Searches for newer work:
 
 - 2026-10-25: looked for Breakthrough solved 8x8 6x5 7x7 solution; Solving Breakthrough for the 6×6 Board; Breakthrough solved 7x7 2026; Breakthrough 8x8 solved Björnsson. Checked the 2026 journal abstract and university record.; found Found the refereed 2026 publication proving a first-player win on 6×6, beyond the catalog's 6×5 record. No subsequent solution of 7×7 or 8×8 was found..
 
+## Engines
+
+- [Fairy-Stockfish](../engines/fairy-stockfish.md) (engine): competition result, [source](https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Tournament-results)
+- [Galvanise Zero (gzero)](../engines/galvanise-zero.md) (engine): competition result, [source](https://github.com/richemslie/galvanise_zero)
+
 ## References
 
 - [Saffidine, Jouandeau and Cazenave, Solving Breakthrough with Race Patterns and Job-Level Proof Number Search (ACG 2011; LNCS 7168, pp. 196–207, 2012)](https://www.lamsade.dauphine.fr/~cazenave/papers/solving.pdf)

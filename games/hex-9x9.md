@@ -49,7 +49,8 @@ _Superseded rows stay in the table._
 
 ## Engines
 
-- [MoHex 2.0 and Wolve (Benzene)](../pages/engines.md#engine-mohex) (engine): competition result, [source](https://webdocs.cs.ualberta.ca/~hayward/hex/)
+- [KataHex](../engines/katahex.md) (engine): third-party assessment, [source](https://www.hexwiki.net/index.php/KataHex)
+- [MoHex 2.0 and Wolve (Benzene)](../engines/mohex.md) (engine): competition result, [source](https://webdocs.cs.ualberta.ca/~hayward/hex/)
 
 ## References
 

@@ -27,6 +27,10 @@ White wins 20–16 from the standard start under perfect play; the alternative R
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
+## Engines
+
+- [Takizawa 6×6 Othello tablebase and query tool](../engines/takizawa-othello-6x6.md) (solver): perfect play, [source](https://arxiv.org/abs/2411.01029)
+
 ## References
 
 - [Joel Feinstein, Perfect play in 6×6 Othello from two alternative starting positions](https://www.maths.nottingham.ac.uk/plp/pmzjff/Othello/6x6sol.html)

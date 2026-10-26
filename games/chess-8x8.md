@@ -36,6 +36,12 @@ Searches for newer work:
 
 _Superseded rows stay in the table._
 
+## Engines
+
+- [Fairy-Stockfish](../engines/fairy-stockfish.md) (engine): competition result, [source](https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Tournament-results)
+- [Fathom](../engines/fathom.md) (solver): perfect play, [source](https://github.com/jdart1/Fathom#readme)
+- [Stockfish](../engines/stockfish.md) (engine): competition result, [source](https://www.chessdom.com/stockfish-claims-its-19th-tcec-title-defeating-reckless-in-the-superfinal/)
+
 ## References
 
 - [Lichess, op1: Marc Bourzutschky's partial 8-piece tablebase (every 8-piece ending with at least one pair of opposing pawns on the same file)](https://github.com/lichess-org/op1) (2026)

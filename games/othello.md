@@ -31,7 +31,10 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Engines
 
-- [Edax](../pages/engines.md#engine-edax) (engine): third-party assessment, [source](https://arxiv.org/abs/2310.19387)
+- [Edax](../engines/edax.md) (engine): third-party assessment, [source](https://arxiv.org/abs/2310.19387)
+- [Egaroucid](../engines/egaroucid.md) (engine): competition result, [source](https://www.egaroucid.nyanyan.dev/en/)
+- [Fairy-Stockfish](../engines/fairy-stockfish.md) (engine): competition result, [source](https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Tournament-results)
+- [Galvanise Zero (gzero)](../engines/galvanise-zero.md) (engine): competition result, [source](https://github.com/richemslie/galvanise_zero)
 
 ## References
 

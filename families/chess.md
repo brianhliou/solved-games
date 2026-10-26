@@ -2,7 +2,7 @@
 
 # Chess & chess variants
 
-[All families](../README.md#families) · 2 solved · 2 open · 0 engines
+[All families](../README.md#families) · 2 solved · 2 open · 6 engines
 
 ## Solved
 
@@ -17,6 +17,15 @@
 |---|---|---|---|---|
 | [Chess (8×8)](../games/chess-8x8.md) | Partially solved | Complete 8-piece win/draw/loss and DTZ50 tables, without castling rights | [Bourzutschky & Fiekas 2026](https://github.com/lichess-org/op1) (2026)\* | 2026-10-25 |
 | [Xiangqi (Chinese chess)](../games/xiangqi-9x10.md) | Partially solved | every ending up to a fixed piece count, as chess has through 7 pieces | [Chinese Chess Cloud Database](https://www.chessdb.cn/egtb_info.html)\* | 2026-10-25 |
+
+## Engines
+
+- [Fairy-Stockfish](../engines/fairy-stockfish.md) (engine): competition result, [source](https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Tournament-results)
+- [Fathom](../engines/fathom.md) (solver): perfect play, [source](https://github.com/jdart1/Fathom#readme)
+- [Gardnerfish](../engines/gardnerfish.md) (engine): self-reported, [source](https://arxiv.org/html/1307.7118)
+- [LosingLoeser](../engines/losing-loeser.md) (solver): perfect play, [source](https://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS/)
+- [Pikafish](../engines/pikafish.md) (engine): rating, [source](https://www.pikafish.com/wiki/faq/vs-commercial-engines.html)
+- [Stockfish](../engines/stockfish.md) (engine): competition result, [source](https://www.chessdom.com/stockfish-claims-its-19th-tcec-title-defeating-reckless-in-the-superfinal/)
 
 ## Not yet verified
 

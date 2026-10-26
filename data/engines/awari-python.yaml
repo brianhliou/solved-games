@@ -1,0 +1,18 @@
+id: awari-python
+name: Awari-Python database prober
+kind: solver
+games: [awari]
+author: "Vrije Universiteit Amsterdam; dataset credits John W. Romein, Henri E. Bal and Kees Verstoep"
+license: "Apache-2.0 for the code; CC-BY-4.0 for the published database"
+strength:
+  kind: perfect-play
+  claim: "The project's documentation states that db_lookup.py returns the optimal score of a position and the scores after each of its six potential moves from the complete Awari database."
+  url: "https://github.com/keesverstoep/Awari/blob/main/Awari-Python/README.md"
+url: "https://github.com/keesverstoep/Awari"
+last_checked: "2026-10-25"
+notes: >-
+  A command-line tablebase prober rather than an automatic opponent.
+  GitHub contains a database subset; the full database exceeds 800 GB and is
+  available at https://doi.org/10.48338/vu01-11wjke.
+  Implements the solved Awari rules: capturing every opposing seed is forbidden
+  unless it is the only available move; these differ from Abapa Oware.

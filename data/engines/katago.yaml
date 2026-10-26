@@ -1,0 +1,27 @@
+id: katago
+name: KataGo
+kind: engine
+games: [go-5x5, go-6x6]
+other_games:
+  - "Go on other square and rectangular boards, including 9×9, 13×13 and 19×19"
+author: "David J. Wu and contributors"
+license: "MIT, except separately licensed third-party components identified in LICENSE."
+strength:
+  kind: rating
+  claim: "The Go AI Ratings list assigns KataGo g170 b40c256x2-s5095420928 a rating of 5274 from 650 games under its 19×19 Tromp–Taylor settings."
+  url: "https://github.com/breakwa11/GoAIRatings"
+url: "https://github.com/lightvector/KataGo"
+last_checked: "2026-10-25"
+notes: >
+  The cited rating concerns a historical model on 19×19, not measured strength
+  or perfect play on 5×5 or 6×6. Small-board support is established by the
+  [GTP implementation](https://github.com/lightvector/KataGo/blob/master/cpp/command/gtp.cpp),
+  which accepts board dimensions from 2 upward subject to engine and model
+  limits. The official
+  [extra networks page](https://katagotraining.org/extra_networks/)
+  supplies a Rect15 model trained on varied small rectangular boards;
+  board-size support alone does not establish small-board accuracy.
+  Executables and models are linked from the README. Author credit and license
+  exceptions appear in
+  [CONTRIBUTORS](https://github.com/lightvector/KataGo/blob/master/CONTRIBUTORS)
+  and [LICENSE](https://github.com/lightvector/KataGo/blob/master/LICENSE).

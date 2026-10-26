@@ -1,0 +1,18 @@
+id: irving-kalah
+name: kalah (Irving)
+kind: solver
+games: [kalah]
+author: "Geoffrey Irving"
+license: "BSD-3-Clause (LICENSE)"
+strength:
+  kind: perfect-play
+  claim: "Irving, Donkers and Uiterwijk (2000) report exact solutions for Kalah starting configurations through six holes and five counters per hole using full-game databases and optimized search."
+  url: "https://naml.us/paper/irving2000_kalah.pdf"
+url: "https://github.com/girving/kalah"
+last_checked: "2026-10-25"
+notes: >-
+  The repository describes this as a perfect player for up to five stones per
+  bin and includes an endgame-database generator.
+  Uses the paper's empty-capture rules; the larger instances were weakly solved,
+  without a complete tablebase for every position.
+  The README documents a serial build as well as historical Cilk/PVM versions.

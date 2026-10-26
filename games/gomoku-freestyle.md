@@ -28,7 +28,9 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Engines
 
-- [Rapfi](../pages/engines.md#engine-rapfi) (engine): competition result, [source](https://gomocup.org/results/gomocup-result-2025/)
+- [AlphaGomoku (Kozarzewski)](../engines/alphagomoku.md) (engine): competition result, [source](https://gomocup.org/results/gomocup-result-2026/)
+- [KataGomo](../engines/katagomo.md) (engine): competition result, [source](https://gomocup.org/results/gomocup-result-2026/)
+- [Rapfi](../engines/rapfi.md) (engine): competition result, [source](https://gomocup.org/results/gomocup-result-2025/)
 
 ## References
 

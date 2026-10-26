@@ -9,6 +9,7 @@
 // Output (under src/content/docs/):
 //   games/<genre>/<id>.md     one page per game, and per open problem with no game page
 //   open-problems.md, engines.md
+//   engines/<id>.md           one page per engine
 //   ../generated/home.json    the home page's table: every verified game by family, and the open problems
 //
 // The repo's per-family pages (families/<genre>.md) have no site page since
@@ -24,7 +25,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 const DOCS = join(ROOT, "site", "src", "content", "docs");
 const HOME = join(ROOT, "site", "src", "generated", "home.json");
 const REPO = "https://github.com/brianhliou/solved-games/blob/main";
-const GENERATED_DIRS = ["games", "genres"];
+const GENERATED_DIRS = ["games", "genres", "engines"];
 const GENERATED_FILES = ["open-problems.md", "engines.md"];
 
 const RESULT_LABEL: Record<string, string> = {
@@ -60,6 +61,8 @@ function routeOf(repoPath: string): string | undefined {
   if (m) return genreOf.has(m[1]) ? `/games/${genreOf.get(m[1])}/${m[1]}/` : undefined;
   m = repoPath.match(/^families\/([^/]+)\.md$/);
   if (m) return tableGenres.has(m[1]) ? `/#${m[1]}` : "/#open-problems";
+  m = repoPath.match(/^engines\/([^/]+)\.md$/);
+  if (m) return `/engines/${m[1]}/`;
   m = repoPath.match(/^pages\/([^/]+)\.md$/);
   if (m) return `/${m[1]}/`;
   return undefined;
@@ -125,6 +128,9 @@ for (const [repoPath, md] of pages) {
     const fam = FAMILY_BY_ID[game] ?? FAMILY_BY_GENRE[genreOf.get(game)!];
     if (fam) after = `Part of [${fam.label}](${fam.href}) — see the family page for the scaling table and a playable explorer.`;
     count++;
+  } else if (repoPath.startsWith("engines/")) {
+    const e = data.engines.find((x) => `engines/${x.id}.md` === repoPath)!;
+    description = `${e.name}: a ${e.kind} for ${e.games.length ? e.games.length + " game(s) in this list" : "games outside this list"}, with the evidence for its strength.`;
   } else if (repoPath === "pages/open-problems.md") {
     description = "Games and board sizes with a published partial result and a named next step.";
   } else {
@@ -159,4 +165,4 @@ const open = data.open.map((e) => {
 mkdirSync(dirname(HOME), { recursive: true });
 writeFileSync(HOME, JSON.stringify({ families, open, games: verified.length }, null, 2));
 
-console.log(`[gen-content] ${count} game pages, ${GENERATED_FILES.length} other pages → ${DOCS}`);
+console.log(`[gen-content] ${count} game pages, ${data.engines.length} engine pages, ${GENERATED_FILES.length} other pages → ${DOCS}`);

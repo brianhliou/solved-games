@@ -1,0 +1,22 @@
+id: kingsrow
+name: Kingsrow
+kind: engine
+games: [checkers, international-draughts-10x10]
+other_games: ["Italian draughts"]
+author: "Ed Gilbert"
+license: "Free downloads; redistribution and modification terms not stated on the project pages"
+strength:
+  kind: competition
+  claim: "The 2023 tournament results place Kingsrow 1.63 first with 33 points in the Unofficial World Championship of Computer Programs in International Draughts."
+  url: "https://www.uwccpi2023.draughtsprograms.eu/conclusion.html"
+url: "https://edgilbert.org/Checkers/KingsRow.htm"
+last_checked: "2026-10-25"
+notes: >
+  The author's home page credits Ed Gilbert and links separate English, Italian
+  and international downloads. English and Italian engines use CheckerBoard;
+  international downloads include a standalone application and a Hub engine.
+  English version 1.20 supports the author's downloadable 12-piece endgame
+  database. Distance databases support exact endgame conversion or winning
+  paths, not perfect play from the full starting position.
+  The [English download page](https://edgilbert.org/EnglishCheckers/KingsRowEnglish.htm)
+  calls the programs free but does not specify a software license.

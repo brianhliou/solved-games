@@ -2,7 +2,7 @@
 
 # Connection games
 
-[All families](../README.md#families) · 4 solved · 4 open · 1 engines
+[All families](../README.md#families) · 4 solved · 4 open · 4 engines
 
 ## Solved
 
@@ -28,4 +28,7 @@ Hex is also *ultra-weakly* solved for every board size: the first player wins by
 
 ## Engines
 
-- [MoHex 2.0 and Wolve (Benzene)](../pages/engines.md#engine-mohex) (engine): competition result, [source](https://webdocs.cs.ualberta.ca/~hayward/hex/)
+- [KataHex](../engines/katahex.md) (engine): third-party assessment, [source](https://www.hexwiki.net/index.php/KataHex)
+- [MIA and MC-LOA](../engines/mia.md) (engine): competition result, [source](https://dke.maastrichtuniversity.nl/m.winands/loa/download.html)
+- [MoHex 2.0 and Wolve (Benzene)](../engines/mohex.md) (engine): competition result, [source](https://webdocs.cs.ualberta.ca/~hayward/hex/)
+- [Tiltak](../engines/tiltak.md) (engine): match result, [source](https://github.com/MortenLohne/tiltak)

@@ -1,0 +1,17 @@
+id: egaroucid
+name: Egaroucid
+kind: engine
+games: [othello]
+author: "Takuto Yamana (Nyanyan) and contributors"
+license: "GPL-3.0-or-later"
+strength:
+  kind: competition
+  claim: "The author's project page reports Egaroucid winning the Generic Game Server Othello AI tournament on December 8, 2024."
+  url: "https://www.egaroucid.nyanyan.dev/en/"
+url: "https://github.com/Nyanyan/Egaroucid"
+last_checked: "2026-10-25"
+notes: >
+  The repository README credits Takuto Yamana and states GNU GPL version 3 or
+  later. Desktop and console editions share the main engine; the browser
+  edition uses a weaker engine. Source and downloadable releases are provided.
+  No supported 6×6 mode was established from the documentation inspected.

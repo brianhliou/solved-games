@@ -2,7 +2,7 @@
 
 # Go
 
-[All families](../README.md#families) · 1 solved · 1 open · 0 engines
+[All families](../README.md#families) · 1 solved · 1 open · 2 engines
 
 ## Solved
 
@@ -15,3 +15,8 @@
 | Problem | Status | Next target | Latest result | Last checked |
 |---|---|---|---|---|
 | [Go (6×6)](../games/go-5x5.md#open-go-6x6) | Smaller board solved | 6×6 under positional superko | [Randall et al. 2024](https://www.ijcai.org/proceedings/2024/774) (2024) | 2026-10-17 |
+
+## Engines
+
+- [KataGo](../engines/katago.md) (engine): rating, [source](https://github.com/breakwa11/GoAIRatings)
+- [Sanko](../engines/sanko.md) (engine): perfect play, [source](https://arxiv.org/abs/2610.29414)

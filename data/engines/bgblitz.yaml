@@ -1,0 +1,22 @@
+id: bgblitz
+name: BGBlitz
+kind: engine
+games: [backgammon]
+other_games: ["Nackgammon"]
+author: "Frank Berger"
+license: "Commercial license; computer play requires the Player or Professional edition"
+strength:
+  kind: competition
+  claim: "Berger's 2016 Olympiad report records BGBlitz winning the backgammon title against GNU Backgammon by three matches to two."
+  url: "https://www.bgblitz.com/olympiad_2016.html"
+url: "https://www.bgblitz.com/"
+last_checked: "2026-10-25"
+notes: >
+  Author credit appears throughout the project site.
+  The [purchase terms](https://www.bgblitz.com/buy.html) distinguish the
+  free utility edition from paid editions that play against the computer;
+  one license permits installation on multiple systems with one running
+  instance at a time.
+  Current downloads cover Windows, macOS and Linux.
+  The project manual documents Nackgammon support.
+  The cited tournament had two competing programs.

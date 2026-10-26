@@ -1,0 +1,21 @@
+<!-- GENERATED from data/engines/jqe.yaml by `npm run build` (scripts/build-readme.ts). Edit the data, not this page. -->
+
+# jqe
+
+[All engines](../pages/engines.md) · [data](../data/engines/jqe.yaml)
+
+- **Kind:** engine (searches)
+- **Games in this list:** none
+- **Other games:** Jieqi (dark xiangqi)
+- **Author:** Devin O'Keefe
+- **License:** MIT for engine and bundled networks; tools/repair_ab_release.py is GPL-3.0-or-later
+- **Project:** <https://github.com/devinokeefe/jieqi>
+- **Last checked:** 2026-10-25
+
+## Strength
+
+Self-reported. O'Keefe reports that jqe-v0.15g with it014 scored 701 wins, 24 draws and 275 losses against AB-JChess v0.2b over 500 duplicate pairs at 60+0.6 with eight threads each, corresponding to +158 Elo with a 95% interval of +136 to +181. ([source](https://github.com/devinokeefe/jieqi/blob/main/REPORT.md))
+
+## Notes
+
+The repository includes the engine, it014 network, independent rules referee, game records and result-recomputation tools. These are the author's measurements; no independent replication was sourced. The report limits its comparison to six runnable opponents and explicitly declines an overall strongest-engine claim. Other work shared the test computer, reducing available CPU time. The tested AB-JChess version predates newer releases. Credits come from [CITATION.cff](https://github.com/devinokeefe/jieqi/blob/main/CITATION.cff); licensing is documented in [LICENSE](https://github.com/devinokeefe/jieqi/blob/main/LICENSE) and [THIRD_PARTY.md](https://github.com/devinokeefe/jieqi/blob/main/THIRD_PARTY.md).

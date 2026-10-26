@@ -26,6 +26,11 @@ Either side can force a draw with optimal play (final score 24-24)
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
+## Engines
+
+- [Aalina](../engines/aalina.md) (engine): match result, [source](https://48stones.com/research-games-benchmark/)
+- [Awari-Python database prober](../engines/awari-python.md) (solver): perfect play, [source](https://github.com/keesverstoep/Awari/blob/main/Awari-Python/README.md)
+
 ## References
 
 - [Romein & Bal, "Solving the Game of Awari using Parallel Retrograde Analysis," Computer 36(10):26–33 (2003), DOI 10.1109/MC.2003.1236468](https://doi.org/10.1109/MC.2003.1236468)

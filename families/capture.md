@@ -2,7 +2,7 @@
 
 # Capture & board control
 
-[All families](../README.md#families) · 7 solved · 3 open · 1 engines
+[All families](../README.md#families) · 7 solved · 3 open · 12 engines
 
 ## Solved
 
@@ -28,7 +28,18 @@
 
 ## Engines
 
-- [Edax](../pages/engines.md#engine-edax) (engine): third-party assessment, [source](https://arxiv.org/abs/2310.19387)
+- [Cake](../engines/cake.md) (engine): competition result, [source](https://www.fierz.ch/cake186.php)
+- [Dragon Draughts](../engines/dragon-draughts.md) (engine): competition result, [source](https://www.mdgsoftware.nl/draughts/tournament.html)
+- [Edax](../engines/edax.md) (engine): third-party assessment, [source](https://arxiv.org/abs/2310.19387)
+- [Egaroucid](../engines/egaroucid.md) (engine): competition result, [source](https://www.egaroucid.nyanyan.dev/en/)
+- [Fairy-Stockfish](../engines/fairy-stockfish.md) (engine): competition result, [source](https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Tournament-results)
+- [Galvanise Zero (gzero)](../engines/galvanise-zero.md) (engine): competition result, [source](https://github.com/richemslie/galvanise_zero)
+- [GuiNN Checkers](../engines/guinn-checkers.md) (engine): third-party assessment, [source](https://www.fierz.ch/checkers.htm)
+- [Kingsrow](../engines/kingsrow.md) (engine): competition result, [source](https://www.uwccpi2023.draughtsprograms.eu/conclusion.html)
+- [ostle_solver](../engines/ostle-solver.md) (solver): perfect play, [source](https://pmc.ncbi.nlm.nih.gov/articles/PMC10557503/)
+- [Pangki God](../engines/pangki-god.md) (solver): perfect play, [source](https://jasondoucette.com/download/pangkigod.zip)
+- [Scan](../engines/scan.md) (engine): competition result, [source](https://hjetten.home.xs4all.nl/scan/scan.html)
+- [Takizawa 6×6 Othello tablebase and query tool](../engines/takizawa-othello-6x6.md) (solver): perfect play, [source](https://arxiv.org/abs/2411.01029)
 
 ## Not yet verified
 

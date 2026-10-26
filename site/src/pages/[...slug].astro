@@ -12,5 +12,19 @@ const { Content } = await render(page);
 ---
 
 <Page title={page.data.title} description={page.data.description}>
-	<Content />
+	<div class={page.id === 'engines' ? 'engine-index' : undefined}>
+		<Content />
+	</div>
 </Page>
+
+<style is:global>
+	/* One table per family: the same column widths in each, so they line up down the page. */
+	@media (min-width: 640px) {
+		.engine-index table { display: table; width: 100%; table-layout: fixed; }
+		.engine-index th:nth-child(1) { width: 26%; }
+		.engine-index th:nth-child(2) { width: 9%; }
+		.engine-index th:nth-child(3) { width: 31%; }
+		.engine-index th:nth-child(4) { width: 18%; }
+		.engine-index th:nth-child(5) { width: 16%; }
+	}
+</style>

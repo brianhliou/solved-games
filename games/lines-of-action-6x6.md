@@ -47,6 +47,10 @@ Searches for newer work:
 
 - 2026-10-25: looked for Lines of Action solved 7x7 8x8 Winands; Lines of Action 7x7 solved 2025 2026; Lines of Action 8x8 solved 2025 2026. Also inspected Winands's publication list.; found No later starting-position proof for 7×7 or 8×8 was found. Searches continued to return the 2008 6×6 paper. The author's publication list inspected is not a complete bibliography through 2026..
 
+## Engines
+
+- [MIA and MC-LOA](../engines/mia.md) (engine): competition result, [source](https://dke.maastrichtuniversity.nl/m.winands/loa/download.html)
+
 ## References
 
 - [Mark H. M. Winands, 6 × 6 LOA is Solved (ICGA Journal 31(4), pp. 234–238, December 2008)](https://dke.maastrichtuniversity.nl/m.winands/documents/LoaNote.pdf)

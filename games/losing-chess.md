@@ -27,6 +27,11 @@ White (first player) wins; 1.e3 forces a win against every Black defense
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
+## Engines
+
+- [Fairy-Stockfish](../engines/fairy-stockfish.md) (engine): competition result, [source](https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Tournament-results)
+- [LosingLoeser](../engines/losing-loeser.md) (solver): perfect play, [source](https://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS/)
+
 ## References
 
 - [Losing Chess: 1. e3 Wins for White — Mark Watkins, ICGA Journal 39(2): 123–125 (2017), DOI 10.3233/ICG-170017](https://content.iospress.com/articles/icga-journal/icg170017)

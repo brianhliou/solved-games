@@ -33,6 +33,11 @@ Searches for newer work:
 
 _Superseded rows stay in the table._
 
+## Engines
+
+- [Fairy-Stockfish](../engines/fairy-stockfish.md) (engine): competition result, [source](https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Tournament-results)
+- [Pikafish](../engines/pikafish.md) (engine): rating, [source](https://www.pikafish.com/wiki/faq/vs-commercial-engines.html)
+
 ## References
 
 - [Chinese Chess Cloud Database, DTC endgame-table inventory; undated, checked 2026-10-25](https://www.chessdb.cn/egtb_info.html)

@@ -30,7 +30,8 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Engines
 
-- [dobutsu (Clausecker)](../pages/engines.md#engine-clausecker-dobutsu) (engine): perfect play, [source](https://github.com/clausecker/dobutsu)
+- [dobutsu (Clausecker)](../engines/clausecker-dobutsu.md) (engine): perfect play, [source](https://github.com/clausecker/dobutsu)
+- [Fairy-Stockfish](../engines/fairy-stockfish.md) (engine): competition result, [source](https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Tournament-results)
 
 ## References
 

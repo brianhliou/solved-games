@@ -28,6 +28,11 @@ Essentially weakly solved (NOT exactly solved): an epsilon-Nash equilibrium with
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
+## Engines
+
+- [Cepheus / CFR+](../engines/cepheus.md) (solver): match result, [source](https://www.idi.ntnu.no/emner/it3105/materials/poker/poker-solved-2017.pdf)
+- [Slumbot](../engines/slumbot.md) (engine): competition result, [source](https://poker.cs.ualberta.ca/news.html)
+
 ## References
 
 - [Heads-up Limit Hold'em Poker Is Solved — M. Bowling, N. Burch, M. Johanson, O. Tammelin, Science 347(6218):145-149 (2015)](https://www.science.org/doi/10.1126/science.1259433)

@@ -28,6 +28,11 @@ Draw with best play; both White and Black can force a draw
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
+## Engines
+
+- [Fairy-Stockfish](../engines/fairy-stockfish.md) (engine): competition result, [source](https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Tournament-results)
+- [Gardnerfish](../engines/gardnerfish.md) (engine): self-reported, [source](https://arxiv.org/html/1307.7118)
+
 ## References
 
 - [Mhalla & Prost, "Gardner's Minichess Variant is solved" (arXiv:1307.7118)](https://arxiv.org/abs/1307.7118)

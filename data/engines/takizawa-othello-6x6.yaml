@@ -1,0 +1,19 @@
+id: takizawa-othello-6x6
+name: "Takizawa 6×6 Othello tablebase and query tool"
+kind: solver
+games: [othello-6x6]
+author: "Hiroki Takizawa"
+license: "CC-BY-4.0 (Zenodo deposit); GPL-3.0 (generation repository)"
+strength:
+  kind: perfect-play
+  claim: "Takizawa's paper reports exact values and canonical optimal moves throughout the region reachable when at least one player follows the certified optimal policy."
+  url: "https://arxiv.org/abs/2411.01029"
+url: "https://zenodo.org/records/18843225"
+last_checked: "2026-10-25"
+notes: >
+  The downloadable deposit includes query_6x6.py and documents its position
+  format and usage inside the archive; this is a prober rather than a graphical
+  opponent. Coverage is semi-strong, not every arbitrary position.
+  The deposit is 138.4 GB compressed and approximately 550 GB extracted.
+  Licensing was checked in the deposit metadata and the generation repository's
+  [LICENSE](https://github.com/eukaryo/reopening-alphabeta-experiment/blob/main/LICENSE).

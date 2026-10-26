@@ -1,0 +1,27 @@
+id: sanmill
+name: Sanmill
+kind: solver
+games: [nine-mens-morris, lasker-morris, morabaraba]
+other_games:
+  - "Twelve Men's Morris"
+  - "Dooz"
+  - "Russian Mill"
+  - "Cheng San Qi"
+  - "Da San Qi"
+  - "Zhi Qi"
+  - "El Filja"
+author: "Calcitem and contributors credited in AUTHORS; PerfectAI code by Gábor E. Gévay and Gábor Danner"
+license: "AGPL-3.0-or-later, with the README's additional app-store distribution permission"
+strength:
+  kind: perfect-play
+  claim: "Sanmill's Perfect Database documentation states that installed Malom databases override search moves when necessary to select a perfect move."
+  url: "https://github.com/calcitem/Sanmill/wiki/Perfect-Database"
+url: "https://github.com/calcitem/Sanmill"
+last_checked: "2026-10-25"
+notes: >-
+  Also provides heuristic search and mobile/desktop interfaces.
+  Perfect play requires the appropriate complete database and matching rules;
+  missing database files cause fallback to search.
+  The Morabaraba database uses the full-board-is-a-draw convention.
+  Supported presets are defined in crates/tgf-mill/src/presets.rs;
+  those presets do not include six or three men's morris.

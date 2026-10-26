@@ -28,6 +28,10 @@ Of the two openings distinct under symmetry, one draws and the other loses.
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
+## Engines
+
+- [Pangki God](../engines/pangki-god.md) (solver): perfect play, [source](https://jasondoucette.com/download/pangkigod.zip)
+
 ## References
 
 - [Jason Doucette, Artificial Intelligence: Pangki God (primary solver writeup)](https://jasondoucette.com/ai.html#Pangki)

@@ -1,0 +1,32 @@
+id: galvanise-zero
+name: "Galvanise Zero (gzero)"
+kind: engine
+games: [breakthrough-8x8, amazons-10x10, othello, connect6]
+other_games:
+  - "Breakthrough (6×6)"
+  - "Hex (11×11)"
+  - "Hex (13×13)"
+  - "Hex (19×19)"
+  - "Othello (10×10)"
+  - "Killer international draughts"
+  - "Go (9×9)"
+  - "Chess under the project's GDL draw rules"
+author: "Richard Emslie"
+license: "MIT (engine code); custom Data License for use in AI and ML (published models and data)"
+strength:
+  kind: competition
+  claim: "The project's README reports gold medals in Amazons and Breakthrough at the 2018 Computer Olympiad."
+  url: "https://github.com/richemslie/galvanise_zero"
+url: "https://github.com/richemslie/galvanise_zero"
+last_checked: "2026-10-25"
+notes: >
+  The engine LICENSE credits Richard Emslie. Published networks and game
+  rules are in [gzero_data](https://github.com/richemslie/gzero_data);
+  its license is separate from the engine's MIT license and contains research
+  and commercialization restrictions. Listed games follow the documented
+  trained players rather than hypothetical support for arbitrary GDL games.
+  The published chess rules use a different draw counter, so that player is
+  not mapped to chess-8x8.
+  The archived engine requires Python 2.7, TensorFlow and a GPU; installation
+  documentation is incomplete. Strength was not established equally for
+  every supported game.

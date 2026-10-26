@@ -1,0 +1,18 @@
+id: gobblet-solver
+name: gobblet (Possibly Wrong)
+kind: solver
+games: [gobblet-gobblers]
+other_games: ["Other configurable 3×3 Gobblet variants"]
+author: "possiblywrong / possibly-wrong"
+license: "Unlicense"
+strength:
+  kind: perfect-play
+  claim: "The author's write-up describes a retrograde solution whose program displays optimal moves and lets users play and rewind Gobblet Gobblers games."
+  url: "https://possiblywrong.wordpress.com/2024/06/11/strongly-solving-gobblet-gobblers-using-retrograde-analysis/"
+url: "https://github.com/possibly-wrong/gobblet"
+last_checked: "2026-10-25"
+notes: >-
+  C++ implementation with configurable piece sizes, quantities and movement.
+  The one-size placement-only configuration includes ordinary tic-tac-toe.
+  No fuller author identity is credited in the inspected README, source or
+  GitHub profile.

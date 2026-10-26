@@ -30,7 +30,7 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Engines
 
-- [Connect 4 Game Solver](../pages/engines.md#engine-pons-connect4) (solver): perfect play, [source](http://blog.gamesolver.org/)
+- [Connect 4 Game Solver](../engines/pons-connect4.md) (solver): perfect play, [source](http://blog.gamesolver.org/)
 
 ## References
 

@@ -1,0 +1,21 @@
+id: fathom
+name: Fathom
+kind: solver
+games: [chess-8x8]
+author: "Ronald de Man, Basil Falcinelli and Jon Dart"
+license: "MIT"
+strength:
+  kind: perfect-play
+  claim: "Fathom's README documents Syzygy tablebase probing that returns solved WDL/DTZ values and recommended moves for covered chess endgames of up to seven pieces."
+  url: "https://github.com/jdart1/Fathom#readme"
+url: "https://github.com/jdart1/Fathom"
+last_checked: "2026-10-25"
+notes: >-
+  Perfect play applies within the installed tablebases' coverage, including
+  both kings in the piece count; positions with castling rights are unsupported.
+  The command-line tool lists winning, drawing and losing moves and generates
+  a tablebase continuation. Tablebase files must be obtained separately.
+  This is Jon Dart's maintained successor to basil00/Fathom.
+  Credits and licensing are documented in the
+  [README](https://github.com/jdart1/Fathom#history-and-credits) and
+  [LICENSE](https://github.com/jdart1/Fathom/blob/master/LICENSE).

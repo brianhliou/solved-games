@@ -48,6 +48,11 @@ Searches for newer work:
 
 - 2026-10-17: looked for a 2025 or 2026 solution of 6×6 Go; found none.
 
+## Engines
+
+- [KataGo](../engines/katago.md) (engine): rating, [source](https://github.com/breakwa11/GoAIRatings)
+- [Sanko](../engines/sanko.md) (engine): perfect play, [source](https://arxiv.org/abs/2610.29414)
+
 ## References
 
 - [E. van der Werf, J. van den Herik, J. Uiterwijk — Solving Go on Small Boards, ICGA Journal 26(2):92-107, 2003 (the MIGOS primary paper)](https://journals.sagepub.com/doi/10.3233/ICG-2003-26205)

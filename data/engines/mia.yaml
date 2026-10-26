@@ -1,0 +1,21 @@
+id: mia
+name: "MIA and MC-LOA"
+kind: engine
+games: [lines-of-action-8x8]
+author: "Mark Winands"
+license: "Proprietary freeware; redistribution requires an unchanged package, commercial distribution requires permission, and modification or reverse engineering is prohibited."
+strength:
+  kind: competition
+  claim: "Winands's download page credits MIA and its MC-LOA variant with LOA tournament victories at the 8th, 9th, 11th, 14th, 17th and 18th Computer Olympiads."
+  url: "https://dke.maastrichtuniversity.nl/m.winands/loa/download.html"
+url: "https://dke.maastrichtuniversity.nl/m.winands/loa/download.html"
+last_checked: "2026-10-25"
+notes: >
+  Distributed as Java binaries inside GameMaster 2.02; the author's linked
+  [download](https://dke.maastrichtuniversity.nl/m.winands/loa/GameMaster2.zip)
+  contains Readme.txt, FAQ.txt and License.txt, which credit Mark Winands and
+  state the distribution terms. The FAQ says source, opening books and endgame
+  databases are not included. GameMaster also bundles other, separately named
+  engines; their games are not attributed to MIA here. Public documentation
+  checked did not establish 6×6 support in this downloadable package or access
+  to the 2008 solution strategy.

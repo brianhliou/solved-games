@@ -50,6 +50,11 @@ Searches for newer work:
 
 - 2026-10-25: looked for Results beyond Fraser's 2014 announcement, using Dots and Boxes solved 5x6 6x6 Fraser, Dots-and-Boxes solved 6 Fraser, and Dots and Boxes solved 2025 2026; also checked the 2025 Games of No Chance survey.; found No exact solution of an empty 5×6-box or larger square board was found. The survey still reports Fraser's 5×5 claim. Search results included BoxesZero (2025), a playing agent with additional endgame theory, without a larger empty-board solution..
 
+## Engines
+
+- [Dabble](../engines/dabble.md) (engine): match result, [source](https://www.dianneandpaul.net/PRsBoxes/)
+- [PRsBoxes](../engines/prsboxes.md) (engine): match result, [source](https://www.dianneandpaul.net/PRsBoxes/)
+
 ## References
 
 - [William Fraser, "Dots at 5x5 solved!" announcement (rec.games.abstract / Little Golem, Jan 2014) — the Shark, first player wins 13-12](https://groups.google.com/g/rec.games.abstract/c/-z5Y9JRlZJ8)

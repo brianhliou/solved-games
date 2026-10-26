@@ -27,7 +27,7 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Engines
 
-- [pentago (Irving)](../pages/engines.md#engine-pentago) (solver): perfect play, [source](https://arxiv.org/abs/1404.0743)
+- [pentago (Irving)](../engines/pentago.md) (solver): perfect play, [source](https://arxiv.org/abs/1404.0743)
 
 ## References
 

@@ -30,7 +30,8 @@ _One row, derived from the record's year, solver and primary source; no fuller h
 
 ## Engines
 
-- [Malom](../pages/engines.md#engine-malom) (solver): perfect play, [source](https://arxiv.org/abs/1408.0032)
+- [Malom](../engines/malom.md) (solver): perfect play, [source](https://arxiv.org/abs/1408.0032)
+- [Sanmill](../engines/sanmill.md) (solver): perfect play, [source](https://github.com/calcitem/Sanmill/wiki/Perfect-Database)
 
 ## References
 

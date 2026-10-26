@@ -1,0 +1,19 @@
+id: obsequi
+name: Obsequi
+kind: solver
+games: [domineering, domineering-12x12]
+author: "Nathan Bullock"
+license: "GPL-2.0-or-later (COPYRIGHT)"
+strength:
+  kind: perfect-play
+  claim: "Bullock (2002) reports that Obsequi determined exact outcomes for previously unsolved Domineering boards including 10×10, 8×10 and 4×21."
+  url: "https://doi.org/10.3233/ICG-2002-25202"
+url: "https://github.com/nathanbullock/obsequi"
+last_checked: "2026-10-25"
+notes: >-
+  The README describes playing and solving boards and gives command-line
+  examples with optional blocked cells.
+  The implementation accepts board dimensions, including 12×12; this does
+  not establish a completed solution of the empty 12×12 board.
+  The published results concern the historical version; the author's repository
+  contains subsequent development.

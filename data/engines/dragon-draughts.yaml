@@ -1,0 +1,21 @@
+id: dragon-draughts
+name: "Dragon Draughts"
+kind: engine
+games: [international-draughts-10x10]
+other_games: ["Killer draughts"]
+author: "Michel Grimminck"
+license: "Free to use indefinitely; redistribution and modification terms not stated"
+strength:
+  kind: competition
+  claim: "The author's tournament report records Dragon winning the 2013 Culemborg tournament with 15 points from 18."
+  url: "https://www.mdgsoftware.nl/draughts/tournament.html"
+url: "https://www.mdgsoftware.nl/draughts/index.html"
+last_checked: "2026-10-25"
+notes: >
+  The author's About page supplies the author credit; the registration page
+  states that the program is free indefinitely and is no longer sold.
+  The [download page](https://www.mdgsoftware.nl/draughts/install.html)
+  offers version 5.0.1 for Windows.
+  The tournament report cautions that tournament versions used larger evaluation
+  and breakthrough tables than the downloadable version.
+  Killer-draughts support is documented in the project changelog.

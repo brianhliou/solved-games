@@ -6,6 +6,7 @@
 //                       `related_game` renders on that game's page)
 //   families/<genre>.md one page per genre: solved table, open problems, engines
 //   pages/open-problems.md, pages/engines.md
+//   engines/<id>.md     one page per engine record
 //
 // Pure functions over the loaded data; scripts/build-readme.ts writes the
 // files and checks they are in sync. Hand-written pages live in guides/.
@@ -16,7 +17,7 @@ import { parse } from 'yaml'
 import {
   type HistoryRow, type OpenEntry, type ProgressLine, MAX_AGE_DAYS, loadOpenEntries, loadProgress, staleness,
 } from './open-entries.ts'
-import { type Engine, loadEngines } from './engines.ts'
+import { type Engine, STRENGTH_KINDS, loadEngines } from './engines.ts'
 
 export interface Source { title: string; url: string; primary?: boolean; date?: string }
 type Links = string | Source | (string | Source)[]
@@ -208,7 +209,7 @@ export function openPath(e: OpenEntry, depth: number) {
   return e.related_game ? `${gamePath(e.related_game, depth)}#${openAnchor(e)}` : gamePath(e.id, depth)
 }
 const engineAnchor = (e: Engine) => `engine-${e.id}`
-const enginePath = (e: Engine, depth: number) => `${up(depth)}pages/engines.md#${engineAnchor(e)}`
+export const enginePath = (e: Engine, depth: number) => `${up(depth)}engines/${e.id}.md`
 
 // ---- shared indexes -------------------------------------------------------
 
@@ -354,7 +355,7 @@ function gamePage(g: Game, ix: Index): string {
 
   for (const e of ix.openFor(g.id)) out.push(...openBlock(e, ix, '## Open problem:'))
 
-  const engines = ix.enginesFor([g.id])
+  const engines = ix.enginesFor([g.id, ...ix.openFor(g.id).map((e) => e.id)])
   if (engines.length) out.push('## Engines', '', ...engineLines(engines, 1), '')
 
   out.push('## References', '', ...g.sources.map((s) => `- [${cell(s.title)}](${s.url})`), '')
@@ -440,38 +441,77 @@ function openProblemsPage(ix: Index): string {
   return out.join('\n').replace(/\n+$/, '\n')
 }
 
+// The table's license column: the main license by name, or what kind of terms.
+// The engine's own page carries the full terms.
+export function licenseShort(license: string): string {
+  if (/^Not (stated|specified)/i.test(license)) return 'Not stated'
+  if (/^(Commercial|Proprietary)/i.test(license)) return 'Proprietary'
+  if (/^Free /i.test(license)) return 'Freeware'
+  return license.match(/^[A-Za-z][\w.-]*/)?.[0] ?? license
+}
+
+const byEvidenceThenName = (a: Engine, b: Engine) =>
+  STRENGTH_KINDS.indexOf(a.strength.kind) - STRENGTH_KINDS.indexOf(b.strength.kind) || a.name.localeCompare(b.name)
+
 function enginesPage(ix: Index): string {
-  const all = [...ix.d.engines].sort((a, b) => a.name.localeCompare(b.name))
-  const listed = all.filter((e) => e.games.length)
-  const outside = all.filter((e) => !e.games.length)
   const out: string[] = [GENERATED('data/engines/*.yaml'), '', '# Engines', '']
   out.push(
-    'Programs that play or solve games, each with the evidence for its strength and a link to it. ' +
-      'A solver plays from a solution; an engine searches. Records are in `data/engines/`; ' +
+    `${ix.d.engines.length} programs that play or solve games, grouped by family, strongest evidence first. ` +
+      'A solver plays from a solution; an engine searches. Each name opens the record: the strength claim, ' +
+      'its source, the author and the full license terms. Records are in `data/engines/`; ' +
       '`npm run check` rejects a strength claim without a source.',
     '',
-    'Strength evidence, strongest first: ' +
-      (Object.keys(STRENGTH_KIND_LABEL) as Engine['strength']['kind'][]).map((k) => `\`${k}\``).join(', ') +
-      '. A self-reported number is the author\'s own and has not been reproduced here.',
+    'Evidence, strongest first: ' +
+      STRENGTH_KINDS.map((k) => STRENGTH_KIND_LABEL[k]).join(', ') +
+      ". A self-reported number is the author's own and has not been reproduced here. " +
+      'An engine that plays games in several families appears under each.',
     '',
   )
-  const block = (e: Engine) => {
-    const games = [...e.games.map((g) => ix.link(g, 1)), ...(e.other_games ?? []).map(cell)]
-    const lines = [
-      `<a id="${engineAnchor(e)}"></a>`,
-      '',
-      `### ${e.name}`,
-      '',
-      `- **Games:** ${games.join(', ')}`,
-      `- **Kind:** ${e.kind} · **License:** ${cell(e.license)} · **Author:** ${cell(e.author)}`,
-      `- **Strength (${e.strength.kind}):** ${cell(e.strength.claim)} ([source](${e.strength.url}))`,
-      `- **Repository:** <${e.url}> · last checked ${e.last_checked}`,
-    ]
-    if (e.notes) lines.push(`- **Notes:** ${cell(e.notes)}`)
-    return [...lines, '']
+  const header = '| Engine | Kind | Games | Evidence | License |\n|---|---|---|---|---|'
+  const row = (e: Engine, games: string[]) => {
+    const anchor = `<a id="${engineAnchor(e)}"></a>`
+    return `| ${anchor}[${cell(e.name)}](${enginePath(e, 1)}) | ${e.kind} | ${games.join(', ') || '—'} | [${STRENGTH_KIND_LABEL[e.strength.kind]}](${e.strength.url}) | ${cell(licenseShort(e.license))} |`
   }
-  if (listed.length) out.push(`## For games in this list (${listed.length})`, '', ...listed.flatMap(block))
-  if (outside.length) out.push(`## For other games (${outside.length})`, '', ...outside.flatMap(block))
+  // An engine's anchor goes on its first row only, so old #engine-<id> links still land.
+  const anchored = new Set<string>()
+  const once = (e: Engine, line: string) => (anchored.has(e.id) ? line.replace(/<a id="[^"]+"><\/a>/, '') : (anchored.add(e.id), line))
+  for (const genre of ix.genres()) {
+    const engines = ix.d.engines.filter((e) => e.games.some((g) => ix.byId.get(g)?.genre === genre)).sort(byEvidenceThenName)
+    if (!engines.length) continue
+    out.push(`## ${genreTitle(genre)}`, '', header)
+    for (const e of engines) out.push(once(e, row(e, e.games.filter((g) => ix.byId.get(g)?.genre === genre).map((g) => ix.link(g, 1)))))
+    out.push('')
+  }
+  const outside = ix.d.engines.filter((e) => !e.games.length).sort(byEvidenceThenName)
+  if (outside.length) {
+    out.push('## For games outside this list', '', header)
+    for (const e of outside) out.push(once(e, row(e, (e.other_games ?? []).map(cell))))
+    out.push('')
+  }
+  return out.join('\n').replace(/\n+$/, '\n')
+}
+
+function enginePage(e: Engine, ix: Index): string {
+  const out: string[] = [GENERATED(`data/engines/${e.id}.yaml`), '', `# ${e.name}`, '']
+  out.push(`[All engines](../pages/engines.md) · [data](../data/engines/${e.id}.yaml)`, '')
+  const games = e.games.map((g) => ix.link(g, 1))
+  out.push(
+    `- **Kind:** ${e.kind === 'solver' ? 'solver (plays from a solution)' : 'engine (searches)'}`,
+    `- **Games in this list:** ${games.join(', ') || 'none'}`,
+  )
+  if (e.other_games?.length) out.push(`- **Other games:** ${e.other_games.map(cell).join(', ')}`)
+  out.push(
+    `- **Author:** ${cell(e.author)}`,
+    `- **License:** ${cell(e.license)}`,
+    `- **Project:** <${e.url}>`,
+    `- **Last checked:** ${e.last_checked}`,
+    '',
+    '## Strength',
+    '',
+    `${STRENGTH_KIND_LABEL[e.strength.kind][0].toUpperCase()}${STRENGTH_KIND_LABEL[e.strength.kind].slice(1)}. ${cell(e.strength.claim)} ([source](${e.strength.url}))`,
+    '',
+  )
+  if (e.notes) out.push('## Notes', '', cell(e.notes), '')
   return out.join('\n').replace(/\n+$/, '\n')
 }
 
@@ -535,9 +575,10 @@ export function render(d: Data, today: string): Rendered {
   if (ix.genres().includes('other')) warnings.push('records with an unrecognized genre render under families/other.md; add the slug to GENRE_ORDER')
   pages.set('pages/open-problems.md', openProblemsPage(ix))
   pages.set('pages/engines.md', enginesPage(ix))
+  for (const e of d.engines) pages.set(`engines/${e.id}.md`, enginePage(e, ix))
   const regions = new Map([
     ['index', indexRegion(ix)],
     ['recent-progress', progressRegion(ix)],
   ])
-  return { pages, regions, generatedDirs: ['games', 'families', 'pages'], warnings }
+  return { pages, regions, generatedDirs: ['games', 'families', 'pages', 'engines'], warnings }
 }

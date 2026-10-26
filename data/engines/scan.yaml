@@ -1,0 +1,24 @@
+id: scan
+name: Scan
+kind: engine
+games: [international-draughts-10x10]
+other_games:
+  - "Killer draughts"
+  - "Breakthrough draughts"
+  - "Frisian draughts"
+  - "Losing international draughts"
+author: "Fabien Letouzey"
+license: "GPL-3.0"
+strength:
+  kind: competition
+  claim: "Harm Jetten's Scan distribution page reports international-draughts victories at the 18th, 19th and 20th Computer Olympiads."
+  url: "https://hjetten.home.xs4all.nl/scan/scan.html"
+url: "https://github.com/rhalbersma/scan"
+last_checked: "2026-10-25"
+notes: >
+  The repository is a mirror; its readme credits Fabien Letouzey and explicitly
+  states GPL version 3. The distribution includes source and Linux, macOS and
+  Windows executables, with separate endgame downloads.
+  Breakthrough draughts means winning by crowning a king; it is not the
+  pawn-race game represented by the catalog's breakthrough ids.
+  The readme describes breakthrough and losing-variant support as experimental.

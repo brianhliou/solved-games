@@ -35,6 +35,12 @@ Searches for newer work:
 
 _Superseded rows stay in the table._
 
+## Engines
+
+- [Dragon Draughts](../engines/dragon-draughts.md) (engine): competition result, [source](https://www.mdgsoftware.nl/draughts/tournament.html)
+- [Kingsrow](../engines/kingsrow.md) (engine): competition result, [source](https://www.uwccpi2023.draughtsprograms.eu/conclusion.html)
+- [Scan](../engines/scan.md) (engine): competition result, [source](https://hjetten.home.xs4all.nl/scan/scan.html)
+
 ## References
 
 - [Michel Grimminck (MichelG), 10 piece endgame databases, World Draughts Forum](https://damforum.nl/viewtopic.php?t=8907) (2026-10-19)

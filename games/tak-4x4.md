@@ -30,6 +30,10 @@ Searches for newer work:
 
 _Superseded rows stay in the table._
 
+## Engines
+
+- [Tiltak](../engines/tiltak.md) (engine): match result, [source](https://github.com/MortenLohne/tiltak)
+
 ## References
 
 - [Joseph Marrow, "The 3×3 Solution to the Game of Tak", arXiv:2509.05844 (2025-09-06): 3×3 is a first-player forced win. The abstract names no larger board; the paper notes that much Tak analysis is unpublished, on forums.](https://arxiv.org/abs/2509.05844) (2025-09-06)

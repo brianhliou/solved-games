@@ -7,6 +7,7 @@ src/content/docs/games/
 src/content/docs/genres/
 src/content/docs/open-problems.md
 src/content/docs/engines.md
+src/content/docs/engines/
 src/generated/
 # explorer build copied in from ../explorer/dist (regenerated at deploy)
 public/explorer/

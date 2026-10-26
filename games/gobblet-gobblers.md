@@ -29,6 +29,10 @@ The first player can force a win in 13 plies.
 
 _One row, derived from the record's year, solver and primary source; no fuller history is recorded yet._
 
+## Engines
+
+- [gobblet (Possibly Wrong)](../engines/gobblet-solver.md) (solver): perfect play, [source](https://possiblywrong.wordpress.com/2024/06/11/strongly-solving-gobblet-gobblers-using-retrograde-analysis/)
+
 ## References
 
 - [Strongly solving Gobblet Gobblers using retrograde analysis (11 June 2024)](https://possiblywrong.wordpress.com/2024/06/11/strongly-solving-gobblet-gobblers-using-retrograde-analysis/)

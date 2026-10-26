@@ -1,0 +1,20 @@
+id: losing-loeser
+name: LosingLoeser
+kind: solver
+games: [losing-chess]
+author: "Mark Watkins; GUI contributions credited to Klaas Steenhuis"
+license: "Not stated in the inspected project page or distributed source archive"
+strength:
+  kind: perfect-play
+  claim: "Watkins's project reports a proved White win after 1.e3 under both FICS and International rules and distributes the proof trees and software for exploring them."
+  url: "https://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS/"
+url: "https://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS/"
+last_checked: "2026-10-25"
+notes: >-
+  Includes proof-number search, tablebase tools and WinningGUI for exploring
+  winning proof trees.
+  This is a winning strategy from 1.e3, not a strong solution of every position.
+  The page documents a double-en-passant tablebase bug and corrected
+  proofs/source from 2019; use the revised files.
+  Source is supplied as CombinedJan05.tar, with Linux build instructions.
+  Public availability does not establish a redistribution license.

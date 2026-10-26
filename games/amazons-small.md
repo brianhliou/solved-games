@@ -46,6 +46,12 @@ Searches for newer work:
 
 - 2026-10-25: looked for Amazons solved 6x6; Amazons 6x6 solving Müller; Amazons solved 2025; Amazons solved 2026; Amazons 10×10 solved. Checked indexed text of Müller's research page and later solving-challenge slides.; found No later solution of the standard 6×5, 6×6 or 10×10 start was found. Müller's research page describes an unfinished 6×5 attempt, and his 2023 challenge slides still name 6×5 and 6×6 as targets. Direct access to these author-hosted pages and slides failed..
 
+## Engines
+
+- [Fairy-Stockfish](../engines/fairy-stockfish.md) (engine): competition result, [source](https://github.com/fairy-stockfish/Fairy-Stockfish/wiki/Tournament-results)
+- [Galvanise Zero (gzero)](../engines/galvanise-zero.md) (engine): competition result, [source](https://github.com/richemslie/galvanise_zero)
+- [Invader](../engines/invader.md) (engine): competition result, [source](https://www.csun.edu/~lorentz/amazon.htm)
+
 ## References
 
 - [J. Song and M. Müller, An Enhanced Solver for The Game of Amazons (preprint PDF), IEEE TCIAIG 7(1):16-27, 2015](https://webdocs.cs.ualberta.ca/~mmueller/ps/2014/2014-TCIAIG-amazons_solver-preprint.pdf)
