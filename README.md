@@ -2,6 +2,8 @@
 
 > Games with a known result under perfect play, the open problems one step past them, and the engines and tablebases that play them.
 
+Browse it at [solvedgames.brianhliou.com](https://solvedgames.brianhliou.com).
+
 Perfect play known for every position, or at least from the start, computed and stored instead of searched at runtime. Each game has a page with its solution history, references, open problem where one exists, and engines. Everything is generated from the YAML in [`data/`](data/README.md).
 
 > **Status: maintained list.** Two lists, one dataset: games with a known result, and [open problems](pages/open-problems.md) with a published partial result and a named next target. Each open entry carries a `last_checked` date, and the check fails once any entry goes 90 days without a re-check. Entries are checked for plausibility against their primary sources, not certified; a `*` marks a result that exists only as a self-archived artifact, including the maintainer's own two. Corrections are credited in the [progress log](#recent-progress). The data is CC0, fork it freely. See [VISION](VISION.md).

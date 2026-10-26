@@ -9,6 +9,9 @@ interface Props {
 }
 const { title, description, home = false } = Astro.props;
 const pageTitle = home ? title : `${title} · Solved Games`;
+// The nav section this page belongs to; game and family pages sit under Games.
+const path = Astro.url.pathname;
+const section = path.startsWith('/open-problems') ? 'open' : path.startsWith('/engines') ? 'engines' : 'games';
 ---
 
 <!doctype html>
@@ -31,9 +34,9 @@ const pageTitle = home ? title : `${title} · Solved Games`;
 		<header>
 			<a class="site" href="/">Solved Games</a>
 			<nav>
-				<a href="/">Games</a>
-				<a href="/open-problems/">Open problems</a>
-				<a href="/engines/">Engines</a>
+				<a href="/" aria-current={section === 'games' ? 'page' : undefined}>Games</a>
+				<a href="/open-problems/" aria-current={section === 'open' ? 'page' : undefined}>Open problems</a>
+				<a href="/engines/" aria-current={section === 'engines' ? 'page' : undefined}>Engines</a>
 				<a href="https://github.com/brianhliou/solved-games">GitHub</a>
 			</nav>
 		</header>
@@ -70,6 +73,8 @@ const pageTitle = home ? title : `${title} · Solved Games`;
 	}
 	html {
 		-webkit-text-size-adjust: 100%;
+		/* Anchor jumps (/#chess) land below the sticky header, which wraps to two lines on a phone. */
+		scroll-padding-top: 80px;
 	}
 	body {
 		margin: 0;
@@ -77,13 +82,20 @@ const pageTitle = home ? title : `${title} · Solved Games`;
 		color: var(--text);
 		font: 16px/1.5 -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
 	}
-	header,
 	main {
 		max-width: 1012px;
 		margin: 0 auto;
 		padding: 0 16px;
 	}
+	/* Full width so the background and rule span the window while it sticks;
+	   the side padding keeps its content on main's 980px column. */
 	header {
+		position: sticky;
+		top: 0;
+		z-index: 10;
+		background: var(--bg);
+		padding-left: max(16px, calc((100% - 980px) / 2));
+		padding-right: max(16px, calc((100% - 980px) / 2));
 		display: flex;
 		flex-wrap: wrap;
 		align-items: baseline;
@@ -104,6 +116,10 @@ const pageTitle = home ? title : `${title} · Solved Games`;
 	}
 	nav a {
 		color: var(--muted);
+	}
+	nav a[aria-current='page'] {
+		color: var(--text);
+		font-weight: 600;
 	}
 	main {
 		padding-bottom: 48px;

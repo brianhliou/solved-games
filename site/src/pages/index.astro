@@ -55,7 +55,7 @@ import home from '../generated/home.json';
 	</table>
 
 	<h2 id="open-problems">Open problems</h2>
-	<table>
+	<table class="open">
 		<thead>
 			<tr><th>Game</th><th>Solved so far</th></tr>
 		</thead>
@@ -84,5 +84,11 @@ import home from '../generated/home.json';
 	}
 	.games tr.family th {
 		background: var(--stripe);
+	}
+	/* On a phone a one-line name squeezes the second column to a strip. */
+	@media (min-width: 640px) {
+		.open td:first-child {
+			white-space: nowrap;
+		}
 	}
 </style>
