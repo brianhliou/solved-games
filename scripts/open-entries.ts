@@ -18,7 +18,7 @@ export const EVIDENCE = ['refereed', 'preprint', 'thesis', 'self-archived'] as c
 export const STRENGTHS = ['ultra-weak', 'weak', 'strong'] as const
 export const GENRES = [
   'alignment', 'morris', 'connection', 'mancala', 'capture', 'chess',
-  'hunt', 'cgt', 'shogi', 'go', 'imperfect-info',
+  'hunt', 'cgt', 'shogi', 'go', 'imperfect-info', 'chance',
 ] as const
 
 export type Evidence = (typeof EVIDENCE)[number]

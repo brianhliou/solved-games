@@ -47,6 +47,9 @@ const { pages } = render(data, new Date().toISOString().slice(0, 10));
 const genreOf = new Map<string, string>();
 for (const g of data.games) genreOf.set(g.id, g.genre);
 for (const e of data.open) if (!e.related_game) genreOf.set(e.id, e.genre);
+// A family with no verified game has no heading in the home table (Games of
+// chance holds only Backgammon's open entry), so its links go to Open problems.
+const tableGenres = new Set(data.games.filter((g) => g.verified).map((g) => g.genre));
 const genreTitle = (slug: string) =>
   (GENRE_ORDER.find((g) => g.slug === slug)?.title ?? "Other").replace(/\*/g, "");
 
@@ -56,7 +59,7 @@ function routeOf(repoPath: string): string | undefined {
   let m = repoPath.match(/^games\/([^/]+)\.md$/);
   if (m) return genreOf.has(m[1]) ? `/games/${genreOf.get(m[1])}/${m[1]}/` : undefined;
   m = repoPath.match(/^families\/([^/]+)\.md$/);
-  if (m) return `/#${m[1]}`;
+  if (m) return tableGenres.has(m[1]) ? `/#${m[1]}` : "/#open-problems";
   m = repoPath.match(/^pages\/([^/]+)\.md$/);
   if (m) return `/${m[1]}/`;
   return undefined;

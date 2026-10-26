@@ -112,6 +112,7 @@ filter on the site). The slugs and their display order (familiar → frontier):
 | `shogi` | Shogi variants |
 | `go` | Go |
 | `imperfect-info` | Imperfect information |
+| `chance` | Games of chance |
 
 Some games sit in two genres (e.g. Maharajah is a chess variant *and* an
 unequal-forces hunt; Amazons is territorial *and* a canonical CGT game). Pick the

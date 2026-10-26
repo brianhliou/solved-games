@@ -83,6 +83,7 @@ export const GENRE_ORDER: { slug: string; title: string }[] = [
   { slug: 'shogi', title: 'Shogi variants' },
   { slug: 'go', title: 'Go' },
   { slug: 'imperfect-info', title: 'Imperfect information' },
+  { slug: 'chance', title: 'Games of chance' },
 ]
 const genreTitle = (slug: string) => GENRE_ORDER.find((g) => g.slug === slug)?.title ?? 'Other'
 

@@ -1,0 +1,102 @@
+id: backgammon
+name: Backgammon
+genre: chance
+status: partially-solved
+solved_up_to: "every bearoff with up to 15 checkers a side in the home board; Hypergammon (3 checkers a side) completely"
+next_target: "every race with up to 15 checkers a side anywhere on the first 12 points, in all four cube states (Sconyers, 2014)"
+barrier:
+  - compute
+  - storage
+barrier_detail: >
+  Sconyers' published home-board database already occupies 47 GB for
+  approximately 3 billion positions, with equities for four cube cases.
+  He describes the extended databases reported in 2014 as having huge storage
+  requirements. Extending coverage requires calculating and storing values
+  for combinations of both players' positions.
+cite: "Sconyers 2014"
+evidence: self-archived
+unverified: >
+  Sconyers' extended race tables and four- and five-checker solutions are
+  documented here by his statement reproduced with permission in 2014;
+  their data, implementation and numerical error bounds were not inspected.
+  No strength label is assigned to those reports. The 1995 history dates
+  establish documented availability, not original completion dates.
+  The 2003 date follows Fang, Glenn and Kruskal's bibliographic citation;
+  the original dated announcement was not recovered.
+sources:
+  - title: "Hugh Sconyers, email reproduced with permission by Phil Simborg: extended race databases and further targets"
+    url: "https://www.bgonline.org/forums/webbbs_config.pl?noframes%3Bread=166254"
+    date: "2014-09-03"
+    primary: true
+  - title: "Hugh Sconyers, Bearoff 15x15 product description"
+    url: "https://back-gammon.info/sconyers/index.html"
+  - title: "Hugh Sconyers, database documentation: BearOff 15x15 and HyperBackgammon"
+    url: "https://back-gammon.info/sconyers/support.html"
+  - title: "Mark Damish, Backgammon FAQ: Sconyers' database documentation and Kit Woolsey's Hyper-Backgammon review"
+    url: "https://www.bkgm.com/articles/Damish/backgammon-faq.html"
+    date: "1995-12-18"
+  - title: "Haw-ren Fang, James Glenn and Clyde P. Kruskal, Retrograde Approximation Algorithms for Jeopardy Stochastic Games, ICGA Journal 31(2), 2008; author-uploaded text"
+    url: "https://www.researchgate.net/publication/220174525_RETROGRADE_APPROXIMATION_ALGORITHMS_FOR_JEOPARDY_STOCHASTIC_GAMES1"
+    date: "2008"
+  - title: "Arthur Benjamin and Andrew M. Ross, Enumerating Backgammon Positions: The Perfect Hash"
+    url: "https://bkgm.com/articles/BenjaminRoss/EnumeratingBackgammonPositions.pdf"
+    date: "1996"
+  - title: "Arthur T. Benjamin, Hal Heinrich and May Chotichurangkul, Solving The Race in Backgammon, Scatterplot"
+    url: "https://www.tandfonline.com/doi/full/10.1080/29932955.2026.2663696"
+    date: "2026"
+  - title: "blunderDB version history: GNU Backgammon two-sided bearoff databases"
+    url: "https://kevung.github.io/blunderDB/en/historique.html"
+absence_search:
+  - date: "2026-10-25"
+    looked_for: >
+      Results after the 2014 report extending exact race coverage or solving
+      standard Backgammon. Searches included "Hugh Sconyers 12 points database",
+      "backgammon solving bearoff database 2024 2025 2026",
+      "backgammon exact race database 2025", and "backgammon solved 2026".
+    found: >
+      No later exact coverage extension or full-game solution located.
+      Benjamin, Heinrich and Chotichurangkul's 2026 paper develops practical
+      race estimates, rather than establishing the proposed database's
+      completion. blunderDB's 2026 documentation describes GNU Backgammon
+      two-sided tables covering six or eleven checkers per side.
+history:
+  - date: "1995"
+    size_or_opening: "home-board bearoffs, Sconyers Volumes 1–3; documented by December 1995"
+    result: "equities and best moves for up to 10 checkers per side on six points, and up to 15 per side on the first four points, in all four cube cases"
+    credit: "Hugh Sconyers"
+    url: "https://www.bkgm.com/articles/Damish/backgammon-faq.html"
+  - date: "1995"
+    size_or_opening: "Hypergammon, three checkers per side; documented by December 1995"
+    result: "complete position-equity database and a program described by Kit Woolsey as playing perfectly"
+    credit: "Hugh Sconyers"
+    url: "https://www.bkgm.com/articles/Damish/backgammon-faq.html"
+  - date: "2003"
+    size_or_opening: "all home-board bearoffs, up to 15 checkers per side"
+    result: "equities for cubeless play, a centered cube and either player's ownership of the cube, with a best-move lookup"
+    credit: "Hugh Sconyers; date cited by Fang, Glenn and Kruskal (2008)"
+    url: "https://back-gammon.info/sconyers/support.html"
+  - date: "2014-09-03"
+    size_or_opening: "extended races: each side has 1–3 checkers on points 7–12 and 1–12 on points 1–6"
+    result: "Sconyers reports a solution covering four cube cases"
+    credit: "Hugh Sconyers"
+    url: "https://www.bgonline.org/forums/webbbs_config.pl?noframes%3Bread=166254"
+  - date: "2014-09-03"
+    size_or_opening: "four- and five-checker variants extending Hypergammon's starting arrangement"
+    result: "Sconyers reports solutions, adding starting checkers on the 21- and 20-points"
+    credit: "Hugh Sconyers"
+    url: "https://www.bgonline.org/forums/webbbs_config.pl?noframes%3Bread=166254"
+last_checked: "2026-10-25"
+notes: >
+  Backgammon is a dice-driven race in which each player moves fifteen checkers
+  around a board of twenty-four points and then removes them. The doubling
+  cube lets players raise the stakes. Once both players' remaining checkers
+  are in their home boards, play reduces to a bearoff race without further
+  contact. Working backward from finished positions, a database can evaluate
+  legal moves against the possible dice rolls and store the resulting
+  equities, or expected payoffs. Two-sided tables account for both players'
+  positions and support checker and cube decisions. These endgames provide
+  published partial solutions within the standard game. Longer races require
+  broader tables, while positions with contact also allow hitting and return
+  checkers to earlier parts of the board. Hypergammon keeps the board and
+  uses three checkers per side; its complete equity database provides a
+  smaller-game milestone.

@@ -18,7 +18,7 @@ Three strengths, from weakest to strongest ([Wikipedia](https://en.wikipedia.org
 
 <!-- BEGIN GENERATED:index — source of truth is data/games, data/open and data/engines; regenerate with `npm run build`. Do not hand-edit this table. -->
 
-41 solved, 14 open, 12 engines (7 for games in this list).
+41 solved, 15 open, 12 engines (7 for games in this list).
 
 | Family | Solved | Open | Engines | Games |
 |---|---|---|---|---|
@@ -33,6 +33,7 @@ Three strengths, from weakest to strongest ([Wikipedia](https://en.wikipedia.org
 | [Shogi variants](families/shogi.md) | 1 | 0 | [1](families/shogi.md#engines) | [Dōbutsu shōgi](games/dobutsu-shogi.md) |
 | [Go](families/go.md) | 1 | [1](families/go.md#open-problems) | 0 | [Go (5×5)](games/go-5x5.md) |
 | [Imperfect information](families/imperfect-info.md) | 1 | 0 | 0 | [Heads-up Limit Texas Hold'em (HULHE)](games/heads-up-limit-holdem.md) |
+| [Games of chance](families/chance.md) | 0 | [1](families/chance.md#open-problems) | 0 | — |
 
 All [open problems](pages/open-problems.md) in one table · all [engines](pages/engines.md).
 

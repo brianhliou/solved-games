@@ -71,3 +71,19 @@ test('every site link points at a page, and no repo-relative .md link survives',
     assert.doesNotMatch(md, /\]\((?!https?:)[^)]*\.md\b/, route)
   }
 })
+
+test('every link to a home-page heading names a heading the home page has', () => {
+  // The home table has a heading per family with a verified game, plus the
+  // literal ids in index.astro. Games of chance had only an open entry and
+  // linked to /#chance, which had no heading (2026-10-25).
+  const home = JSON.parse(readFileSync(join(ROOT, 'site', 'src', 'generated', 'home.json'), 'utf8'))
+  const astro = readFileSync(join(ROOT, 'site', 'src', 'pages', 'index.astro'), 'utf8')
+  const ids = new Set<string>([
+    ...home.families.map((f: { slug: string }) => f.slug),
+    ...[...astro.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]),
+  ])
+  const missing = (md: string) => [...md.matchAll(/\]\(\/#([^)\s]+)\)/g)].map((m) => m[1]).filter((a) => !ids.has(a))
+  // Planted: a family with no table heading must be caught.
+  assert.deepEqual(missing('[x](/#no-such-family)'), ['no-such-family'])
+  for (const [route, md] of pages) assert.deepEqual(missing(md), [], route)
+})
